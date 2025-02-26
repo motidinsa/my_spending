@@ -4,23 +4,23 @@ class SalomonBottomBar extends StatelessWidget {
   /// A bottom bar that faithfully follows the design by Aurélien Salomon
   ///
   /// https://dribbble.com/shots/5925052-Google-Bottom-Bar-Navigation-Pattern/
-  const SalomonBottomBar(
-      {Key? key,
-      required this.items,
-      this.currentIndex = 0,
-      this.onTap,
-      this.selectedItemColor,
-      this.unselectedItemColor,
-      this.selectedColorOpacity,
-      this.itemShape = const StadiumBorder(),
-      this.margin = const EdgeInsets.all(8),
-      this.itemPadding =
-          const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-      this.duration = const Duration(milliseconds: 500),
-      this.curve = Curves.easeOutQuint,
-      this.hasFAB,
-      this.backgroundColor})
-      : super(key: key);
+  const SalomonBottomBar({
+    super.key,
+    required this.items,
+    this.currentIndex = 0,
+    this.onTap,
+    this.selectedItemColor,
+    this.unselectedItemColor,
+    this.selectedColorOpacity,
+    this.itemShape = const StadiumBorder(),
+    this.margin = const EdgeInsets.all(8),
+    this.itemPadding = const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+    this.duration = const Duration(milliseconds: 500),
+    this.curve = Curves.easeOutQuint,
+    this.hasFAB,
+    this.backgroundColor,
+    this.borderRadius,
+  });
 
   /// A list of tabs to display, ie `Home`, `Likes`, etc
   final List<SalomonBottomBarItem> items;
@@ -57,6 +57,7 @@ class SalomonBottomBar extends StatelessWidget {
 
   final bool? hasFAB;
   final Color? backgroundColor;
+  final BorderRadius? borderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -64,15 +65,15 @@ class SalomonBottomBar extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.only(left: 4, right: 4, bottom: 2, top: 0),
-      child:Container(
+      child: Container(
         margin: EdgeInsets.only(left: 4, right: 4, bottom: 3, top: 0),
         decoration: BoxDecoration(
           // border: Border.all(color: lightTealColor(),width: 2.5),
           color: backgroundColor,
-          // borderRadius: smoothBorderRadius(radius: 12),
+          borderRadius: borderRadius ?? BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
+              color: Colors.grey.withValues(alpha: 0.5),
               spreadRadius: 3,
               blurRadius: 6,
               offset: Offset(0, 4),
@@ -80,15 +81,18 @@ class SalomonBottomBar extends StatelessWidget {
             ),
           ],
         ),
-        child:Padding(
+        child: Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: 12, vertical: hasFAB == true ? 0 : 8),
+            horizontal: 12,
+            vertical: hasFAB == true ? 0 : 8,
+          ),
           child: Row(
             /// Using a different alignment when there are 2 items or less
             /// so it behaves the same as BottomNavigationBar.
-            mainAxisAlignment: items.length <= 2
-                ? MainAxisAlignment.spaceEvenly
-                : MainAxisAlignment.spaceBetween,
+            mainAxisAlignment:
+                items.length <= 2
+                    ? MainAxisAlignment.spaceEvenly
+                    : MainAxisAlignment.spaceBetween,
             children: [
               for (final item in items)
                 TweenAnimationBuilder<double>(
@@ -98,54 +102,64 @@ class SalomonBottomBar extends StatelessWidget {
                   curve: curve,
                   duration: duration,
                   builder: (context, t, _) {
-                    final selectedColor = item.selectedColor ??
+                    final selectedColor =
+                        item.selectedColor ??
                         selectedItemColor ??
                         theme.primaryColor;
 
-                    final unselectedColor = item.unselectedColor ??
+                    final unselectedColor =
+                        item.unselectedColor ??
                         unselectedItemColor ??
                         theme.iconTheme.color;
 
                     return Material(
                       color: Color.lerp(
-                          selectedColor.withOpacity(0.0),
-                          selectedColor
-                              .withOpacity(selectedColorOpacity ?? 0.1),
-                          t),
+                        selectedColor.withValues(alpha: 0),
+                        selectedColor.withValues(
+                          alpha: selectedColorOpacity ?? 0.1,
+                        ),
+                        t,
+                      ),
                       shape: itemShape,
                       child: InkWell(
                         onTap: () => onTap?.call(items.indexOf(item)),
                         customBorder: itemShape,
-                        focusColor: selectedColor.withOpacity(0.1),
-                        highlightColor: selectedColor.withOpacity(0.1),
-                        splashColor: selectedColor.withOpacity(0.1),
-                        hoverColor: selectedColor.withOpacity(0.1),
+                        focusColor: selectedColor.withValues(alpha: 0.1),
+                        highlightColor: selectedColor.withValues(alpha: 0.1),
+                        splashColor: selectedColor.withValues(alpha: 0.1),
+                        hoverColor: selectedColor.withValues(alpha: 0.1),
                         child: Padding(
-                          padding: item.hasPadding == false
-                              ? const EdgeInsets.symmetric(vertical: 2)
-                              : itemPadding -
-                              (Directionality.of(context) ==
-                                  TextDirection.ltr
-                                  ? EdgeInsets.only(
-                                  right: itemPadding.right * t)
-                                  : EdgeInsets.only(
-                                  left: itemPadding.left * t)),
+                          padding:
+                              item.hasPadding == false
+                                  ? const EdgeInsets.symmetric(vertical: 2)
+                                  : itemPadding -
+                                      (Directionality.of(context) ==
+                                              TextDirection.ltr
+                                          ? EdgeInsets.only(
+                                            right: itemPadding.right * t,
+                                          )
+                                          : EdgeInsets.only(
+                                            left: itemPadding.left * t,
+                                          )),
                           child: Row(
                             children: [
                               IconTheme(
                                 data: IconThemeData(
                                   color: Color.lerp(
-                                      unselectedColor, selectedColor, t),
+                                    unselectedColor,
+                                    selectedColor,
+                                    t,
+                                  ),
                                   size: 24,
                                 ),
-                                child: items.indexOf(item) == currentIndex
-                                    ? item.activeIcon ?? item.icon
-                                    : item.icon,
+                                child:
+                                    items.indexOf(item) == currentIndex
+                                        ? item.activeIcon ?? item.icon
+                                        : item.icon,
                               ),
                               ClipRect(
                                 clipBehavior: Clip.antiAlias,
                                 child: SizedBox(
-                                  /// TODO: Constrain item height without a fixed value
                                   ///
                                   /// The Align property appears to make these full height, would be
                                   /// best to find a way to make it respond only to padding.
@@ -154,20 +168,26 @@ class SalomonBottomBar extends StatelessWidget {
                                     alignment: const Alignment(-0.2, 0.0),
                                     widthFactor: t,
                                     child: Padding(
-                                      padding: Directionality.of(context) ==
-                                          TextDirection.ltr
-                                          ? EdgeInsets.only(
-                                          left: itemPadding.left / 2,
-                                          right: itemPadding.right)
-                                          : EdgeInsets.only(
-                                          left: itemPadding.left,
-                                          right: itemPadding.right / 2),
+                                      padding:
+                                          Directionality.of(context) ==
+                                                  TextDirection.ltr
+                                              ? EdgeInsets.only(
+                                                left: itemPadding.left / 2,
+                                                right: itemPadding.right,
+                                              )
+                                              : EdgeInsets.only(
+                                                left: itemPadding.left,
+                                                right: itemPadding.right / 2,
+                                              ),
                                       child: DefaultTextStyle(
                                         style: TextStyle(
                                           color: Color.lerp(
-                                              selectedColor.withOpacity(0.0),
-                                              selectedColor,
-                                              t),
+                                            selectedColor.withValues(
+                                              alpha: 0.0,
+                                            ),
+                                            selectedColor,
+                                            t,
+                                          ),
                                           fontWeight: FontWeight.w600,
                                         ),
                                         child: item.title,
@@ -186,7 +206,7 @@ class SalomonBottomBar extends StatelessWidget {
             ],
           ),
         ), //your widget here
-      )
+      ),
     );
   }
 }
@@ -209,11 +229,12 @@ class SalomonBottomBarItem {
   final Color? unselectedColor;
   final bool? hasPadding;
 
-  SalomonBottomBarItem(
-      {required this.icon,
-      required this.title,
-      this.selectedColor,
-      this.unselectedColor,
-      this.activeIcon,
-      this.hasPadding});
+  SalomonBottomBarItem({
+    required this.icon,
+    required this.title,
+    this.selectedColor,
+    this.unselectedColor,
+    this.activeIcon,
+    this.hasPadding,
+  });
 }

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:my_spending/core/constants/color_constants.dart';
 
-import 'core/packages/salomon_bottom_bar.dart';
-import 'homepage/controller/homepage_controller.dart';
-import 'homepage/ui/homepage.dart';
+import 'package:my_spending/core/packages/salomon_bottom_bar.dart';
+import 'package:my_spending/homepage/controller/homepage_controller.dart';
+import 'package:my_spending/homepage/ui/homepage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,35 +28,27 @@ class MyApp extends StatelessWidget {
             body: const Homepage(),
             bottomNavigationBar: SalomonBottomBar(
               backgroundColor: Colors.white,
-              // margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               currentIndex: homepageController.selectedIndex,
               onTap: (i) => homepageController.updateIndex(i),
               items: [
-                /// Home
                 SalomonBottomBarItem(
                   icon: Icon(Icons.home),
-                  title: Text("Home"),
-                  selectedColor: Colors.purple,
+                  title: Text('Home'),
+                  selectedColor: green,
                 ),
-
-                /// Likes
                 SalomonBottomBarItem(
                   icon: Icon(Icons.favorite_border),
-                  title: Text("Likes"),
+                  title: Text('Likes'),
                   selectedColor: Colors.pink,
                 ),
-
-                /// Search
                 SalomonBottomBarItem(
                   icon: Icon(Icons.search),
-                  title: Text("Search"),
+                  title: Text('Search'),
                   selectedColor: Colors.orange,
                 ),
-
-                /// Profile
                 SalomonBottomBarItem(
                   icon: Icon(Icons.person),
-                  title: Text("Profile"),
+                  title: Text('Profile'),
                   selectedColor: Colors.teal,
                 ),
               ],
