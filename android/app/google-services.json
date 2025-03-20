@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "639190814801",
+    "project_id": "my-spending-4658e",
+    "storage_bucket": "my-spending-4658e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:639190814801:android:1a8606c0413de84c292870",
+        "android_client_info": {
+          "package_name": "com.motidinsa.my_spending"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRRqeo81BnNkil-8UupshwyVRxtluQWP4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
