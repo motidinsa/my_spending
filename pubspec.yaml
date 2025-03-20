@@ -61,6 +61,8 @@ dev_dependencies:
   riverpod_generator: ^2.6.5
   watcher: ^1.1.1
   freezed: ^3.0.3
+  custom_lint: ^0.7.5
+  riverpod_lint: ^2.6.5
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

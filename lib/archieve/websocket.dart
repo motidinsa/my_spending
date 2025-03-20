@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:web_socket_channel/status.dart' as status;
 class WebSocketDemo extends StatefulWidget {
+  const WebSocketDemo({super.key});
+
   @override
   _WebSocketDemoState createState() => _WebSocketDemoState();
 }
@@ -22,7 +24,7 @@ class _WebSocketDemoState extends State<WebSocketDemo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("WebSocket Example"),
+        title: Text('WebSocket Example'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

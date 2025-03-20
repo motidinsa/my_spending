@@ -1,29 +1,15 @@
-import 'dart:convert';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:my_spending/homepage/ui/homepage.dart';
-import 'package:my_spending/homepage/ui/websocket.dart';
-import 'package:watcher/watcher.dart';
-
-Future<Map<String, dynamic>> loadJsonFromAsset(String assetPath) async {
-  try {
-    final jsonString = await rootBundle.loadString(assetPath);
-    return json.decode(jsonString);
-  } catch (e) {
-    print('Error loading JSON: $e');
-    return {};
-  }
-}
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:my_spending/core/constants/color_constants.dart';
+import 'package:my_spending/core/functions/core_functions.dart';
+import 'package:my_spending/core/packages/salomon_bottom_bar.dart';
+import 'package:my_spending/core/provider/app_state.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-
-
   runApp(
     ProviderScope(
       child: EasyLocalization(
@@ -50,7 +36,47 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: WebSocketDemo(),
+      home: Home(),
+    );
+  }
+}
+
+class Home extends ConsumerWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final selectedIndex = ref.watch(appStateProvider);
+    return Scaffold(
+      body: getSelectedPage(selectedIndex.selectedIndex),
+      bottomNavigationBar: SalomonBottomBar(
+        backgroundColor: Colors.white,
+        currentIndex: selectedIndex.selectedIndex,
+        unselectedItemColor: Colors.grey.shade700,
+        onTap: (i) => ref.read(appStateProvider.notifier).updateIndex(i),
+        items: [
+          SalomonBottomBarItem(
+            icon: const FaIcon(FontAwesomeIcons.house, size: 22),
+            title: Text(context.tr('home')),
+            selectedColor: green,
+          ),
+          SalomonBottomBarItem(
+            icon: const FaIcon(FontAwesomeIcons.chartSimple, size: 22),
+            title: Text(context.tr('stat')),
+            selectedColor: green,
+          ),
+          SalomonBottomBarItem(
+            icon: const FaIcon(FontAwesomeIcons.coins, size: 22),
+            title: Text(context.tr('accounts')),
+            selectedColor: green,
+          ),
+          SalomonBottomBarItem(
+            icon: const FaIcon(FontAwesomeIcons.gear, size: 22),
+            title: Text(context.tr('settings')),
+            selectedColor: green,
+          ),
+        ],
+      ),
     );
   }
 }

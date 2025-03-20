@@ -1,10 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:my_spending/core/language/color_constants.dart';
+import 'package:my_spending/core/constants/color_constants.dart';
 import 'package:my_spending/core/packages/salomon_bottom_bar.dart';
 import 'package:my_spending/core/provider/app_state.dart';
-import 'package:my_spending/homepage/provider/homepage_provider.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -24,23 +23,23 @@ class HomePage extends ConsumerWidget {
         items: [
           SalomonBottomBarItem(
             icon: const Icon(Icons.home),
-            title: Text("Home".tr()),
+            title: Text('Home'.tr()),
             selectedColor: green,
           ),
           SalomonBottomBarItem(
             icon: const Icon(Icons.favorite_border),
             title: Text('Likes'.tr()), // Now it's correct
-            selectedColor: Colors.pink,
+            selectedColor: green,
           ),
           SalomonBottomBarItem(
             icon: const Icon(Icons.search),
             title: Text('Search'.tr()), // Now it's correct
-            selectedColor: Colors.orange,
+            selectedColor: green,
           ),
           SalomonBottomBarItem(
             icon: const Icon(Icons.person),
             title: Text('Profile'.tr()), // Now it's correct
-            selectedColor: Colors.teal,
+            selectedColor: green,
           ),
         ],
       ),

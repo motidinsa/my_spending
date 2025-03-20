@@ -1,9 +1,8 @@
 {
-  "home": "Homee",
+  "home": "Home",
   "stat":"Status",
-  "acc":"Account",
-  "setting":"Setting",
-  "helloworld":"Settingc",
+  "accounts":"Accounts",
+  "settings":"Setting",
   "msg_named":"Easy localization is written in the {lang} language",
   "msg_mixed":"{} are written in the {lang} language",
   "gender":{
