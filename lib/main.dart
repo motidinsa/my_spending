@@ -48,7 +48,7 @@ class Home extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedIndex = ref.watch(appStateProvider);
     return Scaffold(
-      body: getSelectedPage(selectedIndex.selectedIndex),
+      body: SafeArea(child: getSelectedPage(selectedIndex.selectedIndex)),
       bottomNavigationBar: SalomonBottomBar(
         backgroundColor: Colors.white,
         currentIndex: selectedIndex.selectedIndex,
