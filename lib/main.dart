@@ -51,8 +51,8 @@ class Home extends ConsumerWidget {
       body: SafeArea(child: getSelectedPage(selectedIndex.selectedIndex)),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        backgroundColor: green,
-        child: Icon(Icons.add, color: Colors.white),shape: CircleBorder(),
+        backgroundColor: green,shape: CircleBorder(),
+        child: Icon(Icons.add, color: Colors.white),
       ),
       bottomNavigationBar: SalomonBottomBar(
         backgroundColor: Colors.white,

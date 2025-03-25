@@ -1,29 +1,29 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
 import 'package:my_spending/core/model/transaction_model.dart';
 import 'package:my_spending/homepage/ui/mini_transaction_detail.dart';
 
 class HomePage extends StatelessWidget {
-   HomePage({super.key});
-   DateTime parseDate(DateTime givenDate, {bool? ignoreTimeAdd}) {
-     late DateTime date;
-     if (ignoreTimeAdd == null) {
-       date = givenDate.toUtc().add(Duration(hours: 3));
-     } else {
-       date = givenDate;
-     }
+  HomePage({super.key});
 
-     return DateTime(
-       date.year,
-       date.month,
-       date.day,
-       date.hour,
-       date.minute,
-       date.second,
-       date.millisecond,
-     );
-   }
+  DateTime parseDate(DateTime givenDate, {bool? ignoreTimeAdd}) {
+    late DateTime date;
+    if (ignoreTimeAdd == null) {
+      date = givenDate.toUtc().add(Duration(hours: 3));
+    } else {
+      date = givenDate;
+    }
+
+    return DateTime(
+      date.year,
+      date.month,
+      date.day,
+      date.hour,
+      date.minute,
+      date.second,
+      date.millisecond,
+    );
+  }
 
   List<TransactionModel> tr = [
     TransactionModel(
@@ -32,224 +32,198 @@ class HomePage extends StatelessWidget {
       accountName: 'accountName',
       amount: 200,
       date: DateTime.now(),
-    ), TransactionModel(
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
       date: DateTime.now(),
-    ), TransactionModel(
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
       date: DateTime.now(),
-    ), TransactionModel(
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
       date: DateTime.now(),
-    ), TransactionModel(
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
       date: DateTime.now(),
-    ), TransactionModel(
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
       date: DateTime.now(),
-    ), TransactionModel(
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
       date: DateTime.now(),
-    ), TransactionModel(
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
       date: DateTime.now(),
-    ), TransactionModel(
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
       date: DateTime.now(),
-    ), TransactionModel(
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
       date: DateTime.now(),
-    ), TransactionModel(
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
       date: DateTime.now(),
-    ), TransactionModel(
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
       date: DateTime.now(),
-    ), TransactionModel(
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
       date: DateTime.now(),
-    ), TransactionModel(
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
       date: DateTime.now(),
-    ), TransactionModel(
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
       date: DateTime.now(),
-    ), TransactionModel(
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
       date: DateTime.now(),
-    ), TransactionModel(
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
       date: DateTime.now(),
-    ), TransactionModel(
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
       date: DateTime.now(),
-    ), TransactionModel(
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
       date: DateTime.now(),
-    ), TransactionModel(
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
       date: DateTime.now(),
-    ), TransactionModel(
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
       date: DateTime.now(),
-    ), TransactionModel(
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
       date: DateTime.now(),
-    ), TransactionModel(
-      categoryName: 'categoryName',
-      subcategoryName: 'subcategoryName',
-      accountName: 'accountName',
-      amount: 200,
-      date: DateTime(2024),TransactionModel(
-      categoryName: 'categoryName',
-      subcategoryName: 'subcategoryName',
-      accountName: 'accountName',
-      amount: 200,
-      date: DateTime(2024),TransactionModel(
-      categoryName: 'categoryName',
-      subcategoryName: 'subcategoryName',
-      accountName: 'accountName',
-      amount: 200,
-      date: DateTime(2024),TransactionModel(
-      categoryName: 'categoryName',
-      subcategoryName: 'subcategoryName',
-      accountName: 'accountName',
-      amount: 200,
-      date: DateTime(2024),TransactionModel(
-      categoryName: 'categoryName',
-      subcategoryName: 'subcategoryName',
-      accountName: 'accountName',
-      amount: 200,
-      date: DateTime(2024),TransactionModel(
-      categoryName: 'categoryName',
-      subcategoryName: 'subcategoryName',
-      accountName: 'accountName',
-      amount: 200,
-      date: DateTime(2024),TransactionModel(
-      categoryName: 'categoryName',
-      subcategoryName: 'subcategoryName',
-      accountName: 'accountName',
-      amount: 200,
-      date: DateTime(2024),TransactionModel(
-      categoryName: 'categoryName',
-      subcategoryName: 'subcategoryName',
-      accountName: 'accountName',
-      amount: 200,
-      date: DateTime(2024),TransactionModel(
-      categoryName: 'categoryName',
-      subcategoryName: 'subcategoryName',
-      accountName: 'accountName',
-      amount: 200,
-      date: DateTime(2024),TransactionModel(
-      categoryName: 'categoryName',
-      subcategoryName: 'subcategoryName',
-      accountName: 'accountName',
-      amount: 200,
-      date: DateTime(2024),TransactionModel(
-      categoryName: 'categoryName',
-      subcategoryName: 'subcategoryName',
-      accountName: 'accountName',
-      amount: 200,
-      date: DateTime(2024),TransactionModel(
-      categoryName: 'categoryName',
-      subcategoryName: 'subcategoryName',
-      accountName: 'accountName',
-      amount: 200,
-      date: DateTime(2024),TransactionModel(
-      categoryName: 'categoryName',
-      subcategoryName: 'subcategoryName',
-      accountName: 'accountName',
-      amount: 200,
-      date: DateTime(2024),TransactionModel(
-      categoryName: 'categoryName',
-      subcategoryName: 'subcategoryName',
-      accountName: 'accountName',
-      amount: 200,
-      date: DateTime(2024),TransactionModel(
-      categoryName: 'categoryName',
-      subcategoryName: 'subcategoryName',
-      accountName: 'accountName',
-      amount: 200,
-      date: DateTime(2024),TransactionModel(
-      categoryName: 'categoryName',
-      subcategoryName: 'subcategoryName',
-      accountName: 'accountName',
-      amount: 200,
-      date: DateTime(2024),TransactionModel(
-      categoryName: 'categoryName',
-      subcategoryName: 'subcategoryName',
-      accountName: 'accountName',
-      amount: 200,
-      date: DateTime(2024),TransactionModel(
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
       date: DateTime(2024),
-    ), TransactionModel(
+    ),
+    TransactionModel(
+      categoryName: 'categoryName',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2024),
+    ),TransactionModel(
+      categoryName: 'categoryName',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2023),
+    ),TransactionModel(
+      categoryName: 'categoryName',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2023),
+    ),TransactionModel(
+      categoryName: 'categoryName',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2023),
+    ),TransactionModel(
+      categoryName: 'categoryName',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2023),
+    ),TransactionModel(
+      categoryName: 'categoryName',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2023),
+    ),TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
@@ -322,8 +296,7 @@ class HomePage extends StatelessWidget {
       groupSeparatorBuilder:
           (DateTime groupByValue) => Padding(
             padding: const EdgeInsets.symmetric(vertical: 5),
-            child:Text(groupByValue.toString())
-            ,
+            child: Text(groupByValue.toString()),
           ),
       itemBuilder:
           (context, element) =>
