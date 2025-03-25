@@ -6,16 +6,17 @@ import 'package:my_spending/homepage/functions/homepage_functions.dart';
 class MiniTransactionDetail extends StatelessWidget {
   final TransactionModel transactionModel;
 
-  const MiniTransactionDetail({
-    super.key,
-    required this.transactionModel
-  });
+  const MiniTransactionDetail({super.key, required this.transactionModel});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       color: Colors.white,
-      elevation: 2,
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        // side: BorderSide(color: Colors.grey,width: .3),
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Padding(
         padding: EdgeInsets.symmetric(
           vertical: getCardPadding(
@@ -52,19 +53,9 @@ class MiniTransactionDetail extends StatelessWidget {
                   ],
                 ),
 
-                Row(
-                  children: [
-                    FaIcon(
-                      FontAwesomeIcons.coins,
-                      size: 18,
-                      color: Colors.grey.shade800,
-                    ),
-                    SizedBox(width: 10),
-                    Text(
-                      transactionModel.accountName,
-                      style: TextStyle(color: Colors.grey.shade800),
-                    ),
-                  ],
+                Text(
+                  transactionModel.accountName,
+                  style: TextStyle(color: Colors.grey.shade800),
                 ),
                 Row(
                   children: [
@@ -83,8 +74,10 @@ class MiniTransactionDetail extends StatelessWidget {
                 // SizedBox(: 10),
               ],
             ),
-            if (transactionModel.description != null)...[
-              SizedBox(height: transactionModel.subcategoryName!=null?2:5,),
+            if (transactionModel.description != null) ...[
+              SizedBox(
+                height: transactionModel.subcategoryName != null ? 2 : 5,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -99,7 +92,8 @@ class MiniTransactionDetail extends StatelessWidget {
                     style: TextStyle(color: Colors.grey.shade600),
                   ),
                 ],
-              )],
+              ),
+            ],
           ],
         ),
       ),

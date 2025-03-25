@@ -48,6 +48,7 @@ class Home extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedIndex = ref.watch(appStateProvider);
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(child: getSelectedPage(selectedIndex.selectedIndex)),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
