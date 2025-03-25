@@ -52,7 +52,7 @@ class Home extends ConsumerWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         backgroundColor: green,
-        child: Icon(Icons.add, color: Colors.white),
+        child: Icon(Icons.add, color: Colors.white),shape: CircleBorder(),
       ),
       bottomNavigationBar: SalomonBottomBar(
         backgroundColor: Colors.white,
