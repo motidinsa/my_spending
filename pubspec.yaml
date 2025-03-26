@@ -47,6 +47,7 @@ dependencies:
   flutter_local_notifications: ^18.0.1
   dio: ^5.8.0+1
   grouped_list: ^6.0.0
+  flutter_group_list_view: ^1.0.3
 
 dev_dependencies:
   flutter_test:

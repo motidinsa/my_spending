@@ -9,7 +9,7 @@ class TransactionModel{
 
   TransactionModel({
     required this.categoryName,
-    required this.subcategoryName,
+     this.subcategoryName,
     required this.accountName,
     required this.amount,
      this.description,

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
 import 'package:my_spending/core/model/transaction_model.dart';
-import 'package:my_spending/homepage/ui/mini_transaction_detail.dart';
+import 'package:my_spending/homepage/functions/homepage_functions.dart';
+import 'package:my_spending/homepage/ui/daily_status_info.dart';
+import 'package:my_spending/homepage/ui/grouped_transactions.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -30,6 +32,22 @@ class HomePage extends StatelessWidget {
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
+      description: 'cudscv cbdsuics dcsdcusi',
+      amount: 200000,
+      date: DateTime.now(),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName',
+      // subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime.now(),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName',
+      // subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      description: 'adbcd wdwud dqwsoiwqdewd edwedweuid cdcbebcerucb',
       amount: 200,
       date: DateTime.now(),
     ),
@@ -40,27 +58,217 @@ class HomePage extends StatelessWidget {
       amount: 200,
       date: DateTime.now(),
     ),
-
     TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
-      date: DateTime(2024),
+      date: DateTime.now(),
     ),
     TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
-      date: DateTime(2024),
-    ),TransactionModel(
+      date: DateTime.now(),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime.now(),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime.now(),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime.now(),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime.now(),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime.now(),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime.now(),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime.now(),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName 0',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2024, 1, 1),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName 0',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2024, 1, 1),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName 0',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2024, 1, 1),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName 0',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2024, 1, 1),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName 0',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2024, 1, 1),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName 0',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2024, 1, 1),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName 0',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2024, 1, 1),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName 0',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2024, 1, 1),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName 0',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2024, 1, 1),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName 0',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2024, 1, 1),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName 1',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2024, 1, 1, 1),
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
       amount: 200,
       date: DateTime(2023),
-    ),TransactionModel(
+    ),
+    TransactionModel(
+      categoryName: 'categoryName',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2023),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2023),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2023),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2023),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2023),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2023),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2023),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2023),
+    ),
+    TransactionModel(
+      categoryName: 'categoryName',
+      subcategoryName: 'subcategoryName',
+      accountName: 'accountName',
+      amount: 200,
+      date: DateTime(2023),
+    ),
+    TransactionModel(
       categoryName: 'categoryName',
       subcategoryName: 'subcategoryName',
       accountName: 'accountName',
@@ -71,77 +279,25 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GroupedListView<TransactionModel, DateTime>(
-      elements: tr,
-
-      groupBy: (element) => DateUtils.dateOnly(element.date),
-      separator: const SizedBox(height: 3),
-      groupSeparatorBuilder:
-          (DateTime groupByValue) => Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5),
-            child: Text(groupByValue.toString()),
-          ),addSemanticIndexes: true,
-      // itemBuilder: (context, element) => MiniTransactionDetail(transactionModel: element),
-      groupItemBuilder: (context, elements,_,_) {
-        // final date = elements.date;
-        // Get the date of the first element
-        // print(elements);
-        // final group = tr.where((e) => DateUtils.isSameDay(e.date, elements.date)).toList();
-        // return GroupCard(transactions: group);
-        return Card(
-          // key: ValueKey(DateUtils.dateOnly(date)),
-          color: Colors.green,
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: MiniTransactionDetail(transactionModel: elements),
-        );
-      },
-      // itemBuilder:
-      //     (context, element) {
-      //       final group = tr.where((e) => DateUtils.isSameDay(e.date, element.date)).toList();
-      //       return GroupCard(transactions: group);
-      //     },
-              // MiniTransactionDetail(transactionModel: element),
-      // itemComparator:
-      //     (item1, item2) => parseDate(
-      //       item1.date,
-      //       ignoreTimeAdd: true,
-      //     ).compareTo(parseDate(item2.date, ignoreTimeAdd: true)),
-      groupComparator:   (item1, item2) => parseDate(
-        item1,
-        ignoreTimeAdd: true,
-      ).compareTo(parseDate(item2, ignoreTimeAdd: true)),
-      physics: const BouncingScrollPhysics(),
-      shrinkWrap: true,
-      order: GroupedListOrder.DESC, // optional
-    );
-  }
-}
-class GroupCard extends StatelessWidget {
-  final List<TransactionModel> transactions;
-
-  const GroupCard({super.key, required this.transactions});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      color: Colors.green,
-      elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: transactions.map((transaction) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4.0),
-              child: MiniTransactionDetail(transactionModel: transaction),
-            );
-          }).toList(),
-        ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 3),
+      child: GroupedListView<List<TransactionModel>, DateTime>(
+        elements: getGroupedTransaction(tr),
+        groupBy: (element) => DateUtils.dateOnly(element.first.date),
+        separator: const SizedBox(height: 10),
+        padding: EdgeInsets.zero,
+        groupSeparatorBuilder:
+            (DateTime groupByValue) => DailyStatusInfo(date: groupByValue,),
+        useStickyGroupSeparators: true,
+        stickyHeaderBackgroundColor: Colors.white,
+        itemBuilder: (context, elements) {
+          return GroupedTransactions(transactions: elements);
+        },
+        groupComparator:
+            (item1, item2) =>
+                DateUtils.dateOnly(item1).compareTo(DateUtils.dateOnly(item2)),
+        shrinkWrap: true,
+        order: GroupedListOrder.DESC, // optional
       ),
     );
   }
