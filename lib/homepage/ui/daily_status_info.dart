@@ -19,7 +19,7 @@ class DailyStatusInfo extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 10),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -60,7 +60,7 @@ class DailyStatusInfo extends StatelessWidget {
               SizedBox(width: 5),
               Expanded(
                 child: Text(
-                  '\$ 20,00000000',
+                  '\$ 20,000',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
