@@ -22,8 +22,26 @@ getTextFieldIcon(String title) {
   }
   else if (title == 'Amount') {
     return Icon(Icons.attach_money_rounded,);
+  }else if (title == 'Tip') {
+    return Icon(Icons.volunteer_activism_outlined,);
+  }else if (title == 'Fee') {
+    return Icon(Icons.attach_money_rounded,);
   }
   else if (title == 'Description (Optional)') {
     return Icon(Icons.edit,color: Colors.grey.shade700,);
+  }
+}
+
+isReadOnlyTextField(String title) {
+  return ['Date', 'Account', 'Category'].contains(title);
+}
+getLabelText(String title){
+  if (['Tip','Fee'].contains(title)) {
+    return title;
+  }
+}
+getTextFieldData(String title){
+  if(title == 'Date'){
+    return DateTime.now().toString();
   }
 }

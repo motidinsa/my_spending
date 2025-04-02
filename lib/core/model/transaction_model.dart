@@ -1,20 +1,16 @@
-class TransactionModel{
-  final String categoryName;
-  final String? subcategoryName;
-  final String accountName;
-  final double amount;
-  final String? description;
-  final DateTime date;
-  final DateTime? dateModified;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  TransactionModel({
-    required this.categoryName,
-     this.subcategoryName,
-    required this.accountName,
-    required this.amount,
-     this.description,
-    required this.date,
-     this.dateModified,
-  });
+part 'transaction_model.freezed.dart';
 
+@freezed
+abstract class TransactionModel with _$TransactionModel {
+  const factory TransactionModel({
+    required String categoryName,
+    String? subcategoryName,
+    required String accountName,
+    required double amount,
+    String? description,
+    required DateTime date,
+    DateTime? dateModified,
+  }) = _TransactionModel;
 }
