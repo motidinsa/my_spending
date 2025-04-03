@@ -7,25 +7,23 @@ part 'add_transaction_state.g.dart';
 @riverpod
 class AddTransactionState extends _$AddTransactionState {
   @override
-  List<TransactionModel> build() {
-
-    return [
-      TransactionModel(
-        categoryName: 'Not selected',
-        accountName: 'Not selected',
-        amount: 0,
-        date: DateTime.now(),
-      ),
-    ];
+  TransactionModel build() {
+    return TransactionModel(
+      categoryName: 'Not selected',
+      accountName: 'Not selected',
+      amount: 0,
+      date: DateTime.now(),
+    );
   }
 
   void updateIndex(int index) {
-     // state.add(TransactionModel(
-     //   categoryName: 'Not selected',
-     //   accountName: 'Not selected',
-     //   amount: 0,
-     //   date: DateTime.now(),
-     // ));
-     print(state.length);
+    // state.add(TransactionModel(
+    //   categoryName: 'Not selected',
+    //   accountName: 'Not selected',
+    //   amount: 0,
+    //   date: DateTime.now(),
+    // ));
+    // print(state.length);
+    state = state.copyWith(date: DateTime(2027));
   }
 }
