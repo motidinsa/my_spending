@@ -23,7 +23,6 @@ class TransactionTypeSelect extends StatelessWidget {
               child: SingleTransactionType(
                 name: 'Expense',
                 icon: FontAwesomeIcons.arrowDown,
-                backgroundColor: Colors.red.shade100,
                 // backgroundColor: Colors.white,
                 foregroundColor: Colors.red.shade900,
               ),
@@ -33,7 +32,6 @@ class TransactionTypeSelect extends StatelessWidget {
                 name: 'Income',
                 icon: FontAwesomeIcons.arrowUp,
                 // backgroundColor: Colors.green.shade100,
-                backgroundColor: Colors.white,
                 foregroundColor: Colors.green.shade900,
               ),
             ),
@@ -43,7 +41,6 @@ class TransactionTypeSelect extends StatelessWidget {
                 name: 'Transfer',
                 icon: FontAwesomeIcons.rotate,
                 // backgroundColor: Colors.grey.shade200,
-                backgroundColor: Colors.white,
                 foregroundColor: Colors.grey.shade800,
               )
             ),

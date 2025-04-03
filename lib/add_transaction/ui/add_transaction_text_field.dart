@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_transaction/functions/add_transaction_functions.dart';
-import 'package:my_spending/add_transaction/provider/add_transaction_state.dart';
 
 class AddTransactionTextField extends StatefulWidget {
   final String title;
@@ -36,7 +35,11 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
         return TextFormField(
           controller: textEditingController,
           onTap: () {
-            setData(ref, widget.title);
+            onAddTransactionTextFieldPressed(
+              context: context,
+              ref: ref,
+              title: widget.title,
+            );
           },
           readOnly: isReadOnlyTextField(widget.title),
           decoration: InputDecoration(

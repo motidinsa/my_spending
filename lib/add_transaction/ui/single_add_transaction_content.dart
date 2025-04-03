@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_spending/add_transaction/provider/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/add_transaction_text_field.dart';
 
 class SingleAddTransactionContent extends StatelessWidget {
@@ -27,7 +29,13 @@ class SingleAddTransactionContent extends StatelessWidget {
             children: [
               Expanded(child: AddTransactionTextField(title: title)),
               SizedBox(width: 10),
-              IconButton(onPressed: () {}, icon: Icon(Icons.add)),
+              Consumer(
+                  builder: (context, ref, child) {
+                  return IconButton(onPressed: () {
+                    ref.read(addTransactionStateProvider.notifier).onAddAmountIconPressed();
+                  }, icon: Icon(Icons.add));
+                }
+              ),
             ],
           ),
         ] else

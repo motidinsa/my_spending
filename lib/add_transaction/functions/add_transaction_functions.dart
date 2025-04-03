@@ -1,7 +1,5 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_spending/add_transaction/provider/add_transaction_state.dart';
 
 BorderRadius? getTransactionSelectBorderRadius(String name) {
@@ -55,11 +53,53 @@ setData(WidgetRef ref, String title) {
 }
 
 getData(WidgetRef ref, String title) {
-  // final transactionState = ref.watch(addTransactionStateProvider);
   if (title == 'Date') {
-    return ref.watch(addTransactionStateProvider.select((state) => state.date.toString()));
+    return ref.watch(
+      addTransactionStateProvider.select(
+        (state) => state.transactionModel.date.toString(),
+      ),
+    );
   } else if (title == 'Account') {
-    return ref.watch(addTransactionStateProvider.select((state) => state.accountName));
+    // return ref.watch(addTransactionStateProvider.select((state) => state.accountName));
   }
   return '';
+}
+
+onAddTransactionTextFieldPressed({
+  required BuildContext context,
+  required WidgetRef ref,
+  required String title,
+}) async {
+  if (title == 'Date') {
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+    );
+    if (pickedDate != null) {
+      ref.read(addTransactionStateProvider.notifier).updateDate(pickedDate);
+    }
+
+    ref.read(addTransactionStateProvider.notifier).onAddAmountIconPressed();
+  }
+}
+
+onTransactionTypeSelect({required WidgetRef ref, required String type}) {
+  ref.read(addTransactionStateProvider.notifier).updateTransactionState(type);
+}
+
+getTransactionTypeBackgroundColor({
+  required String initialType,
+  required String selectedType,
+}) {
+  // final transactionType = ref.read(addTransactionStateProvider).transactionType;
+  if (initialType == 'Expense' && selectedType == 'Expense') {
+    return Colors.red.shade100;
+  } else if (initialType == 'Income' && selectedType == 'Income') {
+    return Colors.green.shade100;
+  } else if (initialType == 'Transfer' && selectedType == 'Transfer') {
+    return Colors.grey.shade300;
+  }
+  return Colors.white;
 }

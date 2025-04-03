@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_spending/add_transaction/provider/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/add_transaction_text_field.dart';
 import 'package:my_spending/add_transaction/ui/single_add_transaction_content.dart';
 
@@ -38,17 +40,37 @@ class SingleTransactionAdd extends StatelessWidget {
                   SingleAddTransactionContent(title: 'Category'),
                   SizedBox(height: 10),
                   SingleAddTransactionContent(title: 'Amount'),
-                  SizedBox(height: 15),
-                  Row(
-                    children: [
-                      Expanded(child: AddTransactionTextField(title: 'Tip')),
-                      SizedBox(width: 10),
-                      Expanded(child: AddTransactionTextField(title: 'Fee')),
-                      SizedBox(width: 10),
+                  Consumer(
+                    builder: (context, ref, child) {
+                      if (ref.watch(
+                        addTransactionStateProvider.select(
+                              (state) => state.isAmountAddButtonPressed,
+                        ),
+                      ) ==
+                          true) {
+                        return Column(
+                          children: [
+                            SizedBox(height: 15),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: AddTransactionTextField(title: 'Tip'),
+                                ),
+                                SizedBox(width: 10),
+                                Expanded(
+                                  child: AddTransactionTextField(title: 'Fee'),
+                                ),
+                                SizedBox(width: 10),
 
-                      // Container(),
-                      IconButton(onPressed: null, icon: Container()),
-                    ],
+                                // Container(),
+                                IconButton(onPressed: null, icon: Container()),
+                              ],
+                            ),
+                          ],
+                        );
+                      }
+                      return Container();
+                    },
                   ),
                   SizedBox(height: 10),
                   SingleAddTransactionContent(title: 'Description (Optional)'),
@@ -67,7 +89,6 @@ class SingleTransactionAdd extends StatelessWidget {
                 flex: 2,
                 child: OutlinedButton(
                   onPressed: () {},
-                  child: Text('Save', style: TextStyle(color: Colors.green)),
                   style: OutlinedButton.styleFrom(
                     padding: EdgeInsets.symmetric(vertical: 15),
                     backgroundColor: Colors.white,
@@ -78,13 +99,13 @@ class SingleTransactionAdd extends StatelessWidget {
                       ), // Set the border radius here
                     ),
                   ),
+                  child: Text('Save', style: TextStyle(color: Colors.green)),
                 ),
               ),
               SizedBox(width: 10),
               Expanded(
                 child: OutlinedButton(
                   onPressed: () {},
-                  child: Text('More', style: TextStyle(color: Colors.green)),
                   style: OutlinedButton.styleFrom(
                     padding: EdgeInsets.symmetric(vertical: 15),
                     backgroundColor: Colors.white,
@@ -95,6 +116,7 @@ class SingleTransactionAdd extends StatelessWidget {
                       ), // Set the border radius here
                     ),
                   ),
+                  child: Text('More', style: TextStyle(color: Colors.green)),
                 ),
               ),
             ],
