@@ -43,4 +43,12 @@ class AddTransactionState extends _$AddTransactionState {
   void updateTransactionState(String type) {
     state = state.copyWith(transactionType: type);
   }
+  void changeModalHeight(double height){
+    state  = state.copyWith(modalHeight: height);
+  }
+  void updateSubcategoryHeight(double givenHeight, double totalHeight) {
+    if (givenHeight > totalHeight / 2) {
+      state = state.copyWith(modalHeight: totalHeight / 2);
+    }
+  }
 }

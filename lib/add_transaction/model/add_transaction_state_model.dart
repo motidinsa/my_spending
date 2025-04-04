@@ -8,7 +8,8 @@ abstract class AddTransactionModel with _$AddTransactionModel {
   const factory AddTransactionModel({
     required TransactionModel transactionModel,
     bool? isAmountAddButtonPressed,
-    required String transactionType
+    required String transactionType,
+     double? modalHeight
 
   }) = _AddTransactionModel;
 }

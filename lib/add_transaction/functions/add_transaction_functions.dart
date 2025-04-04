@@ -84,11 +84,11 @@ onAddTransactionTextFieldPressed({
   } else if (['Account', 'Category'].contains(title)) {
     showModalBottomSheet(
       context: context,
+      backgroundColor: Colors.white,
+      enableDrag: true,
+      // isScrollControlled: true,
       builder: (BuildContext context) {
-        return Container(
-          padding: const EdgeInsets.all(16.0),
-          child: TransactionTypeModalSheet(),
-        );
+        return TransactionTypeModalSheet();
       },
     );
   }
