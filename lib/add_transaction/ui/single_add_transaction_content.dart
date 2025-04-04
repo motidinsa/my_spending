@@ -30,18 +30,31 @@ class SingleAddTransactionContent extends StatelessWidget {
               Expanded(child: AddTransactionTextField(title: title)),
               SizedBox(width: 10),
               Consumer(
-                  builder: (context, ref, child) {
-                  return IconButton(onPressed: () {
-                    ref.read(addTransactionStateProvider.notifier).onAddAmountIconPressed();
-                  }, icon: Icon(Icons.add));
-                }
+                builder: (context, ref, child) {
+                  if (ref.watch(
+                        addTransactionStateProvider.select(
+                          (state) => state.isAmountAddButtonPressed,
+                        ),
+                      ) ==
+                      true) {
+                    return IconButton(onPressed: null, icon: Container());
+                  }
+
+                  return IconButton(
+                    onPressed: () {
+                      ref
+                          .read(addTransactionStateProvider.notifier)
+                          .onAddAmountIconPressed();
+                    },
+                    icon: Icon(Icons.add),
+                  );
+                },
               ),
             ],
           ),
         ] else
           AddTransactionTextField(title: title),
       ],
-
     );
   }
 }

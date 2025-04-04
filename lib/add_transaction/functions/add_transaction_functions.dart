@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_transaction/provider/add_transaction_state.dart';
+import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/transaction_type_modal_sheet.dart';
 
 BorderRadius? getTransactionSelectBorderRadius(String name) {
   return BorderRadius.only(
@@ -80,8 +81,16 @@ onAddTransactionTextFieldPressed({
     if (pickedDate != null) {
       ref.read(addTransactionStateProvider.notifier).updateDate(pickedDate);
     }
-
-    ref.read(addTransactionStateProvider.notifier).onAddAmountIconPressed();
+  } else if (['Account', 'Category'].contains(title)) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          padding: const EdgeInsets.all(16.0),
+          child: TransactionTypeModalSheet(),
+        );
+      },
+    );
   }
 }
 
@@ -93,7 +102,6 @@ getTransactionTypeBackgroundColor({
   required String initialType,
   required String selectedType,
 }) {
-  // final transactionType = ref.read(addTransactionStateProvider).transactionType;
   if (initialType == 'Expense' && selectedType == 'Expense') {
     return Colors.red.shade100;
   } else if (initialType == 'Income' && selectedType == 'Income') {

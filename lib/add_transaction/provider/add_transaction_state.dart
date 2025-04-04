@@ -37,6 +37,8 @@ class AddTransactionState extends _$AddTransactionState {
 
   void onAddAmountIconPressed() {
     state = state.copyWith(isAmountAddButtonPressed: true);
+  }void onRemoveAmountIconPressed() {
+    state = state.copyWith(isAmountAddButtonPressed: null);
   }
   void updateTransactionState(String type) {
     state = state.copyWith(transactionType: type);

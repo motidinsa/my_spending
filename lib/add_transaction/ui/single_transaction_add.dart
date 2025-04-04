@@ -42,12 +42,14 @@ class SingleTransactionAdd extends StatelessWidget {
                   SingleAddTransactionContent(title: 'Amount'),
                   Consumer(
                     builder: (context, ref, child) {
-                      if (ref.watch(
-                        addTransactionStateProvider.select(
+                      bool? isAmountAddButtonPressed =
+                          ref.watch(
+                            addTransactionStateProvider.select(
                               (state) => state.isAmountAddButtonPressed,
-                        ),
-                      ) ==
-                          true) {
+                            ),
+                          ) ==
+                          true;
+                      if (isAmountAddButtonPressed) {
                         return Column(
                           children: [
                             SizedBox(height: 15),
@@ -63,7 +65,17 @@ class SingleTransactionAdd extends StatelessWidget {
                                 SizedBox(width: 10),
 
                                 // Container(),
-                                IconButton(onPressed: null, icon: Container()),
+                                if (isAmountAddButtonPressed)
+                                  IconButton(onPressed: (){
+                                    ref
+                                        .read(addTransactionStateProvider.notifier)
+                                        .onRemoveAmountIconPressed();
+                                  }, icon: Icon(Icons.cancel,color: Colors.red,))
+                                else
+                                  IconButton(
+                                    onPressed: null,
+                                    icon: Container(),
+                                  ),
                               ],
                             ),
                           ],
