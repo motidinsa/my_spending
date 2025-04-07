@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_spending/add_transaction/provider/add_transaction_state.dart';
 
 class SingleModalItem extends StatelessWidget {
   final String name;
@@ -18,11 +19,13 @@ class SingleModalItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer(
-      builder: (context,ref, child) {
+      builder: (context, ref, child) {
         return ListTile(
           shape:
               isSecondary == true
-                  ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))
+                  ? RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  )
                   : null,
           title: Text(
             name,
@@ -35,12 +38,17 @@ class SingleModalItem extends StatelessWidget {
           ),
           trailing: Icon(
             Icons.arrow_forward_ios_rounded,
-            color: hasSubItem == true ? Colors.green.shade400 : Colors.transparent,
+            color:
+                hasSubItem == true ? Colors.green.shade400 : Colors.transparent,
             size: 18,
           ),
-          onTap: () {},
+          onTap: () {
+            ref
+                .read(addTransactionStateProvider.notifier)
+                .onSingleModalItemPressed(name: name);
+          },
         );
-      }
+      },
     );
   }
 }

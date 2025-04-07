@@ -3,91 +3,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_transaction/provider/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/single_modal_item.dart';
+import 'package:my_spending/core/model/account_model.dart';
 import 'package:my_spending/core/model/category_model.dart';
+import 'package:my_spending/core/model/subaccount_model.dart';
+import 'package:my_spending/core/model/subcategory_model.dart';
 
 class ModalItems extends StatelessWidget {
   final bool isPrimary;
+  final String type;
+  final List<CategoryModel>? categoryModels;
+  final List<SubcategoryModel>? subcategoryModels;
+  final List<AccountModel>? accountModels;
+  final List<SubAccountModel>? subAccountModels;
 
-
-  const ModalItems({super.key, required this.isPrimary, });
+  const ModalItems({
+    super.key,
+    required this.isPrimary,
+    this.categoryModels,
+    this.accountModels,
+    this.subAccountModels,
+    this.subcategoryModels,
+    required this.type,
+  });
 
   @override
   Widget build(BuildContext context) {
-    List<CategoryModel>? categoryModels = [
-      CategoryModel(
-        categoryName: 'cat 1',
-        categoryId: '1',
-        dateCreated: DateTime.now(),
-      ),CategoryModel(
-        categoryName: 'cat 1',
-        categoryId: '1',
-        dateCreated: DateTime.now(),
-      ),CategoryModel(
-        categoryName: 'cat 1',
-        categoryId: '1',
-        dateCreated: DateTime.now(),
-      ),CategoryModel(
-        categoryName: 'cat 1',
-        categoryId: '1',
-        dateCreated: DateTime.now(),
-      ),CategoryModel(
-        categoryName: 'cat 1',
-        categoryId: '1',
-        dateCreated: DateTime.now(),
-      ),CategoryModel(
-        categoryName: 'cat 1',
-        categoryId: '1',
-        dateCreated: DateTime.now(),
-      ),CategoryModel(
-        categoryName: 'cat 1',
-        categoryId: '1',
-        dateCreated: DateTime.now(),
-      ),CategoryModel(
-        categoryName: 'cat 1',
-        categoryId: '1',
-        dateCreated: DateTime.now(),
-      ),CategoryModel(
-        categoryName: 'cat 1',
-        categoryId: '1',
-        dateCreated: DateTime.now(),
-      ),CategoryModel(
-        categoryName: 'cat 1',
-        categoryId: '1',
-        dateCreated: DateTime.now(),
-      ),CategoryModel(
-        categoryName: 'cat 1',
-        categoryId: '1',
-        dateCreated: DateTime.now(),
-      ),CategoryModel(
-        categoryName: 'cat 1',
-        categoryId: '1',
-        dateCreated: DateTime.now(),
-      ),CategoryModel(
-        categoryName: 'cat 1',
-        categoryId: '1',
-        dateCreated: DateTime.now(),
-      ),CategoryModel(
-        categoryName: 'cat 1',
-        categoryId: '1',
-        dateCreated: DateTime.now(),
-      ),CategoryModel(
-        categoryName: 'cat 1',
-        categoryId: '1',
-        dateCreated: DateTime.now(),
-      ),CategoryModel(
-        categoryName: 'cat 1',
-        categoryId: '1',
-        dateCreated: DateTime.now(),
-      ),CategoryModel(
-        categoryName: 'cat 1',
-        categoryId: '1',
-        dateCreated: DateTime.now(),
-      ),CategoryModel(
-        categoryName: 'cat 1',
-        categoryId: '1',
-        dateCreated: DateTime.now(),
-      ),
-    ];
     return isPrimary
         ? Ink(
           decoration: BoxDecoration(
@@ -112,13 +52,19 @@ class ModalItems extends StatelessWidget {
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
                   return SingleModalItem(
-                    name: categoryModels?[index].categoryName ?? '',
+                    name:
+                        type == 'Category'
+                            ? categoryModels![index].categoryName
+                            : accountModels![index].accountName,
                     index: index,
-                    hasSubItem: categoryModels?[index].hasSubcategory,
+                    hasSubItem:
+                        type == 'Category'
+                            ? categoryModels![index].hasSubcategory
+                            : accountModels![index].hasSubAccount,
                   );
                 },
 
-                itemCount: categoryModels.length,
+                itemCount: categoryModels?.length ?? accountModels?.length ?? 0,
               ),
             ),
           ),
@@ -129,13 +75,15 @@ class ModalItems extends StatelessWidget {
             shrinkWrap: true,
             itemBuilder:
                 (context, index) => SingleModalItem(
-                  name: categoryModels?[index].categoryName ?? '',
+                  name:
+                      subcategoryModels?[index].subcategoryName ??
+                      subAccountModels![index].subAccountName,
                   index: index,
-                  hasSubItem: categoryModels?[index].hasSubcategory,
                   isSecondary: true,
                 ),
 
-            itemCount: categoryModels.length,
+            itemCount:
+                subcategoryModels?.length ?? subAccountModels?.length ?? 0,
           ),
         );
   }

@@ -5,7 +5,9 @@ import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/modal_items.da
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/widget_size.dart';
 
 class TransactionTypeModalSheet extends StatelessWidget {
-  const TransactionTypeModalSheet({super.key});
+  final String redirectFrom;
+
+  const TransactionTypeModalSheet({super.key, required this.redirectFrom});
 
   @override
   Widget build(BuildContext context) {
@@ -30,51 +32,57 @@ class TransactionTypeModalSheet extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Column(
-                    children: [
-                      Icon(Icons.edit, color: Colors.grey.shade600),
-                      // SizedBox(height: 5),
-                      // Text(
-                      //   'Edit',
-                      //   style: TextStyle(color: Colors.grey.shade700),
-                      // ),
-                    ],
-                  ),
-                ),
+                TextButton(onPressed: (){}, child: Text('Edit',style: TextStyle(color: Colors.green.shade500),)),
               ],
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 15),
             child: Consumer(
-              builder:
-                  (context, ref, child) => WidgetSize(
-                    onChange: (Size size) {
-                      ref
-                          .read(addTransactionStateProvider.notifier)
-                          .updateSubcategoryHeight(
-                            size.height,
-                            MediaQuery.of(context).size.height,
-                          );
-                    },
-                    child: SizedBox(
-                      height: ref.watch(
-                        addTransactionStateProvider.select(
-                          (state) => state.modalHeight,
-                        ),
-                      ),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(child: ModalItems(isPrimary: true)),
-                          const SizedBox(width: 10),
-                          Expanded(child: ModalItems(isPrimary: false)),
-                        ],
+              builder: (context, ref, child) {
+                return WidgetSize(
+                  onChange: (Size size) {
+                    ref
+                        .read(addTransactionStateProvider.notifier)
+                        .updateSubcategoryHeight(
+                          size.height,
+                          MediaQuery.of(context).size.height,
+                        );
+                  },
+                  child: SizedBox(
+                    height: ref.watch(
+                      addTransactionStateProvider.select(
+                        (state) => state.modalHeight,
                       ),
                     ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: ModalItems(
+                            isPrimary: true,
+                            type: redirectFrom,
+                            categoryModels:
+                                redirectFrom == 'Category'
+                                    ? ref
+                                        .read(addTransactionStateProvider)
+                                        .categoryModels
+                                    : null,
+                            accountModels:
+                                redirectFrom == 'Account'
+                                    ? ref
+                                        .read(addTransactionStateProvider)
+                                        .accountModels
+                                    : null,
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Expanded(child: ModalItems(isPrimary: false,type: redirectFrom,)),
+                      ],
+                    ),
                   ),
+                );
+              },
             ),
           ),
         ],
@@ -82,5 +90,3 @@ class TransactionTypeModalSheet extends StatelessWidget {
     );
   }
 }
-
-

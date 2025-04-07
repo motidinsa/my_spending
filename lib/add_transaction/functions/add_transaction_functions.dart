@@ -61,7 +61,17 @@ getData(WidgetRef ref, String title) {
       ),
     );
   } else if (title == 'Account') {
-    // return ref.watch(addTransactionStateProvider.select((state) => state.accountName));
+    return ref.watch(
+      addTransactionStateProvider.select(
+        (state) => state.transactionModel.accountName,
+      ),
+    );
+  } else if (title == 'Category') {
+    return ref.watch(
+      addTransactionStateProvider.select(
+        (state) => state.transactionModel.categoryName,
+      ),
+    );
   }
   return '';
 }
@@ -82,15 +92,14 @@ onAddTransactionTextFieldPressed({
       ref.read(addTransactionStateProvider.notifier).updateDate(pickedDate);
     }
   } else if (['Account', 'Category'].contains(title)) {
+    ref.read(addTransactionStateProvider.notifier).setSelectedType(title);
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.white,
       builder: (BuildContext context) {
-        return TransactionTypeModalSheet();
+        return TransactionTypeModalSheet(redirectFrom: title);
       },
-    ).then((value){
-
-    });
+    ).then((value) {});
   }
 }
 
