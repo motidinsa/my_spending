@@ -1,16 +1,95 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_spending/add_transaction/provider/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/single_modal_item.dart';
+import 'package:my_spending/core/model/category_model.dart';
 
 class ModalItems extends StatelessWidget {
   final bool isPrimary;
 
-  const ModalItems({super.key, required this.isPrimary});
+
+  const ModalItems({super.key, required this.isPrimary, });
 
   @override
   Widget build(BuildContext context) {
+    List<CategoryModel>? categoryModels = [
+      CategoryModel(
+        categoryName: 'cat 1',
+        categoryId: '1',
+        dateCreated: DateTime.now(),
+      ),CategoryModel(
+        categoryName: 'cat 1',
+        categoryId: '1',
+        dateCreated: DateTime.now(),
+      ),CategoryModel(
+        categoryName: 'cat 1',
+        categoryId: '1',
+        dateCreated: DateTime.now(),
+      ),CategoryModel(
+        categoryName: 'cat 1',
+        categoryId: '1',
+        dateCreated: DateTime.now(),
+      ),CategoryModel(
+        categoryName: 'cat 1',
+        categoryId: '1',
+        dateCreated: DateTime.now(),
+      ),CategoryModel(
+        categoryName: 'cat 1',
+        categoryId: '1',
+        dateCreated: DateTime.now(),
+      ),CategoryModel(
+        categoryName: 'cat 1',
+        categoryId: '1',
+        dateCreated: DateTime.now(),
+      ),CategoryModel(
+        categoryName: 'cat 1',
+        categoryId: '1',
+        dateCreated: DateTime.now(),
+      ),CategoryModel(
+        categoryName: 'cat 1',
+        categoryId: '1',
+        dateCreated: DateTime.now(),
+      ),CategoryModel(
+        categoryName: 'cat 1',
+        categoryId: '1',
+        dateCreated: DateTime.now(),
+      ),CategoryModel(
+        categoryName: 'cat 1',
+        categoryId: '1',
+        dateCreated: DateTime.now(),
+      ),CategoryModel(
+        categoryName: 'cat 1',
+        categoryId: '1',
+        dateCreated: DateTime.now(),
+      ),CategoryModel(
+        categoryName: 'cat 1',
+        categoryId: '1',
+        dateCreated: DateTime.now(),
+      ),CategoryModel(
+        categoryName: 'cat 1',
+        categoryId: '1',
+        dateCreated: DateTime.now(),
+      ),CategoryModel(
+        categoryName: 'cat 1',
+        categoryId: '1',
+        dateCreated: DateTime.now(),
+      ),CategoryModel(
+        categoryName: 'cat 1',
+        categoryId: '1',
+        dateCreated: DateTime.now(),
+      ),CategoryModel(
+        categoryName: 'cat 1',
+        categoryId: '1',
+        dateCreated: DateTime.now(),
+      ),CategoryModel(
+        categoryName: 'cat 1',
+        categoryId: '1',
+        dateCreated: DateTime.now(),
+      ),
+    ];
     return isPrimary
-        ?
-    Container(
+        ? Ink(
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),
@@ -26,21 +105,20 @@ class ModalItems extends StatelessWidget {
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
+
             child: Material(
               color: Colors.transparent,
               child: ListView.builder(
                 shrinkWrap: true,
-                itemBuilder:
-                    (context, index) =>
-                        index == 2
-                            ? SingleModalItem(name: 'Cash', index: index)
-                            : SingleModalItem(
-                              name: 'Cash',
-                              index: index,
-                              hasSubItem: true,
-                            ),
+                itemBuilder: (context, index) {
+                  return SingleModalItem(
+                    name: categoryModels?[index].categoryName ?? '',
+                    index: index,
+                    hasSubItem: categoryModels?[index].hasSubcategory,
+                  );
+                },
 
-                itemCount: 5,
+                itemCount: categoryModels.length,
               ),
             ),
           ),
@@ -48,16 +126,16 @@ class ModalItems extends StatelessWidget {
         : Material(
           color: Colors.transparent,
           child: ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemBuilder:
                 (context, index) => SingleModalItem(
-                  name: 'Cash',
+                  name: categoryModels?[index].categoryName ?? '',
                   index: index,
+                  hasSubItem: categoryModels?[index].hasSubcategory,
                   isSecondary: true,
                 ),
 
-            itemCount: 3,
+            itemCount: categoryModels.length,
           ),
         );
   }

@@ -35,11 +35,11 @@ class TransactionTypeModalSheet extends StatelessWidget {
                   icon: Column(
                     children: [
                       Icon(Icons.edit, color: Colors.grey.shade600),
-                      SizedBox(height: 5),
-                      Text(
-                        'Edit',
-                        style: TextStyle(color: Colors.grey.shade700),
-                      ),
+                      // SizedBox(height: 5),
+                      // Text(
+                      //   'Edit',
+                      //   style: TextStyle(color: Colors.grey.shade700),
+                      // ),
                     ],
                   ),
                 ),
@@ -82,3 +82,5 @@ class TransactionTypeModalSheet extends StatelessWidget {
     );
   }
 }
+
+

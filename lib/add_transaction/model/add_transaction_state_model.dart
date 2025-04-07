@@ -9,7 +9,7 @@ abstract class AddTransactionModel with _$AddTransactionModel {
     required TransactionModel transactionModel,
     bool? isAmountAddButtonPressed,
     required String transactionType,
-     double? modalHeight
+     double? modalHeight,
 
   }) = _AddTransactionModel;
 }

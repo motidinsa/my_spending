@@ -19,11 +19,15 @@ class AddTransactionState extends _$AddTransactionState {
   AddTransactionModel build() {
     return AddTransactionModel(
       transactionModel: TransactionModel(
-        categoryName: 'Not selected',
-        accountName: 'Not selected',
+        categoryName: '',
+        accountName: '',
+        accountId: '',
+        categoryId: '',
         amount: 0,
         date: DateTime.now(),
-      ),transactionType: 'Expense'
+        dateCreated: DateTime.now(),
+      ),
+      transactionType: 'Expense',
     );
   }
 
@@ -37,15 +41,20 @@ class AddTransactionState extends _$AddTransactionState {
 
   void onAddAmountIconPressed() {
     state = state.copyWith(isAmountAddButtonPressed: true);
-  }void onRemoveAmountIconPressed() {
+  }
+
+  void onRemoveAmountIconPressed() {
     state = state.copyWith(isAmountAddButtonPressed: null);
   }
+
   void updateTransactionState(String type) {
     state = state.copyWith(transactionType: type);
   }
-  void changeModalHeight(double height){
-    state  = state.copyWith(modalHeight: height);
+
+  void changeModalHeight(double height) {
+    state = state.copyWith(modalHeight: height);
   }
+
   void updateSubcategoryHeight(double givenHeight, double totalHeight) {
     if (givenHeight > totalHeight / 2) {
       state = state.copyWith(modalHeight: totalHeight / 2);

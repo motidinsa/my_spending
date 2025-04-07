@@ -85,12 +85,12 @@ onAddTransactionTextFieldPressed({
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.white,
-      enableDrag: true,
-      // isScrollControlled: true,
       builder: (BuildContext context) {
         return TransactionTypeModalSheet();
       },
-    );
+    ).then((value){
+
+    });
   }
 }
 
