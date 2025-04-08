@@ -102,6 +102,15 @@ onAddTransactionTextFieldPressed({
     ).then((value) {});
   }
 }
+onAddTransactionTextFieldChange({
+  required WidgetRef ref,
+  required String title,
+  required String text,
+})  {
+if (title == 'Amount') {
+    ref.read(addTransactionStateProvider.notifier).onAmountChanged(text);
+  }
+}
 
 onTransactionTypeSelect({required WidgetRef ref, required String type}) {
   ref.read(addTransactionStateProvider.notifier).updateTransactionState(type);

@@ -30,17 +30,16 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, ref, child) {
-        // final transactionState = ref.watch(addTransactionStateProvider);
         textEditingController.text = getData(ref, widget.title);
         return TextFormField(
           controller: textEditingController,
-          onTap: () {
-            onAddTransactionTextFieldPressed(
-              context: context,
-              ref: ref,
-              title: widget.title,
-            );
-          },
+          onTap:
+              () => onAddTransactionTextFieldPressed(
+                context: context,
+                ref: ref,
+                title: widget.title,
+              ),
+          onChanged: (text) =>onAddTransactionTextFieldChange(ref:ref,text: text,title: widget.title),
           readOnly: isReadOnlyTextField(widget.title),
           decoration: InputDecoration(
             labelText: getLabelText(widget.title),

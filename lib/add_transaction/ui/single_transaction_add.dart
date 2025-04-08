@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:my_spending/add_transaction/provider/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/add_transaction_text_field.dart';
 import 'package:my_spending/add_transaction/ui/single_add_transaction_content.dart';
@@ -66,11 +67,17 @@ class SingleTransactionAdd extends StatelessWidget {
 
                                 // Container(),
                                 if (isAmountAddButtonPressed)
-                                  IconButton(onPressed: (){
-                                    ref
-                                        .read(addTransactionStateProvider.notifier)
-                                        .onRemoveAmountIconPressed();
-                                  }, icon: Icon(Icons.cancel,color: Colors.red,))
+                                  IconButton(
+                                    onPressed: () {
+                                      ref
+                                          .read(
+                                            addTransactionStateProvider
+                                                .notifier,
+                                          )
+                                          .onRemoveAmountIconPressed();
+                                    },
+                                    icon: Icon(Icons.cancel, color: Colors.red),
+                                  )
                                 else
                                   IconButton(
                                     onPressed: null,
@@ -116,19 +123,26 @@ class SingleTransactionAdd extends StatelessWidget {
               ),
               SizedBox(width: 10),
               Expanded(
-                child: OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 15),
-                    backgroundColor: Colors.white,
-                    side: BorderSide(color: Colors.green, width: .5),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                        10,
-                      ), // Set the border radius here
-                    ),
-                  ),
-                  child: Text('More', style: TextStyle(color: Colors.green)),
+                child: Consumer(
+                  builder: (context,ref,child) {
+                    return OutlinedButton(
+                      onPressed: () {
+                        ref.read(addTransactionStateProvider.notifier).updateDate(DateTime.now());
+                        context.go('/add_transaction');
+                      },
+                      style: OutlinedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(vertical: 15),
+                        backgroundColor: Colors.white,
+                        side: BorderSide(color: Colors.green, width: .5),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            10,
+                          ), // Set the border radius here
+                        ),
+                      ),
+                      child: Text('More', style: TextStyle(color: Colors.green)),
+                    );
+                  }
                 ),
               ),
             ],

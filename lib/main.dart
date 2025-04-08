@@ -2,10 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:my_spending/core/constants/color_constants.dart';
 import 'package:my_spending/core/functions/core_functions.dart';
 import 'package:my_spending/core/packages/salomon_bottom_bar.dart';
 import 'package:my_spending/core/provider/app_state.dart';
+import 'package:my_spending/core/route/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +29,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: router,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
@@ -36,7 +39,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Home(),
     );
   }
 }
@@ -51,7 +53,7 @@ class Home extends ConsumerWidget {
       backgroundColor: Colors.white,
       body: SafeArea(child: getSelectedPage(selectedIndex.selectedIndex)),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {context.go('/add_transaction');},
         backgroundColor: green,shape: CircleBorder(),
         child: Icon(Icons.add, color: Colors.white),
       ),

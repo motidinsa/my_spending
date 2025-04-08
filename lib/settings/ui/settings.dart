@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Accounts extends StatelessWidget {
-  const Accounts({super.key});
+class Settings extends StatelessWidget {
+  const Settings({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: (){},child: Icon(Icons.account_balance),),
       appBar: AppBar(
-        title: Text('Accounts'),
+        title: Text('Settings'),
         centerTitle: true,
         backgroundColor: Colors.white,
       ),
@@ -24,7 +23,7 @@ class Accounts extends StatelessWidget {
               BoxShadow(
                 color: Colors.grey.shade400,
                 spreadRadius: .5,
-                blurRadius: 2,
+                blurRadius: 3,
                 offset: const Offset(0, 1),
               ),
             ],
@@ -32,16 +31,10 @@ class Accounts extends StatelessWidget {
           child: ListView(
             shrinkWrap: true,
             children: [
-              ListTile(title: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Text('Transport'),
-              ), onTap: () {},subtitle: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Text('3 sub accounts'),
-              ),),
-              ListTile(title: Text('Food'), onTap: () {}),
-              ListTile(title: Text('Electronics'), onTap: () {}),
-              ListTile(title: Text('Other'), onTap: () {}),
+              ListTile(title: Text('Accounts'), onTap: () {}),
+              ListTile(title: Text('Categories'), onTap: () {}),
+              ListTile(title: Text('Language'), onTap: () {}),
+              ListTile(title: Text('Theme'), onTap: () {}),
             ],
           ),
         ),

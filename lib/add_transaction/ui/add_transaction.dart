@@ -7,16 +7,20 @@ class AddTransaction extends ConsumerWidget {
   const AddTransaction({super.key});
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     // AddTransactionState addTransactionState = AddTransactionState();
     // addTransactionState.
     return Scaffold(
-      // appBar: AppBar(title: Text('Add transaction'),),
+      appBar: AppBar(
+        title: Text('Add transaction'),
+        centerTitle: true,
+        backgroundColor: Colors.white,
+      ),
       body: ListView(
         children: [
           TransactionTypeSelect(),
-          SizedBox(height: 10,),
-          SingleTransactionAdd()
+          SizedBox(height: 10),
+          SingleTransactionAdd(),
         ],
       ),
     );

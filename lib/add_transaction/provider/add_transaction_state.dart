@@ -19,15 +19,15 @@ class AddTransactionState extends _$AddTransactionState {
         amount: 0,
         date: DateTime.now(),
         dateCreated: DateTime.now(),
-
       ),
+      amount: '',
       transactionType: 'Expense',
       categoryModels: [
         CategoryModel(
           categoryName: 'cat 1',
           categoryId: '1',
           dateCreated: DateTime.now(),
-          hasSubcategory: true
+          hasSubcategory: true,
         ),
         CategoryModel(
           categoryName: 'cat 1',
@@ -45,11 +45,12 @@ class AddTransactionState extends _$AddTransactionState {
           accountName: 'acc 1',
           accountId: '1',
           dateCreated: DateTime.now(),
-        ),AccountModel(
+        ),
+        AccountModel(
           accountName: 'acc 2',
           accountId: '1',
           dateCreated: DateTime.now(),
-          hasSubAccount: true
+          hasSubAccount: true,
         ),
       ],
     );
@@ -88,13 +89,21 @@ class AddTransactionState extends _$AddTransactionState {
   void setSelectedType(String source) {
     state = state.copyWith(redirectFrom: source);
   }
-  void onSingleModalItemPressed({required String name}){
-    String redirectFrom =   state.redirectFrom!;
-    if(redirectFrom == 'Category'){
-      state = state.copyWith(transactionModel: state.transactionModel.copyWith(categoryName: name));
+
+  void onSingleModalItemPressed({required String name}) {
+    String redirectFrom = state.redirectFrom!;
+    if (redirectFrom == 'Category') {
+      state = state.copyWith(
+        transactionModel: state.transactionModel.copyWith(categoryName: name),
+      );
+    } else if (redirectFrom == 'Account') {
+      state = state.copyWith(
+        transactionModel: state.transactionModel.copyWith(accountName: name),
+      );
     }
-    else if(redirectFrom == 'Account'){
-      state = state.copyWith(transactionModel: state.transactionModel.copyWith(accountName: name));
-    }
+  }
+
+  void onAmountChanged(String amount) {
+    state = state.copyWith(amount: amount);
   }
 }
