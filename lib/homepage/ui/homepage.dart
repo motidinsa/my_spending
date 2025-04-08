@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:grouped_list/grouped_list.dart';
+import 'package:my_spending/core/constants/color_constants.dart';
 import 'package:my_spending/core/model/transaction_model.dart';
 import 'package:my_spending/homepage/functions/homepage_functions.dart';
 import 'package:my_spending/homepage/ui/daily_status_info.dart';
@@ -279,25 +281,32 @@ class HomePage extends StatelessWidget {
 List<TransactionModel> tr = [];
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 3),
-      child: GroupedListView<List<TransactionModel>, DateTime>(
-        elements: getGroupedTransaction(tr),
-        groupBy: (element) => DateUtils.dateOnly(element.first.date),
-        separator: const SizedBox(height: 10),
-        padding: EdgeInsets.zero,
-        groupSeparatorBuilder:
-            (DateTime groupByValue) => DailyStatusInfo(date: groupByValue,),
-        useStickyGroupSeparators: true,
-        stickyHeaderBackgroundColor: Colors.white,
-        itemBuilder: (context, elements) {
-          return GroupedTransactions(transactions: elements);
-        },
-        groupComparator:
-            (item1, item2) =>
-                DateUtils.dateOnly(item1).compareTo(DateUtils.dateOnly(item2)),
-        shrinkWrap: true,
-        order: GroupedListOrder.DESC, // optional
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {context.go('/add_transaction');},
+        backgroundColor: green,shape: CircleBorder(),
+        child: Icon(Icons.add, color: Colors.white),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 3),
+        child: GroupedListView<List<TransactionModel>, DateTime>(
+          elements: getGroupedTransaction(tr),
+          groupBy: (element) => DateUtils.dateOnly(element.first.date),
+          separator: const SizedBox(height: 10),
+          padding: EdgeInsets.zero,
+          groupSeparatorBuilder:
+              (DateTime groupByValue) => DailyStatusInfo(date: groupByValue,),
+          useStickyGroupSeparators: true,
+          stickyHeaderBackgroundColor: Colors.white,
+          itemBuilder: (context, elements) {
+            return GroupedTransactions(transactions: elements);
+          },
+          groupComparator:
+              (item1, item2) =>
+                  DateUtils.dateOnly(item1).compareTo(DateUtils.dateOnly(item2)),
+          shrinkWrap: true,
+          order: GroupedListOrder.DESC, // optional
+        ),
       ),
     );
   }

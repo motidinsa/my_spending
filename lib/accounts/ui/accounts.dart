@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class Accounts extends StatelessWidget {
   const Accounts({super.key});
@@ -6,7 +7,13 @@ class Accounts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: (){},child: Icon(Icons.account_balance),),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          context.go('/accounts/add_transaction');
+        },
+        label: Text('Add account group', style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.green.shade400,
+      ),
       appBar: AppBar(
         title: Text('Accounts'),
         centerTitle: true,
@@ -14,7 +21,7 @@ class Accounts extends StatelessWidget {
       ),
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: Container(
           decoration: BoxDecoration(
             color: Colors.white,
@@ -32,13 +39,17 @@ class Accounts extends StatelessWidget {
           child: ListView(
             shrinkWrap: true,
             children: [
-              ListTile(title: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Text('Transport'),
-              ), onTap: () {},subtitle: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Text('3 sub accounts'),
-              ),),
+              ListTile(
+                title: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text('Transport'),
+                ),
+                onTap: () {},
+                subtitle: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text('3 sub accounts'),
+                ),
+              ),
               ListTile(title: Text('Food'), onTap: () {}),
               ListTile(title: Text('Electronics'), onTap: () {}),
               ListTile(title: Text('Other'), onTap: () {}),
