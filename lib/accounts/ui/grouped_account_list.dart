@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:my_spending/accounts/ui/item_select.dart';
+import 'package:my_spending/accounts/ui/mini_account_detail.dart';
 
-class ItemType extends StatelessWidget {
+class GroupedAccountList extends StatelessWidget {
   final String title;
   final String addItemName;
   final String detailPageName;
 
-  ItemType({
+  const GroupedAccountList({
     super.key,
     required this.addItemName,
     required this.detailPageName,
@@ -45,7 +44,7 @@ class ItemType extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
-                    color: Colors.grey.shade700,
+                    color: Colors.green.shade700,
                   ),
                 ),
                 // Icon(
@@ -57,14 +56,12 @@ class ItemType extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10),
-          ItemSelect(
-            title: addItemName,
-            iconData: Icons.add,
+          MiniAccountDetail(
+            name: addItemName,
           ),
           SizedBox(height: 7),
-          ItemSelect(
-            title: detailPageName,
-            iconData: Icons.add,
+          MiniAccountDetail(
+            name: detailPageName,
             // hasDetailIcon: detailPageName == reorderStockN ? true : null,
           ),
         ],

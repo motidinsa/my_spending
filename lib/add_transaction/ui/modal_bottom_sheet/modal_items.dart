@@ -1,7 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:my_spending/add_transaction/provider/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/single_modal_item.dart';
 import 'package:my_spending/core/model/account_model.dart';
 import 'package:my_spending/core/model/category_model.dart';

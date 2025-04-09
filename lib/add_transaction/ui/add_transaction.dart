@@ -8,11 +8,15 @@ class AddTransaction extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // AddTransactionState addTransactionState = AddTransactionState();
-    // addTransactionState.
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add transaction'),
+        title: Text(
+          'Add transaction',
+          style: TextStyle(
+            color: Colors.green.shade800,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
       ),

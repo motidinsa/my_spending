@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_spending/core/route/routes.dart';
 import 'package:my_spending/core/ui/bottom_bar/scaffold_with_navigation_bar.dart';
 
 class ScaffoldWithNestedNavigation extends StatelessWidget {

@@ -12,7 +12,7 @@ BorderRadius? getTransactionSelectBorderRadius(String name) {
   );
 }
 
-getTextFieldIcon(String title) {
+getAddTransactionTextFieldIcon(String title) {
   if (title == 'Date') {
     return Icon(Icons.date_range);
   } else if (title == 'Account') {
@@ -30,7 +30,7 @@ getTextFieldIcon(String title) {
   }
 }
 
-isReadOnlyTextField(String title) {
+isReadOnlyAddTransactionTextField(String title) {
   return ['Date', 'Account', 'Category'].contains(title);
 }
 

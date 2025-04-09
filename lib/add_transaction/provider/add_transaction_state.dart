@@ -45,12 +45,14 @@ class AddTransactionState extends _$AddTransactionState {
           accountName: 'acc 1',
           accountId: '1',
           dateCreated: DateTime.now(),
+          amountAvailable: 0
         ),
         AccountModel(
           accountName: 'acc 2',
           accountId: '1',
           dateCreated: DateTime.now(),
           hasSubAccount: true,
+          amountAvailable: 0
         ),
       ],
     );

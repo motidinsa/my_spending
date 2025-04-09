@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_spending/add_account/functions/add_account_functions.dart';
 import 'package:my_spending/add_transaction/functions/add_transaction_functions.dart';
 
-class AddTransactionTextField extends StatefulWidget {
+class AddAccountTextField extends StatefulWidget {
   final String title;
   final String? labelText;
 
-  const AddTransactionTextField({
+  const AddAccountTextField({
     super.key,
     required this.title,
     this.labelText,
   });
 
   @override
-  State<AddTransactionTextField> createState() =>
-      _AddTransactionTextFieldState();
+  State<AddAccountTextField> createState() =>
+      _AddAccountTextFieldState();
 }
 
-class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
+class _AddAccountTextFieldState extends State<AddAccountTextField> {
   TextEditingController textEditingController = TextEditingController();
 
   @override
@@ -33,18 +34,19 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
         textEditingController.text = getData(ref, widget.title);
         return TextFormField(
           controller: textEditingController,
+          keyboardType: getAddTransactionTextFieldKeyBoardType(widget.title),
           onTap:
-              () => onAddTransactionTextFieldPressed(
+              () => onAddAccountTextFieldPressed(
                 context: context,
                 ref: ref,
                 title: widget.title,
               ),
-          onChanged: (text) =>onAddTransactionTextFieldChange(ref:ref,text: text,title: widget.title),
-          readOnly: isReadOnlyAddTransactionTextField(widget.title),
+          onChanged: (text) =>onAddAccountTextFieldChange(ref:ref,text: text,title: widget.title),
+          readOnly: isReadOnlyAddAccountTextField(widget.title),
           decoration: InputDecoration(
             labelText: getLabelText(widget.title),
             contentPadding: EdgeInsets.fromLTRB(15, 20, 12, 12),
-            suffixIcon: getAddTransactionTextFieldIcon(widget.title),
+            suffixIcon: getAddAccountTextFieldIcon(widget.title),
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey, width: .6),
               borderRadius: BorderRadius.circular(10),

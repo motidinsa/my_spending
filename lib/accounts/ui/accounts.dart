@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_spending/accounts/ui/item_select.dart';
-import 'package:my_spending/accounts/ui/item_type.dart';
+import 'package:my_spending/accounts/ui/grouped_account_list.dart';
+import 'package:my_spending/accounts/ui/mini_account_detail.dart';
 
 class Accounts extends StatelessWidget {
   const Accounts({super.key});
@@ -12,48 +12,57 @@ class Accounts extends StatelessWidget {
       floatingActionButton: FloatingActionButton.extended(
         heroTag: null,
         onPressed: () {
-          context.push('/add_transaction');
+          context.push('/add_account');
         },
-        label: Text('Add account group', style: TextStyle(color: Colors.white)),
+        label: Text('Add account', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.green.shade400,
       ),
       appBar: AppBar(
-        title: Text('Accounts'),
-        centerTitle: true,
+        title: Text('Accounts' , style: TextStyle(
+        color: Colors.green.shade800,
+          fontWeight: FontWeight.bold,
+        ),),
+        // centerTitle: true,
         backgroundColor: Colors.white,
+        actions: [ // Add the actions property
+          Padding(
+            padding: const EdgeInsets.only(right: 5),
+            child: TextButton(
+              onPressed: () {
+               context.go('/accounts/add_account_group');
+              },
+              style: TextButton.styleFrom(   shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),),
+              child: Text(
+                'Add account group',
+                style: TextStyle(
+                  color: Colors.green.shade800, // Optional: Style the text
+                  // fontSize: 16,
+                ),
+              ),
+            ),
+          ),
+          // const SizedBox(width: 10), // Optional: Add some padding
+        ],
       ),
       backgroundColor: Colors.white,
       body: ListView(
-        shrinkWrap: true,
+        // shrinkWrap: true,
         children: [
           SizedBox(height: 10,),
-          ItemType(
+          GroupedAccountList(
             title: 'salesN',
-            addItemName: 'customerNiufer erfuier',
+            addItemName: 'customerNiufer',
             detailPageName: 'salesN',
           ),
           SizedBox(height: 10,),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: ItemSelect(
-              title: 'addItemName',
-              iconData: Icons.add,
+            child: MiniAccountDetail(
+              name: 'addItemName',
             ),
           ),
-          // ListTile(
-          //   title: Padding(
-          //     padding: const EdgeInsets.symmetric(horizontal: 20),
-          //     child: Text('Transport'),
-          //   ),
-          //   onTap: () {},
-          //   subtitle: Padding(
-          //     padding: const EdgeInsets.symmetric(horizontal: 20),
-          //     child: Text('3 sub accounts'),
-          //   ),
-          // ),
-          // ListTile(title: Text('Food'), onTap: () {}),
-          // ListTile(title: Text('Electronics'), onTap: () {}),
-          // ListTile(title: Text('Other'), onTap: () {}),
         ],
       ),
     );

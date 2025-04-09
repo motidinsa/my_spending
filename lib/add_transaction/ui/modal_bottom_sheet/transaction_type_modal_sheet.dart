@@ -32,7 +32,13 @@ class TransactionTypeModalSheet extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                TextButton(onPressed: (){}, child: Text('Edit',style: TextStyle(color: Colors.green.shade500),)),
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'Edit',
+                    style: TextStyle(color: Colors.green.shade500),
+                  ),
+                ),
               ],
             ),
           ),
@@ -77,7 +83,12 @@ class TransactionTypeModalSheet extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 10),
-                        Expanded(child: ModalItems(isPrimary: false,type: redirectFrom,)),
+                        Expanded(
+                          child: ModalItems(
+                            isPrimary: false,
+                            type: redirectFrom,
+                          ),
+                        ),
                       ],
                     ),
                   ),
