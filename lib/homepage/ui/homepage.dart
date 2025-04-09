@@ -278,13 +278,17 @@ class HomePage extends StatelessWidget {
   //     date: DateTime(2023),
   //   ),
   // ];
-List<TransactionModel> tr = [];
+  List<TransactionModel> tr = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {context.go('/add_transaction');},
-        backgroundColor: green,shape: CircleBorder(),
+        onPressed: () {
+          context.push('/add_transaction');
+        },
+        backgroundColor: green,
+        shape: CircleBorder(),
         child: Icon(Icons.add, color: Colors.white),
       ),
       body: Padding(
@@ -295,15 +299,16 @@ List<TransactionModel> tr = [];
           separator: const SizedBox(height: 10),
           padding: EdgeInsets.zero,
           groupSeparatorBuilder:
-              (DateTime groupByValue) => DailyStatusInfo(date: groupByValue,),
+              (DateTime groupByValue) => DailyStatusInfo(date: groupByValue),
           useStickyGroupSeparators: true,
           stickyHeaderBackgroundColor: Colors.white,
           itemBuilder: (context, elements) {
             return GroupedTransactions(transactions: elements);
           },
           groupComparator:
-              (item1, item2) =>
-                  DateUtils.dateOnly(item1).compareTo(DateUtils.dateOnly(item2)),
+              (item1, item2) => DateUtils.dateOnly(
+                item1,
+              ).compareTo(DateUtils.dateOnly(item2)),
           shrinkWrap: true,
           order: GroupedListOrder.DESC, // optional
         ),

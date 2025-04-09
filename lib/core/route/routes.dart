@@ -19,6 +19,20 @@ final GoRouter router = GoRouter(
   initialLocation: '/',
   navigatorKey: navigatorKey,
   routes: <RouteBase>[
+    // GoRoute(
+    //   path: '/',
+    //   pageBuilder: (context, state) => NoTransitionPage(child: HomePage()),
+    //   routes: [
+    //     GoRoute(
+    //       path: '/add_transaction',
+    //       builder: (context, state) => const AddTransaction(),
+    //     ),
+    //   ],
+    // ),
+    GoRoute(
+      path: '/add_transaction',
+      builder: (context, state) => const AddTransaction(),
+    ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
         return ScaffoldWithNestedNavigation(navigationShell: navigationShell);
@@ -31,12 +45,13 @@ final GoRouter router = GoRouter(
               path: '/',
               pageBuilder:
                   (context, state) => NoTransitionPage(child: HomePage()),
-              routes: [
-                GoRoute(
-                  path: '/add_transaction',
-                  builder: (context, state) => const AddTransaction(),
-                ),
-              ],
+              // routes: [
+              //   GoRoute(
+              //     parentNavigatorKey: _shellNavigatorAKey,
+              //     path: '/add_transaction',
+              //     builder: (context, state) => const AddTransaction(),
+              //   ),
+              // ],
             ),
           ],
         ),

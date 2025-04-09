@@ -20,7 +20,6 @@ class ScaffoldWithNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: body,
-
       bottomNavigationBar: SalomonBottomBar(
         backgroundColor: Colors.white,
         currentIndex: selectedIndex,
