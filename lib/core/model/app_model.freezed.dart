@@ -4,7 +4,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'app_model.dart';
+part of 'app_state_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -20,13 +20,13 @@ mixin _$AppModel {
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$AppModelCopyWith<AppModel> get copyWith => _$AppModelCopyWithImpl<AppModel>(this as AppModel, _$identity);
+$AppModelCopyWith<AppStateModel> get copyWith => _$AppModelCopyWithImpl<AppStateModel>(this as AppStateModel, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppModel&&(identical(other.selectedIndex, selectedIndex) || other.selectedIndex == selectedIndex));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppStateModel&&(identical(other.selectedIndex, selectedIndex) || other.selectedIndex == selectedIndex));
 }
 
 
@@ -43,7 +43,7 @@ String toString() {
 
 /// @nodoc
 abstract mixin class $AppModelCopyWith<$Res>  {
-  factory $AppModelCopyWith(AppModel value, $Res Function(AppModel) _then) = _$AppModelCopyWithImpl;
+  factory $AppModelCopyWith(AppStateModel value, $Res Function(AppStateModel) _then) = _$AppModelCopyWithImpl;
 @useResult
 $Res call({
  int selectedIndex
@@ -58,8 +58,8 @@ class _$AppModelCopyWithImpl<$Res>
     implements $AppModelCopyWith<$Res> {
   _$AppModelCopyWithImpl(this._self, this._then);
 
-  final AppModel _self;
-  final $Res Function(AppModel) _then;
+  final AppStateModel _self;
+  final $Res Function(AppStateModel) _then;
 
 /// Create a copy of AppModel
 /// with the given fields replaced by the non-null parameter values.
@@ -76,7 +76,7 @@ as int,
 /// @nodoc
 
 
-class _AppModel implements AppModel {
+class _AppModel implements AppStateModel {
   const _AppModel({required this.selectedIndex});
   
 

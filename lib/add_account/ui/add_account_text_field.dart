@@ -5,12 +5,12 @@ import 'package:my_spending/add_transaction/functions/add_transaction_functions.
 
 class AddAccountTextField extends StatefulWidget {
   final String title;
-  final String? labelText;
+  final String? hintText;
 
   const AddAccountTextField({
     super.key,
     required this.title,
-    this.labelText,
+    this.hintText,
   });
 
   @override
@@ -44,7 +44,7 @@ class _AddAccountTextFieldState extends State<AddAccountTextField> {
           onChanged: (text) =>onAddAccountTextFieldChange(ref:ref,text: text,title: widget.title),
           readOnly: isReadOnlyAddAccountTextField(widget.title),
           decoration: InputDecoration(
-            labelText: getLabelText(widget.title),
+            hintText: getAddAccountHintText(widget.title),
             contentPadding: EdgeInsets.fromLTRB(15, 20, 12, 12),
             suffixIcon: getAddAccountTextFieldIcon(widget.title),
             enabledBorder: OutlineInputBorder(

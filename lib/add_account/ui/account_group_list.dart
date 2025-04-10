@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_spending/add_account/ui/empty_account_group.dart';
 import 'package:my_spending/add_account_group/ui/single_account_group.dart';
 
 class AccountGroupList extends StatelessWidget {
@@ -21,31 +22,35 @@ class AccountGroupList extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: ListView(
-            children: [
-              SingleAccountGroup(name: 'name 1'),
-              SingleAccountGroup(name: 'name bdb bt'),
-              SingleAccountGroup(name: 'tbtyhy 1'),
-              SingleAccountGroup(name: 'name 1'),
-              SingleAccountGroup(name: 'name 1'),
-              SingleAccountGroup(name: 'name 1'),
-              SingleAccountGroup(name: 'name 1'),
-              SingleAccountGroup(name: 'name 1'),
-              SingleAccountGroup(name: 'name 1'),
-              SingleAccountGroup(name: 'name 1'),
-              SingleAccountGroup(name: 'name 1'),
-              SingleAccountGroup(name: 'name 1'),
-              SingleAccountGroup(name: 'name 1'),
-              SingleAccountGroup(name: 'name 1'),
-              SingleAccountGroup(name: 'name 1'),
-              SingleAccountGroup(name: 'name 1'),
-              SingleAccountGroup(name: 'name 1'),
-              SingleAccountGroup(name: 'name 1'),
-              SingleAccountGroup(name: 'name 1'),
-              SingleAccountGroup(name: 'name 1'),
-              SingleAccountGroup(name: 'name 1'),
+          child: Center(
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                EmptyAccountGroup(),
 
-            ],
+                // SingleAccountGroup(name: 'name 1'),
+                // SingleAccountGroup(name: 'name bdb bt'),
+                // SingleAccountGroup(name: 'tbtyhy 1'),
+                // SingleAccountGroup(name: 'name 1'),
+                // SingleAccountGroup(name: 'name 1'),
+                // SingleAccountGroup(name: 'name 1'),
+                // SingleAccountGroup(name: 'name 1'),
+                // SingleAccountGroup(name: 'name 1'),
+                // SingleAccountGroup(name: 'name 1'),
+                // SingleAccountGroup(name: 'name 1'),
+                // SingleAccountGroup(name: 'name 1'),
+                // SingleAccountGroup(name: 'name 1'),
+                // SingleAccountGroup(name: 'name 1'),
+                // SingleAccountGroup(name: 'name 1'),
+                // SingleAccountGroup(name: 'name 1'),
+                // SingleAccountGroup(name: 'name 1'),
+                // SingleAccountGroup(name: 'name 1'),
+                // SingleAccountGroup(name: 'name 1'),
+                // SingleAccountGroup(name: 'name 1'),
+                // SingleAccountGroup(name: 'name 1'),
+                // SingleAccountGroup(name: 'name 1'),
+              ],
+            ),
           ),
         ),
       ],

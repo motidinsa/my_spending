@@ -43,6 +43,7 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
           readOnly: isReadOnlyAddTransactionTextField(widget.title),
           decoration: InputDecoration(
             labelText: getLabelText(widget.title),
+            hintText: getAddTransactionHintText(widget.title),
             contentPadding: EdgeInsets.fromLTRB(15, 20, 12, 12),
             suffixIcon: getAddTransactionTextFieldIcon(widget.title),
             enabledBorder: OutlineInputBorder(

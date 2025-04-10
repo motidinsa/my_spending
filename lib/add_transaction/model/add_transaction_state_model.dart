@@ -8,8 +8,8 @@ import 'package:my_spending/core/model/transaction_model.dart';
 part 'add_transaction_state_model.freezed.dart';
 
 @freezed
-abstract class AddTransactionModel with _$AddTransactionModel {
-  const factory AddTransactionModel({
+abstract class AddTransactionStateModel with _$AddTransactionStateModel {
+  const factory AddTransactionStateModel({
     required TransactionModel transactionModel,
     required String amount,
     bool? isAmountAddButtonPressed,
@@ -20,5 +20,5 @@ abstract class AddTransactionModel with _$AddTransactionModel {
      List<SubcategoryModel>? subcategoryModels,
     required List<AccountModel> accountModels,
      List<SubAccountModel>? subAccountModels,
-  }) = _AddTransactionModel;
+  }) = _AddTransactionStateModel;
 }

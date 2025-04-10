@@ -25,7 +25,7 @@ getAddTransactionTextFieldIcon(String title) {
     return Icon(Icons.volunteer_activism_outlined);
   } else if (title == 'Fee') {
     return Icon(Icons.attach_money_rounded);
-  } else if (title == 'Description (Optional)') {
+  } else if (title == 'Description') {
     return Icon(Icons.edit, color: Colors.grey.shade700);
   }
 }
@@ -128,4 +128,9 @@ getTransactionTypeBackgroundColor({
     return Colors.grey.shade300;
   }
   return Colors.white;
+}
+getAddTransactionHintText(String title) {
+  if(title == 'Description' ){
+    return 'Optional';
+  }
 }

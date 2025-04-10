@@ -15,7 +15,7 @@ getAddAccountTextFieldIcon(String title) {
     return Icon(Icons.volunteer_activism_outlined);
   } else if (title == 'Fee') {
     return Icon(Icons.attach_money_rounded);
-  } else if (title == 'Description (Optional)') {
+  } else if (title == 'Description') {
     return Icon(Icons.edit, color: Colors.grey.shade700);
   }
 }
@@ -43,7 +43,10 @@ onAddAccountTextFieldPressed({
       builder: (BuildContext context) {
         return AccountGroupList();
       },
-    ).then((value) {});
+    ).then((value) {
+
+      // FocusManager.instance.primaryFocus?.unfocus();
+    });
   }
 }
 
@@ -55,4 +58,9 @@ onAddAccountTextFieldChange({
   // if (title == 'Amount') {
   //   ref.read(addTransactionStateProvider.notifier).onAmountChanged(text);
   // }
+}
+getAddAccountHintText(String title) {
+  if(['Account group','Description'].contains(title) ){
+    return 'Optional';
+  }
 }

@@ -57,7 +57,9 @@ class ModalItems extends StatelessWidget {
                     hasSubItem:
                         type == 'Category'
                             ? categoryModels![index].hasSubcategory
-                            : accountModels![index].hasSubAccount,
+                            : true
+                        // accountModels![index].hasSubAccount
+                    ,
                   );
                 },
 

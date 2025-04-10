@@ -9,54 +9,51 @@ part 'add_transaction_state.g.dart';
 @riverpod
 class AddTransactionState extends _$AddTransactionState {
   @override
-  AddTransactionModel build() {
-    return AddTransactionModel(
-      transactionModel: TransactionModel(
-        categoryName: '',
-        accountName: '',
-        accountId: '',
-        categoryId: '',
-        amount: 0,
-        date: DateTime.now(),
+  AddTransactionStateModel build() => AddTransactionStateModel(
+    transactionModel: TransactionModel(
+      categoryName: '',
+      accountName: '',
+      accountId: '',
+      categoryId: '',
+      amount: 0,
+      date: DateTime.now(),
+      dateCreated: DateTime.now(),
+    ),
+    amount: '',
+    transactionType: 'Expense',
+    categoryModels: [
+      CategoryModel(
+        categoryName: 'cat 1',
+        categoryId: '1',
+        dateCreated: DateTime.now(),
+        hasSubcategory: true,
+      ),
+      CategoryModel(
+        categoryName: 'cat 1',
+        categoryId: '1',
         dateCreated: DateTime.now(),
       ),
-      amount: '',
-      transactionType: 'Expense',
-      categoryModels: [
-        CategoryModel(
-          categoryName: 'cat 1',
-          categoryId: '1',
-          dateCreated: DateTime.now(),
-          hasSubcategory: true,
-        ),
-        CategoryModel(
-          categoryName: 'cat 1',
-          categoryId: '1',
-          dateCreated: DateTime.now(),
-        ),
-        CategoryModel(
-          categoryName: 'cat 1',
-          categoryId: '1',
-          dateCreated: DateTime.now(),
-        ),
-      ],
-      accountModels: [
-        AccountModel(
-          accountName: 'acc 1',
-          accountId: '1',
-          dateCreated: DateTime.now(),
-          amountAvailable: 0
-        ),
-        AccountModel(
-          accountName: 'acc 2',
-          accountId: '1',
-          dateCreated: DateTime.now(),
-          hasSubAccount: true,
-          amountAvailable: 0
-        ),
-      ],
-    );
-  }
+      CategoryModel(
+        categoryName: 'cat 1',
+        categoryId: '1',
+        dateCreated: DateTime.now(),
+      ),
+    ],
+    accountModels: [
+      AccountModel(
+        accountName: 'acc 1',
+        accountId: '1',
+        dateCreated: DateTime.now(),
+        amountAvailable: 0,
+      ),
+      AccountModel(
+        accountName: 'acc 2',
+        accountId: '1',
+        dateCreated: DateTime.now(),
+        amountAvailable: 0,
+      ),
+    ],
+  );
 
   void updateIndex(int index) {
     state = state.copyWith.transactionModel(date: DateTime(2027));

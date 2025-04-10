@@ -53,7 +53,7 @@ class AddAccount extends StatelessWidget {
 
                     SingleAddAccountContent(title: 'Amount'),
                     SizedBox(height: 10),
-                    SingleAddAccountContent(title: 'Description (Optional)'),
+                    SingleAddAccountContent(title: 'Description'),
                   ],
                 ),
               ),

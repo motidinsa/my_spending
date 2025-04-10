@@ -92,7 +92,7 @@ class SingleTransactionAdd extends StatelessWidget {
                     },
                   ),
                   SizedBox(height: 10),
-                  SingleAddTransactionContent(title: 'Description (Optional)'),
+                  SingleAddTransactionContent(title: 'Description'),
                 ],
               ),
             ),

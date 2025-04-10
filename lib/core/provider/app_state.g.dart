@@ -11,7 +11,7 @@ String _$appStateHash() => r'5e8571f1cf7b881ae7c53be6c490628479c4fe41';
 /// See also [AppState].
 @ProviderFor(AppState)
 final appStateProvider =
-    AutoDisposeNotifierProvider<AppState, AppModel>.internal(
+    AutoDisposeNotifierProvider<AppState, AppStateModel>.internal(
       AppState.new,
       name: r'appStateProvider',
       debugGetCreateSourceHash:
@@ -20,6 +20,6 @@ final appStateProvider =
       allTransitiveDependencies: null,
     );
 
-typedef _$AppState = AutoDisposeNotifier<AppModel>;
+typedef _$AppState = AutoDisposeNotifier<AppStateModel>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

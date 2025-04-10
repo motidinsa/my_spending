@@ -28,7 +28,7 @@ final GoRouter router = GoRouter(
       path: '/add_account_group',
       pageBuilder:
           (context, state) =>
-          NoTransitionPage(child: const AddAccountGroup()),
+          NoTransitionPage(child:  AddAccountGroup()),
     ),GoRoute(
       path: '/add_account',
       pageBuilder:
@@ -79,7 +79,7 @@ final GoRouter router = GoRouter(
                   path: '/add_account_group',
                   pageBuilder:
                       (context, state) =>
-                          NoTransitionPage(child: const AddAccountGroup()),
+                          NoTransitionPage(child:  AddAccountGroup()),
                 ),
               ],
             ),

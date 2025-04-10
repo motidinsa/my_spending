@@ -8,7 +8,6 @@ abstract class AccountModel with _$AccountModel {
     required String accountName,
     required String accountId,
      String? accountGroupId,
-    bool? hasSubAccount,
     required DateTime dateCreated,
     required double amountAvailable,
     DateTime? dateModified,
