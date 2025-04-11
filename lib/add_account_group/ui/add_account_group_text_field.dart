@@ -26,11 +26,16 @@ class _AddAccountGroupTextFieldState extends State<AddAccountGroupTextField> {
     return Consumer(
       builder: (context, ref, child) {
         return Form(
-          key: ref.watch(appStateProvider.notifier).formKey,
+          key: ref.watch(appStateProvider).formKey,
           autovalidateMode:
-          ref.watch(addAccountGroupStateProvider).isSaveButtonPressed == true
-              ? AutovalidateMode.always
-              : null,
+              ref.watch(
+                        addAccountGroupStateProvider.select(
+                          (state) => state.isSaveButtonPressed,
+                        ),
+                      ) ==
+                      true
+                  ? AutovalidateMode.always
+                  : null,
           child: TextFormField(
             controller: textEditingController,
             onChanged:
@@ -46,6 +51,14 @@ class _AddAccountGroupTextFieldState extends State<AddAccountGroupTextField> {
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.green),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.red,width: .6),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.red),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),

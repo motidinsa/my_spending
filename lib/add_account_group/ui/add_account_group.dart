@@ -28,7 +28,6 @@ class AddAccountGroup extends StatelessWidget {
             builder: (context, ref, child) {
             return ListView(
               children: [
-                Text(ref.read(appStateProvider.notifier).mo),
                 Padding(
                   padding: const EdgeInsets.only(left: 2, bottom: 10),
                   child: Text(
