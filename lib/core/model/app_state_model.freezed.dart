@@ -1,4 +1,3 @@
-// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -10,133 +9,125 @@ part of 'app_state_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
 /// @nodoc
 mixin _$AppStateModel {
+  GlobalKey<FormState> get formKey => throw _privateConstructorUsedError;
 
- GlobalKey<FormState> get formKey;
-/// Create a copy of AppStateModel
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$AppStateModelCopyWith<AppStateModel> get copyWith => _$AppStateModelCopyWithImpl<AppStateModel>(this as AppStateModel, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppStateModel&&(identical(other.formKey, formKey) || other.formKey == formKey));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,formKey);
-
-@override
-String toString() {
-  return 'AppStateModel(formKey: $formKey)';
-}
-
-
+  @JsonKey(ignore: true)
+  $AppStateModelCopyWith<AppStateModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $AppStateModelCopyWith<$Res>  {
-  factory $AppStateModelCopyWith(AppStateModel value, $Res Function(AppStateModel) _then) = _$AppStateModelCopyWithImpl;
-@useResult
-$Res call({
- GlobalKey<FormState> formKey
-});
-
-
-
-
+abstract class $AppStateModelCopyWith<$Res> {
+  factory $AppStateModelCopyWith(
+          AppStateModel value, $Res Function(AppStateModel) then) =
+      _$AppStateModelCopyWithImpl<$Res, AppStateModel>;
+  @useResult
+  $Res call({GlobalKey<FormState> formKey});
 }
+
 /// @nodoc
-class _$AppStateModelCopyWithImpl<$Res>
+class _$AppStateModelCopyWithImpl<$Res, $Val extends AppStateModel>
     implements $AppStateModelCopyWith<$Res> {
-  _$AppStateModelCopyWithImpl(this._self, this._then);
+  _$AppStateModelCopyWithImpl(this._value, this._then);
 
-  final AppStateModel _self;
-  final $Res Function(AppStateModel) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
-/// Create a copy of AppStateModel
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? formKey = null,}) {
-  return _then(_self.copyWith(
-formKey: null == formKey ? _self.formKey : formKey // ignore: cast_nullable_to_non_nullable
-as GlobalKey<FormState>,
-  ));
-}
-
-}
-
-
-/// @nodoc
-
-
-class _AppStateModel implements AppStateModel {
-  const _AppStateModel({required this.formKey});
-  
-
-@override final  GlobalKey<FormState> formKey;
-
-/// Create a copy of AppStateModel
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$AppStateModelCopyWith<_AppStateModel> get copyWith => __$AppStateModelCopyWithImpl<_AppStateModel>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AppStateModel&&(identical(other.formKey, formKey) || other.formKey == formKey));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,formKey);
-
-@override
-String toString() {
-  return 'AppStateModel(formKey: $formKey)';
-}
-
-
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? formKey = null,
+  }) {
+    return _then(_value.copyWith(
+      formKey: null == formKey
+          ? _value.formKey
+          : formKey // ignore: cast_nullable_to_non_nullable
+              as GlobalKey<FormState>,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract mixin class _$AppStateModelCopyWith<$Res> implements $AppStateModelCopyWith<$Res> {
-  factory _$AppStateModelCopyWith(_AppStateModel value, $Res Function(_AppStateModel) _then) = __$AppStateModelCopyWithImpl;
-@override @useResult
-$Res call({
- GlobalKey<FormState> formKey
-});
-
-
-
-
+abstract class _$$AppStateModelImplCopyWith<$Res>
+    implements $AppStateModelCopyWith<$Res> {
+  factory _$$AppStateModelImplCopyWith(
+          _$AppStateModelImpl value, $Res Function(_$AppStateModelImpl) then) =
+      __$$AppStateModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({GlobalKey<FormState> formKey});
 }
+
 /// @nodoc
-class __$AppStateModelCopyWithImpl<$Res>
-    implements _$AppStateModelCopyWith<$Res> {
-  __$AppStateModelCopyWithImpl(this._self, this._then);
+class __$$AppStateModelImplCopyWithImpl<$Res>
+    extends _$AppStateModelCopyWithImpl<$Res, _$AppStateModelImpl>
+    implements _$$AppStateModelImplCopyWith<$Res> {
+  __$$AppStateModelImplCopyWithImpl(
+      _$AppStateModelImpl _value, $Res Function(_$AppStateModelImpl) _then)
+      : super(_value, _then);
 
-  final _AppStateModel _self;
-  final $Res Function(_AppStateModel) _then;
-
-/// Create a copy of AppStateModel
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? formKey = null,}) {
-  return _then(_AppStateModel(
-formKey: null == formKey ? _self.formKey : formKey // ignore: cast_nullable_to_non_nullable
-as GlobalKey<FormState>,
-  ));
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? formKey = null,
+  }) {
+    return _then(_$AppStateModelImpl(
+      formKey: null == formKey
+          ? _value.formKey
+          : formKey // ignore: cast_nullable_to_non_nullable
+              as GlobalKey<FormState>,
+    ));
+  }
 }
 
+/// @nodoc
 
+class _$AppStateModelImpl implements _AppStateModel {
+  const _$AppStateModelImpl({required this.formKey});
+
+  @override
+  final GlobalKey<FormState> formKey;
+
+  @override
+  String toString() {
+    return 'AppStateModel(formKey: $formKey)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AppStateModelImpl &&
+            (identical(other.formKey, formKey) || other.formKey == formKey));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, formKey);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AppStateModelImplCopyWith<_$AppStateModelImpl> get copyWith =>
+      __$$AppStateModelImplCopyWithImpl<_$AppStateModelImpl>(this, _$identity);
 }
 
-// dart format on
+abstract class _AppStateModel implements AppStateModel {
+  const factory _AppStateModel({required final GlobalKey<FormState> formKey}) =
+      _$AppStateModelImpl;
+
+  @override
+  GlobalKey<FormState> get formKey;
+  @override
+  @JsonKey(ignore: true)
+  _$$AppStateModelImplCopyWith<_$AppStateModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

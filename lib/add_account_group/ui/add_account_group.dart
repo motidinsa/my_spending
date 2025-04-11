@@ -3,10 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_account_group/functions/add_account_group_functions.dart';
 import 'package:my_spending/add_account_group/provider/add_account_group_state.dart';
 import 'package:my_spending/add_account_group/ui/add_account_group_text_field.dart';
-import 'package:my_spending/core/provider/app_state.dart';
 
 class AddAccountGroup extends StatelessWidget {
-   AddAccountGroup({super.key});
+  const AddAccountGroup({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +25,12 @@ class AddAccountGroup extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
         child: Consumer(
-            builder: (context, ref, child) {
+          builder: (context, ref, child) {
+            // if(ref.watch(addAccountGroupStateProvider).isLoading == true){
+            //   context.loaderOverlay.show();
+            // }else{
+            //   context.loaderOverlay.hide();
+            // }
             return ListView(
               children: [
                 Padding(
@@ -54,12 +59,26 @@ class AddAccountGroup extends StatelessWidget {
                         ), // Set the border radius here
                       ),
                     ),
-                    child: Text('Save', style: TextStyle(color: Colors.white)),
+                    child:
+                        ref.watch(addAccountGroupStateProvider).isLoading ==
+                                true
+                            ? SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                                strokeWidth: 3,
+                              ),
+                            )
+                            : Text(
+                              'Save',
+                              style: TextStyle(color: Colors.white),
+                            ),
                   ),
                 ),
               ],
             );
-          }
+          },
         ),
       ),
     );

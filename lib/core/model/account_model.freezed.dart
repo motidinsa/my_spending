@@ -1,4 +1,3 @@
-// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -10,148 +9,235 @@ part of 'account_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
 /// @nodoc
 mixin _$AccountModel {
+  String get accountName => throw _privateConstructorUsedError;
+  String get accountId => throw _privateConstructorUsedError;
+  String? get accountGroupId => throw _privateConstructorUsedError;
+  DateTime get dateCreated => throw _privateConstructorUsedError;
+  double get amountAvailable => throw _privateConstructorUsedError;
+  DateTime? get dateModified => throw _privateConstructorUsedError;
 
- String get accountName; String get accountId; String? get accountGroupId; DateTime get dateCreated; double get amountAvailable; DateTime? get dateModified;
-/// Create a copy of AccountModel
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$AccountModelCopyWith<AccountModel> get copyWith => _$AccountModelCopyWithImpl<AccountModel>(this as AccountModel, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AccountModel&&(identical(other.accountName, accountName) || other.accountName == accountName)&&(identical(other.accountId, accountId) || other.accountId == accountId)&&(identical(other.accountGroupId, accountGroupId) || other.accountGroupId == accountGroupId)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.amountAvailable, amountAvailable) || other.amountAvailable == amountAvailable)&&(identical(other.dateModified, dateModified) || other.dateModified == dateModified));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,accountName,accountId,accountGroupId,dateCreated,amountAvailable,dateModified);
-
-@override
-String toString() {
-  return 'AccountModel(accountName: $accountName, accountId: $accountId, accountGroupId: $accountGroupId, dateCreated: $dateCreated, amountAvailable: $amountAvailable, dateModified: $dateModified)';
-}
-
-
+  @JsonKey(ignore: true)
+  $AccountModelCopyWith<AccountModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $AccountModelCopyWith<$Res>  {
-  factory $AccountModelCopyWith(AccountModel value, $Res Function(AccountModel) _then) = _$AccountModelCopyWithImpl;
-@useResult
-$Res call({
- String accountName, String accountId, String? accountGroupId, DateTime dateCreated, double amountAvailable, DateTime? dateModified
-});
-
-
-
-
+abstract class $AccountModelCopyWith<$Res> {
+  factory $AccountModelCopyWith(
+          AccountModel value, $Res Function(AccountModel) then) =
+      _$AccountModelCopyWithImpl<$Res, AccountModel>;
+  @useResult
+  $Res call(
+      {String accountName,
+      String accountId,
+      String? accountGroupId,
+      DateTime dateCreated,
+      double amountAvailable,
+      DateTime? dateModified});
 }
+
 /// @nodoc
-class _$AccountModelCopyWithImpl<$Res>
+class _$AccountModelCopyWithImpl<$Res, $Val extends AccountModel>
     implements $AccountModelCopyWith<$Res> {
-  _$AccountModelCopyWithImpl(this._self, this._then);
+  _$AccountModelCopyWithImpl(this._value, this._then);
 
-  final AccountModel _self;
-  final $Res Function(AccountModel) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
-/// Create a copy of AccountModel
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? accountName = null,Object? accountId = null,Object? accountGroupId = freezed,Object? dateCreated = null,Object? amountAvailable = null,Object? dateModified = freezed,}) {
-  return _then(_self.copyWith(
-accountName: null == accountName ? _self.accountName : accountName // ignore: cast_nullable_to_non_nullable
-as String,accountId: null == accountId ? _self.accountId : accountId // ignore: cast_nullable_to_non_nullable
-as String,accountGroupId: freezed == accountGroupId ? _self.accountGroupId : accountGroupId // ignore: cast_nullable_to_non_nullable
-as String?,dateCreated: null == dateCreated ? _self.dateCreated : dateCreated // ignore: cast_nullable_to_non_nullable
-as DateTime,amountAvailable: null == amountAvailable ? _self.amountAvailable : amountAvailable // ignore: cast_nullable_to_non_nullable
-as double,dateModified: freezed == dateModified ? _self.dateModified : dateModified // ignore: cast_nullable_to_non_nullable
-as DateTime?,
-  ));
-}
-
-}
-
-
-/// @nodoc
-
-
-class _AccountModel implements AccountModel {
-  const _AccountModel({required this.accountName, required this.accountId, this.accountGroupId, required this.dateCreated, required this.amountAvailable, this.dateModified});
-  
-
-@override final  String accountName;
-@override final  String accountId;
-@override final  String? accountGroupId;
-@override final  DateTime dateCreated;
-@override final  double amountAvailable;
-@override final  DateTime? dateModified;
-
-/// Create a copy of AccountModel
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$AccountModelCopyWith<_AccountModel> get copyWith => __$AccountModelCopyWithImpl<_AccountModel>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AccountModel&&(identical(other.accountName, accountName) || other.accountName == accountName)&&(identical(other.accountId, accountId) || other.accountId == accountId)&&(identical(other.accountGroupId, accountGroupId) || other.accountGroupId == accountGroupId)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.amountAvailable, amountAvailable) || other.amountAvailable == amountAvailable)&&(identical(other.dateModified, dateModified) || other.dateModified == dateModified));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,accountName,accountId,accountGroupId,dateCreated,amountAvailable,dateModified);
-
-@override
-String toString() {
-  return 'AccountModel(accountName: $accountName, accountId: $accountId, accountGroupId: $accountGroupId, dateCreated: $dateCreated, amountAvailable: $amountAvailable, dateModified: $dateModified)';
-}
-
-
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? accountName = null,
+    Object? accountId = null,
+    Object? accountGroupId = freezed,
+    Object? dateCreated = null,
+    Object? amountAvailable = null,
+    Object? dateModified = freezed,
+  }) {
+    return _then(_value.copyWith(
+      accountName: null == accountName
+          ? _value.accountName
+          : accountName // ignore: cast_nullable_to_non_nullable
+              as String,
+      accountId: null == accountId
+          ? _value.accountId
+          : accountId // ignore: cast_nullable_to_non_nullable
+              as String,
+      accountGroupId: freezed == accountGroupId
+          ? _value.accountGroupId
+          : accountGroupId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dateCreated: null == dateCreated
+          ? _value.dateCreated
+          : dateCreated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      amountAvailable: null == amountAvailable
+          ? _value.amountAvailable
+          : amountAvailable // ignore: cast_nullable_to_non_nullable
+              as double,
+      dateModified: freezed == dateModified
+          ? _value.dateModified
+          : dateModified // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract mixin class _$AccountModelCopyWith<$Res> implements $AccountModelCopyWith<$Res> {
-  factory _$AccountModelCopyWith(_AccountModel value, $Res Function(_AccountModel) _then) = __$AccountModelCopyWithImpl;
-@override @useResult
-$Res call({
- String accountName, String accountId, String? accountGroupId, DateTime dateCreated, double amountAvailable, DateTime? dateModified
-});
-
-
-
-
+abstract class _$$AccountModelImplCopyWith<$Res>
+    implements $AccountModelCopyWith<$Res> {
+  factory _$$AccountModelImplCopyWith(
+          _$AccountModelImpl value, $Res Function(_$AccountModelImpl) then) =
+      __$$AccountModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String accountName,
+      String accountId,
+      String? accountGroupId,
+      DateTime dateCreated,
+      double amountAvailable,
+      DateTime? dateModified});
 }
+
 /// @nodoc
-class __$AccountModelCopyWithImpl<$Res>
-    implements _$AccountModelCopyWith<$Res> {
-  __$AccountModelCopyWithImpl(this._self, this._then);
+class __$$AccountModelImplCopyWithImpl<$Res>
+    extends _$AccountModelCopyWithImpl<$Res, _$AccountModelImpl>
+    implements _$$AccountModelImplCopyWith<$Res> {
+  __$$AccountModelImplCopyWithImpl(
+      _$AccountModelImpl _value, $Res Function(_$AccountModelImpl) _then)
+      : super(_value, _then);
 
-  final _AccountModel _self;
-  final $Res Function(_AccountModel) _then;
-
-/// Create a copy of AccountModel
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? accountName = null,Object? accountId = null,Object? accountGroupId = freezed,Object? dateCreated = null,Object? amountAvailable = null,Object? dateModified = freezed,}) {
-  return _then(_AccountModel(
-accountName: null == accountName ? _self.accountName : accountName // ignore: cast_nullable_to_non_nullable
-as String,accountId: null == accountId ? _self.accountId : accountId // ignore: cast_nullable_to_non_nullable
-as String,accountGroupId: freezed == accountGroupId ? _self.accountGroupId : accountGroupId // ignore: cast_nullable_to_non_nullable
-as String?,dateCreated: null == dateCreated ? _self.dateCreated : dateCreated // ignore: cast_nullable_to_non_nullable
-as DateTime,amountAvailable: null == amountAvailable ? _self.amountAvailable : amountAvailable // ignore: cast_nullable_to_non_nullable
-as double,dateModified: freezed == dateModified ? _self.dateModified : dateModified // ignore: cast_nullable_to_non_nullable
-as DateTime?,
-  ));
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? accountName = null,
+    Object? accountId = null,
+    Object? accountGroupId = freezed,
+    Object? dateCreated = null,
+    Object? amountAvailable = null,
+    Object? dateModified = freezed,
+  }) {
+    return _then(_$AccountModelImpl(
+      accountName: null == accountName
+          ? _value.accountName
+          : accountName // ignore: cast_nullable_to_non_nullable
+              as String,
+      accountId: null == accountId
+          ? _value.accountId
+          : accountId // ignore: cast_nullable_to_non_nullable
+              as String,
+      accountGroupId: freezed == accountGroupId
+          ? _value.accountGroupId
+          : accountGroupId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dateCreated: null == dateCreated
+          ? _value.dateCreated
+          : dateCreated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      amountAvailable: null == amountAvailable
+          ? _value.amountAvailable
+          : amountAvailable // ignore: cast_nullable_to_non_nullable
+              as double,
+      dateModified: freezed == dateModified
+          ? _value.dateModified
+          : dateModified // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
+  }
 }
 
+/// @nodoc
 
+class _$AccountModelImpl implements _AccountModel {
+  const _$AccountModelImpl(
+      {required this.accountName,
+      required this.accountId,
+      this.accountGroupId,
+      required this.dateCreated,
+      required this.amountAvailable,
+      this.dateModified});
+
+  @override
+  final String accountName;
+  @override
+  final String accountId;
+  @override
+  final String? accountGroupId;
+  @override
+  final DateTime dateCreated;
+  @override
+  final double amountAvailable;
+  @override
+  final DateTime? dateModified;
+
+  @override
+  String toString() {
+    return 'AccountModel(accountName: $accountName, accountId: $accountId, accountGroupId: $accountGroupId, dateCreated: $dateCreated, amountAvailable: $amountAvailable, dateModified: $dateModified)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AccountModelImpl &&
+            (identical(other.accountName, accountName) ||
+                other.accountName == accountName) &&
+            (identical(other.accountId, accountId) ||
+                other.accountId == accountId) &&
+            (identical(other.accountGroupId, accountGroupId) ||
+                other.accountGroupId == accountGroupId) &&
+            (identical(other.dateCreated, dateCreated) ||
+                other.dateCreated == dateCreated) &&
+            (identical(other.amountAvailable, amountAvailable) ||
+                other.amountAvailable == amountAvailable) &&
+            (identical(other.dateModified, dateModified) ||
+                other.dateModified == dateModified));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, accountName, accountId,
+      accountGroupId, dateCreated, amountAvailable, dateModified);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AccountModelImplCopyWith<_$AccountModelImpl> get copyWith =>
+      __$$AccountModelImplCopyWithImpl<_$AccountModelImpl>(this, _$identity);
 }
 
-// dart format on
+abstract class _AccountModel implements AccountModel {
+  const factory _AccountModel(
+      {required final String accountName,
+      required final String accountId,
+      final String? accountGroupId,
+      required final DateTime dateCreated,
+      required final double amountAvailable,
+      final DateTime? dateModified}) = _$AccountModelImpl;
+
+  @override
+  String get accountName;
+  @override
+  String get accountId;
+  @override
+  String? get accountGroupId;
+  @override
+  DateTime get dateCreated;
+  @override
+  double get amountAvailable;
+  @override
+  DateTime? get dateModified;
+  @override
+  @JsonKey(ignore: true)
+  _$$AccountModelImplCopyWith<_$AccountModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

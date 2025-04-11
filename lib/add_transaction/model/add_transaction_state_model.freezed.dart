@@ -1,4 +1,3 @@
-// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -10,206 +9,383 @@ part of 'add_transaction_state_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
 /// @nodoc
 mixin _$AddTransactionStateModel {
+  TransactionModel get transactionModel => throw _privateConstructorUsedError;
+  String get amount => throw _privateConstructorUsedError;
+  bool? get isAmountAddButtonPressed => throw _privateConstructorUsedError;
+  String get transactionType => throw _privateConstructorUsedError;
+  double? get modalHeight => throw _privateConstructorUsedError;
+  String? get redirectFrom => throw _privateConstructorUsedError;
+  List<CategoryModel> get categoryModels => throw _privateConstructorUsedError;
+  List<SubcategoryModel>? get subcategoryModels =>
+      throw _privateConstructorUsedError;
+  List<AccountModel> get accountModels => throw _privateConstructorUsedError;
+  List<SubAccountModel>? get subAccountModels =>
+      throw _privateConstructorUsedError;
 
- TransactionModel get transactionModel; String get amount; bool? get isAmountAddButtonPressed; String get transactionType; double? get modalHeight; String? get redirectFrom; List<CategoryModel> get categoryModels; List<SubcategoryModel>? get subcategoryModels; List<AccountModel> get accountModels; List<SubAccountModel>? get subAccountModels;
-/// Create a copy of AddTransactionStateModel
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$AddTransactionStateModelCopyWith<AddTransactionStateModel> get copyWith => _$AddTransactionStateModelCopyWithImpl<AddTransactionStateModel>(this as AddTransactionStateModel, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AddTransactionStateModel&&(identical(other.transactionModel, transactionModel) || other.transactionModel == transactionModel)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.isAmountAddButtonPressed, isAmountAddButtonPressed) || other.isAmountAddButtonPressed == isAmountAddButtonPressed)&&(identical(other.transactionType, transactionType) || other.transactionType == transactionType)&&(identical(other.modalHeight, modalHeight) || other.modalHeight == modalHeight)&&(identical(other.redirectFrom, redirectFrom) || other.redirectFrom == redirectFrom)&&const DeepCollectionEquality().equals(other.categoryModels, categoryModels)&&const DeepCollectionEquality().equals(other.subcategoryModels, subcategoryModels)&&const DeepCollectionEquality().equals(other.accountModels, accountModels)&&const DeepCollectionEquality().equals(other.subAccountModels, subAccountModels));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,transactionModel,amount,isAmountAddButtonPressed,transactionType,modalHeight,redirectFrom,const DeepCollectionEquality().hash(categoryModels),const DeepCollectionEquality().hash(subcategoryModels),const DeepCollectionEquality().hash(accountModels),const DeepCollectionEquality().hash(subAccountModels));
-
-@override
-String toString() {
-  return 'AddTransactionStateModel(transactionModel: $transactionModel, amount: $amount, isAmountAddButtonPressed: $isAmountAddButtonPressed, transactionType: $transactionType, modalHeight: $modalHeight, redirectFrom: $redirectFrom, categoryModels: $categoryModels, subcategoryModels: $subcategoryModels, accountModels: $accountModels, subAccountModels: $subAccountModels)';
-}
-
-
+  @JsonKey(ignore: true)
+  $AddTransactionStateModelCopyWith<AddTransactionStateModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $AddTransactionStateModelCopyWith<$Res>  {
-  factory $AddTransactionStateModelCopyWith(AddTransactionStateModel value, $Res Function(AddTransactionStateModel) _then) = _$AddTransactionStateModelCopyWithImpl;
-@useResult
-$Res call({
- TransactionModel transactionModel, String amount, bool? isAmountAddButtonPressed, String transactionType, double? modalHeight, String? redirectFrom, List<CategoryModel> categoryModels, List<SubcategoryModel>? subcategoryModels, List<AccountModel> accountModels, List<SubAccountModel>? subAccountModels
-});
+abstract class $AddTransactionStateModelCopyWith<$Res> {
+  factory $AddTransactionStateModelCopyWith(AddTransactionStateModel value,
+          $Res Function(AddTransactionStateModel) then) =
+      _$AddTransactionStateModelCopyWithImpl<$Res, AddTransactionStateModel>;
+  @useResult
+  $Res call(
+      {TransactionModel transactionModel,
+      String amount,
+      bool? isAmountAddButtonPressed,
+      String transactionType,
+      double? modalHeight,
+      String? redirectFrom,
+      List<CategoryModel> categoryModels,
+      List<SubcategoryModel>? subcategoryModels,
+      List<AccountModel> accountModels,
+      List<SubAccountModel>? subAccountModels});
 
-
-$TransactionModelCopyWith<$Res> get transactionModel;
-
+  $TransactionModelCopyWith<$Res> get transactionModel;
 }
+
 /// @nodoc
-class _$AddTransactionStateModelCopyWithImpl<$Res>
+class _$AddTransactionStateModelCopyWithImpl<$Res,
+        $Val extends AddTransactionStateModel>
     implements $AddTransactionStateModelCopyWith<$Res> {
-  _$AddTransactionStateModelCopyWithImpl(this._self, this._then);
+  _$AddTransactionStateModelCopyWithImpl(this._value, this._then);
 
-  final AddTransactionStateModel _self;
-  final $Res Function(AddTransactionStateModel) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
-/// Create a copy of AddTransactionStateModel
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? transactionModel = null,Object? amount = null,Object? isAmountAddButtonPressed = freezed,Object? transactionType = null,Object? modalHeight = freezed,Object? redirectFrom = freezed,Object? categoryModels = null,Object? subcategoryModels = freezed,Object? accountModels = null,Object? subAccountModels = freezed,}) {
-  return _then(_self.copyWith(
-transactionModel: null == transactionModel ? _self.transactionModel : transactionModel // ignore: cast_nullable_to_non_nullable
-as TransactionModel,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
-as String,isAmountAddButtonPressed: freezed == isAmountAddButtonPressed ? _self.isAmountAddButtonPressed : isAmountAddButtonPressed // ignore: cast_nullable_to_non_nullable
-as bool?,transactionType: null == transactionType ? _self.transactionType : transactionType // ignore: cast_nullable_to_non_nullable
-as String,modalHeight: freezed == modalHeight ? _self.modalHeight : modalHeight // ignore: cast_nullable_to_non_nullable
-as double?,redirectFrom: freezed == redirectFrom ? _self.redirectFrom : redirectFrom // ignore: cast_nullable_to_non_nullable
-as String?,categoryModels: null == categoryModels ? _self.categoryModels : categoryModels // ignore: cast_nullable_to_non_nullable
-as List<CategoryModel>,subcategoryModels: freezed == subcategoryModels ? _self.subcategoryModels : subcategoryModels // ignore: cast_nullable_to_non_nullable
-as List<SubcategoryModel>?,accountModels: null == accountModels ? _self.accountModels : accountModels // ignore: cast_nullable_to_non_nullable
-as List<AccountModel>,subAccountModels: freezed == subAccountModels ? _self.subAccountModels : subAccountModels // ignore: cast_nullable_to_non_nullable
-as List<SubAccountModel>?,
-  ));
-}
-/// Create a copy of AddTransactionStateModel
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$TransactionModelCopyWith<$Res> get transactionModel {
-  
-  return $TransactionModelCopyWith<$Res>(_self.transactionModel, (value) {
-    return _then(_self.copyWith(transactionModel: value));
-  });
-}
-}
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? transactionModel = null,
+    Object? amount = null,
+    Object? isAmountAddButtonPressed = freezed,
+    Object? transactionType = null,
+    Object? modalHeight = freezed,
+    Object? redirectFrom = freezed,
+    Object? categoryModels = null,
+    Object? subcategoryModels = freezed,
+    Object? accountModels = null,
+    Object? subAccountModels = freezed,
+  }) {
+    return _then(_value.copyWith(
+      transactionModel: null == transactionModel
+          ? _value.transactionModel
+          : transactionModel // ignore: cast_nullable_to_non_nullable
+              as TransactionModel,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as String,
+      isAmountAddButtonPressed: freezed == isAmountAddButtonPressed
+          ? _value.isAmountAddButtonPressed
+          : isAmountAddButtonPressed // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      transactionType: null == transactionType
+          ? _value.transactionType
+          : transactionType // ignore: cast_nullable_to_non_nullable
+              as String,
+      modalHeight: freezed == modalHeight
+          ? _value.modalHeight
+          : modalHeight // ignore: cast_nullable_to_non_nullable
+              as double?,
+      redirectFrom: freezed == redirectFrom
+          ? _value.redirectFrom
+          : redirectFrom // ignore: cast_nullable_to_non_nullable
+              as String?,
+      categoryModels: null == categoryModels
+          ? _value.categoryModels
+          : categoryModels // ignore: cast_nullable_to_non_nullable
+              as List<CategoryModel>,
+      subcategoryModels: freezed == subcategoryModels
+          ? _value.subcategoryModels
+          : subcategoryModels // ignore: cast_nullable_to_non_nullable
+              as List<SubcategoryModel>?,
+      accountModels: null == accountModels
+          ? _value.accountModels
+          : accountModels // ignore: cast_nullable_to_non_nullable
+              as List<AccountModel>,
+      subAccountModels: freezed == subAccountModels
+          ? _value.subAccountModels
+          : subAccountModels // ignore: cast_nullable_to_non_nullable
+              as List<SubAccountModel>?,
+    ) as $Val);
+  }
 
-
-/// @nodoc
-
-
-class _AddTransactionStateModel implements AddTransactionStateModel {
-  const _AddTransactionStateModel({required this.transactionModel, required this.amount, this.isAmountAddButtonPressed, required this.transactionType, this.modalHeight, this.redirectFrom, required final  List<CategoryModel> categoryModels, final  List<SubcategoryModel>? subcategoryModels, required final  List<AccountModel> accountModels, final  List<SubAccountModel>? subAccountModels}): _categoryModels = categoryModels,_subcategoryModels = subcategoryModels,_accountModels = accountModels,_subAccountModels = subAccountModels;
-  
-
-@override final  TransactionModel transactionModel;
-@override final  String amount;
-@override final  bool? isAmountAddButtonPressed;
-@override final  String transactionType;
-@override final  double? modalHeight;
-@override final  String? redirectFrom;
- final  List<CategoryModel> _categoryModels;
-@override List<CategoryModel> get categoryModels {
-  if (_categoryModels is EqualUnmodifiableListView) return _categoryModels;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_categoryModels);
-}
-
- final  List<SubcategoryModel>? _subcategoryModels;
-@override List<SubcategoryModel>? get subcategoryModels {
-  final value = _subcategoryModels;
-  if (value == null) return null;
-  if (_subcategoryModels is EqualUnmodifiableListView) return _subcategoryModels;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(value);
-}
-
- final  List<AccountModel> _accountModels;
-@override List<AccountModel> get accountModels {
-  if (_accountModels is EqualUnmodifiableListView) return _accountModels;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_accountModels);
-}
-
- final  List<SubAccountModel>? _subAccountModels;
-@override List<SubAccountModel>? get subAccountModels {
-  final value = _subAccountModels;
-  if (value == null) return null;
-  if (_subAccountModels is EqualUnmodifiableListView) return _subAccountModels;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(value);
-}
-
-
-/// Create a copy of AddTransactionStateModel
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$AddTransactionStateModelCopyWith<_AddTransactionStateModel> get copyWith => __$AddTransactionStateModelCopyWithImpl<_AddTransactionStateModel>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AddTransactionStateModel&&(identical(other.transactionModel, transactionModel) || other.transactionModel == transactionModel)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.isAmountAddButtonPressed, isAmountAddButtonPressed) || other.isAmountAddButtonPressed == isAmountAddButtonPressed)&&(identical(other.transactionType, transactionType) || other.transactionType == transactionType)&&(identical(other.modalHeight, modalHeight) || other.modalHeight == modalHeight)&&(identical(other.redirectFrom, redirectFrom) || other.redirectFrom == redirectFrom)&&const DeepCollectionEquality().equals(other._categoryModels, _categoryModels)&&const DeepCollectionEquality().equals(other._subcategoryModels, _subcategoryModels)&&const DeepCollectionEquality().equals(other._accountModels, _accountModels)&&const DeepCollectionEquality().equals(other._subAccountModels, _subAccountModels));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,transactionModel,amount,isAmountAddButtonPressed,transactionType,modalHeight,redirectFrom,const DeepCollectionEquality().hash(_categoryModels),const DeepCollectionEquality().hash(_subcategoryModels),const DeepCollectionEquality().hash(_accountModels),const DeepCollectionEquality().hash(_subAccountModels));
-
-@override
-String toString() {
-  return 'AddTransactionStateModel(transactionModel: $transactionModel, amount: $amount, isAmountAddButtonPressed: $isAmountAddButtonPressed, transactionType: $transactionType, modalHeight: $modalHeight, redirectFrom: $redirectFrom, categoryModels: $categoryModels, subcategoryModels: $subcategoryModels, accountModels: $accountModels, subAccountModels: $subAccountModels)';
-}
-
-
+  @override
+  @pragma('vm:prefer-inline')
+  $TransactionModelCopyWith<$Res> get transactionModel {
+    return $TransactionModelCopyWith<$Res>(_value.transactionModel, (value) {
+      return _then(_value.copyWith(transactionModel: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract mixin class _$AddTransactionStateModelCopyWith<$Res> implements $AddTransactionStateModelCopyWith<$Res> {
-  factory _$AddTransactionStateModelCopyWith(_AddTransactionStateModel value, $Res Function(_AddTransactionStateModel) _then) = __$AddTransactionStateModelCopyWithImpl;
-@override @useResult
-$Res call({
- TransactionModel transactionModel, String amount, bool? isAmountAddButtonPressed, String transactionType, double? modalHeight, String? redirectFrom, List<CategoryModel> categoryModels, List<SubcategoryModel>? subcategoryModels, List<AccountModel> accountModels, List<SubAccountModel>? subAccountModels
-});
+abstract class _$$AddTransactionStateModelImplCopyWith<$Res>
+    implements $AddTransactionStateModelCopyWith<$Res> {
+  factory _$$AddTransactionStateModelImplCopyWith(
+          _$AddTransactionStateModelImpl value,
+          $Res Function(_$AddTransactionStateModelImpl) then) =
+      __$$AddTransactionStateModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {TransactionModel transactionModel,
+      String amount,
+      bool? isAmountAddButtonPressed,
+      String transactionType,
+      double? modalHeight,
+      String? redirectFrom,
+      List<CategoryModel> categoryModels,
+      List<SubcategoryModel>? subcategoryModels,
+      List<AccountModel> accountModels,
+      List<SubAccountModel>? subAccountModels});
 
-
-@override $TransactionModelCopyWith<$Res> get transactionModel;
-
+  @override
+  $TransactionModelCopyWith<$Res> get transactionModel;
 }
+
 /// @nodoc
-class __$AddTransactionStateModelCopyWithImpl<$Res>
-    implements _$AddTransactionStateModelCopyWith<$Res> {
-  __$AddTransactionStateModelCopyWithImpl(this._self, this._then);
+class __$$AddTransactionStateModelImplCopyWithImpl<$Res>
+    extends _$AddTransactionStateModelCopyWithImpl<$Res,
+        _$AddTransactionStateModelImpl>
+    implements _$$AddTransactionStateModelImplCopyWith<$Res> {
+  __$$AddTransactionStateModelImplCopyWithImpl(
+      _$AddTransactionStateModelImpl _value,
+      $Res Function(_$AddTransactionStateModelImpl) _then)
+      : super(_value, _then);
 
-  final _AddTransactionStateModel _self;
-  final $Res Function(_AddTransactionStateModel) _then;
-
-/// Create a copy of AddTransactionStateModel
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? transactionModel = null,Object? amount = null,Object? isAmountAddButtonPressed = freezed,Object? transactionType = null,Object? modalHeight = freezed,Object? redirectFrom = freezed,Object? categoryModels = null,Object? subcategoryModels = freezed,Object? accountModels = null,Object? subAccountModels = freezed,}) {
-  return _then(_AddTransactionStateModel(
-transactionModel: null == transactionModel ? _self.transactionModel : transactionModel // ignore: cast_nullable_to_non_nullable
-as TransactionModel,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
-as String,isAmountAddButtonPressed: freezed == isAmountAddButtonPressed ? _self.isAmountAddButtonPressed : isAmountAddButtonPressed // ignore: cast_nullable_to_non_nullable
-as bool?,transactionType: null == transactionType ? _self.transactionType : transactionType // ignore: cast_nullable_to_non_nullable
-as String,modalHeight: freezed == modalHeight ? _self.modalHeight : modalHeight // ignore: cast_nullable_to_non_nullable
-as double?,redirectFrom: freezed == redirectFrom ? _self.redirectFrom : redirectFrom // ignore: cast_nullable_to_non_nullable
-as String?,categoryModels: null == categoryModels ? _self._categoryModels : categoryModels // ignore: cast_nullable_to_non_nullable
-as List<CategoryModel>,subcategoryModels: freezed == subcategoryModels ? _self._subcategoryModels : subcategoryModels // ignore: cast_nullable_to_non_nullable
-as List<SubcategoryModel>?,accountModels: null == accountModels ? _self._accountModels : accountModels // ignore: cast_nullable_to_non_nullable
-as List<AccountModel>,subAccountModels: freezed == subAccountModels ? _self._subAccountModels : subAccountModels // ignore: cast_nullable_to_non_nullable
-as List<SubAccountModel>?,
-  ));
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? transactionModel = null,
+    Object? amount = null,
+    Object? isAmountAddButtonPressed = freezed,
+    Object? transactionType = null,
+    Object? modalHeight = freezed,
+    Object? redirectFrom = freezed,
+    Object? categoryModels = null,
+    Object? subcategoryModels = freezed,
+    Object? accountModels = null,
+    Object? subAccountModels = freezed,
+  }) {
+    return _then(_$AddTransactionStateModelImpl(
+      transactionModel: null == transactionModel
+          ? _value.transactionModel
+          : transactionModel // ignore: cast_nullable_to_non_nullable
+              as TransactionModel,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as String,
+      isAmountAddButtonPressed: freezed == isAmountAddButtonPressed
+          ? _value.isAmountAddButtonPressed
+          : isAmountAddButtonPressed // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      transactionType: null == transactionType
+          ? _value.transactionType
+          : transactionType // ignore: cast_nullable_to_non_nullable
+              as String,
+      modalHeight: freezed == modalHeight
+          ? _value.modalHeight
+          : modalHeight // ignore: cast_nullable_to_non_nullable
+              as double?,
+      redirectFrom: freezed == redirectFrom
+          ? _value.redirectFrom
+          : redirectFrom // ignore: cast_nullable_to_non_nullable
+              as String?,
+      categoryModels: null == categoryModels
+          ? _value._categoryModels
+          : categoryModels // ignore: cast_nullable_to_non_nullable
+              as List<CategoryModel>,
+      subcategoryModels: freezed == subcategoryModels
+          ? _value._subcategoryModels
+          : subcategoryModels // ignore: cast_nullable_to_non_nullable
+              as List<SubcategoryModel>?,
+      accountModels: null == accountModels
+          ? _value._accountModels
+          : accountModels // ignore: cast_nullable_to_non_nullable
+              as List<AccountModel>,
+      subAccountModels: freezed == subAccountModels
+          ? _value._subAccountModels
+          : subAccountModels // ignore: cast_nullable_to_non_nullable
+              as List<SubAccountModel>?,
+    ));
+  }
 }
 
-/// Create a copy of AddTransactionStateModel
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$TransactionModelCopyWith<$Res> get transactionModel {
-  
-  return $TransactionModelCopyWith<$Res>(_self.transactionModel, (value) {
-    return _then(_self.copyWith(transactionModel: value));
-  });
-}
+/// @nodoc
+
+class _$AddTransactionStateModelImpl implements _AddTransactionStateModel {
+  const _$AddTransactionStateModelImpl(
+      {required this.transactionModel,
+      required this.amount,
+      this.isAmountAddButtonPressed,
+      required this.transactionType,
+      this.modalHeight,
+      this.redirectFrom,
+      required final List<CategoryModel> categoryModels,
+      final List<SubcategoryModel>? subcategoryModels,
+      required final List<AccountModel> accountModels,
+      final List<SubAccountModel>? subAccountModels})
+      : _categoryModels = categoryModels,
+        _subcategoryModels = subcategoryModels,
+        _accountModels = accountModels,
+        _subAccountModels = subAccountModels;
+
+  @override
+  final TransactionModel transactionModel;
+  @override
+  final String amount;
+  @override
+  final bool? isAmountAddButtonPressed;
+  @override
+  final String transactionType;
+  @override
+  final double? modalHeight;
+  @override
+  final String? redirectFrom;
+  final List<CategoryModel> _categoryModels;
+  @override
+  List<CategoryModel> get categoryModels {
+    if (_categoryModels is EqualUnmodifiableListView) return _categoryModels;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_categoryModels);
+  }
+
+  final List<SubcategoryModel>? _subcategoryModels;
+  @override
+  List<SubcategoryModel>? get subcategoryModels {
+    final value = _subcategoryModels;
+    if (value == null) return null;
+    if (_subcategoryModels is EqualUnmodifiableListView)
+      return _subcategoryModels;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<AccountModel> _accountModels;
+  @override
+  List<AccountModel> get accountModels {
+    if (_accountModels is EqualUnmodifiableListView) return _accountModels;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_accountModels);
+  }
+
+  final List<SubAccountModel>? _subAccountModels;
+  @override
+  List<SubAccountModel>? get subAccountModels {
+    final value = _subAccountModels;
+    if (value == null) return null;
+    if (_subAccountModels is EqualUnmodifiableListView)
+      return _subAccountModels;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'AddTransactionStateModel(transactionModel: $transactionModel, amount: $amount, isAmountAddButtonPressed: $isAmountAddButtonPressed, transactionType: $transactionType, modalHeight: $modalHeight, redirectFrom: $redirectFrom, categoryModels: $categoryModels, subcategoryModels: $subcategoryModels, accountModels: $accountModels, subAccountModels: $subAccountModels)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddTransactionStateModelImpl &&
+            (identical(other.transactionModel, transactionModel) ||
+                other.transactionModel == transactionModel) &&
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(
+                    other.isAmountAddButtonPressed, isAmountAddButtonPressed) ||
+                other.isAmountAddButtonPressed == isAmountAddButtonPressed) &&
+            (identical(other.transactionType, transactionType) ||
+                other.transactionType == transactionType) &&
+            (identical(other.modalHeight, modalHeight) ||
+                other.modalHeight == modalHeight) &&
+            (identical(other.redirectFrom, redirectFrom) ||
+                other.redirectFrom == redirectFrom) &&
+            const DeepCollectionEquality()
+                .equals(other._categoryModels, _categoryModels) &&
+            const DeepCollectionEquality()
+                .equals(other._subcategoryModels, _subcategoryModels) &&
+            const DeepCollectionEquality()
+                .equals(other._accountModels, _accountModels) &&
+            const DeepCollectionEquality()
+                .equals(other._subAccountModels, _subAccountModels));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      transactionModel,
+      amount,
+      isAmountAddButtonPressed,
+      transactionType,
+      modalHeight,
+      redirectFrom,
+      const DeepCollectionEquality().hash(_categoryModels),
+      const DeepCollectionEquality().hash(_subcategoryModels),
+      const DeepCollectionEquality().hash(_accountModels),
+      const DeepCollectionEquality().hash(_subAccountModels));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddTransactionStateModelImplCopyWith<_$AddTransactionStateModelImpl>
+      get copyWith => __$$AddTransactionStateModelImplCopyWithImpl<
+          _$AddTransactionStateModelImpl>(this, _$identity);
 }
 
-// dart format on
+abstract class _AddTransactionStateModel implements AddTransactionStateModel {
+  const factory _AddTransactionStateModel(
+          {required final TransactionModel transactionModel,
+          required final String amount,
+          final bool? isAmountAddButtonPressed,
+          required final String transactionType,
+          final double? modalHeight,
+          final String? redirectFrom,
+          required final List<CategoryModel> categoryModels,
+          final List<SubcategoryModel>? subcategoryModels,
+          required final List<AccountModel> accountModels,
+          final List<SubAccountModel>? subAccountModels}) =
+      _$AddTransactionStateModelImpl;
+
+  @override
+  TransactionModel get transactionModel;
+  @override
+  String get amount;
+  @override
+  bool? get isAmountAddButtonPressed;
+  @override
+  String get transactionType;
+  @override
+  double? get modalHeight;
+  @override
+  String? get redirectFrom;
+  @override
+  List<CategoryModel> get categoryModels;
+  @override
+  List<SubcategoryModel>? get subcategoryModels;
+  @override
+  List<AccountModel> get accountModels;
+  @override
+  List<SubAccountModel>? get subAccountModels;
+  @override
+  @JsonKey(ignore: true)
+  _$$AddTransactionStateModelImplCopyWith<_$AddTransactionStateModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}

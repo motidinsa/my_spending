@@ -1,13 +1,21 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:isar/isar.dart';
 
 part 'account_group_model.freezed.dart';
 
+part 'account_group_model.g.dart';
+
 @freezed
-abstract class AccountGroupModel with _$AccountGroupModel {
+@Collection(ignore: {'copyWith'})
+class AccountGroupModel with _$AccountGroupModel {
   const factory AccountGroupModel({
     required String groupName,
     required String groupId,
     required DateTime dateCreated,
     DateTime? dateModified,
-  })= _AccountGroupModel;
+  }) = _AccountGroupModel;
+
+  const AccountGroupModel._();
+
+  Id get id => Isar.autoIncrement;
 }

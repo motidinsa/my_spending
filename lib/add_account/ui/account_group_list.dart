@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:my_spending/add_account/ui/empty_account_group.dart';
-import 'package:my_spending/add_account_group/ui/single_account_group.dart';
 
 class AccountGroupList extends StatelessWidget {
   const AccountGroupList({super.key});

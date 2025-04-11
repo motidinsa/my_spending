@@ -1,4 +1,3 @@
-// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -10,145 +9,215 @@ part of 'subaccount_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
 /// @nodoc
 mixin _$SubAccountModel {
+  String get subAccountName => throw _privateConstructorUsedError;
+  String get subAccountId => throw _privateConstructorUsedError;
+  String get accountId => throw _privateConstructorUsedError;
+  DateTime get dateCreated => throw _privateConstructorUsedError;
+  DateTime? get dateModified => throw _privateConstructorUsedError;
 
- String get subAccountName; String get subAccountId; String get accountId; DateTime get dateCreated; DateTime? get dateModified;
-/// Create a copy of SubAccountModel
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$SubAccountModelCopyWith<SubAccountModel> get copyWith => _$SubAccountModelCopyWithImpl<SubAccountModel>(this as SubAccountModel, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SubAccountModel&&(identical(other.subAccountName, subAccountName) || other.subAccountName == subAccountName)&&(identical(other.subAccountId, subAccountId) || other.subAccountId == subAccountId)&&(identical(other.accountId, accountId) || other.accountId == accountId)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.dateModified, dateModified) || other.dateModified == dateModified));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,subAccountName,subAccountId,accountId,dateCreated,dateModified);
-
-@override
-String toString() {
-  return 'SubAccountModel(subAccountName: $subAccountName, subAccountId: $subAccountId, accountId: $accountId, dateCreated: $dateCreated, dateModified: $dateModified)';
-}
-
-
+  @JsonKey(ignore: true)
+  $SubAccountModelCopyWith<SubAccountModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $SubAccountModelCopyWith<$Res>  {
-  factory $SubAccountModelCopyWith(SubAccountModel value, $Res Function(SubAccountModel) _then) = _$SubAccountModelCopyWithImpl;
-@useResult
-$Res call({
- String subAccountName, String subAccountId, String accountId, DateTime dateCreated, DateTime? dateModified
-});
-
-
-
-
+abstract class $SubAccountModelCopyWith<$Res> {
+  factory $SubAccountModelCopyWith(
+          SubAccountModel value, $Res Function(SubAccountModel) then) =
+      _$SubAccountModelCopyWithImpl<$Res, SubAccountModel>;
+  @useResult
+  $Res call(
+      {String subAccountName,
+      String subAccountId,
+      String accountId,
+      DateTime dateCreated,
+      DateTime? dateModified});
 }
+
 /// @nodoc
-class _$SubAccountModelCopyWithImpl<$Res>
+class _$SubAccountModelCopyWithImpl<$Res, $Val extends SubAccountModel>
     implements $SubAccountModelCopyWith<$Res> {
-  _$SubAccountModelCopyWithImpl(this._self, this._then);
+  _$SubAccountModelCopyWithImpl(this._value, this._then);
 
-  final SubAccountModel _self;
-  final $Res Function(SubAccountModel) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
-/// Create a copy of SubAccountModel
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? subAccountName = null,Object? subAccountId = null,Object? accountId = null,Object? dateCreated = null,Object? dateModified = freezed,}) {
-  return _then(_self.copyWith(
-subAccountName: null == subAccountName ? _self.subAccountName : subAccountName // ignore: cast_nullable_to_non_nullable
-as String,subAccountId: null == subAccountId ? _self.subAccountId : subAccountId // ignore: cast_nullable_to_non_nullable
-as String,accountId: null == accountId ? _self.accountId : accountId // ignore: cast_nullable_to_non_nullable
-as String,dateCreated: null == dateCreated ? _self.dateCreated : dateCreated // ignore: cast_nullable_to_non_nullable
-as DateTime,dateModified: freezed == dateModified ? _self.dateModified : dateModified // ignore: cast_nullable_to_non_nullable
-as DateTime?,
-  ));
-}
-
-}
-
-
-/// @nodoc
-
-
-class _SubAccountModel implements SubAccountModel {
-  const _SubAccountModel({required this.subAccountName, required this.subAccountId, required this.accountId, required this.dateCreated, this.dateModified});
-  
-
-@override final  String subAccountName;
-@override final  String subAccountId;
-@override final  String accountId;
-@override final  DateTime dateCreated;
-@override final  DateTime? dateModified;
-
-/// Create a copy of SubAccountModel
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$SubAccountModelCopyWith<_SubAccountModel> get copyWith => __$SubAccountModelCopyWithImpl<_SubAccountModel>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SubAccountModel&&(identical(other.subAccountName, subAccountName) || other.subAccountName == subAccountName)&&(identical(other.subAccountId, subAccountId) || other.subAccountId == subAccountId)&&(identical(other.accountId, accountId) || other.accountId == accountId)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.dateModified, dateModified) || other.dateModified == dateModified));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,subAccountName,subAccountId,accountId,dateCreated,dateModified);
-
-@override
-String toString() {
-  return 'SubAccountModel(subAccountName: $subAccountName, subAccountId: $subAccountId, accountId: $accountId, dateCreated: $dateCreated, dateModified: $dateModified)';
-}
-
-
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? subAccountName = null,
+    Object? subAccountId = null,
+    Object? accountId = null,
+    Object? dateCreated = null,
+    Object? dateModified = freezed,
+  }) {
+    return _then(_value.copyWith(
+      subAccountName: null == subAccountName
+          ? _value.subAccountName
+          : subAccountName // ignore: cast_nullable_to_non_nullable
+              as String,
+      subAccountId: null == subAccountId
+          ? _value.subAccountId
+          : subAccountId // ignore: cast_nullable_to_non_nullable
+              as String,
+      accountId: null == accountId
+          ? _value.accountId
+          : accountId // ignore: cast_nullable_to_non_nullable
+              as String,
+      dateCreated: null == dateCreated
+          ? _value.dateCreated
+          : dateCreated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      dateModified: freezed == dateModified
+          ? _value.dateModified
+          : dateModified // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract mixin class _$SubAccountModelCopyWith<$Res> implements $SubAccountModelCopyWith<$Res> {
-  factory _$SubAccountModelCopyWith(_SubAccountModel value, $Res Function(_SubAccountModel) _then) = __$SubAccountModelCopyWithImpl;
-@override @useResult
-$Res call({
- String subAccountName, String subAccountId, String accountId, DateTime dateCreated, DateTime? dateModified
-});
-
-
-
-
+abstract class _$$SubAccountModelImplCopyWith<$Res>
+    implements $SubAccountModelCopyWith<$Res> {
+  factory _$$SubAccountModelImplCopyWith(_$SubAccountModelImpl value,
+          $Res Function(_$SubAccountModelImpl) then) =
+      __$$SubAccountModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String subAccountName,
+      String subAccountId,
+      String accountId,
+      DateTime dateCreated,
+      DateTime? dateModified});
 }
+
 /// @nodoc
-class __$SubAccountModelCopyWithImpl<$Res>
-    implements _$SubAccountModelCopyWith<$Res> {
-  __$SubAccountModelCopyWithImpl(this._self, this._then);
+class __$$SubAccountModelImplCopyWithImpl<$Res>
+    extends _$SubAccountModelCopyWithImpl<$Res, _$SubAccountModelImpl>
+    implements _$$SubAccountModelImplCopyWith<$Res> {
+  __$$SubAccountModelImplCopyWithImpl(
+      _$SubAccountModelImpl _value, $Res Function(_$SubAccountModelImpl) _then)
+      : super(_value, _then);
 
-  final _SubAccountModel _self;
-  final $Res Function(_SubAccountModel) _then;
-
-/// Create a copy of SubAccountModel
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? subAccountName = null,Object? subAccountId = null,Object? accountId = null,Object? dateCreated = null,Object? dateModified = freezed,}) {
-  return _then(_SubAccountModel(
-subAccountName: null == subAccountName ? _self.subAccountName : subAccountName // ignore: cast_nullable_to_non_nullable
-as String,subAccountId: null == subAccountId ? _self.subAccountId : subAccountId // ignore: cast_nullable_to_non_nullable
-as String,accountId: null == accountId ? _self.accountId : accountId // ignore: cast_nullable_to_non_nullable
-as String,dateCreated: null == dateCreated ? _self.dateCreated : dateCreated // ignore: cast_nullable_to_non_nullable
-as DateTime,dateModified: freezed == dateModified ? _self.dateModified : dateModified // ignore: cast_nullable_to_non_nullable
-as DateTime?,
-  ));
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? subAccountName = null,
+    Object? subAccountId = null,
+    Object? accountId = null,
+    Object? dateCreated = null,
+    Object? dateModified = freezed,
+  }) {
+    return _then(_$SubAccountModelImpl(
+      subAccountName: null == subAccountName
+          ? _value.subAccountName
+          : subAccountName // ignore: cast_nullable_to_non_nullable
+              as String,
+      subAccountId: null == subAccountId
+          ? _value.subAccountId
+          : subAccountId // ignore: cast_nullable_to_non_nullable
+              as String,
+      accountId: null == accountId
+          ? _value.accountId
+          : accountId // ignore: cast_nullable_to_non_nullable
+              as String,
+      dateCreated: null == dateCreated
+          ? _value.dateCreated
+          : dateCreated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      dateModified: freezed == dateModified
+          ? _value.dateModified
+          : dateModified // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
+  }
 }
 
+/// @nodoc
 
+class _$SubAccountModelImpl implements _SubAccountModel {
+  const _$SubAccountModelImpl(
+      {required this.subAccountName,
+      required this.subAccountId,
+      required this.accountId,
+      required this.dateCreated,
+      this.dateModified});
+
+  @override
+  final String subAccountName;
+  @override
+  final String subAccountId;
+  @override
+  final String accountId;
+  @override
+  final DateTime dateCreated;
+  @override
+  final DateTime? dateModified;
+
+  @override
+  String toString() {
+    return 'SubAccountModel(subAccountName: $subAccountName, subAccountId: $subAccountId, accountId: $accountId, dateCreated: $dateCreated, dateModified: $dateModified)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SubAccountModelImpl &&
+            (identical(other.subAccountName, subAccountName) ||
+                other.subAccountName == subAccountName) &&
+            (identical(other.subAccountId, subAccountId) ||
+                other.subAccountId == subAccountId) &&
+            (identical(other.accountId, accountId) ||
+                other.accountId == accountId) &&
+            (identical(other.dateCreated, dateCreated) ||
+                other.dateCreated == dateCreated) &&
+            (identical(other.dateModified, dateModified) ||
+                other.dateModified == dateModified));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, subAccountName, subAccountId,
+      accountId, dateCreated, dateModified);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SubAccountModelImplCopyWith<_$SubAccountModelImpl> get copyWith =>
+      __$$SubAccountModelImplCopyWithImpl<_$SubAccountModelImpl>(
+          this, _$identity);
 }
 
-// dart format on
+abstract class _SubAccountModel implements SubAccountModel {
+  const factory _SubAccountModel(
+      {required final String subAccountName,
+      required final String subAccountId,
+      required final String accountId,
+      required final DateTime dateCreated,
+      final DateTime? dateModified}) = _$SubAccountModelImpl;
+
+  @override
+  String get subAccountName;
+  @override
+  String get subAccountId;
+  @override
+  String get accountId;
+  @override
+  DateTime get dateCreated;
+  @override
+  DateTime? get dateModified;
+  @override
+  @JsonKey(ignore: true)
+  _$$SubAccountModelImplCopyWith<_$SubAccountModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

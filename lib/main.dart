@@ -1,18 +1,31 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:loader_overlay/loader_overlay.dart';
+import 'package:my_spending/core/dependency_injection/dependency_injections.dart';
 import 'package:my_spending/core/route/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  setupDependencyInjection();
   runApp(
-    ProviderScope(
-      child: EasyLocalization(
-        supportedLocales: [Locale('en'), Locale('de')],
-        path: 'assets',
-        fallbackLocale: Locale('en'),
-        child: const MyApp(),
+    GlobalLoaderOverlay(
+      overlayWidgetBuilder: (_) {
+        return Center(
+          child: CircularProgressIndicator(
+            color: Colors.green.shade700,
+            strokeWidth: 2,
+          ),
+        );
+      },
+      child: ProviderScope(
+        child: EasyLocalization(
+          supportedLocales: [Locale('en'), Locale('de')],
+          path: 'assets',
+          fallbackLocale: Locale('en'),
+          child: const MyApp(),
+        ),
       ),
     ),
   );
