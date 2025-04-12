@@ -4,4 +4,5 @@ abstract class AddAccountGroupRepository {
   void addAccountGroup({
     required AccountGroupModel accountGroupModel,
   });
+
 }

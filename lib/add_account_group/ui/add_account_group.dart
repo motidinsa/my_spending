@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_account_group/functions/add_account_group_functions.dart';
-import 'package:my_spending/add_account_group/provider/add_account_group_state.dart';
+import 'package:my_spending/add_account_group/state/add_account_group_state.dart';
 import 'package:my_spending/add_account_group/ui/add_account_group_text_field.dart';
 
 class AddAccountGroup extends StatelessWidget {

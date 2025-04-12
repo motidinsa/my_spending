@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_spending/add_transaction/functions/add_transaction_functions.dart';
-import 'package:my_spending/add_transaction/provider/add_transaction_state.dart';
+import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 
 class SingleTransactionType extends StatelessWidget {
   final String name;

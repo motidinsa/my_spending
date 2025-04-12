@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_account_group/functions/add_account_group_functions.dart';
 import 'package:my_spending/add_account_group/functions/add_account_group_validations.dart';
-import 'package:my_spending/add_account_group/provider/add_account_group_state.dart';
-import 'package:my_spending/core/provider/app_state.dart';
+import 'package:my_spending/add_account_group/state/add_account_group_state.dart';
+import 'package:my_spending/core/state/app_state.dart';
 
 class AddAccountGroupTextField extends StatefulWidget {
   const AddAccountGroupTextField({super.key});

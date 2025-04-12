@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:my_spending/add_transaction/provider/add_transaction_state.dart';
+import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/modal_items.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/widget_size.dart';
 

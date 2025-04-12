@@ -8,6 +8,9 @@ final locator = GetIt.instance;
 void setupDependencyInjection() {
   locator.registerSingletonAsync<Isar>(() async {
     final dir = await getApplicationDocumentsDirectory();
-    return await Isar.open([AccountGroupModelSchema], directory: dir.path);
+    if (Isar.instanceNames.isEmpty) {
+      return await Isar.open([AccountGroupModelSchema], directory: dir.path);
+    }
+    return Future.value(Isar.getInstance());
   });
 }
