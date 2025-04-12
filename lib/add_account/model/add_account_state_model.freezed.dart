@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AddAccountStateModel {
   String? get groupName => throw _privateConstructorUsedError;
-  List<AccountGroupModel>? get accountGroupModels =>
+  List<AccountGroupModel> get accountGroupModels =>
       throw _privateConstructorUsedError;
   bool? get isAccountGroupsLoading => throw _privateConstructorUsedError;
 
@@ -34,7 +34,7 @@ abstract class $AddAccountStateModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String? groupName,
-      List<AccountGroupModel>? accountGroupModels,
+      List<AccountGroupModel> accountGroupModels,
       bool? isAccountGroupsLoading});
 }
 
@@ -53,7 +53,7 @@ class _$AddAccountStateModelCopyWithImpl<$Res,
   @override
   $Res call({
     Object? groupName = freezed,
-    Object? accountGroupModels = freezed,
+    Object? accountGroupModels = null,
     Object? isAccountGroupsLoading = freezed,
   }) {
     return _then(_value.copyWith(
@@ -61,10 +61,10 @@ class _$AddAccountStateModelCopyWithImpl<$Res,
           ? _value.groupName
           : groupName // ignore: cast_nullable_to_non_nullable
               as String?,
-      accountGroupModels: freezed == accountGroupModels
+      accountGroupModels: null == accountGroupModels
           ? _value.accountGroupModels
           : accountGroupModels // ignore: cast_nullable_to_non_nullable
-              as List<AccountGroupModel>?,
+              as List<AccountGroupModel>,
       isAccountGroupsLoading: freezed == isAccountGroupsLoading
           ? _value.isAccountGroupsLoading
           : isAccountGroupsLoading // ignore: cast_nullable_to_non_nullable
@@ -83,7 +83,7 @@ abstract class _$$AddAccountStateModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {String? groupName,
-      List<AccountGroupModel>? accountGroupModels,
+      List<AccountGroupModel> accountGroupModels,
       bool? isAccountGroupsLoading});
 }
 
@@ -99,7 +99,7 @@ class __$$AddAccountStateModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? groupName = freezed,
-    Object? accountGroupModels = freezed,
+    Object? accountGroupModels = null,
     Object? isAccountGroupsLoading = freezed,
   }) {
     return _then(_$AddAccountStateModelImpl(
@@ -107,10 +107,10 @@ class __$$AddAccountStateModelImplCopyWithImpl<$Res>
           ? _value.groupName
           : groupName // ignore: cast_nullable_to_non_nullable
               as String?,
-      accountGroupModels: freezed == accountGroupModels
+      accountGroupModels: null == accountGroupModels
           ? _value._accountGroupModels
           : accountGroupModels // ignore: cast_nullable_to_non_nullable
-              as List<AccountGroupModel>?,
+              as List<AccountGroupModel>,
       isAccountGroupsLoading: freezed == isAccountGroupsLoading
           ? _value.isAccountGroupsLoading
           : isAccountGroupsLoading // ignore: cast_nullable_to_non_nullable
@@ -124,21 +124,20 @@ class __$$AddAccountStateModelImplCopyWithImpl<$Res>
 class _$AddAccountStateModelImpl implements _AddAccountStateModel {
   const _$AddAccountStateModelImpl(
       {this.groupName,
-      final List<AccountGroupModel>? accountGroupModels,
+      final List<AccountGroupModel> accountGroupModels = const [],
       this.isAccountGroupsLoading})
       : _accountGroupModels = accountGroupModels;
 
   @override
   final String? groupName;
-  final List<AccountGroupModel>? _accountGroupModels;
+  final List<AccountGroupModel> _accountGroupModels;
   @override
-  List<AccountGroupModel>? get accountGroupModels {
-    final value = _accountGroupModels;
-    if (value == null) return null;
+  @JsonKey()
+  List<AccountGroupModel> get accountGroupModels {
     if (_accountGroupModels is EqualUnmodifiableListView)
       return _accountGroupModels;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_accountGroupModels);
   }
 
   @override
@@ -181,13 +180,13 @@ class _$AddAccountStateModelImpl implements _AddAccountStateModel {
 abstract class _AddAccountStateModel implements AddAccountStateModel {
   const factory _AddAccountStateModel(
       {final String? groupName,
-      final List<AccountGroupModel>? accountGroupModels,
+      final List<AccountGroupModel> accountGroupModels,
       final bool? isAccountGroupsLoading}) = _$AddAccountStateModelImpl;
 
   @override
   String? get groupName;
   @override
-  List<AccountGroupModel>? get accountGroupModels;
+  List<AccountGroupModel> get accountGroupModels;
   @override
   bool? get isAccountGroupsLoading;
   @override

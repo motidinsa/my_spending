@@ -1,7 +1,6 @@
 import 'package:isar/isar.dart';
 import 'package:my_spending/add_account_group/model/account_group_model.dart';
 import 'package:my_spending/add_account_group/repository/add_account_group_repository.dart';
-import 'package:my_spending/add_account_group/ui/add_account_group.dart';
 import 'package:my_spending/core/dependency_injection/dependency_injections.dart';
 
 class IsarAddAccountGroupRepository implements AddAccountGroupRepository {
@@ -19,11 +18,10 @@ class IsarAddAccountGroupRepository implements AddAccountGroupRepository {
   Stream<List<AccountGroupModel>> listenAccountGroups() async* {
     final isar = locator<Isar>();
     //Watch the user collection for changes and yield the updated user list.
-    yield* isar.accountGroupModels.where().watch(fireImmediately: true);
+    yield* isar.accountGroupModels.where().sortByDateCreatedDesc().watch(fireImmediately: true);
   }
 
   Future<List<AccountGroupModel>> getAllAccountGroups() async {
-    final isar = locator<Isar>();
-    return await isar.accountGroupModels.where().findAll();
+    return await _isar.accountGroupModels.where().sortByDateCreatedDesc().findAll();
   }
 }

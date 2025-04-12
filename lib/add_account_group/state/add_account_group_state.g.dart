@@ -7,7 +7,7 @@ part of 'add_account_group_state.dart';
 // **************************************************************************
 
 String _$addAccountGroupStateHash() =>
-    r'6dbfd6dcf86813f7e6fc3a34c9c45a48f62409de';
+    r'493422301b3b406715eeeefc7367e76d6e351fae';
 
 /// See also [AddAccountGroupState].
 @ProviderFor(AddAccountGroupState)

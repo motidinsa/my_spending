@@ -15,6 +15,7 @@ class AddAccountState extends _$AddAccountState {
     state = state.copyWith(isAccountGroupsLoading: true);
     IsarAddAccountGroupRepository isarAddAccountGroupRepository = IsarAddAccountGroupRepository();
     List<AccountGroupModel> a = await isarAddAccountGroupRepository.getAllAccountGroups();
-    state.copyWith(accountGroupModels: a);
+    state = state.copyWith(accountGroupModels: a,isAccountGroupsLoading: false);
  }
+
 }

@@ -15,10 +15,11 @@ class AddAccountGroupTextField extends StatefulWidget {
 
 class _AddAccountGroupTextFieldState extends State<AddAccountGroupTextField> {
   TextEditingController textEditingController = TextEditingController();
-
+  FocusNode focusNode = FocusNode();
   @override
   void initState() {
     super.initState();
+    focusNode.requestFocus();
   }
 
   @override
@@ -38,6 +39,7 @@ class _AddAccountGroupTextFieldState extends State<AddAccountGroupTextField> {
                   : null,
           child: TextFormField(
             controller: textEditingController,
+            focusNode: focusNode,
             onChanged:
                 (text) =>
                     onAddAccountGroupTextFieldChange(ref: ref, text: text),
