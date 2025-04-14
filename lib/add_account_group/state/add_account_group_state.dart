@@ -43,4 +43,7 @@ class AddAccountGroupState extends _$AddAccountGroupState {
       state = state.copyWith(isLoading: null);
     }
   }
+  void addGroupNameFocus(){
+    state = state.copyWith(hasGroupNameFocus: true);
+  }
 }

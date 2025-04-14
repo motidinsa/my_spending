@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_account/functions/add_account_functions.dart';
 import 'package:my_spending/add_account/functions/add_account_validations.dart';
+import 'package:my_spending/core/functions/core_functions.dart';
 
 class AddAccountTextField extends StatefulWidget {
   final String title;
@@ -21,10 +22,13 @@ class _AddAccountTextFieldState extends State<AddAccountTextField> {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, ref, child) {
-        textEditingController.text = getAddAccountTextFieldData(
-          ref,
-          widget.title,
-        );
+        executeAfterBuild(() {
+          textEditingController.text = getAddAccountTextFieldData(
+            ref,
+            widget.title,
+          );
+        });
+
         if (hasAddAccountTextFieldFocus(ref, widget.title)) {
           focusNode.requestFocus();
         }
@@ -55,6 +59,14 @@ class _AddAccountTextFieldState extends State<AddAccountTextField> {
             suffixIcon: getAddAccountTextFieldIcon(widget.title),
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey, width: .6),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.red, width: .6),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.red),
               borderRadius: BorderRadius.circular(10),
             ),
             focusedBorder: OutlineInputBorder(

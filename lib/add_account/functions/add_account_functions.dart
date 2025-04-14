@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_spending/add_account/state/add_account_state.dart';
 import 'package:my_spending/add_account/ui/account_group_list.dart';
+import 'package:my_spending/add_account_group/model/account_group_model.dart';
 import 'package:my_spending/core/route/routes.dart';
 
 getAddAccountTextFieldIcon(String title) {
@@ -77,16 +78,16 @@ getAddAccountTextFieldData(WidgetRef ref, String title) {
     return ref.watch(addAccountStateProvider).groupName ?? '';
   } else if (title == 'Name') {
     return ref.watch(addAccountStateProvider.notifier).accountName;
-  }else if (title == 'Amount') {
+  } else if (title == 'Amount') {
     return ref.watch(addAccountStateProvider.notifier).amount;
-  }else if (title == 'Description') {
+  } else if (title == 'Description') {
     return ref.watch(addAccountStateProvider.notifier).description;
   }
   return '';
 }
 
-onSingleAccountGroupSelected(WidgetRef ref, String name) {
-  ref.read(addAccountStateProvider.notifier).setAccountGroupName(name);
+onSingleAccountGroupSelected(WidgetRef ref, AccountGroupModel accountGroupModel) {
+  ref.read(addAccountStateProvider.notifier).setAccountGroupName(accountGroupModel);
   navigatorKey.currentContext?.pop();
   if (ref.read(addAccountStateProvider.notifier).accountName.isEmpty) {
     ref.read(addAccountStateProvider.notifier).addNameFocus();
@@ -105,4 +106,18 @@ bool hasAddAccountTextFieldFocus(WidgetRef ref, String title) {
     return true;
   }
   return false;
+}
+
+onAddAccountSavePressed(WidgetRef ref) {
+  ref.read(addAccountStateProvider.notifier).updateSaveButtonPressedStatus();
+  if (ref
+          .read(addAccountStateProvider.notifier)
+          .formKey
+          .currentState
+          ?.validate() ==
+      true) {
+    ref.read(addAccountStateProvider.notifier).saveAccount();
+  } else {
+    ref.read(addAccountStateProvider.notifier).addFocus();
+  }
 }

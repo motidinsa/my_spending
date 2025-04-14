@@ -19,6 +19,8 @@ mixin _$AddAccountStateModel {
   String? get groupName => throw _privateConstructorUsedError;
   bool? get hasNameFocus => throw _privateConstructorUsedError;
   bool? get hasAmountFocus => throw _privateConstructorUsedError;
+  bool? get isSaveButtonPressed => throw _privateConstructorUsedError;
+  bool? get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddAccountStateModelCopyWith<AddAccountStateModel> get copyWith =>
@@ -31,7 +33,12 @@ abstract class $AddAccountStateModelCopyWith<$Res> {
           $Res Function(AddAccountStateModel) then) =
       _$AddAccountStateModelCopyWithImpl<$Res, AddAccountStateModel>;
   @useResult
-  $Res call({String? groupName, bool? hasNameFocus, bool? hasAmountFocus});
+  $Res call(
+      {String? groupName,
+      bool? hasNameFocus,
+      bool? hasAmountFocus,
+      bool? isSaveButtonPressed,
+      bool? isLoading});
 }
 
 /// @nodoc
@@ -51,6 +58,8 @@ class _$AddAccountStateModelCopyWithImpl<$Res,
     Object? groupName = freezed,
     Object? hasNameFocus = freezed,
     Object? hasAmountFocus = freezed,
+    Object? isSaveButtonPressed = freezed,
+    Object? isLoading = freezed,
   }) {
     return _then(_value.copyWith(
       groupName: freezed == groupName
@@ -65,6 +74,14 @@ class _$AddAccountStateModelCopyWithImpl<$Res,
           ? _value.hasAmountFocus
           : hasAmountFocus // ignore: cast_nullable_to_non_nullable
               as bool?,
+      isSaveButtonPressed: freezed == isSaveButtonPressed
+          ? _value.isSaveButtonPressed
+          : isSaveButtonPressed // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isLoading: freezed == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -77,7 +94,12 @@ abstract class _$$AddAccountStateModelImplCopyWith<$Res>
       __$$AddAccountStateModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? groupName, bool? hasNameFocus, bool? hasAmountFocus});
+  $Res call(
+      {String? groupName,
+      bool? hasNameFocus,
+      bool? hasAmountFocus,
+      bool? isSaveButtonPressed,
+      bool? isLoading});
 }
 
 /// @nodoc
@@ -94,6 +116,8 @@ class __$$AddAccountStateModelImplCopyWithImpl<$Res>
     Object? groupName = freezed,
     Object? hasNameFocus = freezed,
     Object? hasAmountFocus = freezed,
+    Object? isSaveButtonPressed = freezed,
+    Object? isLoading = freezed,
   }) {
     return _then(_$AddAccountStateModelImpl(
       groupName: freezed == groupName
@@ -108,6 +132,14 @@ class __$$AddAccountStateModelImplCopyWithImpl<$Res>
           ? _value.hasAmountFocus
           : hasAmountFocus // ignore: cast_nullable_to_non_nullable
               as bool?,
+      isSaveButtonPressed: freezed == isSaveButtonPressed
+          ? _value.isSaveButtonPressed
+          : isSaveButtonPressed // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isLoading: freezed == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -116,7 +148,11 @@ class __$$AddAccountStateModelImplCopyWithImpl<$Res>
 
 class _$AddAccountStateModelImpl implements _AddAccountStateModel {
   const _$AddAccountStateModelImpl(
-      {this.groupName, this.hasNameFocus, this.hasAmountFocus});
+      {this.groupName,
+      this.hasNameFocus,
+      this.hasAmountFocus,
+      this.isSaveButtonPressed,
+      this.isLoading});
 
   @override
   final String? groupName;
@@ -124,10 +160,14 @@ class _$AddAccountStateModelImpl implements _AddAccountStateModel {
   final bool? hasNameFocus;
   @override
   final bool? hasAmountFocus;
+  @override
+  final bool? isSaveButtonPressed;
+  @override
+  final bool? isLoading;
 
   @override
   String toString() {
-    return 'AddAccountStateModel(groupName: $groupName, hasNameFocus: $hasNameFocus, hasAmountFocus: $hasAmountFocus)';
+    return 'AddAccountStateModel(groupName: $groupName, hasNameFocus: $hasNameFocus, hasAmountFocus: $hasAmountFocus, isSaveButtonPressed: $isSaveButtonPressed, isLoading: $isLoading)';
   }
 
   @override
@@ -140,12 +180,16 @@ class _$AddAccountStateModelImpl implements _AddAccountStateModel {
             (identical(other.hasNameFocus, hasNameFocus) ||
                 other.hasNameFocus == hasNameFocus) &&
             (identical(other.hasAmountFocus, hasAmountFocus) ||
-                other.hasAmountFocus == hasAmountFocus));
+                other.hasAmountFocus == hasAmountFocus) &&
+            (identical(other.isSaveButtonPressed, isSaveButtonPressed) ||
+                other.isSaveButtonPressed == isSaveButtonPressed) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, groupName, hasNameFocus, hasAmountFocus);
+  int get hashCode => Object.hash(runtimeType, groupName, hasNameFocus,
+      hasAmountFocus, isSaveButtonPressed, isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -160,7 +204,9 @@ abstract class _AddAccountStateModel implements AddAccountStateModel {
   const factory _AddAccountStateModel(
       {final String? groupName,
       final bool? hasNameFocus,
-      final bool? hasAmountFocus}) = _$AddAccountStateModelImpl;
+      final bool? hasAmountFocus,
+      final bool? isSaveButtonPressed,
+      final bool? isLoading}) = _$AddAccountStateModelImpl;
 
   @override
   String? get groupName;
@@ -168,6 +214,10 @@ abstract class _AddAccountStateModel implements AddAccountStateModel {
   bool? get hasNameFocus;
   @override
   bool? get hasAmountFocus;
+  @override
+  bool? get isSaveButtonPressed;
+  @override
+  bool? get isLoading;
   @override
   @JsonKey(ignore: true)
   _$$AddAccountStateModelImplCopyWith<_$AddAccountStateModelImpl>

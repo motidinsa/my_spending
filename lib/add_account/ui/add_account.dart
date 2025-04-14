@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_spending/add_account/functions/add_account_functions.dart';
 import 'package:my_spending/add_account/state/add_account_state.dart';
 import 'package:my_spending/add_account/ui/single_add_account_content.dart';
 import 'package:my_spending/core/functions/core_functions.dart';
-import 'package:my_spending/core/state/app_state.dart';
 
 class AddAccount extends StatelessWidget {
   const AddAccount({super.key});
@@ -11,7 +11,7 @@ class AddAccount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ()=>unFocus(),
+      onTap: () => unFocus(),
       child: Scaffold(
         appBar: AppBar(
           title: Text(
@@ -52,16 +52,17 @@ class AddAccount extends StatelessWidget {
                     builder: (context, ref, child) {
                       ref.watch(addAccountStateProvider);
                       return Form(
-                        key: ref.watch(appStateProvider).formKey,
-                        // autovalidateMode:
-                        // ref.watch(
-                        //   addAccountGroupStateProvider.select(
-                        //         (state) => state.isSaveButtonPressed,
-                        //   ),
-                        // ) ==
-                        //     true
-                        //     ? AutovalidateMode.always
-                        //     : null,
+                        key:
+                            ref.watch(addAccountStateProvider.notifier).formKey,
+                        autovalidateMode:
+                            ref.watch(
+                                      addAccountStateProvider.select(
+                                        (state) => state.isSaveButtonPressed,
+                                      ),
+                                    ) ==
+                                    true
+                                ? AutovalidateMode.always
+                                : null,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
@@ -81,25 +82,45 @@ class AddAccount extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-              child: ElevatedButton(
-                onPressed: () {},
-
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green.shade300,
-                  padding: EdgeInsets.symmetric(vertical: 15),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                      12,
-                    ), // Set the border radius here
+            Consumer(
+              builder: (context, ref, child) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 15,
                   ),
-                ),
-                child: Text(
-                  'Save',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
-              ),
+                  child: ElevatedButton(
+                    onPressed: () => onAddAccountSavePressed(ref),
+
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green.shade300,
+                      padding: EdgeInsets.symmetric(vertical: 15),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                          12,
+                        ), // Set the border radius here
+                      ),
+                    ),
+                    child:
+                        ref.watch(addAccountStateProvider).isLoading == true
+                            ? SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                                strokeWidth: 3,
+                              ),
+                            )
+                            : Text(
+                              'Save',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                              ),
+                            ),
+                  ),
+                );
+              },
             ),
           ],
         ),

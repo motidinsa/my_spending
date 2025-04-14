@@ -26,6 +26,9 @@ class _AddAccountGroupTextFieldState extends State<AddAccountGroupTextField> {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, ref, child) {
+        if (hasAddAccountGroupTextFieldFocus(ref)) {
+        focusNode.requestFocus();
+        }
         return Form(
           key: ref.watch(appStateProvider).formKey,
           autovalidateMode:

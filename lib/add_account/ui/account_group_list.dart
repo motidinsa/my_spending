@@ -67,7 +67,7 @@ class AccountGroupList extends StatelessWidget {
                                 ? ListView.builder(
                                   itemBuilder:
                                       (context, index) => SingleAccountGroup(
-                                        name: data[index].groupName,
+                                        accountGroupModel: data[index],
                                       ),
                                   itemCount: data.length,
                                 )

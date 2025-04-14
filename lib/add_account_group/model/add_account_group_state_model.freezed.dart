@@ -19,6 +19,7 @@ mixin _$AddAccountGroupStateModel {
   String get groupName => throw _privateConstructorUsedError;
   bool? get isSaveButtonPressed => throw _privateConstructorUsedError;
   bool? get isLoading => throw _privateConstructorUsedError;
+  bool? get hasGroupNameFocus => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddAccountGroupStateModelCopyWith<AddAccountGroupStateModel> get copyWith =>
@@ -31,7 +32,11 @@ abstract class $AddAccountGroupStateModelCopyWith<$Res> {
           $Res Function(AddAccountGroupStateModel) then) =
       _$AddAccountGroupStateModelCopyWithImpl<$Res, AddAccountGroupStateModel>;
   @useResult
-  $Res call({String groupName, bool? isSaveButtonPressed, bool? isLoading});
+  $Res call(
+      {String groupName,
+      bool? isSaveButtonPressed,
+      bool? isLoading,
+      bool? hasGroupNameFocus});
 }
 
 /// @nodoc
@@ -51,6 +56,7 @@ class _$AddAccountGroupStateModelCopyWithImpl<$Res,
     Object? groupName = null,
     Object? isSaveButtonPressed = freezed,
     Object? isLoading = freezed,
+    Object? hasGroupNameFocus = freezed,
   }) {
     return _then(_value.copyWith(
       groupName: null == groupName
@@ -65,6 +71,10 @@ class _$AddAccountGroupStateModelCopyWithImpl<$Res,
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool?,
+      hasGroupNameFocus: freezed == hasGroupNameFocus
+          ? _value.hasGroupNameFocus
+          : hasGroupNameFocus // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -78,7 +88,11 @@ abstract class _$$AddAccountGroupStateModelImplCopyWith<$Res>
       __$$AddAccountGroupStateModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String groupName, bool? isSaveButtonPressed, bool? isLoading});
+  $Res call(
+      {String groupName,
+      bool? isSaveButtonPressed,
+      bool? isLoading,
+      bool? hasGroupNameFocus});
 }
 
 /// @nodoc
@@ -97,6 +111,7 @@ class __$$AddAccountGroupStateModelImplCopyWithImpl<$Res>
     Object? groupName = null,
     Object? isSaveButtonPressed = freezed,
     Object? isLoading = freezed,
+    Object? hasGroupNameFocus = freezed,
   }) {
     return _then(_$AddAccountGroupStateModelImpl(
       groupName: null == groupName
@@ -111,6 +126,10 @@ class __$$AddAccountGroupStateModelImplCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool?,
+      hasGroupNameFocus: freezed == hasGroupNameFocus
+          ? _value.hasGroupNameFocus
+          : hasGroupNameFocus // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -119,7 +138,10 @@ class __$$AddAccountGroupStateModelImplCopyWithImpl<$Res>
 
 class _$AddAccountGroupStateModelImpl implements _AddAccountGroupStateModel {
   const _$AddAccountGroupStateModelImpl(
-      {required this.groupName, this.isSaveButtonPressed, this.isLoading});
+      {required this.groupName,
+      this.isSaveButtonPressed,
+      this.isLoading,
+      this.hasGroupNameFocus});
 
   @override
   final String groupName;
@@ -127,10 +149,12 @@ class _$AddAccountGroupStateModelImpl implements _AddAccountGroupStateModel {
   final bool? isSaveButtonPressed;
   @override
   final bool? isLoading;
+  @override
+  final bool? hasGroupNameFocus;
 
   @override
   String toString() {
-    return 'AddAccountGroupStateModel(groupName: $groupName, isSaveButtonPressed: $isSaveButtonPressed, isLoading: $isLoading)';
+    return 'AddAccountGroupStateModel(groupName: $groupName, isSaveButtonPressed: $isSaveButtonPressed, isLoading: $isLoading, hasGroupNameFocus: $hasGroupNameFocus)';
   }
 
   @override
@@ -143,12 +167,14 @@ class _$AddAccountGroupStateModelImpl implements _AddAccountGroupStateModel {
             (identical(other.isSaveButtonPressed, isSaveButtonPressed) ||
                 other.isSaveButtonPressed == isSaveButtonPressed) &&
             (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading));
+                other.isLoading == isLoading) &&
+            (identical(other.hasGroupNameFocus, hasGroupNameFocus) ||
+                other.hasGroupNameFocus == hasGroupNameFocus));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, groupName, isSaveButtonPressed, isLoading);
+  int get hashCode => Object.hash(runtimeType, groupName, isSaveButtonPressed,
+      isLoading, hasGroupNameFocus);
 
   @JsonKey(ignore: true)
   @override
@@ -162,7 +188,8 @@ abstract class _AddAccountGroupStateModel implements AddAccountGroupStateModel {
   const factory _AddAccountGroupStateModel(
       {required final String groupName,
       final bool? isSaveButtonPressed,
-      final bool? isLoading}) = _$AddAccountGroupStateModelImpl;
+      final bool? isLoading,
+      final bool? hasGroupNameFocus}) = _$AddAccountGroupStateModelImpl;
 
   @override
   String get groupName;
@@ -170,6 +197,8 @@ abstract class _AddAccountGroupStateModel implements AddAccountGroupStateModel {
   bool? get isSaveButtonPressed;
   @override
   bool? get isLoading;
+  @override
+  bool? get hasGroupNameFocus;
   @override
   @JsonKey(ignore: true)
   _$$AddAccountGroupStateModelImplCopyWith<_$AddAccountGroupStateModelImpl>

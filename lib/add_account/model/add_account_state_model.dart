@@ -8,5 +8,7 @@ abstract class AddAccountStateModel with _$AddAccountStateModel {
     String? groupName,
      bool? hasNameFocus,
      bool? hasAmountFocus,
+     bool? isSaveButtonPressed,
+     bool? isLoading,
   }) = _AddAccountStateModel;
 }

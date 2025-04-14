@@ -22,6 +22,7 @@ mixin _$AccountModel {
   DateTime get dateCreated => throw _privateConstructorUsedError;
   double get amountAvailable => throw _privateConstructorUsedError;
   DateTime? get dateModified => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AccountModelCopyWith<AccountModel> get copyWith =>
@@ -40,7 +41,8 @@ abstract class $AccountModelCopyWith<$Res> {
       String? accountGroupId,
       DateTime dateCreated,
       double amountAvailable,
-      DateTime? dateModified});
+      DateTime? dateModified,
+      String? description});
 }
 
 /// @nodoc
@@ -62,6 +64,7 @@ class _$AccountModelCopyWithImpl<$Res, $Val extends AccountModel>
     Object? dateCreated = null,
     Object? amountAvailable = null,
     Object? dateModified = freezed,
+    Object? description = freezed,
   }) {
     return _then(_value.copyWith(
       accountName: null == accountName
@@ -88,6 +91,10 @@ class _$AccountModelCopyWithImpl<$Res, $Val extends AccountModel>
           ? _value.dateModified
           : dateModified // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -106,7 +113,8 @@ abstract class _$$AccountModelImplCopyWith<$Res>
       String? accountGroupId,
       DateTime dateCreated,
       double amountAvailable,
-      DateTime? dateModified});
+      DateTime? dateModified,
+      String? description});
 }
 
 /// @nodoc
@@ -126,6 +134,7 @@ class __$$AccountModelImplCopyWithImpl<$Res>
     Object? dateCreated = null,
     Object? amountAvailable = null,
     Object? dateModified = freezed,
+    Object? description = freezed,
   }) {
     return _then(_$AccountModelImpl(
       accountName: null == accountName
@@ -152,20 +161,26 @@ class __$$AccountModelImplCopyWithImpl<$Res>
           ? _value.dateModified
           : dateModified // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$AccountModelImpl implements _AccountModel {
+class _$AccountModelImpl extends _AccountModel {
   const _$AccountModelImpl(
       {required this.accountName,
       required this.accountId,
       this.accountGroupId,
       required this.dateCreated,
       required this.amountAvailable,
-      this.dateModified});
+      this.dateModified,
+      this.description})
+      : super._();
 
   @override
   final String accountName;
@@ -179,10 +194,12 @@ class _$AccountModelImpl implements _AccountModel {
   final double amountAvailable;
   @override
   final DateTime? dateModified;
+  @override
+  final String? description;
 
   @override
   String toString() {
-    return 'AccountModel(accountName: $accountName, accountId: $accountId, accountGroupId: $accountGroupId, dateCreated: $dateCreated, amountAvailable: $amountAvailable, dateModified: $dateModified)';
+    return 'AccountModel(accountName: $accountName, accountId: $accountId, accountGroupId: $accountGroupId, dateCreated: $dateCreated, amountAvailable: $amountAvailable, dateModified: $dateModified, description: $description)';
   }
 
   @override
@@ -201,12 +218,14 @@ class _$AccountModelImpl implements _AccountModel {
             (identical(other.amountAvailable, amountAvailable) ||
                 other.amountAvailable == amountAvailable) &&
             (identical(other.dateModified, dateModified) ||
-                other.dateModified == dateModified));
+                other.dateModified == dateModified) &&
+            (identical(other.description, description) ||
+                other.description == description));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, accountName, accountId,
-      accountGroupId, dateCreated, amountAvailable, dateModified);
+      accountGroupId, dateCreated, amountAvailable, dateModified, description);
 
   @JsonKey(ignore: true)
   @override
@@ -215,14 +234,16 @@ class _$AccountModelImpl implements _AccountModel {
       __$$AccountModelImplCopyWithImpl<_$AccountModelImpl>(this, _$identity);
 }
 
-abstract class _AccountModel implements AccountModel {
+abstract class _AccountModel extends AccountModel {
   const factory _AccountModel(
       {required final String accountName,
       required final String accountId,
       final String? accountGroupId,
       required final DateTime dateCreated,
       required final double amountAvailable,
-      final DateTime? dateModified}) = _$AccountModelImpl;
+      final DateTime? dateModified,
+      final String? description}) = _$AccountModelImpl;
+  const _AccountModel._() : super._();
 
   @override
   String get accountName;
@@ -236,6 +257,8 @@ abstract class _AccountModel implements AccountModel {
   double get amountAvailable;
   @override
   DateTime? get dateModified;
+  @override
+  String? get description;
   @override
   @JsonKey(ignore: true)
   _$$AccountModelImplCopyWith<_$AccountModelImpl> get copyWith =>
