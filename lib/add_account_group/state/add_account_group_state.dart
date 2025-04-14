@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_spending/add_account_group/model/account_group_model.dart';
 import 'package:my_spending/add_account_group/model/add_account_group_state_model.dart';
@@ -10,6 +11,8 @@ part 'add_account_group_state.g.dart';
 
 @riverpod
 class AddAccountGroupState extends _$AddAccountGroupState {
+  final formKey = GlobalKey<FormState>();
+
   @override
   AddAccountGroupStateModel build() {
     return AddAccountGroupStateModel(groupName: '');
@@ -43,7 +46,8 @@ class AddAccountGroupState extends _$AddAccountGroupState {
       state = state.copyWith(isLoading: null);
     }
   }
-  void addGroupNameFocus(){
+
+  void addGroupNameFocus() {
     state = state.copyWith(hasGroupNameFocus: true);
   }
 }

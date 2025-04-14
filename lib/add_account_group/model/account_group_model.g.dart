@@ -49,7 +49,7 @@ const AccountGroupModelSchema = CollectionSchema(
   getId: _accountGroupModelGetId,
   getLinks: _accountGroupModelGetLinks,
   attach: _accountGroupModelAttach,
-  version: '3.1.0+1',
+  version: '3.1.8',
 );
 
 int _accountGroupModelEstimateSize(

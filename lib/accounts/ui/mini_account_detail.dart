@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:my_spending/core/functions/core_functions.dart';
+import 'package:my_spending/core/model/account_model.dart';
 // import 'package:smooth_corner/smooth_corner.dart';
 
 class MiniAccountDetail extends StatelessWidget {
-  final String name;
+  final AccountModel accountModel;
 
-  const MiniAccountDetail({
-    super.key,
-    required this.name,
-  });
+  const MiniAccountDetail({super.key, required this.accountModel});
 
   @override
   Widget build(BuildContext context) {
@@ -20,16 +19,14 @@ class MiniAccountDetail extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
       child: ListTile(
         onTap: () {},
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         tileColor: Colors.green.shade50,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Expanded(
               child: Text(
-                name,
+                accountModel.accountName,
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                   color: Colors.grey.shade800,
@@ -37,10 +34,11 @@ class MiniAccountDetail extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(width: 5,),
+            SizedBox(width: 5),
             Expanded(
               child: Text(
-                '\$ 2,000,29',textAlign: TextAlign.end,
+                '\$ ${getFormattedNumberWithComa(accountModel.amountAvailable)}',
+                textAlign: TextAlign.end,
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                   color: Colors.grey.shade700,

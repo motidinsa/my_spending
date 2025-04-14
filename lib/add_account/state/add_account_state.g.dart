@@ -6,7 +6,7 @@ part of 'add_account_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$addAccountStateHash() => r'55661e49518d83fe84918570666451a6a2343323';
+String _$addAccountStateHash() => r'6b0144925e530d6ec9b112dcf9794703a4c177f6';
 
 /// See also [AddAccountState].
 @ProviderFor(AddAccountState)

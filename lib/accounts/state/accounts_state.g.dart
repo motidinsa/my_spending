@@ -1,27 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'add_account_group_state.dart';
+part of 'accounts_state.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$addAccountGroupStateHash() =>
-    r'b65464a81ff5895aaa8caf73b09cd3db65990906';
+String _$accountsStateHash() => r'956de28899982e477e95e90ad3e0286e8df3c222';
 
-/// See also [AddAccountGroupState].
-@ProviderFor(AddAccountGroupState)
-final addAccountGroupStateProvider = AutoDisposeNotifierProvider<
-    AddAccountGroupState, AddAccountGroupStateModel>.internal(
-  AddAccountGroupState.new,
-  name: r'addAccountGroupStateProvider',
+/// See also [AccountsState].
+@ProviderFor(AccountsState)
+final accountsStateProvider = AutoDisposeStreamNotifierProvider<AccountsState,
+    List<AccountModel>>.internal(
+  AccountsState.new,
+  name: r'accountsStateProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$addAccountGroupStateHash,
+      : _$accountsStateHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$AddAccountGroupState = AutoDisposeNotifier<AddAccountGroupStateModel>;
+typedef _$AccountsState = AutoDisposeStreamNotifier<List<AccountModel>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

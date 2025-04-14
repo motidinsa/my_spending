@@ -12,3 +12,6 @@ String generateDatabaseId( DateTime time) {
   String key = dateFormatter.format(time);
   return key;
 }
+String getFormattedNumberWithComa(double num) {
+  return NumberFormat('#,###.##').format(num);
+}

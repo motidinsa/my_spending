@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:grouped_list/grouped_list.dart';
+import 'package:my_spending/accounts/functions/accounts_function.dart';
+import 'package:my_spending/accounts/state/accounts_state.dart';
 import 'package:my_spending/accounts/ui/grouped_account_list.dart';
-import 'package:my_spending/accounts/ui/mini_account_detail.dart';
+import 'package:my_spending/core/model/account_model.dart';
 
 class Accounts extends StatelessWidget {
   const Accounts({super.key});
@@ -18,22 +22,28 @@ class Accounts extends StatelessWidget {
         backgroundColor: Colors.green.shade400,
       ),
       appBar: AppBar(
-        title: Text('Accounts' , style: TextStyle(
-        color: Colors.green.shade800,
-          fontWeight: FontWeight.bold,
-        ),),
+        title: Text(
+          'Accounts',
+          style: TextStyle(
+            color: Colors.green.shade800,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         // centerTitle: true,
         backgroundColor: Colors.white,
-        actions: [ // Add the actions property
+        actions: [
+          // Add the actions property
           Padding(
             padding: const EdgeInsets.only(right: 5),
             child: TextButton(
               onPressed: () {
-               context.go('/accounts/add_account_group');
+                context.go('/accounts/add_account_group');
               },
-              style: TextButton.styleFrom(   shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),),
+              style: TextButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
               child: Text(
                 'Add account group',
                 style: TextStyle(
@@ -47,23 +57,36 @@ class Accounts extends StatelessWidget {
         ],
       ),
       backgroundColor: Colors.white,
-      body: ListView(
-        // shrinkWrap: true,
-        children: [
-          SizedBox(height: 10,),
-          GroupedAccountList(
-            title: 'salesN',
-            addItemName: 'customerNiufer',
-            detailPageName: 'salesN',
-          ),
-          SizedBox(height: 10,),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: MiniAccountDetail(
-              name: 'addItemName',
-            ),
-          ),
-        ],
+      body: Consumer(
+        builder: (context, ref, child) {
+          return ref
+              .watch(accountsStateProvider)
+              .when(
+                data:
+                    (data) => GroupedListView<List<AccountModel>, DateTime>(
+                      elements: getGroupedAccounts(data),
+                      groupBy:
+                          (element) =>
+                              DateUtils.dateOnly(element.first.dateCreated),
+                      separator: const SizedBox(height: 10),
+                      padding: EdgeInsets.only(bottom: 20),
+                      groupSeparatorBuilder: (value) => SizedBox(height: 5),
+                      itemBuilder: (context, elements) {
+                        return GroupedAccountList(
+                          accountModels: elements,
+                        );
+                      },
+                      // groupComparator:
+                      //     (item1, item2) =>
+                      //     DateUtils.dateOnly(
+                      //       item1,
+                      //     ).compareTo(DateUtils.dateOnly(item2)),
+                      shrinkWrap: true,
+                    ),
+                error: (error, stack) => Text(error.toString()),
+                loading: () => Center(child: CircularProgressIndicator()),
+              );
+        },
       ),
     );
   }
