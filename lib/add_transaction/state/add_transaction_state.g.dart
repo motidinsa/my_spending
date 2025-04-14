@@ -7,7 +7,7 @@ part of 'add_transaction_state.dart';
 // **************************************************************************
 
 String _$addTransactionStateHash() =>
-    r'ea201478c9b0a2c741f7ace1f39d4cb3ab494bb7';
+    r'665c1dd781c9b4a27d1a14852cb862f9327c7532';
 
 /// See also [AddTransactionState].
 @ProviderFor(AddTransactionState)

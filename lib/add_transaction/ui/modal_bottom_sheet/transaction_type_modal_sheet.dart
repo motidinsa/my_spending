@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/modal_items.dart';
-import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/widget_size.dart';
 
 class TransactionTypeModalSheet extends StatelessWidget {
   final String redirectFrom;
@@ -46,52 +45,35 @@ class TransactionTypeModalSheet extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 15),
             child: Consumer(
               builder: (context, ref, child) {
-                return WidgetSize(
-                  onChange: (Size size) {
-                    ref
-                        .read(addTransactionStateProvider.notifier)
-                        .updateSubcategoryHeight(
-                          size.height,
-                          MediaQuery.of(context).size.height,
-                        );
-                  },
-                  child: SizedBox(
-                    height: ref.watch(
-                      addTransactionStateProvider.select(
-                        (state) => state.modalHeight,
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: ModalItems(
+                        isPrimary: true,
+                        type: redirectFrom,
+                        categoryModels:
+                            redirectFrom == 'Category'
+                                ? ref
+                                    .read(addTransactionStateProvider)
+                                    .categoryModels
+                                : null,
+                        accountModels:
+                            redirectFrom == 'Account'
+                                ? ref
+                                    .read(addTransactionStateProvider)
+                                    .accountModels
+                                : null,
                       ),
                     ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: ModalItems(
-                            isPrimary: true,
-                            type: redirectFrom,
-                            categoryModels:
-                                redirectFrom == 'Category'
-                                    ? ref
-                                        .read(addTransactionStateProvider)
-                                        .categoryModels
-                                    : null,
-                            accountModels:
-                                redirectFrom == 'Account'
-                                    ? ref
-                                        .read(addTransactionStateProvider)
-                                        .accountModels
-                                    : null,
-                          ),
-                        ),
-                        const SizedBox(width: 10),
-                        Expanded(
-                          child: ModalItems(
-                            isPrimary: false,
-                            type: redirectFrom,
-                          ),
-                        ),
-                      ],
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: ModalItems(
+                        isPrimary: false,
+                        type: redirectFrom,
+                      ),
                     ),
-                  ),
+                  ],
                 );
               },
             ),

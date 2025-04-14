@@ -8,5 +8,4 @@ part 'app_state.g.dart';
 class AppState extends _$AppState {
   @override
   AppStateModel build() => AppStateModel(formKey: GlobalKey<FormState>());
-
 }

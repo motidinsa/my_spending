@@ -1,21 +1,40 @@
 import 'package:my_spending/add_account/model/add_account_state_model.dart';
-import 'package:my_spending/add_account_group/model/account_group_model.dart';
-import 'package:my_spending/add_account_group/repository/isar_add_account_group_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'add_account_state.g.dart';
 
 @riverpod
 class AddAccountState extends _$AddAccountState {
+  String accountName = '';
+  String amount = '';
+  String description = '';
+
   @override
   AddAccountStateModel build() {
     return AddAccountStateModel();
   }
- Future<void> getAccountGroups() async {
-    state = state.copyWith(isAccountGroupsLoading: true);
-    IsarAddAccountGroupRepository isarAddAccountGroupRepository = IsarAddAccountGroupRepository();
-    List<AccountGroupModel> a = await isarAddAccountGroupRepository.getAllAccountGroups();
-    state = state.copyWith(accountGroupModels: a,isAccountGroupsLoading: false);
- }
 
+  void setAccountGroupName(String name) {
+    state = state.copyWith(groupName: name);
+  }
+
+  void addNameFocus() {
+    state = state.copyWith(hasNameFocus: true,hasAmountFocus: false);
+  }
+
+  void addAmountFocus() {
+    state = state.copyWith(hasAmountFocus: true,hasNameFocus: false);
+  }
+
+  void setAccountName(String name) {
+    accountName = name;
+  }
+
+  void setAmount(String value) {
+    amount = value;
+  }
+
+  void setDescription(String value) {
+    description = value;
+  }
 }

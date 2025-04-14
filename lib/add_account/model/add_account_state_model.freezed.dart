@@ -17,9 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AddAccountStateModel {
   String? get groupName => throw _privateConstructorUsedError;
-  List<AccountGroupModel> get accountGroupModels =>
-      throw _privateConstructorUsedError;
-  bool? get isAccountGroupsLoading => throw _privateConstructorUsedError;
+  bool? get hasNameFocus => throw _privateConstructorUsedError;
+  bool? get hasAmountFocus => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddAccountStateModelCopyWith<AddAccountStateModel> get copyWith =>
@@ -32,10 +31,7 @@ abstract class $AddAccountStateModelCopyWith<$Res> {
           $Res Function(AddAccountStateModel) then) =
       _$AddAccountStateModelCopyWithImpl<$Res, AddAccountStateModel>;
   @useResult
-  $Res call(
-      {String? groupName,
-      List<AccountGroupModel> accountGroupModels,
-      bool? isAccountGroupsLoading});
+  $Res call({String? groupName, bool? hasNameFocus, bool? hasAmountFocus});
 }
 
 /// @nodoc
@@ -53,21 +49,21 @@ class _$AddAccountStateModelCopyWithImpl<$Res,
   @override
   $Res call({
     Object? groupName = freezed,
-    Object? accountGroupModels = null,
-    Object? isAccountGroupsLoading = freezed,
+    Object? hasNameFocus = freezed,
+    Object? hasAmountFocus = freezed,
   }) {
     return _then(_value.copyWith(
       groupName: freezed == groupName
           ? _value.groupName
           : groupName // ignore: cast_nullable_to_non_nullable
               as String?,
-      accountGroupModels: null == accountGroupModels
-          ? _value.accountGroupModels
-          : accountGroupModels // ignore: cast_nullable_to_non_nullable
-              as List<AccountGroupModel>,
-      isAccountGroupsLoading: freezed == isAccountGroupsLoading
-          ? _value.isAccountGroupsLoading
-          : isAccountGroupsLoading // ignore: cast_nullable_to_non_nullable
+      hasNameFocus: freezed == hasNameFocus
+          ? _value.hasNameFocus
+          : hasNameFocus // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      hasAmountFocus: freezed == hasAmountFocus
+          ? _value.hasAmountFocus
+          : hasAmountFocus // ignore: cast_nullable_to_non_nullable
               as bool?,
     ) as $Val);
   }
@@ -81,10 +77,7 @@ abstract class _$$AddAccountStateModelImplCopyWith<$Res>
       __$$AddAccountStateModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? groupName,
-      List<AccountGroupModel> accountGroupModels,
-      bool? isAccountGroupsLoading});
+  $Res call({String? groupName, bool? hasNameFocus, bool? hasAmountFocus});
 }
 
 /// @nodoc
@@ -99,21 +92,21 @@ class __$$AddAccountStateModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? groupName = freezed,
-    Object? accountGroupModels = null,
-    Object? isAccountGroupsLoading = freezed,
+    Object? hasNameFocus = freezed,
+    Object? hasAmountFocus = freezed,
   }) {
     return _then(_$AddAccountStateModelImpl(
       groupName: freezed == groupName
           ? _value.groupName
           : groupName // ignore: cast_nullable_to_non_nullable
               as String?,
-      accountGroupModels: null == accountGroupModels
-          ? _value._accountGroupModels
-          : accountGroupModels // ignore: cast_nullable_to_non_nullable
-              as List<AccountGroupModel>,
-      isAccountGroupsLoading: freezed == isAccountGroupsLoading
-          ? _value.isAccountGroupsLoading
-          : isAccountGroupsLoading // ignore: cast_nullable_to_non_nullable
+      hasNameFocus: freezed == hasNameFocus
+          ? _value.hasNameFocus
+          : hasNameFocus // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      hasAmountFocus: freezed == hasAmountFocus
+          ? _value.hasAmountFocus
+          : hasAmountFocus // ignore: cast_nullable_to_non_nullable
               as bool?,
     ));
   }
@@ -123,29 +116,18 @@ class __$$AddAccountStateModelImplCopyWithImpl<$Res>
 
 class _$AddAccountStateModelImpl implements _AddAccountStateModel {
   const _$AddAccountStateModelImpl(
-      {this.groupName,
-      final List<AccountGroupModel> accountGroupModels = const [],
-      this.isAccountGroupsLoading})
-      : _accountGroupModels = accountGroupModels;
+      {this.groupName, this.hasNameFocus, this.hasAmountFocus});
 
   @override
   final String? groupName;
-  final List<AccountGroupModel> _accountGroupModels;
   @override
-  @JsonKey()
-  List<AccountGroupModel> get accountGroupModels {
-    if (_accountGroupModels is EqualUnmodifiableListView)
-      return _accountGroupModels;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_accountGroupModels);
-  }
-
+  final bool? hasNameFocus;
   @override
-  final bool? isAccountGroupsLoading;
+  final bool? hasAmountFocus;
 
   @override
   String toString() {
-    return 'AddAccountStateModel(groupName: $groupName, accountGroupModels: $accountGroupModels, isAccountGroupsLoading: $isAccountGroupsLoading)';
+    return 'AddAccountStateModel(groupName: $groupName, hasNameFocus: $hasNameFocus, hasAmountFocus: $hasAmountFocus)';
   }
 
   @override
@@ -155,18 +137,15 @@ class _$AddAccountStateModelImpl implements _AddAccountStateModel {
             other is _$AddAccountStateModelImpl &&
             (identical(other.groupName, groupName) ||
                 other.groupName == groupName) &&
-            const DeepCollectionEquality()
-                .equals(other._accountGroupModels, _accountGroupModels) &&
-            (identical(other.isAccountGroupsLoading, isAccountGroupsLoading) ||
-                other.isAccountGroupsLoading == isAccountGroupsLoading));
+            (identical(other.hasNameFocus, hasNameFocus) ||
+                other.hasNameFocus == hasNameFocus) &&
+            (identical(other.hasAmountFocus, hasAmountFocus) ||
+                other.hasAmountFocus == hasAmountFocus));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      groupName,
-      const DeepCollectionEquality().hash(_accountGroupModels),
-      isAccountGroupsLoading);
+  int get hashCode =>
+      Object.hash(runtimeType, groupName, hasNameFocus, hasAmountFocus);
 
   @JsonKey(ignore: true)
   @override
@@ -180,15 +159,15 @@ class _$AddAccountStateModelImpl implements _AddAccountStateModel {
 abstract class _AddAccountStateModel implements AddAccountStateModel {
   const factory _AddAccountStateModel(
       {final String? groupName,
-      final List<AccountGroupModel> accountGroupModels,
-      final bool? isAccountGroupsLoading}) = _$AddAccountStateModelImpl;
+      final bool? hasNameFocus,
+      final bool? hasAmountFocus}) = _$AddAccountStateModelImpl;
 
   @override
   String? get groupName;
   @override
-  List<AccountGroupModel> get accountGroupModels;
+  bool? get hasNameFocus;
   @override
-  bool? get isAccountGroupsLoading;
+  bool? get hasAmountFocus;
   @override
   @JsonKey(ignore: true)
   _$$AddAccountStateModelImplCopyWith<_$AddAccountStateModelImpl>

@@ -30,7 +30,7 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, ref, child) {
-        textEditingController.text = getData(ref, widget.title);
+        textEditingController.text = getAddTransactionTextFieldData(ref, widget.title);
         return TextFormField(
           controller: textEditingController,
           onTap:

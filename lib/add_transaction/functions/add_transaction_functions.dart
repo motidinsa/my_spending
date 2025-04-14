@@ -53,7 +53,7 @@ setData(WidgetRef ref, String title) {
   }
 }
 
-getData(WidgetRef ref, String title) {
+getAddTransactionTextFieldData(WidgetRef ref, String title) {
   if (title == 'Date') {
     return ref.watch(
       addTransactionStateProvider.select(
