@@ -63,7 +63,12 @@ int _accountGroupModelEstimateSize(
   Map<Type, List<int>> allOffsets,
 ) {
   var bytesCount = offsets.last;
-  bytesCount += 3 + object.groupId.length * 3;
+  {
+    final value = object.groupId;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
   bytesCount += 3 + object.groupName.length * 3;
   return bytesCount;
 }
@@ -90,8 +95,9 @@ AccountGroupModel _accountGroupModelDeserialize(
   final object = AccountGroupModel(
     dateCreated: reader.readDateTime(offsets[0]),
     dateModified: reader.readDateTimeOrNull(offsets[1]),
-    groupId: reader.readString(offsets[2]),
+    groupId: reader.readStringOrNull(offsets[2]),
     groupName: reader.readString(offsets[3]),
+    id: id,
     sortIndex: reader.readLongOrNull(offsets[4]),
   );
   return object;
@@ -109,7 +115,7 @@ P _accountGroupModelDeserializeProp<P>(
     case 1:
       return (reader.readDateTimeOrNull(offset)) as P;
     case 2:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 3:
       return (reader.readString(offset)) as P;
     case 4:
@@ -344,8 +350,26 @@ extension AccountGroupModelQueryFilter
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
+      groupIdIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'groupId',
+      ));
+    });
+  }
+
+  QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
+      groupIdIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'groupId',
+      ));
+    });
+  }
+
+  QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
       groupIdEqualTo(
-    String value, {
+    String? value, {
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -359,7 +383,7 @@ extension AccountGroupModelQueryFilter
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
       groupIdGreaterThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -375,7 +399,7 @@ extension AccountGroupModelQueryFilter
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
       groupIdLessThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -391,8 +415,8 @@ extension AccountGroupModelQueryFilter
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
       groupIdBetween(
-    String lower,
-    String upper, {
+    String? lower,
+    String? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     bool caseSensitive = true,
@@ -971,7 +995,7 @@ extension AccountGroupModelQueryProperty
     });
   }
 
-  QueryBuilder<AccountGroupModel, String, QQueryOperations> groupIdProperty() {
+  QueryBuilder<AccountGroupModel, String?, QQueryOperations> groupIdProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'groupId');
     });

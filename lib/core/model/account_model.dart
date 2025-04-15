@@ -9,9 +9,10 @@ part 'account_model.g.dart';
 @Collection(ignore: {'copyWith'})
 class AccountModel with _$AccountModel {
   const factory AccountModel({
+    @Default(Isar.autoIncrement) Id id,
     required String accountName,
     required String accountId,
-    String? accountGroupId,
+     String? groupId,
     required DateTime dateCreated,
     required double amountAvailable,
     DateTime? dateModified,
@@ -20,5 +21,6 @@ class AccountModel with _$AccountModel {
 
   const AccountModel._();
 
+  @override
   Id get id => Isar.autoIncrement;
 }

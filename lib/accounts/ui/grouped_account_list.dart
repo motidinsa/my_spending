@@ -11,8 +11,7 @@ class GroupedAccountList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // margin: const EdgeInsets.symmetric(horizontal: 25),
-      // padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
@@ -32,21 +31,19 @@ class GroupedAccountList extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Text(
-              accountModels.first.accountGroupId == null
-                  ? 'Ungrouped'
-                  : getAccountGroupName(accountModels.first.accountGroupId!),
+              getAccountGroupName(accountModels.first.groupId),
               textAlign: TextAlign.start,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
                 color:
-                    accountModels.first.accountGroupId != null
+                    accountModels.first.groupId != null
                         ? Colors.green.shade700
                         : Colors.grey.shade500,
               ),
             ),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 5),
           ListView.separated(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),

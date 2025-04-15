@@ -16,9 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AccountModel {
+  int get id => throw _privateConstructorUsedError;
   String get accountName => throw _privateConstructorUsedError;
   String get accountId => throw _privateConstructorUsedError;
-  String? get accountGroupId => throw _privateConstructorUsedError;
+  String? get groupId => throw _privateConstructorUsedError;
   DateTime get dateCreated => throw _privateConstructorUsedError;
   double get amountAvailable => throw _privateConstructorUsedError;
   DateTime? get dateModified => throw _privateConstructorUsedError;
@@ -36,9 +37,10 @@ abstract class $AccountModelCopyWith<$Res> {
       _$AccountModelCopyWithImpl<$Res, AccountModel>;
   @useResult
   $Res call(
-      {String accountName,
+      {int id,
+      String accountName,
       String accountId,
-      String? accountGroupId,
+      String? groupId,
       DateTime dateCreated,
       double amountAvailable,
       DateTime? dateModified,
@@ -58,15 +60,20 @@ class _$AccountModelCopyWithImpl<$Res, $Val extends AccountModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? accountName = null,
     Object? accountId = null,
-    Object? accountGroupId = freezed,
+    Object? groupId = freezed,
     Object? dateCreated = null,
     Object? amountAvailable = null,
     Object? dateModified = freezed,
     Object? description = freezed,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       accountName: null == accountName
           ? _value.accountName
           : accountName // ignore: cast_nullable_to_non_nullable
@@ -75,9 +82,9 @@ class _$AccountModelCopyWithImpl<$Res, $Val extends AccountModel>
           ? _value.accountId
           : accountId // ignore: cast_nullable_to_non_nullable
               as String,
-      accountGroupId: freezed == accountGroupId
-          ? _value.accountGroupId
-          : accountGroupId // ignore: cast_nullable_to_non_nullable
+      groupId: freezed == groupId
+          ? _value.groupId
+          : groupId // ignore: cast_nullable_to_non_nullable
               as String?,
       dateCreated: null == dateCreated
           ? _value.dateCreated
@@ -108,9 +115,10 @@ abstract class _$$AccountModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String accountName,
+      {int id,
+      String accountName,
       String accountId,
-      String? accountGroupId,
+      String? groupId,
       DateTime dateCreated,
       double amountAvailable,
       DateTime? dateModified,
@@ -128,15 +136,20 @@ class __$$AccountModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? accountName = null,
     Object? accountId = null,
-    Object? accountGroupId = freezed,
+    Object? groupId = freezed,
     Object? dateCreated = null,
     Object? amountAvailable = null,
     Object? dateModified = freezed,
     Object? description = freezed,
   }) {
     return _then(_$AccountModelImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       accountName: null == accountName
           ? _value.accountName
           : accountName // ignore: cast_nullable_to_non_nullable
@@ -145,9 +158,9 @@ class __$$AccountModelImplCopyWithImpl<$Res>
           ? _value.accountId
           : accountId // ignore: cast_nullable_to_non_nullable
               as String,
-      accountGroupId: freezed == accountGroupId
-          ? _value.accountGroupId
-          : accountGroupId // ignore: cast_nullable_to_non_nullable
+      groupId: freezed == groupId
+          ? _value.groupId
+          : groupId // ignore: cast_nullable_to_non_nullable
               as String?,
       dateCreated: null == dateCreated
           ? _value.dateCreated
@@ -173,9 +186,10 @@ class __$$AccountModelImplCopyWithImpl<$Res>
 
 class _$AccountModelImpl extends _AccountModel {
   const _$AccountModelImpl(
-      {required this.accountName,
+      {this.id = Isar.autoIncrement,
+      required this.accountName,
       required this.accountId,
-      this.accountGroupId,
+      this.groupId,
       required this.dateCreated,
       required this.amountAvailable,
       this.dateModified,
@@ -183,11 +197,14 @@ class _$AccountModelImpl extends _AccountModel {
       : super._();
 
   @override
+  @JsonKey()
+  final int id;
+  @override
   final String accountName;
   @override
   final String accountId;
   @override
-  final String? accountGroupId;
+  final String? groupId;
   @override
   final DateTime dateCreated;
   @override
@@ -199,7 +216,7 @@ class _$AccountModelImpl extends _AccountModel {
 
   @override
   String toString() {
-    return 'AccountModel(accountName: $accountName, accountId: $accountId, accountGroupId: $accountGroupId, dateCreated: $dateCreated, amountAvailable: $amountAvailable, dateModified: $dateModified, description: $description)';
+    return 'AccountModel(id: $id, accountName: $accountName, accountId: $accountId, groupId: $groupId, dateCreated: $dateCreated, amountAvailable: $amountAvailable, dateModified: $dateModified, description: $description)';
   }
 
   @override
@@ -207,12 +224,12 @@ class _$AccountModelImpl extends _AccountModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AccountModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.accountName, accountName) ||
                 other.accountName == accountName) &&
             (identical(other.accountId, accountId) ||
                 other.accountId == accountId) &&
-            (identical(other.accountGroupId, accountGroupId) ||
-                other.accountGroupId == accountGroupId) &&
+            (identical(other.groupId, groupId) || other.groupId == groupId) &&
             (identical(other.dateCreated, dateCreated) ||
                 other.dateCreated == dateCreated) &&
             (identical(other.amountAvailable, amountAvailable) ||
@@ -224,8 +241,8 @@ class _$AccountModelImpl extends _AccountModel {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, accountName, accountId,
-      accountGroupId, dateCreated, amountAvailable, dateModified, description);
+  int get hashCode => Object.hash(runtimeType, id, accountName, accountId,
+      groupId, dateCreated, amountAvailable, dateModified, description);
 
   @JsonKey(ignore: true)
   @override
@@ -236,9 +253,10 @@ class _$AccountModelImpl extends _AccountModel {
 
 abstract class _AccountModel extends AccountModel {
   const factory _AccountModel(
-      {required final String accountName,
+      {final int id,
+      required final String accountName,
       required final String accountId,
-      final String? accountGroupId,
+      final String? groupId,
       required final DateTime dateCreated,
       required final double amountAvailable,
       final DateTime? dateModified,
@@ -246,11 +264,13 @@ abstract class _AccountModel extends AccountModel {
   const _AccountModel._() : super._();
 
   @override
+  int get id;
+  @override
   String get accountName;
   @override
   String get accountId;
   @override
-  String? get accountGroupId;
+  String? get groupId;
   @override
   DateTime get dateCreated;
   @override

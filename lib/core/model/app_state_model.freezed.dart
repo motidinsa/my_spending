@@ -15,21 +15,13 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$AppStateModel {
-  GlobalKey<FormState> get formKey => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $AppStateModelCopyWith<AppStateModel> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+mixin _$AppStateModel {}
 
 /// @nodoc
 abstract class $AppStateModelCopyWith<$Res> {
   factory $AppStateModelCopyWith(
           AppStateModel value, $Res Function(AppStateModel) then) =
       _$AppStateModelCopyWithImpl<$Res, AppStateModel>;
-  @useResult
-  $Res call({GlobalKey<FormState> formKey});
 }
 
 /// @nodoc
@@ -41,30 +33,13 @@ class _$AppStateModelCopyWithImpl<$Res, $Val extends AppStateModel>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? formKey = null,
-  }) {
-    return _then(_value.copyWith(
-      formKey: null == formKey
-          ? _value.formKey
-          : formKey // ignore: cast_nullable_to_non_nullable
-              as GlobalKey<FormState>,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$AppStateModelImplCopyWith<$Res>
-    implements $AppStateModelCopyWith<$Res> {
+abstract class _$$AppStateModelImplCopyWith<$Res> {
   factory _$$AppStateModelImplCopyWith(
           _$AppStateModelImpl value, $Res Function(_$AppStateModelImpl) then) =
       __$$AppStateModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({GlobalKey<FormState> formKey});
 }
 
 /// @nodoc
@@ -74,60 +49,28 @@ class __$$AppStateModelImplCopyWithImpl<$Res>
   __$$AppStateModelImplCopyWithImpl(
       _$AppStateModelImpl _value, $Res Function(_$AppStateModelImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? formKey = null,
-  }) {
-    return _then(_$AppStateModelImpl(
-      formKey: null == formKey
-          ? _value.formKey
-          : formKey // ignore: cast_nullable_to_non_nullable
-              as GlobalKey<FormState>,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$AppStateModelImpl implements _AppStateModel {
-  const _$AppStateModelImpl({required this.formKey});
-
-  @override
-  final GlobalKey<FormState> formKey;
+  const _$AppStateModelImpl();
 
   @override
   String toString() {
-    return 'AppStateModel(formKey: $formKey)';
+    return 'AppStateModel()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AppStateModelImpl &&
-            (identical(other.formKey, formKey) || other.formKey == formKey));
+        (other.runtimeType == runtimeType && other is _$AppStateModelImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, formKey);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AppStateModelImplCopyWith<_$AppStateModelImpl> get copyWith =>
-      __$$AppStateModelImplCopyWithImpl<_$AppStateModelImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 }
 
 abstract class _AppStateModel implements AppStateModel {
-  const factory _AppStateModel({required final GlobalKey<FormState> formKey}) =
-      _$AppStateModelImpl;
-
-  @override
-  GlobalKey<FormState> get formKey;
-  @override
-  @JsonKey(ignore: true)
-  _$$AppStateModelImplCopyWith<_$AppStateModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory _AppStateModel() = _$AppStateModelImpl;
 }

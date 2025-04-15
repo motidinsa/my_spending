@@ -8,7 +8,8 @@ import 'package:my_spending/core/route/routes.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-  setupDependencyInjection();
+  await setupDependencyInjection();
+
   runApp(
     GlobalLoaderOverlay(
       overlayWidgetBuilder: (_) {
@@ -49,52 +50,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// class Home extends ConsumerWidget {
-//   const Home({super.key});
-//
-//   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
-//     final selectedIndex = ref.watch(appStateProvider);
-//     return Scaffold(
-//       backgroundColor: Colors.white,
-//       body: SafeArea(child: getSelectedPage(selectedIndex.selectedIndex)),
-//       floatingActionButton: FloatingActionButton(
-//         onPressed: () {
-//           context.go('/add_transaction');
-//         },
-//         backgroundColor: green,
-//         shape: CircleBorder(),
-//         child: Icon(Icons.add, color: Colors.white),
-//       ),
-//       // bottomNavigationBar: SalomonBottomBar(
-//       //   backgroundColor: Colors.white,
-//       //   currentIndex: selectedIndex.selectedIndex,
-//       //   unselectedItemColor: Colors.grey.shade700,
-//       //   onTap: (i) => ref.read(appStateProvider.notifier).updateIndex(i),
-//       //   items: [
-//       //     SalomonBottomBarItem(
-//       //       icon: const FaIcon(FontAwesomeIcons.house, size: 22),
-//       //       title: Text(context.tr('home')),
-//       //       selectedColor: green,
-//       //     ),
-//       //     SalomonBottomBarItem(
-//       //       icon: const FaIcon(FontAwesomeIcons.chartSimple, size: 22),
-//       //       title: Text(context.tr('stat')),
-//       //       selectedColor: green,
-//       //     ),
-//       //     SalomonBottomBarItem(
-//       //       icon: const FaIcon(FontAwesomeIcons.coins, size: 22),
-//       //       title: Text(context.tr('accounts')),
-//       //       selectedColor: green,
-//       //     ),
-//       //     SalomonBottomBarItem(
-//       //       icon: const FaIcon(FontAwesomeIcons.gear, size: 22),
-//       //       title: Text(context.tr('settings')),
-//       //       selectedColor: green,
-//       //     ),
-//       //   ],
-//       // ),
-//     );
-//   }
-// }

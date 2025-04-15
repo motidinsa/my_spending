@@ -6,12 +6,12 @@ part of 'app_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$appStateHash() => r'1ddfc7359f8f7182f1359f89afbe6de5bf9a69f9';
+String _$appStateHash() => r'bd87ca267f425cd50acc6e382cec11c692fe8e59';
 
 /// See also [AppState].
 @ProviderFor(AppState)
 final appStateProvider =
-    AutoDisposeNotifierProvider<AppState, AppStateModel>.internal(
+    AutoDisposeAsyncNotifierProvider<AppState, AppStateModel>.internal(
   AppState.new,
   name: r'appStateProvider',
   debugGetCreateSourceHash:
@@ -20,6 +20,6 @@ final appStateProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$AppState = AutoDisposeNotifier<AppStateModel>;
+typedef _$AppState = AutoDisposeAsyncNotifier<AppStateModel>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

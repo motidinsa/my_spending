@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:grouped_list/grouped_list.dart';
-import 'package:my_spending/accounts/functions/accounts_function.dart';
 import 'package:my_spending/accounts/state/accounts_state.dart';
 import 'package:my_spending/accounts/ui/grouped_account_list.dart';
-import 'package:my_spending/core/model/account_model.dart';
 
 class Accounts extends StatelessWidget {
   const Accounts({super.key});
@@ -64,69 +61,45 @@ class Accounts extends StatelessWidget {
               .when(
                 data:
                     (data) => Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Container(
-                        color: Colors.transparent,
-                        child: ReorderableListView.builder(
-                          itemBuilder:
-                              (context, index) => Container(color: Colors.transparent, key: ValueKey(index),
-                                child: GroupedAccountList(
-                                  accountModels: data[index],
-                                ),
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: ReorderableListView.builder(
+                        itemBuilder:
+                            (context, index) => Padding(
+                              key: ValueKey(index),
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 5,
+                                horizontal: 5,
                               ),
-                          itemCount: data.length,
-                          onReorder: (int oldIndex, int newIndex) {
-                            print('reorder');
-                            print('$oldIndex  |  $newIndex');
-                            if (newIndex > oldIndex) newIndex--;
-                            ref
-                                .read(accountsStateProvider.notifier)
-                                .reorderAccounts(oldIndex, newIndex);
-                          },
-                          proxyDecorator: (child, index, animation) {
-                            return Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(
-                                  color: Colors.green.shade200,
-                                  width: .5,
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.shade400,
-                                    // spreadRadius: 10,
-                                    blurRadius: 10,
-                                    // offset: const Offset(0, 1),
-                                  ),
-                                ],
+                              child: GroupedAccountList(
+                                accountModels: data[index],
                               ),
-                              child: child, // The actual list item content
-                            );
-                          },
-                        ),
+                            ),
+                        itemCount: data.length,
+                        onReorder: (int oldIndex, int newIndex) {
+                          if (newIndex > oldIndex) newIndex--;
+                          ref
+                              .read(accountsStateProvider.notifier)
+                              .reorderAccounts(oldIndex, newIndex);
+                        },
+                        proxyDecorator: (child, index, animation) {
+                          return Container(
+                            decoration: BoxDecoration(
+                              color: Colors.transparent,
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.shade400,
+                                  // spreadRadius: 10,
+                                  blurRadius: 12,
+                                  // offset: const Offset(0, 1),
+                                ),
+                              ],
+                            ),
+                            child: child, // The actual list item content
+                          );
+                        },
                       ),
                     ),
-                //   GroupedListView<List<AccountModel>, DateTime>(
-                // elements: getGroupedAccounts(data),
-                // groupBy:
-                //     (element) =>
-                //         DateUtils.dateOnly(element.first.dateCreated),
-                // separator: const SizedBox(height: 10),
-                // padding: EdgeInsets.only(bottom: 20),
-                // groupSeparatorBuilder: (value) => SizedBox(height: 5),
-                // itemBuilder: (context, elements) {
-                //   return GroupedAccountList(
-                //     accountModels: elements,
-                //   );
-                // },
-                // groupComparator:
-                //     (item1, item2) =>
-                //     DateUtils.dateOnly(
-                //       item1,
-                //     ).compareTo(DateUtils.dateOnly(item2)),
-                // shrinkWrap: true,
-                // ),
                 error: (error, stack) => Text(error.toString()),
                 loading: () => Center(child: CircularProgressIndicator()),
               );

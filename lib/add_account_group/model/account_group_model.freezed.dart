@@ -16,8 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AccountGroupModel {
+  int get id => throw _privateConstructorUsedError;
   String get groupName => throw _privateConstructorUsedError;
-  String get groupId => throw _privateConstructorUsedError;
+  String? get groupId => throw _privateConstructorUsedError;
   DateTime get dateCreated => throw _privateConstructorUsedError;
   DateTime? get dateModified => throw _privateConstructorUsedError;
   int? get sortIndex => throw _privateConstructorUsedError;
@@ -34,8 +35,9 @@ abstract class $AccountGroupModelCopyWith<$Res> {
       _$AccountGroupModelCopyWithImpl<$Res, AccountGroupModel>;
   @useResult
   $Res call(
-      {String groupName,
-      String groupId,
+      {int id,
+      String groupName,
+      String? groupId,
       DateTime dateCreated,
       DateTime? dateModified,
       int? sortIndex});
@@ -54,21 +56,26 @@ class _$AccountGroupModelCopyWithImpl<$Res, $Val extends AccountGroupModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? groupName = null,
-    Object? groupId = null,
+    Object? groupId = freezed,
     Object? dateCreated = null,
     Object? dateModified = freezed,
     Object? sortIndex = freezed,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       groupName: null == groupName
           ? _value.groupName
           : groupName // ignore: cast_nullable_to_non_nullable
               as String,
-      groupId: null == groupId
+      groupId: freezed == groupId
           ? _value.groupId
           : groupId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       dateCreated: null == dateCreated
           ? _value.dateCreated
           : dateCreated // ignore: cast_nullable_to_non_nullable
@@ -94,8 +101,9 @@ abstract class _$$AccountGroupModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String groupName,
-      String groupId,
+      {int id,
+      String groupName,
+      String? groupId,
       DateTime dateCreated,
       DateTime? dateModified,
       int? sortIndex});
@@ -112,21 +120,26 @@ class __$$AccountGroupModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? groupName = null,
-    Object? groupId = null,
+    Object? groupId = freezed,
     Object? dateCreated = null,
     Object? dateModified = freezed,
     Object? sortIndex = freezed,
   }) {
     return _then(_$AccountGroupModelImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       groupName: null == groupName
           ? _value.groupName
           : groupName // ignore: cast_nullable_to_non_nullable
               as String,
-      groupId: null == groupId
+      groupId: freezed == groupId
           ? _value.groupId
           : groupId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       dateCreated: null == dateCreated
           ? _value.dateCreated
           : dateCreated // ignore: cast_nullable_to_non_nullable
@@ -147,17 +160,21 @@ class __$$AccountGroupModelImplCopyWithImpl<$Res>
 
 class _$AccountGroupModelImpl extends _AccountGroupModel {
   const _$AccountGroupModelImpl(
-      {required this.groupName,
-      required this.groupId,
+      {this.id = Isar.autoIncrement,
+      required this.groupName,
+      this.groupId,
       required this.dateCreated,
       this.dateModified,
       this.sortIndex})
       : super._();
 
   @override
+  @JsonKey()
+  final int id;
+  @override
   final String groupName;
   @override
-  final String groupId;
+  final String? groupId;
   @override
   final DateTime dateCreated;
   @override
@@ -167,7 +184,7 @@ class _$AccountGroupModelImpl extends _AccountGroupModel {
 
   @override
   String toString() {
-    return 'AccountGroupModel(groupName: $groupName, groupId: $groupId, dateCreated: $dateCreated, dateModified: $dateModified, sortIndex: $sortIndex)';
+    return 'AccountGroupModel(id: $id, groupName: $groupName, groupId: $groupId, dateCreated: $dateCreated, dateModified: $dateModified, sortIndex: $sortIndex)';
   }
 
   @override
@@ -175,6 +192,7 @@ class _$AccountGroupModelImpl extends _AccountGroupModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AccountGroupModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.groupName, groupName) ||
                 other.groupName == groupName) &&
             (identical(other.groupId, groupId) || other.groupId == groupId) &&
@@ -187,8 +205,8 @@ class _$AccountGroupModelImpl extends _AccountGroupModel {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, groupName, groupId, dateCreated, dateModified, sortIndex);
+  int get hashCode => Object.hash(runtimeType, id, groupName, groupId,
+      dateCreated, dateModified, sortIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -200,17 +218,20 @@ class _$AccountGroupModelImpl extends _AccountGroupModel {
 
 abstract class _AccountGroupModel extends AccountGroupModel {
   const factory _AccountGroupModel(
-      {required final String groupName,
-      required final String groupId,
+      {final int id,
+      required final String groupName,
+      final String? groupId,
       required final DateTime dateCreated,
       final DateTime? dateModified,
       final int? sortIndex}) = _$AccountGroupModelImpl;
   const _AccountGroupModel._() : super._();
 
   @override
+  int get id;
+  @override
   String get groupName;
   @override
-  String get groupId;
+  String? get groupId;
   @override
   DateTime get dateCreated;
   @override

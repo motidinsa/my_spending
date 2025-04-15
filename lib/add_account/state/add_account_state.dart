@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_spending/accounts/state/accounts_state.dart';
 import 'package:my_spending/add_account/model/add_account_state_model.dart';
 import 'package:my_spending/add_account/repository/isar_add_account_repository.dart';
 import 'package:my_spending/add_account_group/model/account_group_model.dart';
@@ -15,7 +16,7 @@ class AddAccountState extends _$AddAccountState {
   String accountName = '';
   String amount = '';
   String description = '';
-  String? accountGroupId;
+  String? groupId;
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -25,7 +26,7 @@ class AddAccountState extends _$AddAccountState {
 
   void setAccountGroupName(AccountGroupModel accountGroupModel) {
     state = state.copyWith(groupName: accountGroupModel.groupName);
-    accountGroupId = accountGroupModel.groupId;
+    groupId = accountGroupModel.groupId;
   }
 
   void addNameFocus() {
@@ -60,7 +61,7 @@ class AddAccountState extends _$AddAccountState {
       DateTime now = DateTime.now();
       await isarAddAccountRepository.addAccount(
         accountModel: AccountModel(
-          accountGroupId: accountGroupId,
+          groupId: groupId,
           accountId: generateDatabaseId(now),
           dateCreated: now,
           accountName: accountName,
@@ -69,6 +70,7 @@ class AddAccountState extends _$AddAccountState {
         ),
       );
       navigatorKey.currentContext?.pop();
+      ref.read(accountsStateProvider.notifier).updateAccountLists();
     } on Exception catch (e) {
       print(e);
     } finally {

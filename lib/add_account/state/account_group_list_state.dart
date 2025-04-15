@@ -10,7 +10,11 @@ class AccountGroupListState extends _$AccountGroupListState {
   @override
   Stream<List<AccountGroupModel>> build() async* {
     final isar = locator<Isar>();
-    yield* isar.accountGroupModels.where().sortByDateCreatedDesc().watch(fireImmediately: true);
-
+    yield* isar.accountGroupModels
+        .filter()
+        .not()
+        .groupIdEqualTo(null)
+        .sortByDateCreatedDesc()
+        .watch(fireImmediately: true);
   }
 }

@@ -1,5 +1,4 @@
 import 'package:my_spending/add_transaction/model/add_transaction_state_model.dart';
-import 'package:my_spending/core/model/account_model.dart';
 import 'package:my_spending/core/model/category_model.dart';
 import 'package:my_spending/core/model/transaction_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -40,23 +39,23 @@ class AddTransactionState extends _$AddTransactionState {
       ),
     ],
     accountModels: [
-      AccountModel(
-        accountName: 'acc 1',
-        accountId: '1',
-        dateCreated: DateTime.now(),
-        amountAvailable: 0,
-      ),
-      AccountModel(
-        accountName: 'acc 2',
-        accountId: '1',
-        dateCreated: DateTime.now(),
-        amountAvailable: 0,
-      ),AccountModel(
-        accountName: 'acc 3',
-        accountId: '1',
-        dateCreated: DateTime.now(),
-        amountAvailable: 0,
-      ),
+      // AccountModel(
+      //   accountName: 'acc 1',
+      //   accountId: '1',
+      //   dateCreated: DateTime.now(),
+      //   amountAvailable: 0,
+      // ),
+      // AccountModel(
+      //   accountName: 'acc 2',
+      //   accountId: '1',
+      //   dateCreated: DateTime.now(),
+      //   amountAvailable: 0,
+      // ),AccountModel(
+      //   accountName: 'acc 3',
+      //   accountId: '1',
+      //   dateCreated: DateTime.now(),
+      //   amountAvailable: 0,
+      // ),
     ],
   );
 

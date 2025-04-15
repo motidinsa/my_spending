@@ -9,14 +9,16 @@ part 'account_group_model.g.dart';
 @Collection(ignore: {'copyWith'})
 class AccountGroupModel with _$AccountGroupModel {
   const factory AccountGroupModel({
+    @Default(Isar.autoIncrement) Id id,
     required String groupName,
-    required String groupId,
+     String? groupId,
     required DateTime dateCreated,
     DateTime? dateModified,
-    int? sortIndex
+    int? sortIndex,
   }) = _AccountGroupModel;
 
   const AccountGroupModel._();
 
+  @override
   Id get id => Isar.autoIncrement;
 }
