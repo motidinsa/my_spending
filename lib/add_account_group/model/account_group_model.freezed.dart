@@ -20,6 +20,7 @@ mixin _$AccountGroupModel {
   String get groupId => throw _privateConstructorUsedError;
   DateTime get dateCreated => throw _privateConstructorUsedError;
   DateTime? get dateModified => throw _privateConstructorUsedError;
+  int? get sortIndex => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AccountGroupModelCopyWith<AccountGroupModel> get copyWith =>
@@ -36,7 +37,8 @@ abstract class $AccountGroupModelCopyWith<$Res> {
       {String groupName,
       String groupId,
       DateTime dateCreated,
-      DateTime? dateModified});
+      DateTime? dateModified,
+      int? sortIndex});
 }
 
 /// @nodoc
@@ -56,6 +58,7 @@ class _$AccountGroupModelCopyWithImpl<$Res, $Val extends AccountGroupModel>
     Object? groupId = null,
     Object? dateCreated = null,
     Object? dateModified = freezed,
+    Object? sortIndex = freezed,
   }) {
     return _then(_value.copyWith(
       groupName: null == groupName
@@ -74,6 +77,10 @@ class _$AccountGroupModelCopyWithImpl<$Res, $Val extends AccountGroupModel>
           ? _value.dateModified
           : dateModified // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      sortIndex: freezed == sortIndex
+          ? _value.sortIndex
+          : sortIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -90,7 +97,8 @@ abstract class _$$AccountGroupModelImplCopyWith<$Res>
       {String groupName,
       String groupId,
       DateTime dateCreated,
-      DateTime? dateModified});
+      DateTime? dateModified,
+      int? sortIndex});
 }
 
 /// @nodoc
@@ -108,6 +116,7 @@ class __$$AccountGroupModelImplCopyWithImpl<$Res>
     Object? groupId = null,
     Object? dateCreated = null,
     Object? dateModified = freezed,
+    Object? sortIndex = freezed,
   }) {
     return _then(_$AccountGroupModelImpl(
       groupName: null == groupName
@@ -126,6 +135,10 @@ class __$$AccountGroupModelImplCopyWithImpl<$Res>
           ? _value.dateModified
           : dateModified // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      sortIndex: freezed == sortIndex
+          ? _value.sortIndex
+          : sortIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -137,7 +150,8 @@ class _$AccountGroupModelImpl extends _AccountGroupModel {
       {required this.groupName,
       required this.groupId,
       required this.dateCreated,
-      this.dateModified})
+      this.dateModified,
+      this.sortIndex})
       : super._();
 
   @override
@@ -148,10 +162,12 @@ class _$AccountGroupModelImpl extends _AccountGroupModel {
   final DateTime dateCreated;
   @override
   final DateTime? dateModified;
+  @override
+  final int? sortIndex;
 
   @override
   String toString() {
-    return 'AccountGroupModel(groupName: $groupName, groupId: $groupId, dateCreated: $dateCreated, dateModified: $dateModified)';
+    return 'AccountGroupModel(groupName: $groupName, groupId: $groupId, dateCreated: $dateCreated, dateModified: $dateModified, sortIndex: $sortIndex)';
   }
 
   @override
@@ -165,12 +181,14 @@ class _$AccountGroupModelImpl extends _AccountGroupModel {
             (identical(other.dateCreated, dateCreated) ||
                 other.dateCreated == dateCreated) &&
             (identical(other.dateModified, dateModified) ||
-                other.dateModified == dateModified));
+                other.dateModified == dateModified) &&
+            (identical(other.sortIndex, sortIndex) ||
+                other.sortIndex == sortIndex));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, groupName, groupId, dateCreated, dateModified);
+  int get hashCode => Object.hash(
+      runtimeType, groupName, groupId, dateCreated, dateModified, sortIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -185,7 +203,8 @@ abstract class _AccountGroupModel extends AccountGroupModel {
       {required final String groupName,
       required final String groupId,
       required final DateTime dateCreated,
-      final DateTime? dateModified}) = _$AccountGroupModelImpl;
+      final DateTime? dateModified,
+      final int? sortIndex}) = _$AccountGroupModelImpl;
   const _AccountGroupModel._() : super._();
 
   @override
@@ -196,6 +215,8 @@ abstract class _AccountGroupModel extends AccountGroupModel {
   DateTime get dateCreated;
   @override
   DateTime? get dateModified;
+  @override
+  int? get sortIndex;
   @override
   @JsonKey(ignore: true)
   _$$AccountGroupModelImplCopyWith<_$AccountGroupModelImpl> get copyWith =>

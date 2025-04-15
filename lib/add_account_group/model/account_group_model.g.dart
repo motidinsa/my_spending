@@ -36,6 +36,11 @@ const AccountGroupModelSchema = CollectionSchema(
       id: 3,
       name: r'groupName',
       type: IsarType.string,
+    ),
+    r'sortIndex': PropertySchema(
+      id: 4,
+      name: r'sortIndex',
+      type: IsarType.long,
     )
   },
   estimateSize: _accountGroupModelEstimateSize,
@@ -73,6 +78,7 @@ void _accountGroupModelSerialize(
   writer.writeDateTime(offsets[1], object.dateModified);
   writer.writeString(offsets[2], object.groupId);
   writer.writeString(offsets[3], object.groupName);
+  writer.writeLong(offsets[4], object.sortIndex);
 }
 
 AccountGroupModel _accountGroupModelDeserialize(
@@ -86,6 +92,7 @@ AccountGroupModel _accountGroupModelDeserialize(
     dateModified: reader.readDateTimeOrNull(offsets[1]),
     groupId: reader.readString(offsets[2]),
     groupName: reader.readString(offsets[3]),
+    sortIndex: reader.readLongOrNull(offsets[4]),
   );
   return object;
 }
@@ -105,6 +112,8 @@ P _accountGroupModelDeserializeProp<P>(
       return (reader.readString(offset)) as P;
     case 3:
       return (reader.readString(offset)) as P;
+    case 4:
+      return (reader.readLongOrNull(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }
@@ -661,6 +670,80 @@ extension AccountGroupModelQueryFilter
       ));
     });
   }
+
+  QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
+      sortIndexIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'sortIndex',
+      ));
+    });
+  }
+
+  QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
+      sortIndexIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'sortIndex',
+      ));
+    });
+  }
+
+  QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
+      sortIndexEqualTo(int? value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'sortIndex',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
+      sortIndexGreaterThan(
+    int? value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'sortIndex',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
+      sortIndexLessThan(
+    int? value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'sortIndex',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
+      sortIndexBetween(
+    int? lower,
+    int? upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'sortIndex',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
 }
 
 extension AccountGroupModelQueryObject
@@ -724,6 +807,20 @@ extension AccountGroupModelQuerySortBy
       sortByGroupNameDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'groupName', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
+      sortBySortIndex() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sortIndex', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
+      sortBySortIndexDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sortIndex', Sort.desc);
     });
   }
 }
@@ -798,6 +895,20 @@ extension AccountGroupModelQuerySortThenBy
       return query.addSortBy(r'id', Sort.desc);
     });
   }
+
+  QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
+      thenBySortIndex() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sortIndex', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
+      thenBySortIndexDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'sortIndex', Sort.desc);
+    });
+  }
 }
 
 extension AccountGroupModelQueryWhereDistinct
@@ -827,6 +938,13 @@ extension AccountGroupModelQueryWhereDistinct
       distinctByGroupName({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'groupName', caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<AccountGroupModel, AccountGroupModel, QDistinct>
+      distinctBySortIndex() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'sortIndex');
     });
   }
 }
@@ -863,6 +981,12 @@ extension AccountGroupModelQueryProperty
       groupNameProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'groupName');
+    });
+  }
+
+  QueryBuilder<AccountGroupModel, int?, QQueryOperations> sortIndexProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'sortIndex');
     });
   }
 }

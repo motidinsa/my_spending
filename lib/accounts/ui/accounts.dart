@@ -69,34 +69,39 @@ class Accounts extends StatelessWidget {
                         color: Colors.transparent,
                         child: ReorderableListView.builder(
                           itemBuilder:
-                              (context, index) => GroupedAccountList(
-                                key: UniqueKey(),
-                                accountModels: data[index],
+                              (context, index) => Container(color: Colors.transparent, key: ValueKey(index),
+                                child: GroupedAccountList(
+                                  accountModels: data[index],
+                                ),
                               ),
                           itemCount: data.length,
                           onReorder: (int oldIndex, int newIndex) {
-                            // ref.read(accountsProvider.notifier).reorderAccounts(oldIndex, newIndex);
+                            print('reorder');
+                            print('$oldIndex  |  $newIndex');
+                            if (newIndex > oldIndex) newIndex--;
+                            ref
+                                .read(accountsStateProvider.notifier)
+                                .reorderAccounts(oldIndex, newIndex);
                           },
                           proxyDecorator: (child, index, animation) {
-                            return Material(
-                              elevation: 8, // Adjust elevation for shadow size
-                              color: Colors.transparent, // Ensure transparent background
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20),
-                                  border: Border.all(color: Colors.green.shade200, width: .5),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.shade400,
-                                      spreadRadius: 0.5,
-                                      blurRadius: 2,
-                                      // offset: const Offset(0, 1),
-                                    ),
-                                  ],
+                            return Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(20),
+                                border: Border.all(
+                                  color: Colors.green.shade200,
+                                  width: .5,
                                 ),
-                                child: child, // The actual list item content
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.shade400,
+                                    // spreadRadius: 10,
+                                    blurRadius: 10,
+                                    // offset: const Offset(0, 1),
+                                  ),
+                                ],
                               ),
+                              child: child, // The actual list item content
                             );
                           },
                         ),

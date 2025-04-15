@@ -13,6 +13,7 @@ class AccountGroupModel with _$AccountGroupModel {
     required String groupId,
     required DateTime dateCreated,
     DateTime? dateModified,
+    int? sortIndex
   }) = _AccountGroupModel;
 
   const AccountGroupModel._();

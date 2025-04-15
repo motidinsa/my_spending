@@ -14,4 +14,11 @@ class IsarAccountsRepository implements AccountsRepository {
         .findFirstSync()
         ?.groupName;
   }
+
+  @override
+  Future<void> updateAccountGroupSortIndex(List<AccountGroupModel> accountGroupModels) async {
+    await _isar.writeTxn(() async {
+      await _isar.accountGroupModels.putAll(accountGroupModels);
+    });
+  }
 }

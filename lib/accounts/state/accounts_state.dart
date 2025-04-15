@@ -13,4 +13,10 @@ class AccountsState extends _$AccountsState {
     final isar = locator<Isar>();
     return getGroupedAccounts(await isar.accountModels.where().findAll());
   }
+
+  void reorderAccounts(int oldIndex, int newIndex) {
+    final item = state.value?.removeAt(oldIndex);
+    state.value?.insert(newIndex, item!);
+    state = AsyncData(state.value!);
+  }
 }
