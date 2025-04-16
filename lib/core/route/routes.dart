@@ -4,6 +4,7 @@ import 'package:my_spending/accounts/ui/accounts.dart';
 import 'package:my_spending/add_account/ui/add_account.dart';
 import 'package:my_spending/add_account_group/ui/add_account_group.dart';
 import 'package:my_spending/add_transaction/ui/add_transaction.dart';
+import 'package:my_spending/categories/ui/categories.dart';
 import 'package:my_spending/core/route/scaffold_with_nested_navigation.dart';
 import 'package:my_spending/homepage/ui/homepage.dart';
 import 'package:my_spending/settings/ui/settings.dart';
@@ -27,13 +28,12 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/add_account_group',
       pageBuilder:
-          (context, state) =>
-          NoTransitionPage(child:  AddAccountGroup()),
-    ),GoRoute(
+          (context, state) => NoTransitionPage(child: AddAccountGroup()),
+    ),
+    GoRoute(
       path: '/add_account',
       pageBuilder:
-          (context, state) =>
-          NoTransitionPage(child: const AddAccount()),
+          (context, state) => NoTransitionPage(child: const AddAccount()),
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
@@ -79,7 +79,7 @@ final GoRouter router = GoRouter(
                   path: '/add_account_group',
                   pageBuilder:
                       (context, state) =>
-                          NoTransitionPage(child:  AddAccountGroup()),
+                          NoTransitionPage(child: AddAccountGroup()),
                 ),
               ],
             ),
@@ -93,6 +93,14 @@ final GoRouter router = GoRouter(
               path: '/settings',
               pageBuilder:
                   (context, state) => const NoTransitionPage(child: Settings()),
+              routes: [
+                GoRoute(
+                  path: '/categories',
+                  pageBuilder:
+                      (context, state) =>
+                          NoTransitionPage(child: Categories()),
+                ),
+              ],
             ),
           ],
         ),

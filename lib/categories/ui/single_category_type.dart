@@ -4,12 +4,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_spending/add_transaction/functions/add_transaction_functions.dart';
 import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 
-class SingleTransactionType extends StatelessWidget {
+class SingleCategoryType extends StatelessWidget {
   final String name;
   final IconData icon;
   final Color foregroundColor;
 
-  const SingleTransactionType({
+  const SingleCategoryType({
     super.key,
     required this.icon,
     required this.name,

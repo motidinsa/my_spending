@@ -7,7 +7,7 @@ part of 'accounts_other_state.dart';
 // **************************************************************************
 
 String _$accountsOtherStateHash() =>
-    r'da009c7dcb1e264cea9f06acc8548a1dbd9f7344';
+    r'0c78004f1a186a4fd13f0a630c70cca0f7ae5f40';
 
 /// See also [AccountsOtherState].
 @ProviderFor(AccountsOtherState)

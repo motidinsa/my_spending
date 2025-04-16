@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class Settings extends StatelessWidget {
   const Settings({super.key});
@@ -34,14 +35,25 @@ class Settings extends StatelessWidget {
               ),
             ],
           ),
-          child: ListView(
-            shrinkWrap: true,
-            children: [
-              ListTile(title: Text('Accounts'), onTap: () {}),
-              ListTile(title: Text('Categories'), onTap: () {}),
-              ListTile(title: Text('Language'), onTap: () {}),
-              ListTile(title: Text('Theme'), onTap: () {}),
-            ],
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Material(
+              color: Colors.transparent,
+              child: ListView(
+                shrinkWrap: true,
+                children: [
+                  ListTile(title: Text('Accounts'), onTap: () {}),
+                  ListTile(
+                    title: Text('Categories'),
+                    onTap: () {
+                      context.go('/settings/categories');
+                    },
+                  ),
+                  ListTile(title: Text('Language'), onTap: () {}),
+                  ListTile(title: Text('Theme'), onTap: () {}),
+                ],
+              ),
+            ),
           ),
         ),
       ),

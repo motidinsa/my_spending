@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_spending/add_transaction/ui/single_transaction_type.dart';
+import 'package:my_spending/categories/ui/single_category_type.dart';
 
-class TransactionTypeSelect extends StatelessWidget {
-  const TransactionTypeSelect({super.key});
+class CategoryTypeSelect extends StatelessWidget {
+  const CategoryTypeSelect({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 50),
       child: Card(
         elevation: 3,
         shape: RoundedRectangleBorder(
@@ -22,7 +23,7 @@ class TransactionTypeSelect extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Expanded(
-                child: SingleTransactionType(
+                child: SingleCategoryType(
                   name: 'Expense',
                   icon: FontAwesomeIcons.arrowDown,
                   // backgroundColor: Colors.white,
@@ -30,20 +31,11 @@ class TransactionTypeSelect extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: SingleTransactionType(
+                child: SingleCategoryType(
                   name: 'Income',
                   icon: FontAwesomeIcons.arrowUp,
                   // backgroundColor: Colors.green.shade100,
                   foregroundColor: Colors.green.shade900,
-                ),
-              ),
-
-              Expanded(
-                child: SingleTransactionType(
-                  name: 'Transfer',
-                  icon: FontAwesomeIcons.rotate,
-                  // backgroundColor: Colors.grey.shade200,
-                  foregroundColor: Colors.grey.shade800,
                 ),
               ),
             ],

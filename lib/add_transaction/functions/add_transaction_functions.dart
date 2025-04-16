@@ -3,15 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/transaction_type_modal_sheet.dart';
 
-BorderRadius? getTransactionSelectBorderRadius(String name) {
-  return BorderRadius.only(
-    topLeft: name == 'Expense' ? Radius.circular(12) : Radius.zero,
-    bottomLeft: name == 'Expense' ? Radius.circular(12) : Radius.zero,
-    bottomRight: name == 'Transfer' ? Radius.circular(12) : Radius.zero,
-    topRight: name == 'Transfer' ? Radius.circular(12) : Radius.zero,
-  );
-}
-
 getAddTransactionTextFieldIcon(String title) {
   if (title == 'Date') {
     return Icon(Icons.date_range);
