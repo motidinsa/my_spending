@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_spending/accounts/state/accounts_other_state.dart';
 import 'package:my_spending/accounts/state/accounts_state.dart';
 import 'package:my_spending/accounts/ui/grouped_account_list.dart';
 
@@ -10,13 +11,20 @@ class Accounts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton.extended(
-        heroTag: null,
-        onPressed: () {
-          context.push('/add_account');
+      floatingActionButton: Consumer(
+        builder: (context, ref, child) {
+          return Visibility(
+            visible: ref.watch(accountsOtherStateProvider),
+            child: FloatingActionButton.extended(
+              heroTag: null,
+              onPressed: () {
+                context.push('/add_account');
+              },
+              label: Text('Add account', style: TextStyle(color: Colors.white)),
+              backgroundColor: Colors.green.shade400,
+            ),
+          );
         },
-        label: Text('Add account', style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.green.shade400,
       ),
       appBar: AppBar(
         title: Text(
@@ -26,7 +34,7 @@ class Accounts extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        // centerTitle: true,
+        surfaceTintColor: Colors.white,
         backgroundColor: Colors.white,
         actions: [
           // Add the actions property
@@ -63,6 +71,10 @@ class Accounts extends StatelessWidget {
                     (data) => Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: ReorderableListView.builder(
+                        scrollController:
+                            ref
+                                .read(accountsOtherStateProvider.notifier)
+                                .scrollController,
                         itemBuilder:
                             (context, index) => Padding(
                               key: ValueKey(index),
@@ -101,7 +113,13 @@ class Accounts extends StatelessWidget {
                       ),
                     ),
                 error: (error, stack) => Text(error.toString()),
-                loading: () => Center(child: CircularProgressIndicator()),
+                loading:
+                    () => Center(
+                      child: CircularProgressIndicator(
+                        color: Colors.green,
+                        strokeWidth: 3,
+                      ),
+                    ),
               );
         },
       ),
