@@ -7,12 +7,14 @@ class SingleCategoryMiniDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: Colors.green.shade50,
+      shape: RoundedRectangleBorder(
+        side: BorderSide(color: Colors.green, width: .2),
+        borderRadius: BorderRadius.circular(12),
+      ),
 
       child: ListTile(
         dense: true,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         title: Text(
           'Category name',
           style: TextStyle(
@@ -29,11 +31,15 @@ class SingleCategoryMiniDetail extends StatelessWidget {
             fontSize: 14,
           ),
         ),
-        trailing: Row(mainAxisSize: MainAxisSize.min,
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            IconButton(icon: Icon(Icons.edit_outlined,color: Colors.grey.shade600,),onPressed: (){},),
-            SizedBox(width: 20,),
-            Icon(Icons.menu,color: Colors.grey,),
+            IconButton(
+              icon: Icon(Icons.edit_outlined, color: Colors.grey.shade600),
+              onPressed: () {},
+            ),
+            SizedBox(width: 20),
+            Icon(Icons.menu, color: Colors.grey),
           ],
         ),
         onTap: () {},

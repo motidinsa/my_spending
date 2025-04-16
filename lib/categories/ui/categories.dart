@@ -20,7 +20,7 @@ class Categories extends StatelessWidget {
             child: FloatingActionButton.extended(
               heroTag: null,
               onPressed: () {
-                context.push('/add_account');
+                context.push('/add_category');
               },
               label: Text(
                 'Add category',
@@ -55,7 +55,7 @@ class Categories extends StatelessWidget {
                 child: ListView(
                   shrinkWrap: true,
                   children: [
-                    SizedBox(height: 10),
+                    SizedBox(height: 5),
                     SingleCategoryMiniDetail(),
                     SizedBox(height: 5),
                     SingleCategoryMiniDetail(),
