@@ -6,7 +6,7 @@ part of 'add_category_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$addCategoryStateHash() => r'910c610db9aca1cc0a97cc3d8cf728e551d43663';
+String _$addCategoryStateHash() => r'200fa10c1aab591184805634afed9815dd2dd654';
 
 /// See also [AddCategoryState].
 @ProviderFor(AddCategoryState)

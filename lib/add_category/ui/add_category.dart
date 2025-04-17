@@ -70,7 +70,12 @@ class AddCategory extends StatelessWidget {
                           children: [
                             SingleAddCategoryContent(title: 'Category type'),
                             SizedBox(height: 10),
-                            SingleAddCategoryContent(title: 'Name'),
+                            Consumer(
+                              builder: (context, ref, child) {
+                                ref.watch(addCategoryStateProvider);
+                                return SingleAddCategoryContent(title: 'Name');
+                              },
+                            ),
                           ],
                         ),
                       );

@@ -16,8 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AddCategoryStateModel {
-  String get categoryName => throw _privateConstructorUsedError;
-  String? get categoryType => throw _privateConstructorUsedError;
   bool? get isSaveButtonPressed => throw _privateConstructorUsedError;
   bool? get isLoading => throw _privateConstructorUsedError;
   bool? get hasCategoryNameFocus => throw _privateConstructorUsedError;
@@ -34,11 +32,7 @@ abstract class $AddCategoryStateModelCopyWith<$Res> {
       _$AddCategoryStateModelCopyWithImpl<$Res, AddCategoryStateModel>;
   @useResult
   $Res call(
-      {String categoryName,
-      String? categoryType,
-      bool? isSaveButtonPressed,
-      bool? isLoading,
-      bool? hasCategoryNameFocus});
+      {bool? isSaveButtonPressed, bool? isLoading, bool? hasCategoryNameFocus});
 }
 
 /// @nodoc
@@ -55,21 +49,11 @@ class _$AddCategoryStateModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? categoryName = null,
-    Object? categoryType = freezed,
     Object? isSaveButtonPressed = freezed,
     Object? isLoading = freezed,
     Object? hasCategoryNameFocus = freezed,
   }) {
     return _then(_value.copyWith(
-      categoryName: null == categoryName
-          ? _value.categoryName
-          : categoryName // ignore: cast_nullable_to_non_nullable
-              as String,
-      categoryType: freezed == categoryType
-          ? _value.categoryType
-          : categoryType // ignore: cast_nullable_to_non_nullable
-              as String?,
       isSaveButtonPressed: freezed == isSaveButtonPressed
           ? _value.isSaveButtonPressed
           : isSaveButtonPressed // ignore: cast_nullable_to_non_nullable
@@ -96,11 +80,7 @@ abstract class _$$AddCategoryStateModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String categoryName,
-      String? categoryType,
-      bool? isSaveButtonPressed,
-      bool? isLoading,
-      bool? hasCategoryNameFocus});
+      {bool? isSaveButtonPressed, bool? isLoading, bool? hasCategoryNameFocus});
 }
 
 /// @nodoc
@@ -115,21 +95,11 @@ class __$$AddCategoryStateModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? categoryName = null,
-    Object? categoryType = freezed,
     Object? isSaveButtonPressed = freezed,
     Object? isLoading = freezed,
     Object? hasCategoryNameFocus = freezed,
   }) {
     return _then(_$AddCategoryStateModelImpl(
-      categoryName: null == categoryName
-          ? _value.categoryName
-          : categoryName // ignore: cast_nullable_to_non_nullable
-              as String,
-      categoryType: freezed == categoryType
-          ? _value.categoryType
-          : categoryType // ignore: cast_nullable_to_non_nullable
-              as String?,
       isSaveButtonPressed: freezed == isSaveButtonPressed
           ? _value.isSaveButtonPressed
           : isSaveButtonPressed // ignore: cast_nullable_to_non_nullable
@@ -150,16 +120,8 @@ class __$$AddCategoryStateModelImplCopyWithImpl<$Res>
 
 class _$AddCategoryStateModelImpl implements _AddCategoryStateModel {
   const _$AddCategoryStateModelImpl(
-      {required this.categoryName,
-      this.categoryType,
-      this.isSaveButtonPressed,
-      this.isLoading,
-      this.hasCategoryNameFocus});
+      {this.isSaveButtonPressed, this.isLoading, this.hasCategoryNameFocus});
 
-  @override
-  final String categoryName;
-  @override
-  final String? categoryType;
   @override
   final bool? isSaveButtonPressed;
   @override
@@ -169,7 +131,7 @@ class _$AddCategoryStateModelImpl implements _AddCategoryStateModel {
 
   @override
   String toString() {
-    return 'AddCategoryStateModel(categoryName: $categoryName, categoryType: $categoryType, isSaveButtonPressed: $isSaveButtonPressed, isLoading: $isLoading, hasCategoryNameFocus: $hasCategoryNameFocus)';
+    return 'AddCategoryStateModel(isSaveButtonPressed: $isSaveButtonPressed, isLoading: $isLoading, hasCategoryNameFocus: $hasCategoryNameFocus)';
   }
 
   @override
@@ -177,10 +139,6 @@ class _$AddCategoryStateModelImpl implements _AddCategoryStateModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddCategoryStateModelImpl &&
-            (identical(other.categoryName, categoryName) ||
-                other.categoryName == categoryName) &&
-            (identical(other.categoryType, categoryType) ||
-                other.categoryType == categoryType) &&
             (identical(other.isSaveButtonPressed, isSaveButtonPressed) ||
                 other.isSaveButtonPressed == isSaveButtonPressed) &&
             (identical(other.isLoading, isLoading) ||
@@ -190,8 +148,8 @@ class _$AddCategoryStateModelImpl implements _AddCategoryStateModel {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, categoryName, categoryType,
-      isSaveButtonPressed, isLoading, hasCategoryNameFocus);
+  int get hashCode => Object.hash(
+      runtimeType, isSaveButtonPressed, isLoading, hasCategoryNameFocus);
 
   @JsonKey(ignore: true)
   @override
@@ -203,16 +161,10 @@ class _$AddCategoryStateModelImpl implements _AddCategoryStateModel {
 
 abstract class _AddCategoryStateModel implements AddCategoryStateModel {
   const factory _AddCategoryStateModel(
-      {required final String categoryName,
-      final String? categoryType,
-      final bool? isSaveButtonPressed,
+      {final bool? isSaveButtonPressed,
       final bool? isLoading,
       final bool? hasCategoryNameFocus}) = _$AddCategoryStateModelImpl;
 
-  @override
-  String get categoryName;
-  @override
-  String? get categoryType;
   @override
   bool? get isSaveButtonPressed;
   @override

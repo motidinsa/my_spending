@@ -23,8 +23,7 @@ bool hasCategoryNameTextFieldFocus(WidgetRef ref) {
 }
 
 bool hasAddCategoryTextFieldFocus(WidgetRef ref, String title) {
-  if ((title == 'Name' &&
-      ref.read(addCategoryStateProvider).hasCategoryNameFocus == true)) {
+  if (ref.read(addCategoryStateProvider).hasCategoryNameFocus == true) {
     return true;
   }
   return false;

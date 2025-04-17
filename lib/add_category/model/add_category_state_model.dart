@@ -5,8 +5,6 @@ part 'add_category_state_model.freezed.dart';
 @freezed
 abstract class AddCategoryStateModel with _$AddCategoryStateModel {
   const factory AddCategoryStateModel({
-    required String categoryName,
-    String? categoryType,
     bool? isSaveButtonPressed,
     bool? isLoading,
     bool? hasCategoryNameFocus

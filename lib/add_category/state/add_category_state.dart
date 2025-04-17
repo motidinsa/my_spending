@@ -11,19 +11,22 @@ part 'add_category_state.g.dart';
 
 @riverpod
 class AddCategoryState extends _$AddCategoryState {
+  String categoryName = '';
+  String? type;
   final formKey = GlobalKey<FormState>();
 
   @override
   AddCategoryStateModel build() {
-    return AddCategoryStateModel(categoryName: '');
+    return AddCategoryStateModel();
   }
 
   void updateCategoryType(String categoryType) {
-    state = state.copyWith(categoryType: categoryType);
+    type = categoryType;
+    state = state.copyWith( hasCategoryNameFocus: categoryName.isEmpty);
   }
 
   void updateCategoryName(String name) {
-    state = state.copyWith(categoryName: name);
+    categoryName = name;
   }
 
   void updateSaveButtonPressedStatus() {
@@ -38,9 +41,9 @@ class AddCategoryState extends _$AddCategoryState {
       DateTime now = DateTime.now();
       await isarAddCategoryRepository.addCategory(
         categoryModel: CategoryModel(
-          categoryName: state.categoryName,
+          categoryName: categoryName,
           categoryId: generateDatabaseId(now),
-          categoryType: state.categoryType!,
+          categoryType: type!,
           dateCreated: now,
         ),
       );

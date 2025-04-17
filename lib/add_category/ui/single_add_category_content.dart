@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_spending/add_account/ui/add_account_text_field.dart';
 import 'package:my_spending/add_category/ui/add_category_text_field.dart';
 
 class SingleAddCategoryContent extends StatelessWidget {

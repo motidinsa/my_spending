@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:my_spending/add_transaction/ui/single_transaction_type.dart';
 import 'package:my_spending/categories/ui/single_category_type.dart';
 
 class CategoryTypeSelect extends StatelessWidget {

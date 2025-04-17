@@ -2,12 +2,10 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_account/functions/add_account_functions.dart';
-import 'package:my_spending/add_account/functions/add_account_validations.dart';
 import 'package:my_spending/add_category/functions/add_category_functions.dart';
 import 'package:my_spending/add_category/functions/add_category_validations.dart';
 import 'package:my_spending/add_category/state/add_category_state.dart';
 import 'package:my_spending/core/constants/style_constants.dart';
-import 'package:my_spending/core/functions/core_functions.dart';
 
 class AddCategoryTextField extends StatefulWidget {
   final String title;
