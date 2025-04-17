@@ -27,6 +27,8 @@ class _AddCategoryTextFieldState extends State<AddCategoryTextField> {
       builder: (context, ref, child) {
         if (hasAddCategoryTextFieldFocus(ref, widget.title)) {
           focusNode.requestFocus();
+        } else {
+          focusNode.unfocus();
         }
         return widget.title == 'Category type'
             ? DropdownButtonFormField2<String>(

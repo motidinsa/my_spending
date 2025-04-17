@@ -56,6 +56,6 @@ class AddCategoryState extends _$AddCategoryState {
   }
 
   void addCategoryNameFocus() {
-    state = state.copyWith(hasCategoryNameFocus: true);
+    state = state.copyWith(hasCategoryNameFocus: categoryName.isEmpty);
   }
 }
