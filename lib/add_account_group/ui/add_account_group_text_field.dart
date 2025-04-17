@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_account_group/functions/add_account_group_functions.dart';
 import 'package:my_spending/add_account_group/functions/add_account_group_validations.dart';
 import 'package:my_spending/add_account_group/state/add_account_group_state.dart';
+import 'package:my_spending/core/constants/style_constants.dart';
 
 class AddAccountGroupTextField extends StatefulWidget {
   const AddAccountGroupTextField({super.key});
@@ -45,28 +46,9 @@ class _AddAccountGroupTextFieldState extends State<AddAccountGroupTextField> {
             focusNode: focusNode,
             onChanged:
                 (text) =>
-                    onAddAccountGroupTextFieldChange(ref: ref, text: text),
+                    ref.read(addAccountGroupStateProvider.notifier).updateValue(text),
 
-            decoration: InputDecoration(
-              // labelText: getLabelText(widget.title),
-              contentPadding: EdgeInsets.fromLTRB(15, 20, 12, 12),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey, width: .6),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.green),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              errorBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.red, width: .6),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              focusedErrorBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.red),
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
+            decoration: getDefaultTextInputDecoration(),
             validator:
                 (value) => validateAddAccountGroupTextField(
                   textEditingController.text,

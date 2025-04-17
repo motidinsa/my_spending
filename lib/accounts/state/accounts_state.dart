@@ -1,7 +1,7 @@
 import 'package:my_spending/accounts/functions/accounts_function.dart';
 import 'package:my_spending/accounts/repository/isar_accounts_repository.dart';
 import 'package:my_spending/add_account_group/model/account_group_model.dart';
-import 'package:my_spending/core/model/account_model.dart';
+import 'package:my_spending/core/model/account_model/account_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'accounts_state.g.dart';

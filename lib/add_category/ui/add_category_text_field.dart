@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_account/functions/add_account_functions.dart';
 import 'package:my_spending/add_account/functions/add_account_validations.dart';
+import 'package:my_spending/add_category/functions/add_category_functions.dart';
+import 'package:my_spending/add_category/functions/add_category_validations.dart';
+import 'package:my_spending/add_category/state/add_category_state.dart';
+import 'package:my_spending/core/constants/style_constants.dart';
 import 'package:my_spending/core/functions/core_functions.dart';
 
 class AddCategoryTextField extends StatefulWidget {
@@ -23,118 +27,104 @@ class _AddCategoryTextFieldState extends State<AddCategoryTextField> {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, ref, child) {
-        executeAfterBuild(() {
-          textEditingController.text = getAddAccountTextFieldData(
-            ref,
-            widget.title,
-          );
-        });
-
-        if (hasAddAccountTextFieldFocus(ref, widget.title)) {
+        if (hasAddCategoryTextFieldFocus(ref, widget.title)) {
           focusNode.requestFocus();
         }
-        return widget.title == 'Category type'? DropdownButtonFormField2<String>(
-          isExpanded: true,
-          decoration: InputDecoration(
-            contentPadding: const EdgeInsets.symmetric(vertical: 16),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-            // Add more decoration..
-          ),
-          hint: const Text(
-            'Select type',
-            style: TextStyle(fontSize: 14),
-          ),
-          items: [
-            'Expense',
-            'Income',
-            'Both',
-          ]
-              .map((item) => DropdownMenuItem<String>(
-            value: item,
-            child: Text(
-              item,
-              style: const TextStyle(
-                fontSize: 14,
-              ),
-            ),
-          ))
-              .toList(),
-          validator: (value) {
-            // if (value == null) {
-            //   return 'Please select gender.';
-            // }
-            return null;
-          },
-          onChanged: (value) {
-            print(value);
-          },
+        return widget.title == 'Category type'
+            ? DropdownButtonFormField2<String>(
+              decoration: getDefaultTextInputDecoration(type: widget.title),
+              hint: const Text('Select type', style: TextStyle(fontSize: 14)),
+              items:
+                  ['Expense', 'Income', 'Both']
+                      .map(
+                        (item) => DropdownMenuItem<String>(
+                          value: item,
+                          child: Row(
+                            children: [
+                              Text(
+                                item,
+                                style: TextStyle(color: Colors.grey.shade700),
+                              ),
+                              SizedBox(width: 20),
+                              if (item == 'Expense') ...[
+                                Icon(
+                                  Icons.arrow_downward_rounded,
+                                  color: Colors.red,
+                                ),
+                              ] else if (item == 'Income') ...[
+                                Icon(Icons.arrow_upward, color: Colors.green),
+                              ] else ...[
+                                Icon(
+                                  Icons.arrow_downward_rounded,
+                                  color: Colors.red,
+                                  size: 22,
+                                ),
+                                Icon(
+                                  Icons.arrow_upward,
+                                  color: Colors.green,
+                                  size: 22,
+                                ),
+                              ],
+                            ],
+                          ),
+                        ),
+                      )
+                      .toList(),
 
-          buttonStyleData: const ButtonStyleData(
-            padding: EdgeInsets.only(right: 8),
-          ),
-          iconStyleData: const IconStyleData(
-            icon: Icon(
-              Icons.arrow_drop_down,
-              color: Colors.black45,
-            ),
-            iconSize: 24,
-          ),
-          dropdownStyleData: DropdownStyleData(
-            decoration: BoxDecoration(color: Colors.white,
-              borderRadius: BorderRadius.circular(15),
-            ),
-          ),
-          menuItemStyleData: const MenuItemStyleData(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-          ),
-        ):
-        TextFormField(
-          controller: textEditingController,
-          focusNode: focusNode,
-          keyboardType: getAddTransactionTextFieldKeyBoardType(widget.title),
-          textInputAction:
-              widget.title == 'Description'
-                  ? TextInputAction.done
-                  : TextInputAction.next,
-          onTap:
-              () => onAddAccountTextFieldPressed(
-                context: context,
-                ref: ref,
-                title: widget.title,
+              onChanged: (value) {
+                if (value != null) {
+                  ref
+                      .read(addCategoryStateProvider.notifier)
+                      .updateCategoryType(value);
+                }
+              },
+
+              validator: (value) => validateCategoryType(value),
+              buttonStyleData: const ButtonStyleData(
+                padding: EdgeInsets.only(right: 10),
               ),
-          onChanged:
-              (text) => onAddAccountTextFieldChange(
-                ref: ref,
-                text: text,
-                title: widget.title,
+              iconStyleData: const IconStyleData(
+                icon: Icon(
+                  Icons.arrow_drop_down_rounded,
+                  color: Colors.black45,
+                ),
+                iconSize: 24,
               ),
-          readOnly: isReadOnlyAddAccountTextField(widget.title),
-          decoration: InputDecoration(
-            hintText: getAddAccountHintText(widget.title),
-            contentPadding: EdgeInsets.fromLTRB(15, 20, 12, 12),
-            suffixIcon: getAddAccountTextFieldIcon(widget.title),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey, width: .6),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            errorBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.red, width: .6),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            focusedErrorBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.red),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.green),
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
-          validator:
-              (value) => validateAddAccountTextField(value ?? '', widget.title),
-        );
+              dropdownStyleData: DropdownStyleData(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+              menuItemStyleData: const MenuItemStyleData(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+              ),
+            )
+            : TextFormField(
+              controller: textEditingController,
+              focusNode: focusNode,
+              keyboardType: getAddTransactionTextFieldKeyBoardType(
+                widget.title,
+              ),
+              textInputAction:
+                  widget.title == 'Description'
+                      ? TextInputAction.done
+                      : TextInputAction.next,
+              onTap:
+                  () => onAddAccountTextFieldPressed(
+                    context: context,
+                    ref: ref,
+                    title: widget.title,
+                  ),
+              onChanged:
+                  (text) => ref
+                      .read(addCategoryStateProvider.notifier)
+                      .updateCategoryName(text),
+              readOnly: isReadOnlyAddAccountTextField(widget.title),
+              decoration: getDefaultTextInputDecoration(),
+              validator:
+                  (value) => validateCategoryName(textEditingController.text),
+            );
       },
     );
   }

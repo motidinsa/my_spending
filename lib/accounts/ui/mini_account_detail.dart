@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_spending/core/functions/core_functions.dart';
-import 'package:my_spending/core/model/account_model.dart';
+import 'package:my_spending/core/model/account_model/account_model.dart';
 // import 'package:smooth_corner/smooth_corner.dart';
 
 class MiniAccountDetail extends StatelessWidget {

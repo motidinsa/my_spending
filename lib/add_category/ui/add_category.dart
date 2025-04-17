@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_spending/add_category/functions/add_category_functions.dart';
+import 'package:my_spending/add_category/state/add_category_state.dart';
 import 'package:my_spending/add_category/ui/single_add_category_content.dart';
 import 'package:my_spending/core/functions/core_functions.dart';
 
@@ -48,19 +50,20 @@ class AddCategory extends StatelessWidget {
                   ),
                   child: Consumer(
                     builder: (context, ref, child) {
-                      // ref.watch(addAccountStateProvider);
                       return Form(
-                        // key:
-                        // ref.watch(addAccountStateProvider.notifier).formKey,
-                        // autovalidateMode:
-                        // ref.watch(
-                        //   addAccountStateProvider.select(
-                        //         (state) => state.isSaveButtonPressed,
-                        //   ),
-                        // ) ==
-                        //     true
-                        //     ? AutovalidateMode.always
-                        //     : null,
+                        key:
+                            ref
+                                .watch(addCategoryStateProvider.notifier)
+                                .formKey,
+                        autovalidateMode:
+                            ref.watch(
+                                      addCategoryStateProvider.select(
+                                        (state) => state.isSaveButtonPressed,
+                                      ),
+                                    ) ==
+                                    true
+                                ? AutovalidateMode.always
+                                : null,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
@@ -68,7 +71,6 @@ class AddCategory extends StatelessWidget {
                             SingleAddCategoryContent(title: 'Category type'),
                             SizedBox(height: 10),
                             SingleAddCategoryContent(title: 'Name'),
-
                           ],
                         ),
                       );
@@ -85,9 +87,7 @@ class AddCategory extends StatelessWidget {
                     vertical: 15,
                   ),
                   child: ElevatedButton(
-                    onPressed: () => {},
-                        // onAddAccountSavePressed(ref),
-
+                    onPressed: () => onAddCategoryGroupSavePressed(ref),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.green.shade300,
                       padding: EdgeInsets.symmetric(vertical: 15),
@@ -98,23 +98,22 @@ class AddCategory extends StatelessWidget {
                       ),
                     ),
                     child:
-                    // ref.watch(addAccountStateProvider).isLoading == true
-                    //     ? SizedBox(
-                    //   width: 20,
-                    //   height: 20,
-                    //   child: CircularProgressIndicator(
-                    //     color: Colors.white,
-                    //     strokeWidth: 3,
-                    //   ),
-                    // )
-                    //     :
-                    Text(
-                      'Save',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
-                    ),
+                        ref.watch(addCategoryStateProvider).isLoading == true
+                            ? SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                                strokeWidth: 3,
+                              ),
+                            )
+                            : Text(
+                              'Save',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                              ),
+                            ),
                   ),
                 );
               },

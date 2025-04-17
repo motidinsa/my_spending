@@ -18,6 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AddCategoryStateModel {
   String get categoryName => throw _privateConstructorUsedError;
   String? get categoryType => throw _privateConstructorUsedError;
+  bool? get isSaveButtonPressed => throw _privateConstructorUsedError;
+  bool? get isLoading => throw _privateConstructorUsedError;
+  bool? get hasCategoryNameFocus => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddCategoryStateModelCopyWith<AddCategoryStateModel> get copyWith =>
@@ -30,7 +33,12 @@ abstract class $AddCategoryStateModelCopyWith<$Res> {
           $Res Function(AddCategoryStateModel) then) =
       _$AddCategoryStateModelCopyWithImpl<$Res, AddCategoryStateModel>;
   @useResult
-  $Res call({String categoryName, String? categoryType});
+  $Res call(
+      {String categoryName,
+      String? categoryType,
+      bool? isSaveButtonPressed,
+      bool? isLoading,
+      bool? hasCategoryNameFocus});
 }
 
 /// @nodoc
@@ -49,6 +57,9 @@ class _$AddCategoryStateModelCopyWithImpl<$Res,
   $Res call({
     Object? categoryName = null,
     Object? categoryType = freezed,
+    Object? isSaveButtonPressed = freezed,
+    Object? isLoading = freezed,
+    Object? hasCategoryNameFocus = freezed,
   }) {
     return _then(_value.copyWith(
       categoryName: null == categoryName
@@ -59,6 +70,18 @@ class _$AddCategoryStateModelCopyWithImpl<$Res,
           ? _value.categoryType
           : categoryType // ignore: cast_nullable_to_non_nullable
               as String?,
+      isSaveButtonPressed: freezed == isSaveButtonPressed
+          ? _value.isSaveButtonPressed
+          : isSaveButtonPressed // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isLoading: freezed == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      hasCategoryNameFocus: freezed == hasCategoryNameFocus
+          ? _value.hasCategoryNameFocus
+          : hasCategoryNameFocus // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -72,7 +95,12 @@ abstract class _$$AddCategoryStateModelImplCopyWith<$Res>
       __$$AddCategoryStateModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String categoryName, String? categoryType});
+  $Res call(
+      {String categoryName,
+      String? categoryType,
+      bool? isSaveButtonPressed,
+      bool? isLoading,
+      bool? hasCategoryNameFocus});
 }
 
 /// @nodoc
@@ -89,6 +117,9 @@ class __$$AddCategoryStateModelImplCopyWithImpl<$Res>
   $Res call({
     Object? categoryName = null,
     Object? categoryType = freezed,
+    Object? isSaveButtonPressed = freezed,
+    Object? isLoading = freezed,
+    Object? hasCategoryNameFocus = freezed,
   }) {
     return _then(_$AddCategoryStateModelImpl(
       categoryName: null == categoryName
@@ -99,6 +130,18 @@ class __$$AddCategoryStateModelImplCopyWithImpl<$Res>
           ? _value.categoryType
           : categoryType // ignore: cast_nullable_to_non_nullable
               as String?,
+      isSaveButtonPressed: freezed == isSaveButtonPressed
+          ? _value.isSaveButtonPressed
+          : isSaveButtonPressed // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isLoading: freezed == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      hasCategoryNameFocus: freezed == hasCategoryNameFocus
+          ? _value.hasCategoryNameFocus
+          : hasCategoryNameFocus // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -107,16 +150,26 @@ class __$$AddCategoryStateModelImplCopyWithImpl<$Res>
 
 class _$AddCategoryStateModelImpl implements _AddCategoryStateModel {
   const _$AddCategoryStateModelImpl(
-      {required this.categoryName, this.categoryType});
+      {required this.categoryName,
+      this.categoryType,
+      this.isSaveButtonPressed,
+      this.isLoading,
+      this.hasCategoryNameFocus});
 
   @override
   final String categoryName;
   @override
   final String? categoryType;
+  @override
+  final bool? isSaveButtonPressed;
+  @override
+  final bool? isLoading;
+  @override
+  final bool? hasCategoryNameFocus;
 
   @override
   String toString() {
-    return 'AddCategoryStateModel(categoryName: $categoryName, categoryType: $categoryType)';
+    return 'AddCategoryStateModel(categoryName: $categoryName, categoryType: $categoryType, isSaveButtonPressed: $isSaveButtonPressed, isLoading: $isLoading, hasCategoryNameFocus: $hasCategoryNameFocus)';
   }
 
   @override
@@ -127,11 +180,18 @@ class _$AddCategoryStateModelImpl implements _AddCategoryStateModel {
             (identical(other.categoryName, categoryName) ||
                 other.categoryName == categoryName) &&
             (identical(other.categoryType, categoryType) ||
-                other.categoryType == categoryType));
+                other.categoryType == categoryType) &&
+            (identical(other.isSaveButtonPressed, isSaveButtonPressed) ||
+                other.isSaveButtonPressed == isSaveButtonPressed) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.hasCategoryNameFocus, hasCategoryNameFocus) ||
+                other.hasCategoryNameFocus == hasCategoryNameFocus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, categoryName, categoryType);
+  int get hashCode => Object.hash(runtimeType, categoryName, categoryType,
+      isSaveButtonPressed, isLoading, hasCategoryNameFocus);
 
   @JsonKey(ignore: true)
   @override
@@ -144,12 +204,21 @@ class _$AddCategoryStateModelImpl implements _AddCategoryStateModel {
 abstract class _AddCategoryStateModel implements AddCategoryStateModel {
   const factory _AddCategoryStateModel(
       {required final String categoryName,
-      final String? categoryType}) = _$AddCategoryStateModelImpl;
+      final String? categoryType,
+      final bool? isSaveButtonPressed,
+      final bool? isLoading,
+      final bool? hasCategoryNameFocus}) = _$AddCategoryStateModelImpl;
 
   @override
   String get categoryName;
   @override
   String? get categoryType;
+  @override
+  bool? get isSaveButtonPressed;
+  @override
+  bool? get isLoading;
+  @override
+  bool? get hasCategoryNameFocus;
   @override
   @JsonKey(ignore: true)
   _$$AddCategoryStateModelImplCopyWith<_$AddCategoryStateModelImpl>

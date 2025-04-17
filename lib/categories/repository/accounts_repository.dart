@@ -1,5 +1,5 @@
 import 'package:my_spending/add_account_group/model/account_group_model.dart';
-import 'package:my_spending/core/model/account_model.dart';
+import 'package:my_spending/core/model/account_model/account_model.dart';
 
 abstract class AccountsRepository {
   String? getAccountGroupName(String accountGroupId);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_spending/accounts/functions/accounts_function.dart';
 import 'package:my_spending/accounts/ui/mini_account_detail.dart';
-import 'package:my_spending/core/model/account_model.dart';
+import 'package:my_spending/core/model/account_model/account_model.dart';
 
 class GroupedAccountList extends StatelessWidget {
   final List<AccountModel> accountModels;

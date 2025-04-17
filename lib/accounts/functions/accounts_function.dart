@@ -1,5 +1,5 @@
 import 'package:my_spending/accounts/repository/isar_accounts_repository.dart';
-import 'package:my_spending/core/model/account_model.dart';
+import 'package:my_spending/core/model/account_model/account_model.dart';
 
 List<List<AccountModel>> getGroupedAccounts(List<AccountModel> accounts) {
   final Map<String, List<AccountModel>> groupedAccounts = {};

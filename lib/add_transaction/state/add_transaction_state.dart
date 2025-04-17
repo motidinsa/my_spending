@@ -1,5 +1,5 @@
 import 'package:my_spending/add_transaction/model/add_transaction_state_model.dart';
-import 'package:my_spending/core/model/category_model.dart';
+import 'package:my_spending/core/model/category_model/category_model.dart';
 import 'package:my_spending/core/model/transaction_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -21,22 +21,22 @@ class AddTransactionState extends _$AddTransactionState {
     amount: '',
     transactionType: 'Expense',
     categoryModels: [
-      CategoryModel(
-        categoryName: 'cat 1',
-        categoryId: '1',
-        dateCreated: DateTime.now(),
-        hasSubcategory: true,
-      ),
-      CategoryModel(
-        categoryName: 'cat 1',
-        categoryId: '1',
-        dateCreated: DateTime.now(),
-      ),
-      CategoryModel(
-        categoryName: 'cat 1',
-        categoryId: '1',
-        dateCreated: DateTime.now(),
-      ),
+      // CategoryModel(
+      //   categoryName: 'cat 1',
+      //   categoryId: '1',
+      //   dateCreated: DateTime.now(),
+      //   hasSubcategory: true,
+      // ),
+      // CategoryModel(
+      //   categoryName: 'cat 1',
+      //   categoryId: '1',
+      //   dateCreated: DateTime.now(),
+      // ),
+      // CategoryModel(
+      //   categoryName: 'cat 1',
+      //   categoryId: '1',
+      //   dateCreated: DateTime.now(),
+      // ),
     ],
     accountModels: [
       // AccountModel(

@@ -17,13 +17,6 @@ onAddAccountGroupSavePressed(WidgetRef ref) {
   }
 }
 
-onAddAccountGroupTextFieldChange({
-  required WidgetRef ref,
-  required String text,
-}) {
-  ref.read(addAccountGroupStateProvider.notifier).updateValue(text);
-}
-
 bool hasAddAccountGroupTextFieldFocus(WidgetRef ref) {
   if (ref.read(addAccountGroupStateProvider).hasGroupNameFocus == true) {
     return true;
