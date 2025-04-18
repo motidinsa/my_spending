@@ -1,5 +1,5 @@
 import 'package:my_spending/add_transaction/model/add_transaction_state_model.dart';
-import 'package:my_spending/core/model/transaction_model.dart';
+import 'package:my_spending/core/model/transaction_model/transaction_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'add_transaction_state.g.dart';

@@ -1,4 +1,4 @@
-import 'package:my_spending/core/model/app_state_model.dart';
+import 'package:my_spending/core/model/app_model/app_state_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'app_state.g.dart';

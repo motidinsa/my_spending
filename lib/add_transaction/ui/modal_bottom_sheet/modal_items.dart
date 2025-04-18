@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/single_modal_item.dart';
 import 'package:my_spending/core/model/account_model/account_model.dart';
 import 'package:my_spending/core/model/category_model/category_model.dart';
-import 'package:my_spending/core/model/subaccount_model.dart';
-import 'package:my_spending/core/model/subcategory_model.dart';
+import 'package:my_spending/core/model/subaccount_model/subaccount_model.dart';
+import 'package:my_spending/core/model/subcategory_model/subcategory_model.dart';
 
 class ModalItems extends StatelessWidget {
   final bool isPrimary;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_spending/core/model/transaction_model.dart';
+import 'package:my_spending/core/model/transaction_model/transaction_model.dart';
 
 double getCardPadding({String? description, String? subcategory}) {
   if (description == null && subcategory == null) {

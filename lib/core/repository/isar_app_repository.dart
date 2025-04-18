@@ -1,6 +1,6 @@
 import 'package:isar/isar.dart';
 import 'package:my_spending/add_account_group/model/account_group_model.dart';
-import 'package:my_spending/core/model/app_model.dart';
+import 'package:my_spending/core/model/app_model/app_model.dart';
 import 'package:my_spending/core/repository/app_repository.dart';
 
 class IsarAppRepository implements AppRepository {

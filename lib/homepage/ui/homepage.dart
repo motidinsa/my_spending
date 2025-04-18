@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:grouped_list/grouped_list.dart';
 import 'package:my_spending/core/constants/color_constants.dart';
-import 'package:my_spending/core/model/transaction_model.dart';
+import 'package:my_spending/core/model/transaction_model/transaction_model.dart';
 import 'package:my_spending/core/state/app_state.dart';
 import 'package:my_spending/homepage/functions/homepage_functions.dart';
 import 'package:my_spending/homepage/ui/daily_status_info.dart';

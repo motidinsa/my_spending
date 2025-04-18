@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_spending/core/model/transaction_model.dart';
+import 'package:my_spending/core/model/transaction_model/transaction_model.dart';
 import 'package:my_spending/homepage/ui/mini_transaction_detail.dart';
 
 class GroupedTransactions extends StatelessWidget {
