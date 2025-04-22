@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/add_transaction_text_field.dart';
+import 'package:my_spending/core/constants/language_constants.dart';
 
 class SingleAddTransactionContent extends StatelessWidget {
   final String title;
@@ -16,7 +18,7 @@ class SingleAddTransactionContent extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 2, bottom: 5),
           child: Text(
-            title,
+            context.tr(title),
             style: TextStyle(
               color: Colors.green.shade800,
               fontSize: 16,
@@ -24,7 +26,7 @@ class SingleAddTransactionContent extends StatelessWidget {
             ),
           ),
         ),
-        if (title == 'Amount') ...[
+        if (title == amount) ...[
           Row(
             children: [
               Expanded(child: AddTransactionTextField(title: title)),

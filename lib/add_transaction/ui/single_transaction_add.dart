@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/add_transaction_text_field.dart';
 import 'package:my_spending/add_transaction/ui/single_add_transaction_content.dart';
+import 'package:my_spending/core/constants/language_constants.dart';
 
 class SingleTransactionAdd extends StatelessWidget {
   const SingleTransactionAdd({super.key});
@@ -34,13 +36,13 @@ class SingleTransactionAdd extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SingleAddTransactionContent(title: 'Date'),
+                  SingleAddTransactionContent(title: date),
                   SizedBox(height: 10),
-                  SingleAddTransactionContent(title: 'Account'),
+                  SingleAddTransactionContent(title: account),
                   SizedBox(height: 10),
-                  SingleAddTransactionContent(title: 'Category'),
+                  SingleAddTransactionContent(title: category),
                   SizedBox(height: 10),
-                  SingleAddTransactionContent(title: 'Amount'),
+                  SingleAddTransactionContent(title: amount),
                   Consumer(
                     builder: (context, ref, child) {
                       bool? isAmountAddButtonPressed =
@@ -57,11 +59,11 @@ class SingleTransactionAdd extends StatelessWidget {
                             Row(
                               children: [
                                 Expanded(
-                                  child: AddTransactionTextField(title: 'Tip'),
+                                  child: AddTransactionTextField(title: tip),
                                 ),
                                 SizedBox(width: 10),
                                 Expanded(
-                                  child: AddTransactionTextField(title: 'Fee'),
+                                  child: AddTransactionTextField(title: fee),
                                 ),
                                 SizedBox(width: 10),
 
@@ -92,7 +94,7 @@ class SingleTransactionAdd extends StatelessWidget {
                     },
                   ),
                   SizedBox(height: 10),
-                  SingleAddTransactionContent(title: 'Description'),
+                  SingleAddTransactionContent(title: description),
                 ],
               ),
             ),
@@ -118,7 +120,7 @@ class SingleTransactionAdd extends StatelessWidget {
                       ), // Set the border radius here
                     ),
                   ),
-                  child: Text('Save', style: TextStyle(color: Colors.green)),
+                  child: Text(context.tr(save), style: TextStyle(color: Colors.green)),
                 ),
               ),
               SizedBox(width: 10),
@@ -140,7 +142,7 @@ class SingleTransactionAdd extends StatelessWidget {
                           ), // Set the border radius here
                         ),
                       ),
-                      child: Text('More', style: TextStyle(color: Colors.green)),
+                      child: Text(context.tr(more), style: TextStyle(color: Colors.green)),
                     );
                   }
                 ),

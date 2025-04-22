@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_transaction/ui/single_transaction_add.dart';
 import 'package:my_spending/add_transaction/ui/transaction_type_select.dart';
+import 'package:my_spending/core/constants/language_constants.dart';
 
 class AddTransaction extends ConsumerWidget {
   const AddTransaction({super.key});
@@ -11,7 +13,7 @@ class AddTransaction extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Add transaction',
+          context.tr(addTransaction),
           style: TextStyle(
             color: Colors.green.shade800,
             fontWeight: FontWeight.bold,

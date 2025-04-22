@@ -1,16 +1,19 @@
-// import 'package:get/get.dart';
-// import 'package:my_spending/core/language/color_constants.dart';
-//
-// class Languages extends Translations {
-//   @override
-//   Map<String, Map<String, String>> get keys => {
-//     'en_US': {
-//       aa: aa,
-//     },
-//     'de_DE': {
-//       aa: ee,
-//     }
-//   };
-// }
-
-String aa = 'a';
+const String appTitle = 'appTitle';
+const String home = 'home';
+const String stat = 'stat';
+const String accounts = 'accounts';
+const String settings = 'settings';
+const String addTransaction = 'addTransaction';
+const String date = 'date';
+const String amount = 'amount';
+const String account = 'account';
+const String category = 'category';
+const String description = 'description';
+const String save = 'save';
+const String more = 'more';
+const String tip = 'tip';
+const String fee = 'fee';
+const String expense = 'expense';
+const String income = 'income';
+const String transfer = 'transfer';
+const String optional = 'optional';

@@ -10,26 +10,26 @@ import 'package:my_spending/homepage/ui/daily_status_info.dart';
 import 'package:my_spending/homepage/ui/grouped_transactions.dart';
 
 class HomePage extends ConsumerWidget {
-  HomePage({super.key});
+   HomePage({super.key});
 
-  DateTime parseDate(DateTime givenDate, {bool? ignoreTimeAdd}) {
-    late DateTime date;
-    if (ignoreTimeAdd == null) {
-      date = givenDate.toUtc().add(Duration(hours: 3));
-    } else {
-      date = givenDate;
-    }
-
-    return DateTime(
-      date.year,
-      date.month,
-      date.day,
-      date.hour,
-      date.minute,
-      date.second,
-      date.millisecond,
-    );
-  }
+  // DateTime parseDate(DateTime givenDate, {bool? ignoreTimeAdd}) {
+  //   late DateTime date;
+  //   if (ignoreTimeAdd == null) {
+  //     date = givenDate.toUtc().add(Duration(hours: 3));
+  //   } else {
+  //     date = givenDate;
+  //   }
+  //
+  //   return DateTime(
+  //     date.year,
+  //     date.month,
+  //     date.day,
+  //     date.hour,
+  //     date.minute,
+  //     date.second,
+  //     date.millisecond,
+  //   );
+  // }
 
   // List<TransactionModel> tr = [
   //   TransactionModel(
@@ -280,7 +280,7 @@ class HomePage extends ConsumerWidget {
   //     date: DateTime(2023),
   //   ),
   // ];
-  List<TransactionModel> tr = [];
+  final List<TransactionModel> tr = [];
 
   @override
   Widget build(BuildContext context,WidgetRef ref) {

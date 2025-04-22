@@ -1,13 +1,28 @@
 {
+  "appTitle": "My Spending",
   "home": "Home",
-  "stat":"Status",
-  "accounts":"Accounts",
-  "settings":"Setting",
-  "msg_named":"Easy localization is written in the {lang} language",
-  "msg_mixed":"{} are written in the {lang} language",
-  "gender":{
-    "male":"Hi man ;) {}",
-    "female":"Hello girl :) {}",
-    "other":"Hello {}"
+  "stat": "Status",
+  "accounts": "Accounts",
+  "settings": "Setting",
+  "addTransaction": "Add transaction",
+  "date": "Date",
+  "amount": "Amount",
+  "account": "Account",
+  "category": "Category",
+  "description": "Description",
+  "save": "Save",
+  "more":"More",
+  "tip":"Tip",
+  "fee":"Fee",
+  "expense": "Expense",
+  "income": "Income",
+  "transfer": "Transfer",
+  "optional": "Optional",
+  "msg_named": "Easy localization is written in the {lang} language",
+  "msg_mixed": "{} are written in the {lang} language",
+  "gender": {
+    "male": "Hi man ;) {}",
+    "female": "Hello girl :) {}",
+    "other": "Hello {}"
   }
 }

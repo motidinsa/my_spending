@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_spending/add_transaction/ui/single_transaction_type.dart';
+import 'package:my_spending/core/constants/language_constants.dart';
 
 class TransactionTypeSelect extends StatelessWidget {
   const TransactionTypeSelect({super.key});
@@ -23,7 +24,7 @@ class TransactionTypeSelect extends StatelessWidget {
             children: [
               Expanded(
                 child: SingleTransactionType(
-                  name: 'Expense',
+                  name: expense,
                   icon: FontAwesomeIcons.arrowDown,
                   // backgroundColor: Colors.white,
                   foregroundColor: Colors.red.shade900,
@@ -31,7 +32,7 @@ class TransactionTypeSelect extends StatelessWidget {
               ),
               Expanded(
                 child: SingleTransactionType(
-                  name: 'Income',
+                  name: income,
                   icon: FontAwesomeIcons.arrowUp,
                   // backgroundColor: Colors.green.shade100,
                   foregroundColor: Colors.green.shade900,
@@ -40,7 +41,7 @@ class TransactionTypeSelect extends StatelessWidget {
 
               Expanded(
                 child: SingleTransactionType(
-                  name: 'Transfer',
+                  name: transfer,
                   icon: FontAwesomeIcons.rotate,
                   // backgroundColor: Colors.grey.shade200,
                   foregroundColor: Colors.grey.shade800,

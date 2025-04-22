@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'package:my_spending/core/constants/language_constants.dart';
 import 'package:my_spending/core/dependency_injection/dependency_injections.dart';
 import 'package:my_spending/core/route/routes.dart';
 
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      // title: context.tr(appTitle),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),

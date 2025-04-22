@@ -1,4 +1,5 @@
 import 'package:my_spending/add_transaction/model/add_transaction_state_model.dart';
+import 'package:my_spending/core/constants/language_constants.dart';
 import 'package:my_spending/core/model/transaction_model/transaction_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -18,7 +19,7 @@ class AddTransactionState extends _$AddTransactionState {
       dateCreated: DateTime.now(),
     ),
     amount: '',
-    transactionType: 'Expense',
+    transactionType: expense,
     categoryModels: [
       // CategoryModel(
       //   categoryName: 'cat 1',
@@ -94,11 +95,11 @@ class AddTransactionState extends _$AddTransactionState {
 
   void onSingleModalItemPressed({required String name}) {
     String redirectFrom = state.redirectFrom!;
-    if (redirectFrom == 'Category') {
+    if (redirectFrom == category) {
       state = state.copyWith(
         transactionModel: state.transactionModel.copyWith(categoryName: name),
       );
-    } else if (redirectFrom == 'Account') {
+    } else if (redirectFrom == account) {
       state = state.copyWith(
         transactionModel: state.transactionModel.copyWith(accountName: name),
       );

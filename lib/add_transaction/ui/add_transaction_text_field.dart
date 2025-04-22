@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_transaction/functions/add_transaction_functions.dart';
@@ -30,7 +31,10 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, ref, child) {
-        textEditingController.text = getAddTransactionTextFieldData(ref, widget.title);
+        textEditingController.text = getAddTransactionTextFieldData(
+          ref,
+          widget.title,
+        );
         return TextFormField(
           controller: textEditingController,
           onTap:
@@ -39,7 +43,12 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
                 ref: ref,
                 title: widget.title,
               ),
-          onChanged: (text) =>onAddTransactionTextFieldChange(ref:ref,text: text,title: widget.title),
+          onChanged:
+              (text) => onAddTransactionTextFieldChange(
+                ref: ref,
+                text: text,
+                title: widget.title,
+              ),
           readOnly: isReadOnlyAddTransactionTextField(widget.title),
           decoration: InputDecoration(
             labelText: getLabelText(widget.title),
