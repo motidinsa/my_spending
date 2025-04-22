@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -41,7 +42,7 @@ class SingleCategoryType extends StatelessWidget {
               children: [
                 FaIcon(icon, color: foregroundColor),
                 SizedBox(height: 3),
-                Text(name, style: TextStyle(color: foregroundColor)),
+                Text(context.tr(name), style: TextStyle(color: foregroundColor)),
               ],
             ),
           ),

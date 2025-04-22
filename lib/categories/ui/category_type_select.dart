@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_spending/categories/ui/single_category_type.dart';
+import 'package:my_spending/core/constants/translation_keys.g.dart';
 
 class CategoryTypeSelect extends StatelessWidget {
   const CategoryTypeSelect({super.key});
@@ -23,7 +24,7 @@ class CategoryTypeSelect extends StatelessWidget {
             children: [
               Expanded(
                 child: SingleCategoryType(
-                  name: 'Expense',
+                  name: LocaleKeys.expense,
                   icon: FontAwesomeIcons.arrowDown,
                   // backgroundColor: Colors.white,
                   foregroundColor: Colors.red.shade900,
@@ -31,7 +32,7 @@ class CategoryTypeSelect extends StatelessWidget {
               ),
               Expanded(
                 child: SingleCategoryType(
-                  name: 'Income',
+                  name: LocaleKeys.income,
                   icon: FontAwesomeIcons.arrowUp,
                   // backgroundColor: Colors.green.shade100,
                   foregroundColor: Colors.green.shade900,

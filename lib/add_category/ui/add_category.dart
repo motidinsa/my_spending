@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_category/functions/add_category_functions.dart';
 import 'package:my_spending/add_category/state/add_category_state.dart';
 import 'package:my_spending/add_category/ui/single_add_category_content.dart';
+import 'package:my_spending/core/constants/language_constants.dart';
 import 'package:my_spending/core/functions/core_functions.dart';
 
 class AddCategory extends StatelessWidget {
@@ -15,7 +17,7 @@ class AddCategory extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            'Add Category',
+            context.tr(addCategory),
             style: TextStyle(
               color: Colors.green.shade800,
               fontWeight: FontWeight.bold,
@@ -68,12 +70,12 @@ class AddCategory extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            SingleAddCategoryContent(title: 'Category type'),
+                            SingleAddCategoryContent(title: categoryType),
                             SizedBox(height: 10),
                             Consumer(
                               builder: (context, ref, child) {
                                 ref.watch(addCategoryStateProvider);
-                                return SingleAddCategoryContent(title: 'Name');
+                                return SingleAddCategoryContent(title: name);
                               },
                             ),
                           ],
@@ -113,7 +115,7 @@ class AddCategory extends StatelessWidget {
                               ),
                             )
                             : Text(
-                              'Save',
+                              context.tr(save),
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,

@@ -11,13 +11,30 @@
   "category": "Category",
   "description": "Description",
   "save": "Save",
-  "more":"More",
-  "tip":"Tip",
-  "fee":"Fee",
+  "more": "More",
+  "tip": "Tip",
+  "fee": "Fee",
   "expense": "Expense",
   "income": "Income",
   "transfer": "Transfer",
   "optional": "Optional",
+  "addCategory": "Add Category",
+  "name": "Name",
+  "selectType": "Select type",
+  "categoryType": "Category type",
+  "both": "Both",
+  "nonEmptyCategoryName": "Category name can't be empty",
+  "nonEmptyCategoryType": "Please select category type",
+  "categories": "Categories",
+  "subcategory": {
+    "one": "Subcategory",
+    "other": "Subcategories"
+  },
+  "subcategoryCount": {
+    "zero": "No subcategory",
+    "one": "{} subcategory",
+    "other": "{} subcategories"
+  },
   "msg_named": "Easy localization is written in the {lang} language",
   "msg_mixed": "{} are written in the {lang} language",
   "gender": {

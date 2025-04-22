@@ -1,10 +1,12 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_account/functions/add_account_functions.dart';
 import 'package:my_spending/add_category/functions/add_category_functions.dart';
 import 'package:my_spending/add_category/functions/add_category_validations.dart';
 import 'package:my_spending/add_category/state/add_category_state.dart';
+import 'package:my_spending/core/constants/language_constants.dart';
 import 'package:my_spending/core/constants/style_constants.dart';
 
 class AddCategoryTextField extends StatefulWidget {
@@ -30,28 +32,31 @@ class _AddCategoryTextFieldState extends State<AddCategoryTextField> {
         } else {
           focusNode.unfocus();
         }
-        return widget.title == 'Category type'
+        return widget.title == categoryType
             ? DropdownButtonFormField2<String>(
               decoration: getDefaultTextInputDecoration(type: widget.title),
-              hint: const Text('Select type', style: TextStyle(fontSize: 14)),
+              hint: Text(
+                context.tr(selectType),
+                style: TextStyle(fontSize: 14),
+              ),
               items:
-                  ['Expense', 'Income', 'Both']
+                  [expense, income, both]
                       .map(
                         (item) => DropdownMenuItem<String>(
                           value: item,
                           child: Row(
                             children: [
                               Text(
-                                item,
+                                context.tr(item),
                                 style: TextStyle(color: Colors.grey.shade700),
                               ),
                               SizedBox(width: 20),
-                              if (item == 'Expense') ...[
+                              if (item == expense) ...[
                                 Icon(
                                   Icons.arrow_downward_rounded,
                                   color: Colors.red,
                                 ),
-                              ] else if (item == 'Income') ...[
+                              ] else if (item == income) ...[
                                 Icon(Icons.arrow_upward, color: Colors.green),
                               ] else ...[
                                 Icon(
@@ -106,10 +111,6 @@ class _AddCategoryTextFieldState extends State<AddCategoryTextField> {
               keyboardType: getAddTransactionTextFieldKeyBoardType(
                 widget.title,
               ),
-              textInputAction:
-                  widget.title == 'Description'
-                      ? TextInputAction.done
-                      : TextInputAction.next,
               onTap:
                   () => onAddAccountTextFieldPressed(
                     context: context,

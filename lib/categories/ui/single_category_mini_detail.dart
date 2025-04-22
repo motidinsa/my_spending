@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:my_spending/core/constants/translation_keys.g.dart';
 
 class SingleCategoryMiniDetail extends StatelessWidget {
   const SingleCategoryMiniDetail({super.key});
@@ -24,7 +26,7 @@ class SingleCategoryMiniDetail extends StatelessWidget {
           ),
         ),
         subtitle: Text(
-          '3 subcategories',
+          plural(LocaleKeys.subcategoryCount,  20),
           style: TextStyle(
             // fontWeight: FontWeight.bold,
             color: Colors.grey.shade700,

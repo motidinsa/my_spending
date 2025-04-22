@@ -1,12 +1,16 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:my_spending/core/constants/language_constants.dart';
+
 validateCategoryName(String data) {
   if (data.trim().isEmpty) {
-    return 'Category name can\'t be empty';
+    return nonEmptyCategoryName.tr();
   }
   return null;
 }
+
 validateCategoryType(String? data) {
   if (data == null) {
-    return 'Please select category type';
+    return nonEmptyCategoryType.tr();
   }
   return null;
 }
