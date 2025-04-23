@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'add_category_state.dart';
+part of 'categories_other_state.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$addCategoryStateHash() => r'9dc515cacba1c1d6ba929ec958f0d7877c50b1ce';
+String _$categoriesOtherStateHash() =>
+    r'd7015e4c71d4581059b1ae7563506b1cee41dcb8';
 
-/// See also [AddCategoryState].
-@ProviderFor(AddCategoryState)
-final addCategoryStateProvider = AutoDisposeNotifierProvider<AddCategoryState,
-    AddCategoryStateModel>.internal(
-  AddCategoryState.new,
-  name: r'addCategoryStateProvider',
+/// See also [CategoriesOtherState].
+@ProviderFor(CategoriesOtherState)
+final categoriesOtherStateProvider =
+    AutoDisposeNotifierProvider<CategoriesOtherState, bool>.internal(
+  CategoriesOtherState.new,
+  name: r'categoriesOtherStateProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$addCategoryStateHash,
+      : _$categoriesOtherStateHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$AddCategoryState = AutoDisposeNotifier<AddCategoryStateModel>;
+typedef _$CategoriesOtherState = AutoDisposeNotifier<bool>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

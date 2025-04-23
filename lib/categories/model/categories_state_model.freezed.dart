@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CategoriesStateModel {
   String get selectedCategoryType => throw _privateConstructorUsedError;
   List<CategoryModel> get categoryList => throw _privateConstructorUsedError;
+  bool get isAddCategoryVisible => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CategoriesStateModelCopyWith<CategoriesStateModel> get copyWith =>
@@ -30,7 +31,10 @@ abstract class $CategoriesStateModelCopyWith<$Res> {
           $Res Function(CategoriesStateModel) then) =
       _$CategoriesStateModelCopyWithImpl<$Res, CategoriesStateModel>;
   @useResult
-  $Res call({String selectedCategoryType, List<CategoryModel> categoryList});
+  $Res call(
+      {String selectedCategoryType,
+      List<CategoryModel> categoryList,
+      bool isAddCategoryVisible});
 }
 
 /// @nodoc
@@ -49,6 +53,7 @@ class _$CategoriesStateModelCopyWithImpl<$Res,
   $Res call({
     Object? selectedCategoryType = null,
     Object? categoryList = null,
+    Object? isAddCategoryVisible = null,
   }) {
     return _then(_value.copyWith(
       selectedCategoryType: null == selectedCategoryType
@@ -59,6 +64,10 @@ class _$CategoriesStateModelCopyWithImpl<$Res,
           ? _value.categoryList
           : categoryList // ignore: cast_nullable_to_non_nullable
               as List<CategoryModel>,
+      isAddCategoryVisible: null == isAddCategoryVisible
+          ? _value.isAddCategoryVisible
+          : isAddCategoryVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -71,7 +80,10 @@ abstract class _$$CategoriesStateModelImplCopyWith<$Res>
       __$$CategoriesStateModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String selectedCategoryType, List<CategoryModel> categoryList});
+  $Res call(
+      {String selectedCategoryType,
+      List<CategoryModel> categoryList,
+      bool isAddCategoryVisible});
 }
 
 /// @nodoc
@@ -87,6 +99,7 @@ class __$$CategoriesStateModelImplCopyWithImpl<$Res>
   $Res call({
     Object? selectedCategoryType = null,
     Object? categoryList = null,
+    Object? isAddCategoryVisible = null,
   }) {
     return _then(_$CategoriesStateModelImpl(
       selectedCategoryType: null == selectedCategoryType
@@ -97,6 +110,10 @@ class __$$CategoriesStateModelImplCopyWithImpl<$Res>
           ? _value._categoryList
           : categoryList // ignore: cast_nullable_to_non_nullable
               as List<CategoryModel>,
+      isAddCategoryVisible: null == isAddCategoryVisible
+          ? _value.isAddCategoryVisible
+          : isAddCategoryVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -106,7 +123,8 @@ class __$$CategoriesStateModelImplCopyWithImpl<$Res>
 class _$CategoriesStateModelImpl implements _CategoriesStateModel {
   const _$CategoriesStateModelImpl(
       {this.selectedCategoryType = LocaleKeys.expense,
-      final List<CategoryModel> categoryList = const []})
+      final List<CategoryModel> categoryList = const [],
+      this.isAddCategoryVisible = true})
       : _categoryList = categoryList;
 
   @override
@@ -122,8 +140,12 @@ class _$CategoriesStateModelImpl implements _CategoriesStateModel {
   }
 
   @override
+  @JsonKey()
+  final bool isAddCategoryVisible;
+
+  @override
   String toString() {
-    return 'CategoriesStateModel(selectedCategoryType: $selectedCategoryType, categoryList: $categoryList)';
+    return 'CategoriesStateModel(selectedCategoryType: $selectedCategoryType, categoryList: $categoryList, isAddCategoryVisible: $isAddCategoryVisible)';
   }
 
   @override
@@ -134,12 +156,14 @@ class _$CategoriesStateModelImpl implements _CategoriesStateModel {
             (identical(other.selectedCategoryType, selectedCategoryType) ||
                 other.selectedCategoryType == selectedCategoryType) &&
             const DeepCollectionEquality()
-                .equals(other._categoryList, _categoryList));
+                .equals(other._categoryList, _categoryList) &&
+            (identical(other.isAddCategoryVisible, isAddCategoryVisible) ||
+                other.isAddCategoryVisible == isAddCategoryVisible));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, selectedCategoryType,
-      const DeepCollectionEquality().hash(_categoryList));
+      const DeepCollectionEquality().hash(_categoryList), isAddCategoryVisible);
 
   @JsonKey(ignore: true)
   @override
@@ -153,12 +177,15 @@ class _$CategoriesStateModelImpl implements _CategoriesStateModel {
 abstract class _CategoriesStateModel implements CategoriesStateModel {
   const factory _CategoriesStateModel(
       {final String selectedCategoryType,
-      final List<CategoryModel> categoryList}) = _$CategoriesStateModelImpl;
+      final List<CategoryModel> categoryList,
+      final bool isAddCategoryVisible}) = _$CategoriesStateModelImpl;
 
   @override
   String get selectedCategoryType;
   @override
   List<CategoryModel> get categoryList;
+  @override
+  bool get isAddCategoryVisible;
   @override
   @JsonKey(ignore: true)
   _$$CategoriesStateModelImplCopyWith<_$CategoriesStateModelImpl>

@@ -9,5 +9,6 @@ abstract class CategoriesStateModel with _$CategoriesStateModel {
   const factory CategoriesStateModel({
     @Default(LocaleKeys.expense) String selectedCategoryType,
     @Default([]) List<CategoryModel> categoryList,
+    @Default(true) bool isAddCategoryVisible,
   }) = _CategoriesStateModel;
 }
