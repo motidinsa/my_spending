@@ -2,8 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:my_spending/add_transaction/functions/add_transaction_functions.dart';
-import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 import 'package:my_spending/categories/functions/categories_function.dart';
 import 'package:my_spending/categories/state/categories_state.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
