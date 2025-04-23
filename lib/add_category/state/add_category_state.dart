@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_spending/add_category/model/add_category_state_model.dart';
 import 'package:my_spending/add_category/repository/isar_add_category_repository.dart';
+import 'package:my_spending/categories/state/categories_state.dart';
 import 'package:my_spending/core/functions/core_functions.dart';
 import 'package:my_spending/core/model/category_model/category_model.dart';
 import 'package:my_spending/core/route/routes.dart';
@@ -48,6 +49,7 @@ class AddCategoryState extends _$AddCategoryState {
         ),
       );
       navigatorKey.currentContext?.pop();
+      ref.read(categoriesStateProvider.notifier).updateCategories();
     } on Exception catch (e) {
       print(e);
     } finally {

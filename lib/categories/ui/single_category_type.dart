@@ -4,6 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_spending/add_transaction/functions/add_transaction_functions.dart';
 import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
+import 'package:my_spending/categories/functions/categories_function.dart';
+import 'package:my_spending/categories/state/categories_state.dart';
+import 'package:my_spending/core/constants/translation_keys.g.dart';
 
 class SingleCategoryType extends StatelessWidget {
   final String name;
@@ -23,15 +26,16 @@ class SingleCategoryType extends StatelessWidget {
       builder: (context, ref, child) {
         return GestureDetector(
           onTap: () {
-            onTransactionTypeSelect(ref: ref, type: name);
+            ref.read(categoriesStateProvider.notifier).updateCategoryList(name);
           },
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 7),
             decoration: BoxDecoration(
-              color: getTransactionTypeBackgroundColor(
+              color: getCategoryTypeBackgroundColor(
                 selectedType: ref.watch(
-                  addTransactionStateProvider.select(
-                    (state) => state.transactionType,
+                  categoriesStateProvider.select(
+                    (state) =>
+                        state.value?.selectedCategoryType ?? LocaleKeys.expense,
                   ),
                 ),
                 initialType: name,
@@ -42,7 +46,10 @@ class SingleCategoryType extends StatelessWidget {
               children: [
                 FaIcon(icon, color: foregroundColor),
                 SizedBox(height: 3),
-                Text(context.tr(name), style: TextStyle(color: foregroundColor)),
+                Text(
+                  context.tr(name),
+                  style: TextStyle(color: foregroundColor),
+                ),
               ],
             ),
           ),

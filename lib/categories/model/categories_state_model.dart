@@ -8,9 +8,6 @@ part 'categories_state_model.freezed.dart';
 abstract class CategoriesStateModel with _$CategoriesStateModel {
   const factory CategoriesStateModel({
     @Default(LocaleKeys.expense) String selectedCategoryType,
-    @Default([]) List<CategoryModel> incomeCategories,
-    @Default([]) List<CategoryModel> expenseCategories,
-    @Default(true) bool? isExpenseCategoryLoading,
-    @Default(true) bool? isIncomeCategoryLoading
+    @Default([]) List<CategoryModel> categoryList,
   }) = _CategoriesStateModel;
 }

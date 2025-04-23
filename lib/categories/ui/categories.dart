@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_spending/categories/state/categories_state.dart';
+import 'package:my_spending/categories/ui/category_list.dart';
 import 'package:my_spending/categories/ui/category_type_select.dart';
 import 'package:my_spending/categories/ui/single_category_mini_detail.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
 
-class Categories extends ConsumerWidget {
+class Categories extends StatelessWidget {
   const Categories({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: Consumer(
         builder: (context, ref, child) {
@@ -47,47 +48,23 @@ class Categories extends ConsumerWidget {
       body: Column(
         children: [
           CategoryTypeSelect(),
-          ref
-              .watch(categoriesStateProvider)
-              .when(
-                data: (data) => SingleCategoryMiniDetail(),
-                error: (error, a) => Text(error.toString()),
-                loading: () => Center(child: CircularProgressIndicator()),
+          SizedBox(height: 10,),
+          Expanded(
+            child: Consumer(builder: (ctx,ref,child)=>ref
+                .watch(categoriesStateProvider)
+                .when(
+              data:
+                  (data) =>
+                  CategoryList(categoryModels: data.categoryList),
+              error: (error, a) => Text(error.toString()),
+              loading: () => Center(
+                child: CircularProgressIndicator(
+                  color: Colors.green.shade700,
+                  strokeWidth: 3,
+                ),
               ),
-          // Expanded(
-          //   child: Padding(
-          //     padding: const EdgeInsets.symmetric(horizontal: 20),
-          //     child: ClipRRect(
-          //       borderRadius: BorderRadius.circular(12),
-          //       child: ListView(
-          //         shrinkWrap: true,
-          //         children: [
-          //           SizedBox(height: 5),
-          //
-          //           SingleCategoryMiniDetail(),
-          //           SizedBox(height: 5),
-          //           SingleCategoryMiniDetail(),
-          //           SizedBox(height: 5),
-          //           SingleCategoryMiniDetail(),
-          //           SizedBox(height: 10),
-          //           SingleCategoryMiniDetail(),
-          //           SizedBox(height: 10),
-          //           SingleCategoryMiniDetail(),
-          //           SizedBox(height: 10),
-          //           SingleCategoryMiniDetail(),
-          //           SizedBox(height: 10),
-          //           SingleCategoryMiniDetail(),
-          //           SizedBox(height: 10),
-          //           SingleCategoryMiniDetail(),
-          //           SizedBox(height: 10),
-          //           SingleCategoryMiniDetail(),
-          //           SizedBox(height: 10),
-          //           SingleCategoryMiniDetail(),
-          //         ],
-          //       ),
-          //     ),
-          //   ),
-          // ),
+            )),
+          ),
         ],
       ),
     );

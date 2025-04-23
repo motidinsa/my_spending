@@ -8,22 +8,32 @@ class IsarCategoriesRepository implements CategoriesRepository {
   final Isar _isar = locator();
 
   @override
-  Future<List<CategoryModel>> getAllExpenseCategories() async {
+  Future<List<CategoryModel>> getAllCategories() async {
+    return await _isar.categoryModels.where().findAll();
+  }
+
+  @override
+  Future<int> getSubcategoryCount(String categoryId) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<CategoryModel>> getExpenseCategories() async {
     return await _isar.categoryModels
         .filter()
-        .categoryIdEqualTo(LocaleKeys.expense)
+        .categoryTypeEqualTo(LocaleKeys.expense)
         .or()
-        .categoryIdEqualTo(LocaleKeys.both)
+        .categoryTypeEqualTo(LocaleKeys.both)
         .findAll();
   }
 
   @override
-  Future<List<CategoryModel>> getAllIncomeCategories() async {
+  Future<List<CategoryModel>> getIncomeCategories() async {
     return await _isar.categoryModels
         .filter()
-        .categoryIdEqualTo(LocaleKeys.income)
+        .categoryTypeEqualTo(LocaleKeys.income)
         .or()
-        .categoryIdEqualTo(LocaleKeys.both)
+        .categoryTypeEqualTo(LocaleKeys.both)
         .findAll();
   }
 }
