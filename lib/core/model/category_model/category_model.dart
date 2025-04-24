@@ -15,6 +15,8 @@ part 'category_model.g.dart';
     bool? hasSubcategory,
     required DateTime dateCreated,
     DateTime? dateModified,
+    int? expenseSortIndex,
+    int? incomeSortIndex,
   })= _CategoryModel;
 
   const CategoryModel._();

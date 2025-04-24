@@ -25,13 +25,19 @@ List<CategoryModel> getCategoriesByType(
   List<CategoryModel> categories,
 ) {
   if (type == LocaleKeys.expense) {
-    return categories
-        .where(
-          (category) =>
-              category.categoryType == LocaleKeys.expense ||
-              category.categoryType == LocaleKeys.both,
-        )
-        .toList();
+    var tobeReturned =
+        categories
+            .where(
+              (category) =>
+                  category.categoryType == LocaleKeys.expense ||
+                  category.categoryType == LocaleKeys.both,
+            )
+            .toList();
+    tobeReturned.sort(
+      (a, b) =>
+          a.expenseSortIndex ?? 999999.compareTo(b.expenseSortIndex ?? 999999),
+    );
+    return tobeReturned;
   }
   return categories
       .where(

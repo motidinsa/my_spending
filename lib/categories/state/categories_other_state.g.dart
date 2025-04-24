@@ -7,7 +7,7 @@ part of 'categories_other_state.dart';
 // **************************************************************************
 
 String _$categoriesOtherStateHash() =>
-    r'd7015e4c71d4581059b1ae7563506b1cee41dcb8';
+    r'0287f834da963967f9973ff6a228babf8a77e7cb';
 
 /// See also [CategoriesOtherState].
 @ProviderFor(CategoriesOtherState)

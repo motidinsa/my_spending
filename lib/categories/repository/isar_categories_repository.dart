@@ -36,4 +36,21 @@ class IsarCategoriesRepository implements CategoriesRepository {
         .categoryTypeEqualTo(LocaleKeys.both)
         .findAll();
   }
+
+  @override
+  CategoryModel? getCategoryModel(String categoryId) {
+    return _isar.categoryModels
+        .filter()
+        .categoryIdEqualTo(categoryId)
+        .findFirstSync();
+  }
+
+  @override
+  Future<void> updateCategoryModelSortIndex(
+    List<CategoryModel> categoryModels,
+  ) async {
+    await _isar.writeTxn(() async {
+      await _isar.categoryModels.putAll(categoryModels);
+    });
+  }
 }

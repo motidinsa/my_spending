@@ -23,6 +23,8 @@ mixin _$CategoryModel {
   bool? get hasSubcategory => throw _privateConstructorUsedError;
   DateTime get dateCreated => throw _privateConstructorUsedError;
   DateTime? get dateModified => throw _privateConstructorUsedError;
+  int? get expenseSortIndex => throw _privateConstructorUsedError;
+  int? get incomeSortIndex => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CategoryModelCopyWith<CategoryModel> get copyWith =>
@@ -42,7 +44,9 @@ abstract class $CategoryModelCopyWith<$Res> {
       String categoryType,
       bool? hasSubcategory,
       DateTime dateCreated,
-      DateTime? dateModified});
+      DateTime? dateModified,
+      int? expenseSortIndex,
+      int? incomeSortIndex});
 }
 
 /// @nodoc
@@ -65,6 +69,8 @@ class _$CategoryModelCopyWithImpl<$Res, $Val extends CategoryModel>
     Object? hasSubcategory = freezed,
     Object? dateCreated = null,
     Object? dateModified = freezed,
+    Object? expenseSortIndex = freezed,
+    Object? incomeSortIndex = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -95,6 +101,14 @@ class _$CategoryModelCopyWithImpl<$Res, $Val extends CategoryModel>
           ? _value.dateModified
           : dateModified // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      expenseSortIndex: freezed == expenseSortIndex
+          ? _value.expenseSortIndex
+          : expenseSortIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
+      incomeSortIndex: freezed == incomeSortIndex
+          ? _value.incomeSortIndex
+          : incomeSortIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -114,7 +128,9 @@ abstract class _$$CategoryModelImplCopyWith<$Res>
       String categoryType,
       bool? hasSubcategory,
       DateTime dateCreated,
-      DateTime? dateModified});
+      DateTime? dateModified,
+      int? expenseSortIndex,
+      int? incomeSortIndex});
 }
 
 /// @nodoc
@@ -135,6 +151,8 @@ class __$$CategoryModelImplCopyWithImpl<$Res>
     Object? hasSubcategory = freezed,
     Object? dateCreated = null,
     Object? dateModified = freezed,
+    Object? expenseSortIndex = freezed,
+    Object? incomeSortIndex = freezed,
   }) {
     return _then(_$CategoryModelImpl(
       id: null == id
@@ -165,6 +183,14 @@ class __$$CategoryModelImplCopyWithImpl<$Res>
           ? _value.dateModified
           : dateModified // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      expenseSortIndex: freezed == expenseSortIndex
+          ? _value.expenseSortIndex
+          : expenseSortIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
+      incomeSortIndex: freezed == incomeSortIndex
+          ? _value.incomeSortIndex
+          : incomeSortIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -179,7 +205,9 @@ class _$CategoryModelImpl extends _CategoryModel {
       required this.categoryType,
       this.hasSubcategory,
       required this.dateCreated,
-      this.dateModified})
+      this.dateModified,
+      this.expenseSortIndex,
+      this.incomeSortIndex})
       : super._();
 
   @override
@@ -197,10 +225,14 @@ class _$CategoryModelImpl extends _CategoryModel {
   final DateTime dateCreated;
   @override
   final DateTime? dateModified;
+  @override
+  final int? expenseSortIndex;
+  @override
+  final int? incomeSortIndex;
 
   @override
   String toString() {
-    return 'CategoryModel(id: $id, categoryName: $categoryName, categoryId: $categoryId, categoryType: $categoryType, hasSubcategory: $hasSubcategory, dateCreated: $dateCreated, dateModified: $dateModified)';
+    return 'CategoryModel(id: $id, categoryName: $categoryName, categoryId: $categoryId, categoryType: $categoryType, hasSubcategory: $hasSubcategory, dateCreated: $dateCreated, dateModified: $dateModified, expenseSortIndex: $expenseSortIndex, incomeSortIndex: $incomeSortIndex)';
   }
 
   @override
@@ -220,12 +252,25 @@ class _$CategoryModelImpl extends _CategoryModel {
             (identical(other.dateCreated, dateCreated) ||
                 other.dateCreated == dateCreated) &&
             (identical(other.dateModified, dateModified) ||
-                other.dateModified == dateModified));
+                other.dateModified == dateModified) &&
+            (identical(other.expenseSortIndex, expenseSortIndex) ||
+                other.expenseSortIndex == expenseSortIndex) &&
+            (identical(other.incomeSortIndex, incomeSortIndex) ||
+                other.incomeSortIndex == incomeSortIndex));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, categoryName, categoryId,
-      categoryType, hasSubcategory, dateCreated, dateModified);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      categoryName,
+      categoryId,
+      categoryType,
+      hasSubcategory,
+      dateCreated,
+      dateModified,
+      expenseSortIndex,
+      incomeSortIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -242,7 +287,9 @@ abstract class _CategoryModel extends CategoryModel {
       required final String categoryType,
       final bool? hasSubcategory,
       required final DateTime dateCreated,
-      final DateTime? dateModified}) = _$CategoryModelImpl;
+      final DateTime? dateModified,
+      final int? expenseSortIndex,
+      final int? incomeSortIndex}) = _$CategoryModelImpl;
   const _CategoryModel._() : super._();
 
   @override
@@ -259,6 +306,10 @@ abstract class _CategoryModel extends CategoryModel {
   DateTime get dateCreated;
   @override
   DateTime? get dateModified;
+  @override
+  int? get expenseSortIndex;
+  @override
+  int? get incomeSortIndex;
   @override
   @JsonKey(ignore: true)
   _$$CategoryModelImplCopyWith<_$CategoryModelImpl> get copyWith =>

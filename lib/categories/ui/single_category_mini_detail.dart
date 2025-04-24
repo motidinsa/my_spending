@@ -5,7 +5,9 @@ import 'package:my_spending/core/model/category_model/category_model.dart';
 
 class SingleCategoryMiniDetail extends StatelessWidget {
   final CategoryModel categoryModel;
-  const SingleCategoryMiniDetail({super.key,required this.categoryModel});
+  final int index;
+
+  const SingleCategoryMiniDetail({super.key, required this.categoryModel,required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class SingleCategoryMiniDetail extends StatelessWidget {
           ),
         ),
         subtitle: Text(
-          plural(LocaleKeys.subcategoryCount,  20),
+          plural(LocaleKeys.subcategoryCount, 20),
           style: TextStyle(
             // fontWeight: FontWeight.bold,
             color: Colors.grey.shade700,
@@ -43,7 +45,9 @@ class SingleCategoryMiniDetail extends StatelessWidget {
               onPressed: () {},
             ),
             SizedBox(width: 20),
-            Icon(Icons.menu, color: Colors.grey),
+            ReorderableDragStartListener(index: index,
+              child: Icon(Icons.menu, color: Colors.grey),
+            ),
           ],
         ),
         onTap: () {},

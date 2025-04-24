@@ -25,18 +25,47 @@ class CategoryList extends StatelessWidget {
                     categoryType,
                     data.categoryList,
                   );
-                  return ListView.separated(
-                    controller:
+                  return ReorderableListView.builder(
+                    scrollController:
                         ref
                             .watch(categoriesOtherStateProvider.notifier)
                             .scrollController,
                     shrinkWrap: true,
                     itemBuilder:
                         (ctx, index) => SingleCategoryMiniDetail(
+                          index: index,
+                          key: ValueKey(index),
                           categoryModel: categoryList[index],
                         ),
-                    separatorBuilder: (ctx, index) => SizedBox(height: 5),
                     itemCount: categoryList.length,
+                    onReorder: (int oldIndex, int newIndex) {
+                      if (newIndex > oldIndex) newIndex--;
+                      ref
+                          .read(categoriesStateProvider.notifier)
+                          .reorderCategories(
+                            oldIndex: oldIndex,
+                            newIndex: newIndex,
+                            categoryType: categoryType,
+                            categoryList: categoryList,
+                          );
+                    },
+                    proxyDecorator: (child, index, animation) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.shade400,
+                              // spreadRadius: 10,
+                              blurRadius: 8,
+                              // offset: const Offset(0, 1),
+                            ),
+                          ],
+                        ),
+                        child: child, // The actual list item content
+                      );
+                    },
                   );
                 },
                 error: (error, a) => Text(error.toString()),
