@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/add_transaction_text_field.dart';
-import 'package:my_spending/core/constants/language_constants.dart';
+import 'package:my_spending/core/constants/translation_keys.g.dart';
 
 class SingleAddTransactionContent extends StatelessWidget {
   final String title;
@@ -26,7 +26,7 @@ class SingleAddTransactionContent extends StatelessWidget {
             ),
           ),
         ),
-        if (title == amount) ...[
+        if (title == LocaleKeys.amount) ...[
           Row(
             children: [
               Expanded(child: AddTransactionTextField(title: title)),

@@ -23,6 +23,7 @@ abstract class  LocaleKeys {
   static const transfer = 'transfer';
   static const optional = 'optional';
   static const addCategory = 'addCategory';
+  static const addSubcategory = 'addSubcategory';
   static const name = 'name';
   static const selectType = 'selectType';
   static const categoryType = 'categoryType';

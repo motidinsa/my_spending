@@ -6,8 +6,8 @@ import 'package:my_spending/add_account/functions/add_account_functions.dart';
 import 'package:my_spending/add_category/functions/add_category_functions.dart';
 import 'package:my_spending/add_category/functions/add_category_validations.dart';
 import 'package:my_spending/add_category/state/add_category_state.dart';
-import 'package:my_spending/core/constants/language_constants.dart';
 import 'package:my_spending/core/constants/style_constants.dart';
+import 'package:my_spending/core/constants/translation_keys.g.dart';
 
 class AddCategoryTextField extends StatefulWidget {
   final String title;
@@ -32,15 +32,15 @@ class _AddCategoryTextFieldState extends State<AddCategoryTextField> {
         } else {
           focusNode.unfocus();
         }
-        return widget.title == categoryType
+        return widget.title == LocaleKeys.categoryType
             ? DropdownButtonFormField2<String>(
               decoration: getDefaultTextInputDecoration(type: widget.title),
               hint: Text(
-                context.tr(selectType),
+                context.tr(LocaleKeys.selectType),
                 style: TextStyle(fontSize: 14),
               ),
               items:
-                  [expense, income, both]
+                  [LocaleKeys.expense, LocaleKeys.income, LocaleKeys.both]
                       .map(
                         (item) => DropdownMenuItem<String>(
                           value: item,
@@ -51,12 +51,12 @@ class _AddCategoryTextFieldState extends State<AddCategoryTextField> {
                                 style: TextStyle(color: Colors.grey.shade700),
                               ),
                               SizedBox(width: 20),
-                              if (item == expense) ...[
+                              if (item == LocaleKeys.expense) ...[
                                 Icon(
                                   Icons.arrow_downward_rounded,
                                   color: Colors.red,
                                 ),
-                              ] else if (item == income) ...[
+                              ] else if (item == LocaleKeys.income) ...[
                                 Icon(Icons.arrow_upward, color: Colors.green),
                               ] else ...[
                                 Icon(

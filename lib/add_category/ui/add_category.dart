@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_category/functions/add_category_functions.dart';
 import 'package:my_spending/add_category/state/add_category_state.dart';
 import 'package:my_spending/add_category/ui/single_add_category_content.dart';
-import 'package:my_spending/core/constants/language_constants.dart';
+import 'package:my_spending/core/constants/translation_keys.g.dart';
 import 'package:my_spending/core/functions/core_functions.dart';
 
 class AddCategory extends StatelessWidget {
@@ -17,7 +17,7 @@ class AddCategory extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            context.tr(addCategory),
+            context.tr(LocaleKeys.addCategory),
             style: TextStyle(
               color: Colors.green.shade800,
               fontWeight: FontWeight.bold,
@@ -70,12 +70,12 @@ class AddCategory extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            SingleAddCategoryContent(title: categoryType),
+                            SingleAddCategoryContent(title: LocaleKeys.categoryType),
                             SizedBox(height: 10),
                             Consumer(
                               builder: (context, ref, child) {
                                 ref.watch(addCategoryStateProvider);
-                                return SingleAddCategoryContent(title: name);
+                                return SingleAddCategoryContent(title: LocaleKeys.name);
                               },
                             ),
                           ],
@@ -115,7 +115,7 @@ class AddCategory extends StatelessWidget {
                               ),
                             )
                             : Text(
-                              context.tr(save),
+                              context.tr(LocaleKeys.save),
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,

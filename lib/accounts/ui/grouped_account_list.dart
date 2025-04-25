@@ -19,9 +19,9 @@ class GroupedAccountList extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Colors.grey.shade400,
-            spreadRadius: 0.5,
-            blurRadius: 3,
-            offset: const Offset(0, 1),
+            // spreadRadius: 0.1,
+            blurRadius: 1,
+            offset: const Offset(0, .5),
           ),
         ],
       ),

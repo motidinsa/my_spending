@@ -5,7 +5,8 @@ import 'package:go_router/go_router.dart';
 import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/add_transaction_text_field.dart';
 import 'package:my_spending/add_transaction/ui/single_add_transaction_content.dart';
-import 'package:my_spending/core/constants/language_constants.dart';
+import 'package:my_spending/core/constants/translation_keys.g.dart';
+
 
 class SingleTransactionAdd extends StatelessWidget {
   const SingleTransactionAdd({super.key});
@@ -36,13 +37,13 @@ class SingleTransactionAdd extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SingleAddTransactionContent(title: date),
+                  SingleAddTransactionContent(title: LocaleKeys.date),
                   SizedBox(height: 10),
-                  SingleAddTransactionContent(title: account),
+                  SingleAddTransactionContent(title: LocaleKeys.account),
                   SizedBox(height: 10),
-                  SingleAddTransactionContent(title: category),
+                  SingleAddTransactionContent(title: LocaleKeys.category),
                   SizedBox(height: 10),
-                  SingleAddTransactionContent(title: amount),
+                  SingleAddTransactionContent(title: LocaleKeys.amount),
                   Consumer(
                     builder: (context, ref, child) {
                       bool? isAmountAddButtonPressed =
@@ -59,11 +60,11 @@ class SingleTransactionAdd extends StatelessWidget {
                             Row(
                               children: [
                                 Expanded(
-                                  child: AddTransactionTextField(title: tip),
+                                  child: AddTransactionTextField(title: LocaleKeys.tip),
                                 ),
                                 SizedBox(width: 10),
                                 Expanded(
-                                  child: AddTransactionTextField(title: fee),
+                                  child: AddTransactionTextField(title: LocaleKeys.fee),
                                 ),
                                 SizedBox(width: 10),
 
@@ -94,7 +95,7 @@ class SingleTransactionAdd extends StatelessWidget {
                     },
                   ),
                   SizedBox(height: 10),
-                  SingleAddTransactionContent(title: description),
+                  SingleAddTransactionContent(title: LocaleKeys.description),
                 ],
               ),
             ),
@@ -120,7 +121,7 @@ class SingleTransactionAdd extends StatelessWidget {
                       ), // Set the border radius here
                     ),
                   ),
-                  child: Text(context.tr(save), style: TextStyle(color: Colors.green)),
+                  child: Text(context.tr(LocaleKeys.save), style: TextStyle(color: Colors.green)),
                 ),
               ),
               SizedBox(width: 10),
@@ -142,7 +143,7 @@ class SingleTransactionAdd extends StatelessWidget {
                           ), // Set the border radius here
                         ),
                       ),
-                      child: Text(context.tr(more), style: TextStyle(color: Colors.green)),
+                      child: Text(context.tr(LocaleKeys.more), style: TextStyle(color: Colors.green)),
                     );
                   }
                 ),

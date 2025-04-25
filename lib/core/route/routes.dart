@@ -10,6 +10,7 @@ import 'package:my_spending/core/route/scaffold_with_nested_navigation.dart';
 import 'package:my_spending/homepage/ui/homepage.dart';
 import 'package:my_spending/settings/ui/settings.dart';
 import 'package:my_spending/status/ui/status.dart';
+import 'package:my_spending/subcategories/ui/subcategories.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -35,10 +36,10 @@ final GoRouter router = GoRouter(
       path: '/add_account',
       pageBuilder:
           (context, state) => NoTransitionPage(child: const AddAccount()),
-    ),GoRoute(
+    ),
+    GoRoute(
       path: '/add_category',
-      pageBuilder:
-          (context, state) => NoTransitionPage(child:  AddCategory()),
+      pageBuilder: (context, state) => NoTransitionPage(child: AddCategory()),
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
@@ -102,8 +103,19 @@ final GoRouter router = GoRouter(
                 GoRoute(
                   path: '/categories',
                   pageBuilder:
-                      (context, state) =>
-                          NoTransitionPage(child: Categories()),
+                      (context, state) => NoTransitionPage(child: Categories()),
+                  routes: [
+                    GoRoute(
+                      path: '/subcategories',
+                      pageBuilder: (context, state) {
+                        String categoryName = state.extra as String;
+                        return NoTransitionPage(
+                          child: Subcategories(categoryName: categoryName),
+                        );
+                      },
+                      routes: [],
+                    ),
+                  ],
                 ),
               ],
             ),

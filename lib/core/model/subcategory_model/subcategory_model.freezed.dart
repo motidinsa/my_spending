@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SubcategoryModel {
+  int get id => throw _privateConstructorUsedError;
   String get subcategoryName => throw _privateConstructorUsedError;
   String get subcategoryId => throw _privateConstructorUsedError;
   String get categoryId => throw _privateConstructorUsedError;
@@ -34,7 +35,8 @@ abstract class $SubcategoryModelCopyWith<$Res> {
       _$SubcategoryModelCopyWithImpl<$Res, SubcategoryModel>;
   @useResult
   $Res call(
-      {String subcategoryName,
+      {int id,
+      String subcategoryName,
       String subcategoryId,
       String categoryId,
       DateTime dateCreated,
@@ -54,6 +56,7 @@ class _$SubcategoryModelCopyWithImpl<$Res, $Val extends SubcategoryModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? subcategoryName = null,
     Object? subcategoryId = null,
     Object? categoryId = null,
@@ -61,6 +64,10 @@ class _$SubcategoryModelCopyWithImpl<$Res, $Val extends SubcategoryModel>
     Object? dateModified = freezed,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       subcategoryName: null == subcategoryName
           ? _value.subcategoryName
           : subcategoryName // ignore: cast_nullable_to_non_nullable
@@ -94,7 +101,8 @@ abstract class _$$SubcategoryModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String subcategoryName,
+      {int id,
+      String subcategoryName,
       String subcategoryId,
       String categoryId,
       DateTime dateCreated,
@@ -112,6 +120,7 @@ class __$$SubcategoryModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? subcategoryName = null,
     Object? subcategoryId = null,
     Object? categoryId = null,
@@ -119,6 +128,10 @@ class __$$SubcategoryModelImplCopyWithImpl<$Res>
     Object? dateModified = freezed,
   }) {
     return _then(_$SubcategoryModelImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       subcategoryName: null == subcategoryName
           ? _value.subcategoryName
           : subcategoryName // ignore: cast_nullable_to_non_nullable
@@ -145,14 +158,19 @@ class __$$SubcategoryModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SubcategoryModelImpl implements _SubcategoryModel {
+class _$SubcategoryModelImpl extends _SubcategoryModel {
   const _$SubcategoryModelImpl(
-      {required this.subcategoryName,
+      {this.id = Isar.autoIncrement,
+      required this.subcategoryName,
       required this.subcategoryId,
       required this.categoryId,
       required this.dateCreated,
-      this.dateModified});
+      this.dateModified})
+      : super._();
 
+  @override
+  @JsonKey()
+  final int id;
   @override
   final String subcategoryName;
   @override
@@ -166,7 +184,7 @@ class _$SubcategoryModelImpl implements _SubcategoryModel {
 
   @override
   String toString() {
-    return 'SubcategoryModel(subcategoryName: $subcategoryName, subcategoryId: $subcategoryId, categoryId: $categoryId, dateCreated: $dateCreated, dateModified: $dateModified)';
+    return 'SubcategoryModel(id: $id, subcategoryName: $subcategoryName, subcategoryId: $subcategoryId, categoryId: $categoryId, dateCreated: $dateCreated, dateModified: $dateModified)';
   }
 
   @override
@@ -174,6 +192,7 @@ class _$SubcategoryModelImpl implements _SubcategoryModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SubcategoryModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.subcategoryName, subcategoryName) ||
                 other.subcategoryName == subcategoryName) &&
             (identical(other.subcategoryId, subcategoryId) ||
@@ -187,8 +206,8 @@ class _$SubcategoryModelImpl implements _SubcategoryModel {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, subcategoryName, subcategoryId,
-      categoryId, dateCreated, dateModified);
+  int get hashCode => Object.hash(runtimeType, id, subcategoryName,
+      subcategoryId, categoryId, dateCreated, dateModified);
 
   @JsonKey(ignore: true)
   @override
@@ -198,14 +217,18 @@ class _$SubcategoryModelImpl implements _SubcategoryModel {
           this, _$identity);
 }
 
-abstract class _SubcategoryModel implements SubcategoryModel {
+abstract class _SubcategoryModel extends SubcategoryModel {
   const factory _SubcategoryModel(
-      {required final String subcategoryName,
+      {final int id,
+      required final String subcategoryName,
       required final String subcategoryId,
       required final String categoryId,
       required final DateTime dateCreated,
       final DateTime? dateModified}) = _$SubcategoryModelImpl;
+  const _SubcategoryModel._() : super._();
 
+  @override
+  int get id;
   @override
   String get subcategoryName;
   @override
