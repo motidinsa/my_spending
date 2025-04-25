@@ -1,4 +1,3 @@
-import 'package:my_spending/add_account_group/model/account_group_model.dart';
 import 'package:my_spending/categories/model/categories_state_model.dart';
 import 'package:my_spending/categories/repository/isar_categories_repository.dart';
 import 'package:my_spending/categories/state/categories_other_state.dart';
@@ -47,10 +46,7 @@ class CategoriesState extends _$CategoriesState {
       if (state.value != null) {
         state = AsyncData(
           state.value!.copyWith(
-            categoryList:
-                state.value?.selectedCategoryType == LocaleKeys.income
-                    ? await isarCategoriesRepository.getIncomeCategories()
-                    : await isarCategoriesRepository.getExpenseCategories(),
+            categoryList: await isarCategoriesRepository.getAllCategories(),
           ),
         );
       }
@@ -71,25 +67,25 @@ class CategoriesState extends _$CategoriesState {
     required String categoryType,
     required List<CategoryModel> categoryList,
   }) async {
-    // List<CategoryModel> categoryList = List.from(categoryList);
-    var a = categoryList.removeAt(oldIndex);
-    categoryList.insert(newIndex, a);
-    // categoryList.sort(
-    //   (a, b) =>
-    //       a.expenseSortIndex ?? 999999.compareTo(b.expenseSortIndex ?? 999999),
-    // );
-    // state = AsyncData(state.value!.copyWith(categoryList: categoryList));
+    final  item = categoryList.removeAt(oldIndex);
+    categoryList.insert(newIndex, item);
     List<CategoryModel> categoryModels = [];
-    if (categoryType == LocaleKeys.expense) {
-      for (int i = 0; i < categoryList.length; i++) {
-        final CategoryModel categoryModel =
-            isarCategoriesRepository.getCategoryModel(
-              categoryList[i].categoryId,
-            )!;
+    for (int i = 0; i < categoryList.length; i++) {
+      final CategoryModel categoryModel =
+          isarCategoriesRepository.getCategoryModel(
+            categoryList[i].categoryId,
+          )!;
+      if (categoryType == LocaleKeys.expense) {
         categoryModels.add(categoryModel.copyWith(expenseSortIndex: i));
+      } else {
+        categoryModels.add(categoryModel.copyWith(incomeSortIndex: i));
       }
-      isarCategoriesRepository.updateCategoryModelSortIndex(categoryModels);
     }
-    // state = AsyncData(state.value!.copyWith(categoryList:  await isarCategoriesRepository.getAllCategories()));
+    await isarCategoriesRepository.updateCategoryModelSortIndex(categoryModels);
+    state = AsyncData(
+      state.value!.copyWith(
+        categoryList: await isarCategoriesRepository.getAllCategories(),
+      ),
+    );
   }
 }
