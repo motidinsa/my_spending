@@ -25,6 +25,7 @@
   "categoryType": "Category type",
   "both": "Both",
   "nonEmptyCategoryName": "Category name can't be empty",
+  "nonEmptySubcategoryName": "Subcategory name can't be empty",
   "nonEmptyCategoryType": "Please select category type",
   "categories": "Categories",
   "subcategory": {

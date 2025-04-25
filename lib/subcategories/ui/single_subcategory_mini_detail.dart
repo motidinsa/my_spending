@@ -1,7 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:my_spending/core/constants/translation_keys.g.dart';
-import 'package:my_spending/core/model/category_model/category_model.dart';
 import 'package:my_spending/core/model/subcategory_model/subcategory_model.dart';
 
 class SingleSubcategoryMiniDetail extends StatelessWidget {

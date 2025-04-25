@@ -8,7 +8,11 @@ class SingleCategoryMiniDetail extends StatelessWidget {
   final CategoryModel categoryModel;
   final int index;
 
-  const SingleCategoryMiniDetail({super.key, required this.categoryModel,required this.index});
+  const SingleCategoryMiniDetail({
+    super.key,
+    required this.categoryModel,
+    required this.index,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -46,13 +50,20 @@ class SingleCategoryMiniDetail extends StatelessWidget {
               onPressed: () {},
             ),
             SizedBox(width: 20),
-            ReorderableDragStartListener(index: index,
+            ReorderableDragStartListener(
+              index: index,
               child: Icon(Icons.menu, color: Colors.grey),
             ),
           ],
         ),
         onTap: () {
-          context.go('/settings/categories/subcategories', extra: categoryModel.categoryName);
+          context.go(
+            '/settings/categories/subcategories',
+            extra: {
+              'categoryName': categoryModel.categoryName,
+              'categoryId': categoryModel.categoryId,
+            },
+          );
         },
         contentPadding: EdgeInsets.symmetric(horizontal: 30),
       ),

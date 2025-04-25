@@ -1,14 +1,22 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:my_spending/add_category/functions/add_category_functions.dart';
 import 'package:my_spending/add_category/state/add_category_state.dart';
-import 'package:my_spending/add_category/ui/single_add_category_content.dart';
+import 'package:my_spending/add_subcategory/functions/add_subcategory_functions.dart';
+import 'package:my_spending/add_subcategory/state/add_subcategory_state.dart';
+import 'package:my_spending/add_subcategory/ui/single_add_subcategory_content.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
 import 'package:my_spending/core/functions/core_functions.dart';
 
-class AddCategory extends StatelessWidget {
-  const AddCategory({super.key});
+class AddSubcategory extends StatelessWidget {
+  final String categoryName;
+  final String categoryId;
+
+  const AddSubcategory({
+    super.key,
+    required this.categoryName,
+    required this.categoryId,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +25,7 @@ class AddCategory extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            context.tr(LocaleKeys.addCategory),
+            context.tr(LocaleKeys.addSubcategory),
             style: TextStyle(
               color: Colors.green.shade800,
               fontWeight: FontWeight.bold,
@@ -55,11 +63,11 @@ class AddCategory extends StatelessWidget {
                       return Form(
                         key:
                             ref
-                                .watch(addCategoryStateProvider.notifier)
+                                .watch(addSubcategoryStateProvider.notifier)
                                 .formKey,
                         autovalidateMode:
                             ref.watch(
-                                      addCategoryStateProvider.select(
+                                      addSubcategoryStateProvider.select(
                                         (state) => state.isSaveButtonPressed,
                                       ),
                                     ) ==
@@ -70,12 +78,17 @@ class AddCategory extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            SingleAddCategoryContent(title: LocaleKeys.categoryType),
+                            SingleAddSubcategoryContent(
+                              title: LocaleKeys.category,
+                              data: categoryName,
+                            ),
                             SizedBox(height: 10),
                             Consumer(
                               builder: (context, ref, child) {
                                 ref.watch(addCategoryStateProvider);
-                                return SingleAddCategoryContent(title: LocaleKeys.name);
+                                return SingleAddSubcategoryContent(
+                                  title: LocaleKeys.name,
+                                );
                               },
                             ),
                           ],
@@ -94,7 +107,7 @@ class AddCategory extends StatelessWidget {
                     vertical: 15,
                   ),
                   child: ElevatedButton(
-                    onPressed: () => onAddCategorySavePressed(ref),
+                    onPressed: () => onAddSubcategorySavePressed(ref,categoryId),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.green.shade300,
                       padding: EdgeInsets.symmetric(vertical: 15),
@@ -105,7 +118,7 @@ class AddCategory extends StatelessWidget {
                       ),
                     ),
                     child:
-                        ref.watch(addCategoryStateProvider).isLoading == true
+                        ref.watch(addSubcategoryStateProvider).isLoading == true
                             ? SizedBox(
                               width: 20,
                               height: 20,

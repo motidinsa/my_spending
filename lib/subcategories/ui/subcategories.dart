@@ -1,14 +1,20 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
 import 'package:my_spending/core/model/subcategory_model/subcategory_model.dart';
 import 'package:my_spending/subcategories/ui/single_subcategory_mini_detail.dart';
 
 class Subcategories extends StatelessWidget {
   final String categoryName;
+  final String categoryId;
 
-  const Subcategories({super.key, required this.categoryName});
+  const Subcategories({
+    super.key,
+    required this.categoryName,
+    required this.categoryId,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +26,13 @@ class Subcategories extends StatelessWidget {
             child: FloatingActionButton.extended(
               heroTag: null,
               onPressed: () {
-                // context.push('/add_category');
+                context.push(
+                  '/add_subcategory',
+                  extra: {
+                    'categoryName': categoryName,
+                    'categoryId': categoryId,
+                  },
+                );
               },
               label: Text(
                 context.tr(LocaleKeys.addSubcategory),

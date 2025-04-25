@@ -4,6 +4,7 @@ import 'package:my_spending/accounts/ui/accounts.dart';
 import 'package:my_spending/add_account/ui/add_account.dart';
 import 'package:my_spending/add_account_group/ui/add_account_group.dart';
 import 'package:my_spending/add_category/ui/add_category.dart';
+import 'package:my_spending/add_subcategory/ui/add_subcategory.dart';
 import 'package:my_spending/add_transaction/ui/add_transaction.dart';
 import 'package:my_spending/categories/ui/categories.dart';
 import 'package:my_spending/core/route/scaffold_with_nested_navigation.dart';
@@ -40,6 +41,20 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/add_category',
       pageBuilder: (context, state) => NoTransitionPage(child: AddCategory()),
+    ),
+    GoRoute(
+      path: '/add_subcategory',
+      pageBuilder: (context, state) {
+        String categoryName =
+            (state.extra as Map<String, String>)['categoryName']!;
+        String categoryId = (state.extra as Map<String, String>)['categoryId']!;
+        return NoTransitionPage(
+          child: AddSubcategory(
+            categoryName: categoryName,
+            categoryId: categoryId,
+          ),
+        );
+      },
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
@@ -108,12 +123,19 @@ final GoRouter router = GoRouter(
                     GoRoute(
                       path: '/subcategories',
                       pageBuilder: (context, state) {
-                        String categoryName = state.extra as String;
+                        String categoryName =
+                            (state.extra
+                                as Map<String, String>)['categoryName']!;
+                        String categoryId =
+                            (state.extra as Map<String, String>)['categoryId']!;
+
                         return NoTransitionPage(
-                          child: Subcategories(categoryName: categoryName),
+                          child: Subcategories(
+                            categoryName: categoryName,
+                            categoryId: categoryId,
+                          ),
                         );
                       },
-                      routes: [],
                     ),
                   ],
                 ),

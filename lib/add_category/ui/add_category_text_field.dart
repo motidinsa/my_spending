@@ -11,9 +11,8 @@ import 'package:my_spending/core/constants/translation_keys.g.dart';
 
 class AddCategoryTextField extends StatefulWidget {
   final String title;
-  final String? hintText;
 
-  const AddCategoryTextField({super.key, required this.title, this.hintText});
+  const AddCategoryTextField({super.key, required this.title,});
 
   @override
   State<AddCategoryTextField> createState() => _AddCategoryTextFieldState();

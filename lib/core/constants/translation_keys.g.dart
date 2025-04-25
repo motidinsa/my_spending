@@ -29,6 +29,7 @@ abstract class  LocaleKeys {
   static const categoryType = 'categoryType';
   static const both = 'both';
   static const nonEmptyCategoryName = 'nonEmptyCategoryName';
+  static const nonEmptySubcategoryName = 'nonEmptySubcategoryName';
   static const nonEmptyCategoryType = 'nonEmptyCategoryType';
   static const categories = 'categories';
   static const subcategory = 'subcategory';
