@@ -7,7 +7,10 @@ class IsarSubcategoriesRepository implements SubcategoriesRepository {
   final Isar _isar = locator();
 
   @override
-  Future<List<SubcategoryModel>> getAllSubcategories() async {
-    return await _isar.subcategoryModels.where().findAll();
+  Stream<List<SubcategoryModel>> getAllSubcategories(String categoryId) {
+    return _isar.subcategoryModels
+        .filter()
+        .categoryIdEqualTo(categoryId)
+        .watch(fireImmediately: true);
   }
 }

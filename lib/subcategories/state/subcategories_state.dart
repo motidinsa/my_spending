@@ -10,7 +10,7 @@ class SubcategoriesState extends _$SubcategoriesState {
       IsarSubcategoriesRepository();
 
   @override
-  Future<List<SubcategoryModel>> build() async {
-    return await isarSubcategoriesRepository.getAllSubcategories();
+  Stream<List<SubcategoryModel>> build(String categoryId)  {
+    return  isarSubcategoriesRepository.getAllSubcategories(categoryId);
   }
 }

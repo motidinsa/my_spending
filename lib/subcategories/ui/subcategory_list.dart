@@ -5,8 +5,9 @@ import 'package:my_spending/subcategories/state/subcategories_state.dart';
 import 'package:my_spending/subcategories/ui/single_subcategory_mini_detail.dart';
 
 class SubcategoryList extends StatelessWidget {
+  final String categoryId;
 
-  const SubcategoryList({super.key,});
+  const SubcategoryList({super.key, required this.categoryId});
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +16,9 @@ class SubcategoryList extends StatelessWidget {
       child: Consumer(
         builder: (context, ref, child) {
           return ref
-              .watch(subcategoriesStateProvider)
+              .watch(subcategoriesStateProvider(categoryId))
               .when(
                 data: (data) {
-                  // List<CategoryModel> categoryList = getCategoriesByType(
-                  //   categoryType,
-                  //   data.categoryList,
-                  // );
                   return ReorderableListView.builder(
                     scrollController:
                         ref
@@ -31,7 +28,8 @@ class SubcategoryList extends StatelessWidget {
                     itemBuilder:
                         (ctx, index) => SingleSubcategoryMiniDetail(
                           index: index,
-                          key: ValueKey(index),subcategoryModel: data[index],
+                          key: ValueKey(index),
+                          subcategoryModel: data[index],
                         ),
                     itemCount: data.length,
                     onReorder: (int oldIndex, int newIndex) {

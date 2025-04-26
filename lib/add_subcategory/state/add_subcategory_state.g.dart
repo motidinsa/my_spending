@@ -7,7 +7,7 @@ part of 'add_subcategory_state.dart';
 // **************************************************************************
 
 String _$addSubcategoryStateHash() =>
-    r'f42b3505ab0da9bd64aa2bdcec9bc32043c222ee';
+    r'6a7417047af45ee3f0251a304d5892dcb6fe30b3';
 
 /// See also [AddSubcategoryState].
 @ProviderFor(AddSubcategoryState)

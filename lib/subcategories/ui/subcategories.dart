@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
 import 'package:my_spending/core/model/subcategory_model/subcategory_model.dart';
 import 'package:my_spending/subcategories/ui/single_subcategory_mini_detail.dart';
+import 'package:my_spending/subcategories/ui/subcategory_list.dart';
 
 class Subcategories extends StatelessWidget {
   final String categoryName;
@@ -56,28 +57,7 @@ class Subcategories extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: ListView(
-        children: [
-          SingleSubcategoryMiniDetail(
-            subcategoryModel: SubcategoryModel(
-              subcategoryName: 'subcategoryName',
-              subcategoryId: 'subcategoryId',
-              categoryId: 'categoryId',
-              dateCreated: DateTime.now(),
-            ),
-            index: 0,
-          ),
-          SingleSubcategoryMiniDetail(
-            subcategoryModel: SubcategoryModel(
-              subcategoryName: 'subcategoryName',
-              subcategoryId: 'subcategoryId',
-              categoryId: 'categoryId',
-              dateCreated: DateTime.now(),
-            ),
-            index: 0,
-          ),
-        ],
-      ),
+      body: SubcategoryList(categoryId: categoryId,),
     );
   }
 }
