@@ -11,6 +11,31 @@ class IsarSubcategoriesRepository implements SubcategoriesRepository {
     return _isar.subcategoryModels
         .filter()
         .categoryIdEqualTo(categoryId)
-        .watch(fireImmediately: true);
+        .watch(fireImmediately: true)
+        .map((list) {
+          list.sort((a, b) {
+            final indexA = a.sortIndex;
+            final indexB = b.sortIndex;
+            if (indexA == null && indexB == null) {
+              return 0;
+            } else if (indexA == null) {
+              return 1;
+            } else if (indexB == null) {
+              return -1;
+            } else {
+              return indexA.compareTo(indexB);
+            }
+          });
+          return list;
+        });
+  }
+
+  @override
+  Future<void> updateSubcategoryModelSortIndex(
+    List<SubcategoryModel> subcategoryModels,
+  ) async {
+    await _isar.writeTxn(() async {
+      await _isar.subcategoryModels.putAll(subcategoryModels);
+    });
   }
 }

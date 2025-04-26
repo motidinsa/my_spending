@@ -7,7 +7,7 @@ part of 'subcategories_state.dart';
 // **************************************************************************
 
 String _$subcategoriesStateHash() =>
-    r'da7021413df518d7b8a06e988bb1db9b7a8beb15';
+    r'9b3fff54205490abcb6d272a32f3b4e6c9b1b892';
 
 /// Copied from Dart SDK
 class _SystemHash {

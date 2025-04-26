@@ -33,15 +33,14 @@ class SubcategoryList extends StatelessWidget {
                         ),
                     itemCount: data.length,
                     onReorder: (int oldIndex, int newIndex) {
-                      // if (newIndex > oldIndex) newIndex--;
-                      // ref
-                      //     .read(categoriesStateProvider.notifier)
-                      //     .reorderCategories(
-                      //       oldIndex: oldIndex,
-                      //       newIndex: newIndex,
-                      //       categoryType: categoryType,
-                      //       categoryList: categoryList,
-                      //     );
+                      if (newIndex > oldIndex) newIndex--;
+                      ref
+                          .read(subcategoriesStateProvider(categoryId).notifier)
+                          .reorderSubcategories(
+                            oldIndex: oldIndex,
+                            newIndex: newIndex,
+                            subcategoryList: data,
+                          );
                     },
                     proxyDecorator: (child, index, animation) {
                       return Container(

@@ -22,6 +22,7 @@ mixin _$SubcategoryModel {
   String get categoryId => throw _privateConstructorUsedError;
   DateTime get dateCreated => throw _privateConstructorUsedError;
   DateTime? get dateModified => throw _privateConstructorUsedError;
+  int? get sortIndex => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SubcategoryModelCopyWith<SubcategoryModel> get copyWith =>
@@ -40,7 +41,8 @@ abstract class $SubcategoryModelCopyWith<$Res> {
       String subcategoryId,
       String categoryId,
       DateTime dateCreated,
-      DateTime? dateModified});
+      DateTime? dateModified,
+      int? sortIndex});
 }
 
 /// @nodoc
@@ -62,6 +64,7 @@ class _$SubcategoryModelCopyWithImpl<$Res, $Val extends SubcategoryModel>
     Object? categoryId = null,
     Object? dateCreated = null,
     Object? dateModified = freezed,
+    Object? sortIndex = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -88,6 +91,10 @@ class _$SubcategoryModelCopyWithImpl<$Res, $Val extends SubcategoryModel>
           ? _value.dateModified
           : dateModified // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      sortIndex: freezed == sortIndex
+          ? _value.sortIndex
+          : sortIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -106,7 +113,8 @@ abstract class _$$SubcategoryModelImplCopyWith<$Res>
       String subcategoryId,
       String categoryId,
       DateTime dateCreated,
-      DateTime? dateModified});
+      DateTime? dateModified,
+      int? sortIndex});
 }
 
 /// @nodoc
@@ -126,6 +134,7 @@ class __$$SubcategoryModelImplCopyWithImpl<$Res>
     Object? categoryId = null,
     Object? dateCreated = null,
     Object? dateModified = freezed,
+    Object? sortIndex = freezed,
   }) {
     return _then(_$SubcategoryModelImpl(
       id: null == id
@@ -152,6 +161,10 @@ class __$$SubcategoryModelImplCopyWithImpl<$Res>
           ? _value.dateModified
           : dateModified // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      sortIndex: freezed == sortIndex
+          ? _value.sortIndex
+          : sortIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -165,7 +178,8 @@ class _$SubcategoryModelImpl extends _SubcategoryModel {
       required this.subcategoryId,
       required this.categoryId,
       required this.dateCreated,
-      this.dateModified})
+      this.dateModified,
+      this.sortIndex})
       : super._();
 
   @override
@@ -181,10 +195,12 @@ class _$SubcategoryModelImpl extends _SubcategoryModel {
   final DateTime dateCreated;
   @override
   final DateTime? dateModified;
+  @override
+  final int? sortIndex;
 
   @override
   String toString() {
-    return 'SubcategoryModel(id: $id, subcategoryName: $subcategoryName, subcategoryId: $subcategoryId, categoryId: $categoryId, dateCreated: $dateCreated, dateModified: $dateModified)';
+    return 'SubcategoryModel(id: $id, subcategoryName: $subcategoryName, subcategoryId: $subcategoryId, categoryId: $categoryId, dateCreated: $dateCreated, dateModified: $dateModified, sortIndex: $sortIndex)';
   }
 
   @override
@@ -202,12 +218,14 @@ class _$SubcategoryModelImpl extends _SubcategoryModel {
             (identical(other.dateCreated, dateCreated) ||
                 other.dateCreated == dateCreated) &&
             (identical(other.dateModified, dateModified) ||
-                other.dateModified == dateModified));
+                other.dateModified == dateModified) &&
+            (identical(other.sortIndex, sortIndex) ||
+                other.sortIndex == sortIndex));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id, subcategoryName,
-      subcategoryId, categoryId, dateCreated, dateModified);
+      subcategoryId, categoryId, dateCreated, dateModified, sortIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -224,7 +242,8 @@ abstract class _SubcategoryModel extends SubcategoryModel {
       required final String subcategoryId,
       required final String categoryId,
       required final DateTime dateCreated,
-      final DateTime? dateModified}) = _$SubcategoryModelImpl;
+      final DateTime? dateModified,
+      final int? sortIndex}) = _$SubcategoryModelImpl;
   const _SubcategoryModel._() : super._();
 
   @override
@@ -239,6 +258,8 @@ abstract class _SubcategoryModel extends SubcategoryModel {
   DateTime get dateCreated;
   @override
   DateTime? get dateModified;
+  @override
+  int? get sortIndex;
   @override
   @JsonKey(ignore: true)
   _$$SubcategoryModelImplCopyWith<_$SubcategoryModelImpl> get copyWith =>

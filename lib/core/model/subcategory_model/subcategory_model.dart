@@ -15,6 +15,7 @@ class SubcategoryModel with _$SubcategoryModel {
     required String categoryId,
     required DateTime dateCreated,
     DateTime? dateModified,
+    int? sortIndex,
   }) = _SubcategoryModel;
 
   const SubcategoryModel._();

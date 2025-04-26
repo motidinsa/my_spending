@@ -10,7 +10,23 @@ class SubcategoriesState extends _$SubcategoriesState {
       IsarSubcategoriesRepository();
 
   @override
-  Stream<List<SubcategoryModel>> build(String categoryId)  {
-    return  isarSubcategoriesRepository.getAllSubcategories(categoryId);
+  Stream<List<SubcategoryModel>> build(String categoryId) {
+    return isarSubcategoriesRepository.getAllSubcategories(categoryId);
+  }
+
+  Future<void> reorderSubcategories({
+    required int oldIndex,
+    required int newIndex,
+    required List<SubcategoryModel> subcategoryList,
+  }) async {
+    final item = subcategoryList.removeAt(oldIndex);
+    subcategoryList.insert(newIndex, item);
+    List<SubcategoryModel> subcategoryModels = [];
+    for (int i = 0; i < subcategoryList.length; i++) {
+      subcategoryModels.add(subcategoryList[i].copyWith(sortIndex: i));
+    }
+    await isarSubcategoriesRepository.updateSubcategoryModelSortIndex(
+      subcategoryModels,
+    );
   }
 }
