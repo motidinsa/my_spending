@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_spending/categories/functions/categories_function.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
 import 'package:my_spending/core/model/category_model/category_model.dart';
 
@@ -35,7 +36,7 @@ class SingleCategoryMiniDetail extends StatelessWidget {
           ),
         ),
         subtitle: Text(
-          plural(LocaleKeys.subcategoryCount, 20),
+          plural(LocaleKeys.subcategoryCount, getSubcategoryCount(categoryModel.categoryId)),
           style: TextStyle(
             // fontWeight: FontWeight.bold,
             color: Colors.grey.shade700,
@@ -47,7 +48,9 @@ class SingleCategoryMiniDetail extends StatelessWidget {
           children: [
             IconButton(
               icon: Icon(Icons.edit_outlined, color: Colors.grey.shade600),
-              onPressed: () {},
+              onPressed: () {
+                context.push('/edit_category', extra: categoryModel);
+              },
             ),
             SizedBox(width: 20),
             ReorderableDragStartListener(

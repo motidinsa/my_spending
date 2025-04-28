@@ -1,28 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_spending/add_category/model/add_category_state_model.dart';
-import 'package:my_spending/add_category/repository/isar_add_category_repository.dart';
-import 'package:my_spending/core/functions/core_functions.dart';
 import 'package:my_spending/core/model/category_model/category_model.dart';
 import 'package:my_spending/core/route/routes.dart';
+import 'package:my_spending/edit_category/model/edit_category_state_model.dart';
+import 'package:my_spending/edit_category/repository/isar_edit_category_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'add_category_state.g.dart';
+part 'edit_category_state.g.dart';
 
 @riverpod
-class AddCategoryState extends _$AddCategoryState {
+class EditCategoryState extends _$EditCategoryState {
   String categoryName = '';
   String? type;
   final formKey = GlobalKey<FormState>();
 
   @override
-  AddCategoryStateModel build() {
-    return AddCategoryStateModel();
+  EditCategoryStateModel build() {
+    return EditCategoryStateModel(hasCategoryNameFocus: true);
   }
 
   void updateCategoryType(String categoryType) {
     type = categoryType;
-    state = state.copyWith( hasCategoryNameFocus: categoryName.isEmpty);
+    // state = state.copyWith(hasCategoryNameFocus: categoryName.isEmpty);
   }
 
   void updateCategoryName(String name) {
@@ -33,21 +32,22 @@ class AddCategoryState extends _$AddCategoryState {
     state = state.copyWith(isSaveButtonPressed: true);
   }
 
-  Future<void> addCategory() async {
+  Future<void> editCategory(CategoryModel categoryModel) async {
     try {
       state = state.copyWith(isLoading: true);
-      IsarAddCategoryRepository isarAddCategoryRepository =
-          IsarAddCategoryRepository();
+      IsarEditCategoryRepository isarEditCategoryRepository =
+          IsarEditCategoryRepository();
       DateTime now = DateTime.now();
-      await isarAddCategoryRepository.addCategory(
-        categoryModel: CategoryModel(
+
+      await isarEditCategoryRepository.editCategory(
+        categoryModel.copyWith(
           categoryName: categoryName,
-          categoryId: generateDatabaseId(now),
           categoryType: type!,
-          dateCreated: now,
+          dateModified: now,
         ),
       );
       navigatorKey.currentContext?.pop();
+      // ref.read(categoriesStateProvider.notifier).updateCategories();
     } on Exception catch (e) {
       print(e);
     } finally {

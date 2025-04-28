@@ -3,18 +3,22 @@ import 'package:my_spending/categories/repository/categories_repository.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
 import 'package:my_spending/core/dependency_injection/dependency_injections.dart';
 import 'package:my_spending/core/model/category_model/category_model.dart';
+import 'package:my_spending/core/model/subcategory_model/subcategory_model.dart';
 
 class IsarCategoriesRepository implements CategoriesRepository {
   final Isar _isar = locator();
 
   @override
-  Future<List<CategoryModel>> getAllCategories() async {
-    return await _isar.categoryModels.where().findAll();
+  Stream<List<CategoryModel>> getAllCategories() {
+    return _isar.categoryModels.where().watch(fireImmediately: true);
   }
 
   @override
-  Future<int> getSubcategoryCount(String categoryId) {
-    throw UnimplementedError();
+  int getSubcategoryCount(String categoryId) {
+    return _isar.subcategoryModels
+        .filter()
+        .categoryIdEqualTo(categoryId)
+        .countSync();
   }
 
   @override

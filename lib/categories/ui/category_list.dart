@@ -23,7 +23,7 @@ class CategoryList extends StatelessWidget {
                 data: (data) {
                   List<CategoryModel> categoryList = getCategoriesByType(
                     categoryType,
-                    data.categoryList,
+                    data,
                   );
                   return ReorderableListView.builder(
                     scrollController:

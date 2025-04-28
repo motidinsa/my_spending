@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
-import 'package:my_spending/core/model/subcategory_model/subcategory_model.dart';
-import 'package:my_spending/subcategories/ui/single_subcategory_mini_detail.dart';
 import 'package:my_spending/subcategories/ui/subcategory_list.dart';
 
 class Subcategories extends StatelessWidget {

@@ -1,10 +1,10 @@
 import 'package:my_spending/core/model/category_model/category_model.dart';
 
 abstract class CategoriesRepository {
-  Future<List<CategoryModel>> getAllCategories();
+  Stream<List<CategoryModel>> getAllCategories();
   Future<List<CategoryModel>> getExpenseCategories();
   Future<List<CategoryModel>> getIncomeCategories();
-  Future<int> getSubcategoryCount(String categoryId);
+  int getSubcategoryCount(String categoryId);
   CategoryModel? getCategoryModel(String categoryId);
   void updateCategoryModelSortIndex(List<CategoryModel> categoryModels);
 }

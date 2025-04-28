@@ -1,6 +1,4 @@
-import 'package:my_spending/categories/model/categories_state_model.dart';
 import 'package:my_spending/categories/repository/isar_categories_repository.dart';
-import 'package:my_spending/categories/state/categories_other_state.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
 import 'package:my_spending/core/model/category_model/category_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -13,53 +11,51 @@ class CategoriesState extends _$CategoriesState {
       IsarCategoriesRepository();
 
   @override
-  Future<CategoriesStateModel> build() async {
-    return CategoriesStateModel(
-      categoryList: await isarCategoriesRepository.getAllCategories(),
-      selectedCategoryType: LocaleKeys.expense,
-    );
+  Stream<List<CategoryModel>> build()  {
+    return isarCategoriesRepository.getAllCategories();
+
   }
 
-  Future<void> updateCategoryList(String selectedType) async {
-    if (state.value != null) {
-      if (selectedType == LocaleKeys.expense) {
-        state = AsyncData(
-          state.value!.copyWith(
-            categoryList: await isarCategoriesRepository.getExpenseCategories(),
-            selectedCategoryType: LocaleKeys.expense,
-          ),
-        );
-      } else if (selectedType == LocaleKeys.income) {
-        state = AsyncData(
-          state.value!.copyWith(
-            categoryList: await isarCategoriesRepository.getIncomeCategories(),
-            selectedCategoryType: LocaleKeys.income,
-          ),
-        );
-      }
-      ref.read(categoriesOtherStateProvider.notifier).updateStatus(true);
-    }
-  }
+  // Future<void> updateCategoryList(String selectedType) async {
+  //   if (state.value != null) {
+  //     if (selectedType == LocaleKeys.expense) {
+  //       state = AsyncData(
+  //         state.value!.copyWith(
+  //           categoryList: await isarCategoriesRepository.getExpenseCategories(),
+  //           selectedCategoryType: LocaleKeys.expense,
+  //         ),
+  //       );
+  //     } else if (selectedType == LocaleKeys.income) {
+  //       state = AsyncData(
+  //         state.value!.copyWith(
+  //           categoryList: await isarCategoriesRepository.getIncomeCategories(),
+  //           selectedCategoryType: LocaleKeys.income,
+  //         ),
+  //       );
+  //     }
+  //     ref.read(categoriesOtherStateProvider.notifier).updateStatus(true);
+  //   }
+  // }
+  //
+  // Future<void> updateCategories() async {
+  //   try {
+  //     if (state.value != null) {
+  //       state = AsyncData(
+  //         state.value!.copyWith(
+  //           categoryList: await isarCategoriesRepository.getAllCategories(),
+  //         ),
+  //       );
+  //     }
+  //   } on Exception {
+  //     // state = AsyncData(state.value!);
+  //   }
+  // }
 
-  Future<void> updateCategories() async {
-    try {
-      if (state.value != null) {
-        state = AsyncData(
-          state.value!.copyWith(
-            categoryList: await isarCategoriesRepository.getAllCategories(),
-          ),
-        );
-      }
-    } on Exception {
-      // state = AsyncData(state.value!);
-    }
-  }
-
-  void changeCategoryType(String categoryType) {
-    state = AsyncData(
-      state.value!.copyWith(selectedCategoryType: categoryType),
-    );
-  }
+  // void changeCategoryType(String categoryType) {
+  //   state = AsyncData(
+  //     state.value!.copyWith(selectedCategoryType: categoryType),
+  //   );
+  // }
 
   Future<void> reorderCategories({
     required int oldIndex,
@@ -82,10 +78,10 @@ class CategoriesState extends _$CategoriesState {
       }
     }
     await isarCategoriesRepository.updateCategoryModelSortIndex(categoryModels);
-    state = AsyncData(
-      state.value!.copyWith(
-        categoryList: await isarCategoriesRepository.getAllCategories(),
-      ),
-    );
+    // state = AsyncData(
+    //   state.value!.copyWith(
+    //     categoryList: await isarCategoriesRepository.getAllCategories(),
+    //   ),
+    // );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_spending/categories/repository/isar_categories_repository.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
 import 'package:my_spending/core/model/category_model/category_model.dart';
 
@@ -47,9 +48,9 @@ List<CategoryModel> getCategoriesByType(
   return categories
       .where(
         (category) =>
-    category.categoryType == LocaleKeys.income ||
-        category.categoryType == LocaleKeys.both,
-  )
+            category.categoryType == LocaleKeys.income ||
+            category.categoryType == LocaleKeys.both,
+      )
       .toList()
     ..sort((a, b) {
       if (a.incomeSortIndex == null && b.incomeSortIndex == null) {
@@ -62,4 +63,10 @@ List<CategoryModel> getCategoriesByType(
         return a.incomeSortIndex!.compareTo(b.incomeSortIndex!);
       }
     });
+}
+
+getSubcategoryCount(String categoryId) {
+  IsarCategoriesRepository isarCategoriesRepository =
+      IsarCategoriesRepository();
+  return isarCategoriesRepository.getSubcategoryCount(categoryId);
 }
