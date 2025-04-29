@@ -8,56 +8,59 @@ part 'add_transaction_state.g.dart';
 @riverpod
 class AddTransactionState extends _$AddTransactionState {
   @override
-  AddTransactionStateModel build() => AddTransactionStateModel(
-    transactionModel: TransactionModel(
-      categoryName: '',
-      accountName: '',
-      accountId: '',
-      categoryId: '',
-      amount: 0,
-      date: DateTime.now(),
-      dateCreated: DateTime.now(),
-    ),
-    amount: '',
-    transactionType: LocaleKeys.expense,
-    categoryModels: [
-      // CategoryModel(
-      //   categoryName: 'cat 1',
-      //   categoryId: '1',
-      //   dateCreated: DateTime.now(),
-      //   hasSubcategory: true,
-      // ),
-      // CategoryModel(
-      //   categoryName: 'cat 1',
-      //   categoryId: '1',
-      //   dateCreated: DateTime.now(),
-      // ),
-      // CategoryModel(
-      //   categoryName: 'cat 1',
-      //   categoryId: '1',
-      //   dateCreated: DateTime.now(),
-      // ),
-    ],
-    accountModels: [
-      // AccountModel(
-      //   accountName: 'acc 1',
-      //   accountId: '1',
-      //   dateCreated: DateTime.now(),
-      //   amountAvailable: 0,
-      // ),
-      // AccountModel(
-      //   accountName: 'acc 2',
-      //   accountId: '1',
-      //   dateCreated: DateTime.now(),
-      //   amountAvailable: 0,
-      // ),AccountModel(
-      //   accountName: 'acc 3',
-      //   accountId: '1',
-      //   dateCreated: DateTime.now(),
-      //   amountAvailable: 0,
-      // ),
-    ],
-  );
+  AddTransactionStateModel build() {
+    DateTime now = DateTime.now();
+    return AddTransactionStateModel(
+      transactionModel: TransactionModel(
+        categoryName: '',
+        accountName: '',
+        accountId: '',
+        categoryId: '',
+        amount: 0,
+        date: now,
+        dateCreated: now,
+      ),
+      amount: '',
+      transactionType: LocaleKeys.expense,
+      categoryModels: [
+        // CategoryModel(
+        //   categoryName: 'cat 1',
+        //   categoryId: '1',
+        //   dateCreated: DateTime.now(),
+        //   hasSubcategory: true,
+        // ),
+        // CategoryModel(
+        //   categoryName: 'cat 1',
+        //   categoryId: '1',
+        //   dateCreated: DateTime.now(),
+        // ),
+        // CategoryModel(
+        //   categoryName: 'cat 1',
+        //   categoryId: '1',
+        //   dateCreated: DateTime.now(),
+        // ),
+      ],
+      accountModels: [
+        // AccountModel(
+        //   accountName: 'acc 1',
+        //   accountId: '1',
+        //   dateCreated: DateTime.now(),
+        //   amountAvailable: 0,
+        // ),
+        // AccountModel(
+        //   accountName: 'acc 2',
+        //   accountId: '1',
+        //   dateCreated: DateTime.now(),
+        //   amountAvailable: 0,
+        // ),AccountModel(
+        //   accountName: 'acc 3',
+        //   accountId: '1',
+        //   dateCreated: DateTime.now(),
+        //   amountAvailable: 0,
+        // ),
+      ],
+    );
+  }
 
   void updateIndex(int index) {
     state = state.copyWith.transactionModel(date: DateTime(2027));

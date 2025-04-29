@@ -23,7 +23,7 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
   @override
   void initState() {
     super.initState();
-    textEditingController.text = getTextFieldData(widget.title) ?? '';
+    // textEditingController.text = getTextFieldData(widget.title) ?? '';
   }
 
   @override

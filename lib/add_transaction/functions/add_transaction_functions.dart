@@ -24,7 +24,11 @@ getAddTransactionTextFieldIcon(String title) {
 }
 
 isReadOnlyAddTransactionTextField(String title) {
-  return [LocaleKeys.date, LocaleKeys.account, LocaleKeys.category].contains(title);
+  return [
+    LocaleKeys.date,
+    LocaleKeys.account,
+    LocaleKeys.category,
+  ].contains(title);
 }
 
 getLabelText(String title) {
@@ -35,7 +39,7 @@ getLabelText(String title) {
 
 getTextFieldData(String title) {
   if (title == LocaleKeys.date) {
-    return DateTime.now().toString();
+    return DateFormat('E, dd/MM/yyyy').format(DateTime.now());
   }
 }
 
@@ -50,7 +54,8 @@ getAddTransactionTextFieldData(WidgetRef ref, String title) {
   if (title == LocaleKeys.date) {
     return ref.watch(
       addTransactionStateProvider.select(
-        (state) => state.transactionModel.date.toString(),
+        (state) =>
+            DateFormat('E, dd/MM/yyyy').format(state.transactionModel.date),
       ),
     );
   } else if (title == LocaleKeys.account) {

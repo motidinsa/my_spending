@@ -11,6 +11,7 @@ class AddTransaction extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
           context.tr(LocaleKeys.addTransaction),

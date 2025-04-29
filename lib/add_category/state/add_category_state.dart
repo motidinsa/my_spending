@@ -17,7 +17,7 @@ class AddCategoryState extends _$AddCategoryState {
 
   @override
   AddCategoryStateModel build() {
-    return AddCategoryStateModel();
+    return AddCategoryStateModel(hasCategoryNameFocus: true);
   }
 
   void updateCategoryType(String categoryType) {

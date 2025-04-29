@@ -67,7 +67,7 @@ class EditSubcategory extends StatelessWidget {
                                 .formKey,
                         autovalidateMode:
                             ref.watch(
-                              editSubcategoryStateProvider.select(
+                                      editSubcategoryStateProvider.select(
                                         (state) => state.isSaveButtonPressed,
                                       ),
                                     ) ==
@@ -109,7 +109,8 @@ class EditSubcategory extends StatelessWidget {
                   ),
                   child: ElevatedButton(
                     onPressed:
-                        () => onEditSubcategorySavePressed(ref, subcategoryModel),
+                        () =>
+                            onEditSubcategorySavePressed(ref, subcategoryModel),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.green.shade300,
                       padding: EdgeInsets.symmetric(vertical: 15),
@@ -120,7 +121,8 @@ class EditSubcategory extends StatelessWidget {
                       ),
                     ),
                     child:
-                        ref.watch(editSubcategoryStateProvider).isLoading == true
+                        ref.watch(editSubcategoryStateProvider).isLoading ==
+                                true
                             ? SizedBox(
                               width: 20,
                               height: 20,

@@ -9,15 +9,22 @@ import 'package:my_spending/edit_subcategory/repository/isar_edit_subcategory_re
 import 'package:my_spending/edit_subcategory/state/edit_subcategory_state.dart';
 import 'package:my_spending/edit_subcategory/ui/alert_dialog_category_list.dart';
 
-void onEditSubcategorySavePressed(WidgetRef ref,SubcategoryModel subcategoryModel) {
-  ref.read(editSubcategoryStateProvider.notifier).updateSaveButtonPressedStatus();
+void onEditSubcategorySavePressed(
+  WidgetRef ref,
+  SubcategoryModel subcategoryModel,
+) {
+  ref
+      .read(editSubcategoryStateProvider.notifier)
+      .updateSaveButtonPressedStatus();
   if (ref
           .read(editSubcategoryStateProvider.notifier)
           .formKey
           .currentState
-          ?.validate ==
+          ?.validate() ==
       true) {
-    ref.read(editSubcategoryStateProvider.notifier).editSubcategory(subcategoryModel);
+    ref
+        .read(editSubcategoryStateProvider.notifier)
+        .editSubcategory(subcategoryModel);
   } else {
     ref.read(editSubcategoryStateProvider.notifier).addSubcategoryNameFocus();
   }
@@ -29,24 +36,31 @@ bool hasEditSubcategoryNameTextFieldFocus(WidgetRef ref) {
   }
   return false;
 }
+
 bool isReadOnlyEditSubcategoryTextField(String title) {
   return title == LocaleKeys.category;
 }
-String getEditSubcategoryCategoryName(String categoryId){
-  IsarEditSubcategoryRepository isarEditSubcategoryRepository = IsarEditSubcategoryRepository();
+
+String getEditSubcategoryCategoryName(String categoryId) {
+  IsarEditSubcategoryRepository isarEditSubcategoryRepository =
+      IsarEditSubcategoryRepository();
   return isarEditSubcategoryRepository.getCategoryName(categoryId);
 }
+
 void onEditSubcategoryTextFieldPressed({
   required BuildContext context,
   required WidgetRef ref,
   required String title,
-}){
-if(title == LocaleKeys.category){
-  showDialog<CategoryModel>(
-    context: context,
-    builder: (BuildContext dialogContext) {
-      return ClipRRect( borderRadius: BorderRadius.circular(20),child: AlertDialogCategoryList());
-    },
-  );
-}
+}) {
+  if (title == LocaleKeys.category) {
+    showDialog<CategoryModel>(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: AlertDialogCategoryList(),
+        );
+      },
+    );
+  }
 }

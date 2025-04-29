@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_spending/add_account/ui/account_group_list.dart';
 import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
+import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/account_group_list_select.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/modal_items.dart';
 
 class TransactionTypeModalSheet extends StatelessWidget {
@@ -49,22 +51,23 @@ class TransactionTypeModalSheet extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
-                      child: ModalItems(
-                        isPrimary: true,
-                        type: redirectFrom,
-                        categoryModels:
-                            redirectFrom == 'Category'
-                                ? ref
-                                    .read(addTransactionStateProvider)
-                                    .categoryModels
-                                : null,
-                        accountModels:
-                            redirectFrom == 'Account'
-                                ? ref
-                                    .read(addTransactionStateProvider)
-                                    .accountModels
-                                : null,
-                      ),
+                      child: AccountGroupListSelect()
+                      // ModalItems(
+                      //   isPrimary: true,
+                      //   type: redirectFrom,
+                      //   categoryModels:
+                      //       redirectFrom == 'Category'
+                      //           ? ref
+                      //               .read(addTransactionStateProvider)
+                      //               .categoryModels
+                      //           : null,
+                      //   accountModels:
+                      //       redirectFrom == 'Account'
+                      //           ? ref
+                      //               .read(addTransactionStateProvider)
+                      //               .accountModels
+                      //           : null,
+                      // ),
                     ),
                     const SizedBox(width: 10),
                     Expanded(

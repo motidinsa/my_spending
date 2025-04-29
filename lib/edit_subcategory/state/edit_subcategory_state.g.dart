@@ -7,7 +7,7 @@ part of 'edit_subcategory_state.dart';
 // **************************************************************************
 
 String _$editSubcategoryStateHash() =>
-    r'fa9d5b772eb7c18c75e0c2a4fc3c2ed2473a28c6';
+    r'83a2343ad1af80a1f68a365f9f0439de3f63f5ac';
 
 /// See also [EditSubcategoryState].
 @ProviderFor(EditSubcategoryState)
