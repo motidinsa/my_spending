@@ -11,51 +11,9 @@ class CategoriesState extends _$CategoriesState {
       IsarCategoriesRepository();
 
   @override
-  Stream<List<CategoryModel>> build()  {
+  Stream<List<CategoryModel>> build() {
     return isarCategoriesRepository.getAllCategories();
-
   }
-
-  // Future<void> updateCategoryList(String selectedType) async {
-  //   if (state.value != null) {
-  //     if (selectedType == LocaleKeys.expense) {
-  //       state = AsyncData(
-  //         state.value!.copyWith(
-  //           categoryList: await isarCategoriesRepository.getExpenseCategories(),
-  //           selectedCategoryType: LocaleKeys.expense,
-  //         ),
-  //       );
-  //     } else if (selectedType == LocaleKeys.income) {
-  //       state = AsyncData(
-  //         state.value!.copyWith(
-  //           categoryList: await isarCategoriesRepository.getIncomeCategories(),
-  //           selectedCategoryType: LocaleKeys.income,
-  //         ),
-  //       );
-  //     }
-  //     ref.read(categoriesOtherStateProvider.notifier).updateStatus(true);
-  //   }
-  // }
-  //
-  // Future<void> updateCategories() async {
-  //   try {
-  //     if (state.value != null) {
-  //       state = AsyncData(
-  //         state.value!.copyWith(
-  //           categoryList: await isarCategoriesRepository.getAllCategories(),
-  //         ),
-  //       );
-  //     }
-  //   } on Exception {
-  //     // state = AsyncData(state.value!);
-  //   }
-  // }
-
-  // void changeCategoryType(String categoryType) {
-  //   state = AsyncData(
-  //     state.value!.copyWith(selectedCategoryType: categoryType),
-  //   );
-  // }
 
   Future<void> reorderCategories({
     required int oldIndex,
@@ -63,7 +21,7 @@ class CategoriesState extends _$CategoriesState {
     required String categoryType,
     required List<CategoryModel> categoryList,
   }) async {
-    final  item = categoryList.removeAt(oldIndex);
+    final item = categoryList.removeAt(oldIndex);
     categoryList.insert(newIndex, item);
     List<CategoryModel> categoryModels = [];
     for (int i = 0; i < categoryList.length; i++) {
@@ -78,10 +36,5 @@ class CategoriesState extends _$CategoriesState {
       }
     }
     await isarCategoriesRepository.updateCategoryModelSortIndex(categoryModels);
-    // state = AsyncData(
-    //   state.value!.copyWith(
-    //     categoryList: await isarCategoriesRepository.getAllCategories(),
-    //   ),
-    // );
   }
 }

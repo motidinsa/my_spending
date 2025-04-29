@@ -3,12 +3,15 @@ import 'package:go_router/go_router.dart';
 import 'package:my_spending/accounts/ui/accounts.dart';
 import 'package:my_spending/add_account/ui/add_account.dart';
 import 'package:my_spending/add_account_group/ui/add_account_group.dart';
+import 'package:my_spending/add_category/ui/add_category.dart';
 import 'package:my_spending/add_subcategory/ui/add_subcategory.dart';
 import 'package:my_spending/add_transaction/ui/add_transaction.dart';
 import 'package:my_spending/categories/ui/categories.dart';
 import 'package:my_spending/core/model/category_model/category_model.dart';
+import 'package:my_spending/core/model/subcategory_model/subcategory_model.dart';
 import 'package:my_spending/core/route/scaffold_with_nested_navigation.dart';
 import 'package:my_spending/edit_category/ui/edit_category.dart';
+import 'package:my_spending/edit_subcategory/ui/edit_subcategory.dart';
 import 'package:my_spending/homepage/ui/homepage.dart';
 import 'package:my_spending/settings/ui/settings.dart';
 import 'package:my_spending/status/ui/status.dart';
@@ -41,17 +44,9 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: '/add_category',
-      pageBuilder: (context, state) {
-        String categoryName =
-            (state.extra as Map<String, String>)['categoryName']!;
-        String categoryId = (state.extra as Map<String, String>)['categoryId']!;
-        return NoTransitionPage(
-          child: AddSubcategory(
-            categoryName: categoryName,
-            categoryId: categoryId,
-          ),
-        );
-      },
+      pageBuilder: (context, state)
+        => NoTransitionPage(child: AddCategory())
+      ,
     ),
     GoRoute(
       path: '/edit_category',
@@ -60,6 +55,15 @@ final GoRouter router = GoRouter(
 
         return NoTransitionPage(
           child: EditCategory(categoryModel: categoryModel),
+        );
+      },
+    ),GoRoute(
+      path: '/edit_subcategory',
+      pageBuilder: (context, state) {
+        SubcategoryModel subcategoryModel  = state.extra as SubcategoryModel;
+
+        return NoTransitionPage(
+          child: EditSubcategory(subcategoryModel: subcategoryModel),
         );
       },
     ),

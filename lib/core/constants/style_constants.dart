@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:my_spending/core/constants/translation_keys.g.dart';
 
-InputDecoration getDefaultTextInputDecoration({String? type}) {
+InputDecoration getDefaultTextInputDecoration({String? type, Widget? suffix}) {
   return InputDecoration(
     contentPadding: EdgeInsets.fromLTRB(
-      type == 'Category type' ? 0 : 16,
+      type == LocaleKeys.categoryType ? 0 : 16,
       20,
       12,
       12,
     ),
+    suffixIcon: suffix,
     enabledBorder: OutlineInputBorder(
       borderSide: BorderSide(color: Colors.grey, width: .6),
       borderRadius: BorderRadius.circular(10),

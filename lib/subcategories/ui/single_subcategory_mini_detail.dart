@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:my_spending/core/model/subcategory_model/subcategory_model.dart';
 
 class SingleSubcategoryMiniDetail extends StatelessWidget {
@@ -21,7 +22,6 @@ class SingleSubcategoryMiniDetail extends StatelessWidget {
       ),
 
       child: ListTile(
-        // dense: true,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         title: Text(
           subcategoryModel.subcategoryName,
@@ -45,7 +45,9 @@ class SingleSubcategoryMiniDetail extends StatelessWidget {
             ),
           ],
         ),
-        onTap: () {},
+        onTap: () {
+          context.push('/edit_subcategory', extra: subcategoryModel);
+        },
         contentPadding: EdgeInsets.symmetric(horizontal: 30),
       ),
     );
