@@ -22,12 +22,7 @@ mixin _$AddTransactionStateModel {
   String get transactionType => throw _privateConstructorUsedError;
   double? get modalHeight => throw _privateConstructorUsedError;
   String? get redirectFrom => throw _privateConstructorUsedError;
-  List<CategoryModel> get categoryModels => throw _privateConstructorUsedError;
-  List<SubcategoryModel>? get subcategoryModels =>
-      throw _privateConstructorUsedError;
-  List<AccountModel> get accountModels => throw _privateConstructorUsedError;
-  List<SubAccountModel>? get subAccountModels =>
-      throw _privateConstructorUsedError;
+  String? get selectedId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddTransactionStateModelCopyWith<AddTransactionStateModel> get copyWith =>
@@ -47,10 +42,7 @@ abstract class $AddTransactionStateModelCopyWith<$Res> {
       String transactionType,
       double? modalHeight,
       String? redirectFrom,
-      List<CategoryModel> categoryModels,
-      List<SubcategoryModel>? subcategoryModels,
-      List<AccountModel> accountModels,
-      List<SubAccountModel>? subAccountModels});
+      String? selectedId});
 
   $TransactionModelCopyWith<$Res> get transactionModel;
 }
@@ -75,10 +67,7 @@ class _$AddTransactionStateModelCopyWithImpl<$Res,
     Object? transactionType = null,
     Object? modalHeight = freezed,
     Object? redirectFrom = freezed,
-    Object? categoryModels = null,
-    Object? subcategoryModels = freezed,
-    Object? accountModels = null,
-    Object? subAccountModels = freezed,
+    Object? selectedId = freezed,
   }) {
     return _then(_value.copyWith(
       transactionModel: null == transactionModel
@@ -105,22 +94,10 @@ class _$AddTransactionStateModelCopyWithImpl<$Res,
           ? _value.redirectFrom
           : redirectFrom // ignore: cast_nullable_to_non_nullable
               as String?,
-      categoryModels: null == categoryModels
-          ? _value.categoryModels
-          : categoryModels // ignore: cast_nullable_to_non_nullable
-              as List<CategoryModel>,
-      subcategoryModels: freezed == subcategoryModels
-          ? _value.subcategoryModels
-          : subcategoryModels // ignore: cast_nullable_to_non_nullable
-              as List<SubcategoryModel>?,
-      accountModels: null == accountModels
-          ? _value.accountModels
-          : accountModels // ignore: cast_nullable_to_non_nullable
-              as List<AccountModel>,
-      subAccountModels: freezed == subAccountModels
-          ? _value.subAccountModels
-          : subAccountModels // ignore: cast_nullable_to_non_nullable
-              as List<SubAccountModel>?,
+      selectedId: freezed == selectedId
+          ? _value.selectedId
+          : selectedId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -149,10 +126,7 @@ abstract class _$$AddTransactionStateModelImplCopyWith<$Res>
       String transactionType,
       double? modalHeight,
       String? redirectFrom,
-      List<CategoryModel> categoryModels,
-      List<SubcategoryModel>? subcategoryModels,
-      List<AccountModel> accountModels,
-      List<SubAccountModel>? subAccountModels});
+      String? selectedId});
 
   @override
   $TransactionModelCopyWith<$Res> get transactionModel;
@@ -177,10 +151,7 @@ class __$$AddTransactionStateModelImplCopyWithImpl<$Res>
     Object? transactionType = null,
     Object? modalHeight = freezed,
     Object? redirectFrom = freezed,
-    Object? categoryModels = null,
-    Object? subcategoryModels = freezed,
-    Object? accountModels = null,
-    Object? subAccountModels = freezed,
+    Object? selectedId = freezed,
   }) {
     return _then(_$AddTransactionStateModelImpl(
       transactionModel: null == transactionModel
@@ -207,22 +178,10 @@ class __$$AddTransactionStateModelImplCopyWithImpl<$Res>
           ? _value.redirectFrom
           : redirectFrom // ignore: cast_nullable_to_non_nullable
               as String?,
-      categoryModels: null == categoryModels
-          ? _value._categoryModels
-          : categoryModels // ignore: cast_nullable_to_non_nullable
-              as List<CategoryModel>,
-      subcategoryModels: freezed == subcategoryModels
-          ? _value._subcategoryModels
-          : subcategoryModels // ignore: cast_nullable_to_non_nullable
-              as List<SubcategoryModel>?,
-      accountModels: null == accountModels
-          ? _value._accountModels
-          : accountModels // ignore: cast_nullable_to_non_nullable
-              as List<AccountModel>,
-      subAccountModels: freezed == subAccountModels
-          ? _value._subAccountModels
-          : subAccountModels // ignore: cast_nullable_to_non_nullable
-              as List<SubAccountModel>?,
+      selectedId: freezed == selectedId
+          ? _value.selectedId
+          : selectedId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -237,14 +196,7 @@ class _$AddTransactionStateModelImpl implements _AddTransactionStateModel {
       required this.transactionType,
       this.modalHeight,
       this.redirectFrom,
-      required final List<CategoryModel> categoryModels,
-      final List<SubcategoryModel>? subcategoryModels,
-      required final List<AccountModel> accountModels,
-      final List<SubAccountModel>? subAccountModels})
-      : _categoryModels = categoryModels,
-        _subcategoryModels = subcategoryModels,
-        _accountModels = accountModels,
-        _subAccountModels = subAccountModels;
+      this.selectedId});
 
   @override
   final TransactionModel transactionModel;
@@ -258,47 +210,12 @@ class _$AddTransactionStateModelImpl implements _AddTransactionStateModel {
   final double? modalHeight;
   @override
   final String? redirectFrom;
-  final List<CategoryModel> _categoryModels;
   @override
-  List<CategoryModel> get categoryModels {
-    if (_categoryModels is EqualUnmodifiableListView) return _categoryModels;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_categoryModels);
-  }
-
-  final List<SubcategoryModel>? _subcategoryModels;
-  @override
-  List<SubcategoryModel>? get subcategoryModels {
-    final value = _subcategoryModels;
-    if (value == null) return null;
-    if (_subcategoryModels is EqualUnmodifiableListView)
-      return _subcategoryModels;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<AccountModel> _accountModels;
-  @override
-  List<AccountModel> get accountModels {
-    if (_accountModels is EqualUnmodifiableListView) return _accountModels;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_accountModels);
-  }
-
-  final List<SubAccountModel>? _subAccountModels;
-  @override
-  List<SubAccountModel>? get subAccountModels {
-    final value = _subAccountModels;
-    if (value == null) return null;
-    if (_subAccountModels is EqualUnmodifiableListView)
-      return _subAccountModels;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final String? selectedId;
 
   @override
   String toString() {
-    return 'AddTransactionStateModel(transactionModel: $transactionModel, amount: $amount, isAmountAddButtonPressed: $isAmountAddButtonPressed, transactionType: $transactionType, modalHeight: $modalHeight, redirectFrom: $redirectFrom, categoryModels: $categoryModels, subcategoryModels: $subcategoryModels, accountModels: $accountModels, subAccountModels: $subAccountModels)';
+    return 'AddTransactionStateModel(transactionModel: $transactionModel, amount: $amount, isAmountAddButtonPressed: $isAmountAddButtonPressed, transactionType: $transactionType, modalHeight: $modalHeight, redirectFrom: $redirectFrom, selectedId: $selectedId)';
   }
 
   @override
@@ -318,14 +235,8 @@ class _$AddTransactionStateModelImpl implements _AddTransactionStateModel {
                 other.modalHeight == modalHeight) &&
             (identical(other.redirectFrom, redirectFrom) ||
                 other.redirectFrom == redirectFrom) &&
-            const DeepCollectionEquality()
-                .equals(other._categoryModels, _categoryModels) &&
-            const DeepCollectionEquality()
-                .equals(other._subcategoryModels, _subcategoryModels) &&
-            const DeepCollectionEquality()
-                .equals(other._accountModels, _accountModels) &&
-            const DeepCollectionEquality()
-                .equals(other._subAccountModels, _subAccountModels));
+            (identical(other.selectedId, selectedId) ||
+                other.selectedId == selectedId));
   }
 
   @override
@@ -337,10 +248,7 @@ class _$AddTransactionStateModelImpl implements _AddTransactionStateModel {
       transactionType,
       modalHeight,
       redirectFrom,
-      const DeepCollectionEquality().hash(_categoryModels),
-      const DeepCollectionEquality().hash(_subcategoryModels),
-      const DeepCollectionEquality().hash(_accountModels),
-      const DeepCollectionEquality().hash(_subAccountModels));
+      selectedId);
 
   @JsonKey(ignore: true)
   @override
@@ -352,17 +260,13 @@ class _$AddTransactionStateModelImpl implements _AddTransactionStateModel {
 
 abstract class _AddTransactionStateModel implements AddTransactionStateModel {
   const factory _AddTransactionStateModel(
-          {required final TransactionModel transactionModel,
-          required final String amount,
-          final bool? isAmountAddButtonPressed,
-          required final String transactionType,
-          final double? modalHeight,
-          final String? redirectFrom,
-          required final List<CategoryModel> categoryModels,
-          final List<SubcategoryModel>? subcategoryModels,
-          required final List<AccountModel> accountModels,
-          final List<SubAccountModel>? subAccountModels}) =
-      _$AddTransactionStateModelImpl;
+      {required final TransactionModel transactionModel,
+      required final String amount,
+      final bool? isAmountAddButtonPressed,
+      required final String transactionType,
+      final double? modalHeight,
+      final String? redirectFrom,
+      final String? selectedId}) = _$AddTransactionStateModelImpl;
 
   @override
   TransactionModel get transactionModel;
@@ -377,13 +281,7 @@ abstract class _AddTransactionStateModel implements AddTransactionStateModel {
   @override
   String? get redirectFrom;
   @override
-  List<CategoryModel> get categoryModels;
-  @override
-  List<SubcategoryModel>? get subcategoryModels;
-  @override
-  List<AccountModel> get accountModels;
-  @override
-  List<SubAccountModel>? get subAccountModels;
+  String? get selectedId;
   @override
   @JsonKey(ignore: true)
   _$$AddTransactionStateModelImplCopyWith<_$AddTransactionStateModelImpl>

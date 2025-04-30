@@ -16,9 +16,6 @@ abstract class AddTransactionStateModel with _$AddTransactionStateModel {
     required String transactionType,
     double? modalHeight,
     String? redirectFrom,
-    required List<CategoryModel> categoryModels,
-     List<SubcategoryModel>? subcategoryModels,
-    required List<AccountModel> accountModels,
-     List<SubAccountModel>? subAccountModels,
+    String? selectedId
   }) = _AddTransactionStateModel;
 }

@@ -36,6 +36,9 @@ abstract class  LocaleKeys {
   static const categories = 'categories';
   static const subcategory = 'subcategory';
   static const subcategoryCount = 'subcategoryCount';
+  static const selectCategory = 'selectCategory';
+  static const selectAccount = 'selectAccount';
+  static const edit = 'edit';
   static const msg_named = 'msg_named';
   static const msg_mixed = 'msg_mixed';
   static const gender = 'gender';

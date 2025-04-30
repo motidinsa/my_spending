@@ -1,6 +1,8 @@
+import 'package:go_router/go_router.dart';
 import 'package:my_spending/add_transaction/model/add_transaction_state_model.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
 import 'package:my_spending/core/model/transaction_model/transaction_model.dart';
+import 'package:my_spending/core/route/routes.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'add_transaction_state.g.dart';
@@ -22,43 +24,6 @@ class AddTransactionState extends _$AddTransactionState {
       ),
       amount: '',
       transactionType: LocaleKeys.expense,
-      categoryModels: [
-        // CategoryModel(
-        //   categoryName: 'cat 1',
-        //   categoryId: '1',
-        //   dateCreated: DateTime.now(),
-        //   hasSubcategory: true,
-        // ),
-        // CategoryModel(
-        //   categoryName: 'cat 1',
-        //   categoryId: '1',
-        //   dateCreated: DateTime.now(),
-        // ),
-        // CategoryModel(
-        //   categoryName: 'cat 1',
-        //   categoryId: '1',
-        //   dateCreated: DateTime.now(),
-        // ),
-      ],
-      accountModels: [
-        // AccountModel(
-        //   accountName: 'acc 1',
-        //   accountId: '1',
-        //   dateCreated: DateTime.now(),
-        //   amountAvailable: 0,
-        // ),
-        // AccountModel(
-        //   accountName: 'acc 2',
-        //   accountId: '1',
-        //   dateCreated: DateTime.now(),
-        //   amountAvailable: 0,
-        // ),AccountModel(
-        //   accountName: 'acc 3',
-        //   accountId: '1',
-        //   dateCreated: DateTime.now(),
-        //   amountAvailable: 0,
-        // ),
-      ],
     );
   }
 
@@ -96,16 +61,34 @@ class AddTransactionState extends _$AddTransactionState {
     state = state.copyWith(redirectFrom: source);
   }
 
-  void onSingleModalItemPressed({required String name}) {
+  void resetSelectedId() {
+    state = state.copyWith(selectedId: null);
+  }
+
+  void onSingleModalItemPressed({
+    required String name,
+    required String type,
+    required String id,
+    required bool hasSubItem,
+    String? parentName,
+  }) {
     String redirectFrom = state.redirectFrom!;
     if (redirectFrom == LocaleKeys.category) {
       state = state.copyWith(
         transactionModel: state.transactionModel.copyWith(categoryName: name),
       );
     } else if (redirectFrom == LocaleKeys.account) {
-      state = state.copyWith(
-        transactionModel: state.transactionModel.copyWith(accountName: name),
-      );
+      if (hasSubItem) {
+        state = state.copyWith(selectedId: id);
+      } else {
+        state = state.copyWith(
+          transactionModel: state.transactionModel.copyWith(
+            accountName: parentName != null ? '$parentName / $name' : name,
+            accountId: id,
+          ),
+        );
+        navigatorKey.currentContext?.pop();
+      }
     }
   }
 

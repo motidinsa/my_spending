@@ -39,6 +39,9 @@
     "one": "{} subcategory",
     "other": "{} subcategories"
   },
+  "selectCategory": "Select Category",
+  "selectAccount": "Select Account",
+  "edit": "Edit",
   "msg_named": "Easy localization is written in the {lang} language",
   "msg_mixed": "{} are written in the {lang} language",
   "gender": {

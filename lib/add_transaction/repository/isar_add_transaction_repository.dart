@@ -49,4 +49,13 @@ class IsarAddTransactionRepository implements AddTransactionRepository {
   List<AccountModel> getAccountModels(String? groupId) {
     return _isar.accountModels.filter().groupIdEqualTo(groupId).findAllSync();
   }
+
+  @override
+  String getAccountGroupName(String groupId) {
+    return _isar.accountGroupModels
+        .filter()
+        .groupIdEqualTo(groupId)
+        .findFirstSync()!
+        .groupName;
+  }
 }

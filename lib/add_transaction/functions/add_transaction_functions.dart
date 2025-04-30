@@ -97,7 +97,9 @@ onAddTransactionTextFieldPressed({
       builder: (BuildContext context) {
         return TransactionTypeModalSheet(redirectFrom: title);
       },
-    ).then((value) {});
+    ).then((value) {
+      ref.read(addTransactionStateProvider.notifier).resetSelectedId();
+    });
   }
 }
 

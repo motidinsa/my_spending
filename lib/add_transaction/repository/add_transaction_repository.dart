@@ -5,6 +5,7 @@ import 'package:my_spending/core/model/category_model/category_model.dart';
 abstract class AddTransactionRepository {
   Future<List<AccountGroupModel>> getAllAccountGroups();
   List<AccountModel> getAccountModels(String? groupId);
+  String getAccountGroupName(String groupId);
 
   // Future<List<CategoryModel>> getAllCategories();
   //
