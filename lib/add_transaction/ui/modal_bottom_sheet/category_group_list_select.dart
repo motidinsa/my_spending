@@ -3,14 +3,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_account_group/model/account_group_model.dart';
 import 'package:my_spending/add_transaction/repository/isar_add_transaction_repository.dart';
 import 'package:my_spending/add_transaction/state/add_transaction_account_list_state.dart';
+import 'package:my_spending/add_transaction/state/add_transaction_category_list_state.dart';
 import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/single_modal_item.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/ungrouped_account_list.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
 import 'package:my_spending/core/model/account_model/account_model.dart';
 
-class AccountGroupListSelect extends StatelessWidget {
-  const AccountGroupListSelect({super.key});
+class CategoryListSelect extends StatelessWidget {
+  const CategoryListSelect({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class AccountGroupListSelect extends StatelessWidget {
               Consumer(
                 builder: (context, ref, child) {
                   return ref
-                      .watch(addTransactionAccountListStateProvider)
+                      .watch(addTransactionCategoryListStateProvider)
                       .when(
                         data: (data) {
                           return ListView.builder(

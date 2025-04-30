@@ -16,8 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AddTransactionOtherStateModel {
-// required List<CategoryModel> categoryModels,
-// List<SubcategoryModel>? subcategoryModels,
   List<AccountGroupModel> get accountGroupModels =>
       throw _privateConstructorUsedError;
 
@@ -106,11 +104,7 @@ class _$AddTransactionOtherStateModelImpl
       {required final List<AccountGroupModel> accountGroupModels})
       : _accountGroupModels = accountGroupModels;
 
-// required List<CategoryModel> categoryModels,
-// List<SubcategoryModel>? subcategoryModels,
   final List<AccountGroupModel> _accountGroupModels;
-// required List<CategoryModel> categoryModels,
-// List<SubcategoryModel>? subcategoryModels,
   @override
   List<AccountGroupModel> get accountGroupModels {
     if (_accountGroupModels is EqualUnmodifiableListView)
@@ -152,8 +146,7 @@ abstract class _AddTransactionOtherStateModel
           {required final List<AccountGroupModel> accountGroupModels}) =
       _$AddTransactionOtherStateModelImpl;
 
-  @override // required List<CategoryModel> categoryModels,
-// List<SubcategoryModel>? subcategoryModels,
+  @override
   List<AccountGroupModel> get accountGroupModels;
   @override
   @JsonKey(ignore: true)

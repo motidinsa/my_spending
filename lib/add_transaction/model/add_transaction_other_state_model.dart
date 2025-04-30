@@ -11,10 +11,6 @@ part 'add_transaction_other_state_model.freezed.dart';
 @freezed
 abstract class AddTransactionOtherStateModel with _$AddTransactionOtherStateModel {
   const factory AddTransactionOtherStateModel({
-
-    // required List<CategoryModel> categoryModels,
-    // List<SubcategoryModel>? subcategoryModels,
     required List<AccountGroupModel> accountGroupModels,
-    // List<SubAccountModel>? subAccountModels,
   }) = _AddTransactionOtherStateModel;
 }

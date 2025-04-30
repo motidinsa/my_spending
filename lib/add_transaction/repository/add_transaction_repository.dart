@@ -7,7 +7,8 @@ abstract class AddTransactionRepository {
   List<AccountModel> getAccountModels(String? groupId);
   String getAccountGroupName(String groupId);
 
-  // Future<List<CategoryModel>> getAllCategories();
+  Future<List<CategoryModel>> getExpenseCategories();
+  Future<List<CategoryModel>> getIncomeCategories();
   //
   // Future<List<AccountModel>> getSubAccounts(String accountId);
   //
