@@ -20,6 +20,7 @@ class AccountGroupListSelect extends StatelessWidget {
               data: (data) {
                 return ListView.builder(
                   shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
                     return data.accountGroupModels[index].groupId != null
                         ? SingleModalItem(

@@ -10,7 +10,21 @@ class IsarAddTransactionRepository implements AddTransactionRepository {
 
   @override
   Future<List<AccountGroupModel>> getAllAccountGroups() async {
-    return await _isar.accountGroupModels.where().findAll();
+    return await _isar.accountGroupModels.where().findAll().then((value) {
+      return value..sort((a, b) {
+        final indexA = a.sortIndex;
+        final indexB = b.sortIndex;
+        if (indexA == null && indexB == null) {
+          return 0;
+        } else if (indexA == null) {
+          return 1;
+        } else if (indexB == null) {
+          return -1;
+        } else {
+          return indexA.compareTo(indexB);
+        }
+      });
+    });
   }
 
   @override

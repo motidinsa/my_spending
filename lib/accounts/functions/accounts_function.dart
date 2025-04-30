@@ -7,7 +7,6 @@ List<List<AccountModel>> getGroupedAccounts(List<AccountModel> accounts) {
     groupedAccounts.putIfAbsent(account.groupId ?? '', () => []).add(account);
   }
   var tobeReturned = groupedAccounts.values.toList();
-  const int nullOrderIndexSortValue = 999999;
   IsarAccountsRepository isarAccountsRepository = IsarAccountsRepository();
 
   tobeReturned.sort((a, b) {

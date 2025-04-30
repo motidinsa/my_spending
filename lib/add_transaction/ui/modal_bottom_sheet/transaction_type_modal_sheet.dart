@@ -14,9 +14,7 @@ class TransactionTypeModalSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: ListView(
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
+      child: Column(
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -43,42 +41,48 @@ class TransactionTypeModalSheet extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 15),
-            child: Consumer(
-              builder: (context, ref, child) {
-                return Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: AccountGroupListSelect()
-                      // ModalItems(
-                      //   isPrimary: true,
-                      //   type: redirectFrom,
-                      //   categoryModels:
-                      //       redirectFrom == 'Category'
-                      //           ? ref
-                      //               .read(addTransactionStateProvider)
-                      //               .categoryModels
-                      //           : null,
-                      //   accountModels:
-                      //       redirectFrom == 'Account'
-                      //           ? ref
-                      //               .read(addTransactionStateProvider)
-                      //               .accountModels
-                      //           : null,
-                      // ),
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: ModalItems(
-                        isPrimary: false,
-                        type: redirectFrom,
-                      ),
-                    ),
-                  ],
-                );
-              },
+          Expanded(
+            child: ListView(shrinkWrap: true,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 15),
+                  child: Consumer(
+                    builder: (context, ref, child) {
+                      return Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: AccountGroupListSelect()
+                            // ModalItems(
+                            //   isPrimary: true,
+                            //   type: redirectFrom,
+                            //   categoryModels:
+                            //       redirectFrom == 'Category'
+                            //           ? ref
+                            //               .read(addTransactionStateProvider)
+                            //               .categoryModels
+                            //           : null,
+                            //   accountModels:
+                            //       redirectFrom == 'Account'
+                            //           ? ref
+                            //               .read(addTransactionStateProvider)
+                            //               .accountModels
+                            //           : null,
+                            // ),
+                          ),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: ModalItems(
+                              isPrimary: false,
+                              type: redirectFrom,
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
           ),
         ],
