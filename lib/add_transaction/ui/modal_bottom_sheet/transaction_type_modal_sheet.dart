@@ -7,6 +7,7 @@ import 'package:my_spending/add_transaction/state/add_transaction_account_list_s
 import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/account_group_list_select.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/modal_items.dart';
+import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/subaccount_list_select.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/ungrouped_account_list.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
 
@@ -26,7 +27,7 @@ class TransactionTypeModalSheet extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  child:  Text(
+                  child: Text(
                     redirectFrom == LocaleKeys.account
                         ? context.tr(LocaleKeys.selectAccount)
                         : context.tr(LocaleKeys.selectCategory),
@@ -56,52 +57,9 @@ class TransactionTypeModalSheet extends StatelessWidget {
                   return Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(
-                        child: AccountGroupListSelect(),
-                        // ModalItems(
-                        //   isPrimary: true,
-                        //   type: redirectFrom,
-                        //   categoryModels:
-                        //       redirectFrom == 'Category'
-                        //           ? ref
-                        //               .read(addTransactionStateProvider)
-                        //               .categoryModels
-                        //           : null,
-                        //   accountModels:
-                        //       redirectFrom == 'Account'
-                        //           ? ref
-                        //               .read(addTransactionStateProvider)
-                        //               .accountModels
-                        //           : null,
-                        // ),
-                      ),
+                      Expanded(child: AccountGroupListSelect()),
                       const SizedBox(width: 10),
-                      Expanded(
-                        child: Consumer(
-                          builder: (context, ref, child) {
-                            String? selectedId = ref.watch(
-                              addTransactionStateProvider.select(
-                                (state) => state.selectedId,
-                              ),
-                            );
-                            IsarAddTransactionRepository
-                            isarAddTransactionRepository =
-                                IsarAddTransactionRepository();
-                            return UngroupedAccountList(
-                              accountModels:
-                                  selectedId != null
-                                      ? isarAddTransactionRepository
-                                          .getAccountModels(selectedId)
-                                      : [],
-                              parentName:
-                                  selectedId != null
-                                      ? isarAddTransactionRepository
-                                          .getAccountGroupName(selectedId)
-                                      : null,
-                            );
-                          },
-                        ),
-                      ),
+                      Expanded(child: SubAccountListSelect()),
                     ],
                   );
                 },

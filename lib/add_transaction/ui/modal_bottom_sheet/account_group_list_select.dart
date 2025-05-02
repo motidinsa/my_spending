@@ -14,34 +14,34 @@ class AccountGroupListSelect extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.green.shade200, width: 1),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.shade400,
-            spreadRadius: 1,
-            blurRadius: 4,
-            offset: const Offset(0, 1),
-          ),
-        ],
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: Material(
-          color: Colors.transparent,
-          child: ListView(
-            shrinkWrap: true,
-            children: [
-              Consumer(
-                builder: (context, ref, child) {
-                  return ref
-                      .watch(addTransactionAccountListStateProvider)
-                      .when(
-                        data: (data) {
-                          return ListView.builder(
+    return Consumer(
+      builder: (context, ref, child) {
+        return ref
+            .watch(addTransactionAccountListStateProvider)
+            .when(
+              data: (data) {
+                return Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Colors.green.shade200, width: 1),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.shade400,
+                        spreadRadius: 1,
+                        blurRadius: 4,
+                        offset: const Offset(0, 1),
+                      ),
+                    ],
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Material(
+                      color: Colors.transparent,
+                      child: ListView(
+                        shrinkWrap: true,
+                        children: [
+                          ListView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) {
@@ -70,29 +70,29 @@ class AccountGroupListSelect extends StatelessWidget {
                             },
 
                             itemCount: data.length,
-                          );
-                        },
-                        error:
-                            (Object error, StackTrace stackTrace) =>
-                                Text(error.toString()),
-                        loading:
-                            () => Center(
-                              child: SizedBox(
-                                width: 30,
-                                height: 30,
-                                child: CircularProgressIndicator(
-                                  color: Colors.green.shade700,
-                                  strokeWidth: 3,
-                                ),
-                              ),
-                            ),
-                      );
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
+              error:
+                  (Object error, StackTrace stackTrace) =>
+                      Text(error.toString()),
+              loading:
+                  () => Center(
+                    child: SizedBox(
+                      width: 30,
+                      height: 30,
+                      child: CircularProgressIndicator(
+                        color: Colors.green.shade700,
+                        strokeWidth: 3,
+                      ),
+                    ),
+                  ),
+            );
+      },
     );
   }
 }
