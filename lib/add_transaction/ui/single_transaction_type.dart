@@ -23,7 +23,7 @@ class SingleTransactionType extends StatelessWidget {
       builder: (context, ref, child) {
         return GestureDetector(
           onTap: () {
-            onTransactionTypeSelect(ref: ref, type: name);
+            onTransactionTypeSelect(ref: ref, type: name,context: context);
           },
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 7),

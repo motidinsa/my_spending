@@ -13,9 +13,7 @@ class AddTransaction extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
-      onTap: () {
-        unFocus();
-      },
+      onTap: () => unFocus(),
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(

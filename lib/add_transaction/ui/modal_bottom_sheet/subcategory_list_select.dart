@@ -53,6 +53,7 @@ class SubcategoryListSelect extends StatelessWidget {
                                       subcategoryModels[index].subcategoryName,
                                   type: LocaleKeys.category,
                                   id: subcategoryModels[index].subcategoryId,
+
                                   isSelected: false,
                                   categoryType:
                                       ref

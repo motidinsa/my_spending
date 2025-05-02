@@ -64,8 +64,7 @@ getAddTransactionTextFieldData(WidgetRef ref, String title) {
         (state) => state.transactionModel.accountName,
       ),
     );
-  }
-  else if (title == LocaleKeys.category) {
+  } else if (title == LocaleKeys.category) {
     return ref.watch(
       addTransactionStateProvider.select(
         (state) => state.transactionModel.categoryName,
@@ -119,8 +118,28 @@ onAddTransactionTextFieldChange({
   }
 }
 
-onTransactionTypeSelect({required WidgetRef ref, required String type}) {
+onTransactionTypeSelect({
+  required WidgetRef ref,
+  required String type,
+  required BuildContext context,
+}) {
   ref.read(addTransactionStateProvider.notifier).updateTransactionState(type);
+  String? categoryType =
+      ref.read(addTransactionStateProvider.notifier).categoryType;
+  if (categoryType != null) {
+    if ((categoryType == LocaleKeys.expense && type == LocaleKeys.income)||(categoryType == LocaleKeys.income && type == LocaleKeys.expense)) {
+      showModalBottomSheet(
+        context: context,
+        backgroundColor: Colors.white,
+        builder: (BuildContext context) {
+          return TransactionTypeModalSheet(redirectFrom: LocaleKeys.category);
+        },
+      ).then((value) {
+        ref.read(addTransactionStateProvider.notifier).resetSelectedId();
+      });
+      // ref.read(addTransactionStateProvider.notifier).onNextFocus(context);
+    }
+  }
 }
 
 getTransactionTypeBackgroundColor({

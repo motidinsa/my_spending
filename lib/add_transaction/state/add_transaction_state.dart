@@ -79,7 +79,7 @@ class AddTransactionState extends _$AddTransactionState {
     required String id,
     required bool hasSubItem,
     required BuildContext context,
-    String? selectedCategoryType
+    String? selectedCategoryType,
   }) {
     String redirectFrom = state.redirectFrom!;
     if (hasSubItem) {
@@ -93,7 +93,7 @@ class AddTransactionState extends _$AddTransactionState {
             categoryId: id,
           ),
         );
-        categoryType =selectedCategoryType;
+        categoryType = selectedCategoryType;
       } else if (redirectFrom == LocaleKeys.account) {
         state = state.copyWith(
           transactionModel: state.transactionModel.copyWith(
@@ -118,41 +118,43 @@ class AddTransactionState extends _$AddTransactionState {
   void onNextFocus(BuildContext context) {
     String redirectFrom = state.redirectFrom!;
     if (state.transactionModel.categoryId.isEmpty ||
-        state.transactionModel.accountId.isEmpty)
-      {
-        if (redirectFrom == LocaleKeys.account) {
-          if (state.transactionModel.categoryId.isEmpty) {
-            ref
-                .read(addTransactionStateProvider.notifier)
-                .setSelectedType(LocaleKeys.category);
-            // redirectTo = LocaleKeys.category;
-          }
-        } else if (redirectFrom == LocaleKeys.category) {
-          if (state.transactionModel.accountId.isEmpty) {
-            ref
-                .read(addTransactionStateProvider.notifier)
-                .setSelectedType(LocaleKeys.account);
-            // redirectTo = LocaleKeys.account;
-          }
+        state.transactionModel.accountId.isEmpty) {
+      if (redirectFrom == LocaleKeys.account) {
+        if (state.transactionModel.categoryId.isEmpty) {
+          ref
+              .read(addTransactionStateProvider.notifier)
+              .setSelectedType(LocaleKeys.category);
         }
-        // if (redirectTo != null) {
-        showModalBottomSheet(
-          context: context,
-          backgroundColor: Colors.white,
-          builder: (BuildContext context) {
-            return TransactionTypeModalSheet(redirectFrom: state.redirectFrom!);
-          },
-        ).then((value) {
-          ref.read(addTransactionStateProvider.notifier).resetSelectedId();
-        });
-      }else if(state.amount.isEmpty){
+      } else if (redirectFrom == LocaleKeys.category) {
+        if (state.transactionModel.accountId.isEmpty) {
+          ref
+              .read(addTransactionStateProvider.notifier)
+              .setSelectedType(LocaleKeys.account);
+          // redirectTo = LocaleKeys.account;
+        }
+      }
+      // if (redirectTo != null) {
+      showModalBottomSheet(
+        context: context,
+        backgroundColor: Colors.white,
+        builder: (BuildContext context) {
+          return TransactionTypeModalSheet(redirectFrom: state.redirectFrom!);
+        },
+      ).then((value) {
+        ref.read(addTransactionStateProvider.notifier).resetSelectedId();
+      });
+    } else if (state.amount.isEmpty) {
       requestAmountFocus();
     }
   }
-void requestAmountFocus(){
-  state = state.copyWith(hasAmountFocus: true);
-}void removeAmountFocus(){
-  state = state.copyWith(hasAmountFocus: false);
-}
+
+  void requestAmountFocus() {
+    state = state.copyWith(hasAmountFocus: true);
+  }
+
+  void removeAmountFocus() {
+    state = state.copyWith(hasAmountFocus: false);
+  }
+
   // }
 }
