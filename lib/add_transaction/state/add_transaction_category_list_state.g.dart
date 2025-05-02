@@ -7,7 +7,7 @@ part of 'add_transaction_category_list_state.dart';
 // **************************************************************************
 
 String _$addTransactionCategoryListStateHash() =>
-    r'3a95d53ca17e0334abc3f06ceb2d29f292d61273';
+    r'8f404c5bd156bbcba4ab37c97117a69843cde1a8';
 
 /// See also [AddTransactionCategoryListState].
 @ProviderFor(AddTransactionCategoryListState)

@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_transaction/repository/isar_add_transaction_repository.dart';
 import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
-import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/ungrouped_account_list.dart';
+import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/single_modal_item.dart';
+import 'package:my_spending/core/constants/translation_keys.g.dart';
+import 'package:my_spending/core/model/subcategory_model/subcategory_model.dart';
 
-class SubAccountListSelect extends StatelessWidget {
-  const SubAccountListSelect({super.key});
+class SubcategoryListSelect extends StatelessWidget {
+  const SubcategoryListSelect({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +21,11 @@ class SubAccountListSelect extends StatelessWidget {
         return selectedId == null
             ? Container()
             : FutureBuilder(
-              future: isarAddTransactionRepository.getAccountModels(selectedId),
+              future: isarAddTransactionRepository.getSubcategories(selectedId),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  return snapshot.data!.isEmpty
+                  List<SubcategoryModel> subcategoryModels = snapshot.data!;
+                  return subcategoryModels.isEmpty
                       ? Container()
                       : Container(
                         decoration: BoxDecoration(
@@ -42,8 +45,18 @@ class SubAccountListSelect extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                           child: Material(
                             color: Colors.transparent,
-                            child: UngroupedAccountList(
-                              accountModels: snapshot.data!,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) {
+                                return SingleModalItem(
+                                  name: subcategoryModels[index].subcategoryName,
+                                  type: LocaleKeys.category,
+                                  id: subcategoryModels[index].subcategoryId,
+                                  isSelected: false,
+                                );
+                              },
+
+                              itemCount: subcategoryModels.length,
                             ),
                           ),
                         ),

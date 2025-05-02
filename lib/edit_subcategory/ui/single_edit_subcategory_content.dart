@@ -1,8 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:my_spending/core/model/category_model/category_model.dart';
 import 'package:my_spending/core/model/subcategory_model/subcategory_model.dart';
-import 'package:my_spending/edit_category/ui/edit_category_text_field.dart';
 import 'package:my_spending/edit_subcategory/ui/edit_subcategory_text_field.dart';
 
 class SingleEditSubcategoryContent extends StatelessWidget {

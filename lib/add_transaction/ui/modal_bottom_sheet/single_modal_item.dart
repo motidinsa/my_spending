@@ -4,23 +4,17 @@ import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 
 class SingleModalItem extends StatelessWidget {
   final String name;
-  final String? parentName;
   final String type;
   final String id;
-  final int index;
   final bool? hasSubItem;
-  final bool? isSecondary;
   final bool isSelected;
 
   const SingleModalItem({
     super.key,
     required this.name,
     this.hasSubItem,
-    this.parentName,
-    required this.index,
     required this.type,
     required this.id,
-    this.isSecondary,
     required this.isSelected,
   });
 
@@ -29,13 +23,7 @@ class SingleModalItem extends StatelessWidget {
     return Consumer(
       builder: (context, ref, child) {
         return ListTile(
-          shape:
-              isSecondary == true
-                  ? RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  )
-                  : null,
-          tileColor: isSelected ? Colors.green.shade50 : null,
+          tileColor: isSelected ? Colors.green.shade100 : null,
           title: Text(
             name,
             textAlign: TextAlign.center,
@@ -58,7 +46,7 @@ class SingleModalItem extends StatelessWidget {
                   name: name,
                   type: type,
                   hasSubItem: hasSubItem ?? false,
-                  id: id,parentName: parentName
+                  id: id,
                 );
           },
         );

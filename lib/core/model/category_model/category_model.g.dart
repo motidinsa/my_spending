@@ -47,14 +47,14 @@ const CategoryModelSchema = CollectionSchema(
       name: r'expenseSortIndex',
       type: IsarType.long,
     ),
-    r'hasSubcategory': PropertySchema(
-      id: 6,
-      name: r'hasSubcategory',
-      type: IsarType.bool,
-    ),
     r'incomeSortIndex': PropertySchema(
-      id: 7,
+      id: 6,
       name: r'incomeSortIndex',
+      type: IsarType.long,
+    ),
+    r'subcategoryCount': PropertySchema(
+      id: 7,
+      name: r'subcategoryCount',
       type: IsarType.long,
     )
   },
@@ -96,8 +96,8 @@ void _categoryModelSerialize(
   writer.writeDateTime(offsets[3], object.dateCreated);
   writer.writeDateTime(offsets[4], object.dateModified);
   writer.writeLong(offsets[5], object.expenseSortIndex);
-  writer.writeBool(offsets[6], object.hasSubcategory);
-  writer.writeLong(offsets[7], object.incomeSortIndex);
+  writer.writeLong(offsets[6], object.incomeSortIndex);
+  writer.writeLong(offsets[7], object.subcategoryCount);
 }
 
 CategoryModel _categoryModelDeserialize(
@@ -113,9 +113,9 @@ CategoryModel _categoryModelDeserialize(
     dateCreated: reader.readDateTime(offsets[3]),
     dateModified: reader.readDateTimeOrNull(offsets[4]),
     expenseSortIndex: reader.readLongOrNull(offsets[5]),
-    hasSubcategory: reader.readBoolOrNull(offsets[6]),
     id: id,
-    incomeSortIndex: reader.readLongOrNull(offsets[7]),
+    incomeSortIndex: reader.readLongOrNull(offsets[6]),
+    subcategoryCount: reader.readLong(offsets[7]),
   );
   return object;
 }
@@ -140,9 +140,9 @@ P _categoryModelDeserializeProp<P>(
     case 5:
       return (reader.readLongOrNull(offset)) as P;
     case 6:
-      return (reader.readBoolOrNull(offset)) as P;
-    case 7:
       return (reader.readLongOrNull(offset)) as P;
+    case 7:
+      return (reader.readLong(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }
@@ -854,34 +854,6 @@ extension CategoryModelQueryFilter
     });
   }
 
-  QueryBuilder<CategoryModel, CategoryModel, QAfterFilterCondition>
-      hasSubcategoryIsNull() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNull(
-        property: r'hasSubcategory',
-      ));
-    });
-  }
-
-  QueryBuilder<CategoryModel, CategoryModel, QAfterFilterCondition>
-      hasSubcategoryIsNotNull() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNotNull(
-        property: r'hasSubcategory',
-      ));
-    });
-  }
-
-  QueryBuilder<CategoryModel, CategoryModel, QAfterFilterCondition>
-      hasSubcategoryEqualTo(bool? value) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'hasSubcategory',
-        value: value,
-      ));
-    });
-  }
-
   QueryBuilder<CategoryModel, CategoryModel, QAfterFilterCondition> idEqualTo(
       Id value) {
     return QueryBuilder.apply(this, (query) {
@@ -1009,6 +981,62 @@ extension CategoryModelQueryFilter
       ));
     });
   }
+
+  QueryBuilder<CategoryModel, CategoryModel, QAfterFilterCondition>
+      subcategoryCountEqualTo(int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'subcategoryCount',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<CategoryModel, CategoryModel, QAfterFilterCondition>
+      subcategoryCountGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'subcategoryCount',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<CategoryModel, CategoryModel, QAfterFilterCondition>
+      subcategoryCountLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'subcategoryCount',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<CategoryModel, CategoryModel, QAfterFilterCondition>
+      subcategoryCountBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'subcategoryCount',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
 }
 
 extension CategoryModelQueryObject
@@ -1102,20 +1130,6 @@ extension CategoryModelQuerySortBy
   }
 
   QueryBuilder<CategoryModel, CategoryModel, QAfterSortBy>
-      sortByHasSubcategory() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'hasSubcategory', Sort.asc);
-    });
-  }
-
-  QueryBuilder<CategoryModel, CategoryModel, QAfterSortBy>
-      sortByHasSubcategoryDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'hasSubcategory', Sort.desc);
-    });
-  }
-
-  QueryBuilder<CategoryModel, CategoryModel, QAfterSortBy>
       sortByIncomeSortIndex() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'incomeSortIndex', Sort.asc);
@@ -1126,6 +1140,20 @@ extension CategoryModelQuerySortBy
       sortByIncomeSortIndexDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'incomeSortIndex', Sort.desc);
+    });
+  }
+
+  QueryBuilder<CategoryModel, CategoryModel, QAfterSortBy>
+      sortBySubcategoryCount() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'subcategoryCount', Sort.asc);
+    });
+  }
+
+  QueryBuilder<CategoryModel, CategoryModel, QAfterSortBy>
+      sortBySubcategoryCountDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'subcategoryCount', Sort.desc);
     });
   }
 }
@@ -1214,20 +1242,6 @@ extension CategoryModelQuerySortThenBy
     });
   }
 
-  QueryBuilder<CategoryModel, CategoryModel, QAfterSortBy>
-      thenByHasSubcategory() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'hasSubcategory', Sort.asc);
-    });
-  }
-
-  QueryBuilder<CategoryModel, CategoryModel, QAfterSortBy>
-      thenByHasSubcategoryDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'hasSubcategory', Sort.desc);
-    });
-  }
-
   QueryBuilder<CategoryModel, CategoryModel, QAfterSortBy> thenById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.asc);
@@ -1251,6 +1265,20 @@ extension CategoryModelQuerySortThenBy
       thenByIncomeSortIndexDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'incomeSortIndex', Sort.desc);
+    });
+  }
+
+  QueryBuilder<CategoryModel, CategoryModel, QAfterSortBy>
+      thenBySubcategoryCount() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'subcategoryCount', Sort.asc);
+    });
+  }
+
+  QueryBuilder<CategoryModel, CategoryModel, QAfterSortBy>
+      thenBySubcategoryCountDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'subcategoryCount', Sort.desc);
     });
   }
 }
@@ -1300,16 +1328,16 @@ extension CategoryModelQueryWhereDistinct
   }
 
   QueryBuilder<CategoryModel, CategoryModel, QDistinct>
-      distinctByHasSubcategory() {
+      distinctByIncomeSortIndex() {
     return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'hasSubcategory');
+      return query.addDistinctBy(r'incomeSortIndex');
     });
   }
 
   QueryBuilder<CategoryModel, CategoryModel, QDistinct>
-      distinctByIncomeSortIndex() {
+      distinctBySubcategoryCount() {
     return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'incomeSortIndex');
+      return query.addDistinctBy(r'subcategoryCount');
     });
   }
 }
@@ -1361,17 +1389,17 @@ extension CategoryModelQueryProperty
     });
   }
 
-  QueryBuilder<CategoryModel, bool?, QQueryOperations>
-      hasSubcategoryProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'hasSubcategory');
-    });
-  }
-
   QueryBuilder<CategoryModel, int?, QQueryOperations>
       incomeSortIndexProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'incomeSortIndex');
+    });
+  }
+
+  QueryBuilder<CategoryModel, int, QQueryOperations>
+      subcategoryCountProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'subcategoryCount');
     });
   }
 }

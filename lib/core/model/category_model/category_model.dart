@@ -12,7 +12,7 @@ part 'category_model.g.dart';
     required String categoryName,
     required String categoryId,
     required String categoryType,
-    bool? hasSubcategory,
+    required int subcategoryCount,
     required DateTime dateCreated,
     DateTime? dateModified,
     int? expenseSortIndex,

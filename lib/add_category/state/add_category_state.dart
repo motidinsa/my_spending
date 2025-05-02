@@ -45,6 +45,7 @@ class AddCategoryState extends _$AddCategoryState {
           categoryId: generateDatabaseId(now),
           categoryType: type!,
           dateCreated: now,
+          subcategoryCount: 0
         ),
       );
       navigatorKey.currentContext?.pop();

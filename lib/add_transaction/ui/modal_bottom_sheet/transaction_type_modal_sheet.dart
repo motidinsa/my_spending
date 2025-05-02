@@ -1,14 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:my_spending/add_account/ui/account_group_list.dart';
-import 'package:my_spending/add_transaction/repository/isar_add_transaction_repository.dart';
-import 'package:my_spending/add_transaction/state/add_transaction_account_list_state.dart';
-import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/account_group_list_select.dart';
-import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/modal_items.dart';
+import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/category_list_select.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/subaccount_list_select.dart';
-import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/ungrouped_account_list.dart';
+import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/subcategory_list_select.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
 
 class TransactionTypeModalSheet extends StatelessWidget {
@@ -52,17 +47,23 @@ class TransactionTypeModalSheet extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(bottom: 15),
-              child: Consumer(
-                builder: (context, ref, child) {
-                  return Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(child: AccountGroupListSelect()),
-                      const SizedBox(width: 10),
-                      Expanded(child: SubAccountListSelect()),
-                    ],
-                  );
-                },
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child:
+                        redirectFrom == LocaleKeys.account
+                            ? AccountGroupListSelect()
+                            : CategoryListSelect(),
+                  ),
+                  const SizedBox(width: 15),
+                  Expanded(
+                    child:
+                        redirectFrom == LocaleKeys.account
+                            ? SubAccountListSelect()
+                            : SubcategoryListSelect(),
+                  ),
+                ],
               ),
             ),
           ),

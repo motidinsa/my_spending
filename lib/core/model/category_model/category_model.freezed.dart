@@ -20,7 +20,7 @@ mixin _$CategoryModel {
   String get categoryName => throw _privateConstructorUsedError;
   String get categoryId => throw _privateConstructorUsedError;
   String get categoryType => throw _privateConstructorUsedError;
-  bool? get hasSubcategory => throw _privateConstructorUsedError;
+  int get subcategoryCount => throw _privateConstructorUsedError;
   DateTime get dateCreated => throw _privateConstructorUsedError;
   DateTime? get dateModified => throw _privateConstructorUsedError;
   int? get expenseSortIndex => throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ abstract class $CategoryModelCopyWith<$Res> {
       String categoryName,
       String categoryId,
       String categoryType,
-      bool? hasSubcategory,
+      int subcategoryCount,
       DateTime dateCreated,
       DateTime? dateModified,
       int? expenseSortIndex,
@@ -66,7 +66,7 @@ class _$CategoryModelCopyWithImpl<$Res, $Val extends CategoryModel>
     Object? categoryName = null,
     Object? categoryId = null,
     Object? categoryType = null,
-    Object? hasSubcategory = freezed,
+    Object? subcategoryCount = null,
     Object? dateCreated = null,
     Object? dateModified = freezed,
     Object? expenseSortIndex = freezed,
@@ -89,10 +89,10 @@ class _$CategoryModelCopyWithImpl<$Res, $Val extends CategoryModel>
           ? _value.categoryType
           : categoryType // ignore: cast_nullable_to_non_nullable
               as String,
-      hasSubcategory: freezed == hasSubcategory
-          ? _value.hasSubcategory
-          : hasSubcategory // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      subcategoryCount: null == subcategoryCount
+          ? _value.subcategoryCount
+          : subcategoryCount // ignore: cast_nullable_to_non_nullable
+              as int,
       dateCreated: null == dateCreated
           ? _value.dateCreated
           : dateCreated // ignore: cast_nullable_to_non_nullable
@@ -126,7 +126,7 @@ abstract class _$$CategoryModelImplCopyWith<$Res>
       String categoryName,
       String categoryId,
       String categoryType,
-      bool? hasSubcategory,
+      int subcategoryCount,
       DateTime dateCreated,
       DateTime? dateModified,
       int? expenseSortIndex,
@@ -148,7 +148,7 @@ class __$$CategoryModelImplCopyWithImpl<$Res>
     Object? categoryName = null,
     Object? categoryId = null,
     Object? categoryType = null,
-    Object? hasSubcategory = freezed,
+    Object? subcategoryCount = null,
     Object? dateCreated = null,
     Object? dateModified = freezed,
     Object? expenseSortIndex = freezed,
@@ -171,10 +171,10 @@ class __$$CategoryModelImplCopyWithImpl<$Res>
           ? _value.categoryType
           : categoryType // ignore: cast_nullable_to_non_nullable
               as String,
-      hasSubcategory: freezed == hasSubcategory
-          ? _value.hasSubcategory
-          : hasSubcategory // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      subcategoryCount: null == subcategoryCount
+          ? _value.subcategoryCount
+          : subcategoryCount // ignore: cast_nullable_to_non_nullable
+              as int,
       dateCreated: null == dateCreated
           ? _value.dateCreated
           : dateCreated // ignore: cast_nullable_to_non_nullable
@@ -203,7 +203,7 @@ class _$CategoryModelImpl extends _CategoryModel {
       required this.categoryName,
       required this.categoryId,
       required this.categoryType,
-      this.hasSubcategory,
+      required this.subcategoryCount,
       required this.dateCreated,
       this.dateModified,
       this.expenseSortIndex,
@@ -220,7 +220,7 @@ class _$CategoryModelImpl extends _CategoryModel {
   @override
   final String categoryType;
   @override
-  final bool? hasSubcategory;
+  final int subcategoryCount;
   @override
   final DateTime dateCreated;
   @override
@@ -232,7 +232,7 @@ class _$CategoryModelImpl extends _CategoryModel {
 
   @override
   String toString() {
-    return 'CategoryModel(id: $id, categoryName: $categoryName, categoryId: $categoryId, categoryType: $categoryType, hasSubcategory: $hasSubcategory, dateCreated: $dateCreated, dateModified: $dateModified, expenseSortIndex: $expenseSortIndex, incomeSortIndex: $incomeSortIndex)';
+    return 'CategoryModel(id: $id, categoryName: $categoryName, categoryId: $categoryId, categoryType: $categoryType, subcategoryCount: $subcategoryCount, dateCreated: $dateCreated, dateModified: $dateModified, expenseSortIndex: $expenseSortIndex, incomeSortIndex: $incomeSortIndex)';
   }
 
   @override
@@ -247,8 +247,8 @@ class _$CategoryModelImpl extends _CategoryModel {
                 other.categoryId == categoryId) &&
             (identical(other.categoryType, categoryType) ||
                 other.categoryType == categoryType) &&
-            (identical(other.hasSubcategory, hasSubcategory) ||
-                other.hasSubcategory == hasSubcategory) &&
+            (identical(other.subcategoryCount, subcategoryCount) ||
+                other.subcategoryCount == subcategoryCount) &&
             (identical(other.dateCreated, dateCreated) ||
                 other.dateCreated == dateCreated) &&
             (identical(other.dateModified, dateModified) ||
@@ -266,7 +266,7 @@ class _$CategoryModelImpl extends _CategoryModel {
       categoryName,
       categoryId,
       categoryType,
-      hasSubcategory,
+      subcategoryCount,
       dateCreated,
       dateModified,
       expenseSortIndex,
@@ -285,7 +285,7 @@ abstract class _CategoryModel extends CategoryModel {
       required final String categoryName,
       required final String categoryId,
       required final String categoryType,
-      final bool? hasSubcategory,
+      required final int subcategoryCount,
       required final DateTime dateCreated,
       final DateTime? dateModified,
       final int? expenseSortIndex,
@@ -301,7 +301,7 @@ abstract class _CategoryModel extends CategoryModel {
   @override
   String get categoryType;
   @override
-  bool? get hasSubcategory;
+  int get subcategoryCount;
   @override
   DateTime get dateCreated;
   @override

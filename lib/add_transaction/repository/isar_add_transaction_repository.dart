@@ -30,17 +30,8 @@ class IsarAddTransactionRepository implements AddTransactionRepository {
   }
 
   @override
-  List<AccountModel> getAccountModels(String? groupId) {
-    return _isar.accountModels.filter().groupIdEqualTo(groupId).findAllSync();
-  }
-
-  @override
-  String getAccountGroupName(String groupId) {
-    return _isar.accountGroupModels
-        .filter()
-        .groupIdEqualTo(groupId)
-        .findFirstSync()!
-        .groupName;
+  Future<List<AccountModel>> getAccountModels(String? groupId) async {
+    return await _isar.accountModels.filter().groupIdEqualTo(groupId).findAll();
   }
 
   @override
@@ -88,11 +79,25 @@ class IsarAddTransactionRepository implements AddTransactionRepository {
           });
         });
   }
+
   @override
-  int getSubcategoryCount(String categoryId) {
-    return _isar.subcategoryModels
+  Future<List<SubcategoryModel>> getSubcategories(String categoryId) async {
+    return await _isar.subcategoryModels
         .filter()
         .categoryIdEqualTo(categoryId)
-        .countSync();
+        .findAll()
+        .then((value) {
+          return value..sort((a, b) {
+            if (a.sortIndex == null && b.sortIndex == null) {
+              return 0; // Both are null, keep order
+            } else if (a.sortIndex == null) {
+              return 1; // a goes after b
+            } else if (b.sortIndex == null) {
+              return -1; // b goes after a
+            } else {
+              return a.sortIndex!.compareTo(b.sortIndex!);
+            }
+          });
+        });
   }
 }

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:my_spending/add_account_group/model/account_group_model.dart';
 import 'package:my_spending/add_transaction/repository/isar_add_transaction_repository.dart';
 import 'package:my_spending/add_transaction/state/add_transaction_account_list_state.dart';
 import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/single_modal_item.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/ungrouped_account_list.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
-import 'package:my_spending/core/model/account_model/account_model.dart';
 
 class AccountGroupListSelect extends StatelessWidget {
   const AccountGroupListSelect({super.key});
@@ -48,7 +46,6 @@ class AccountGroupListSelect extends StatelessWidget {
                               return data[index].groupId != null
                                   ? SingleModalItem(
                                     name: data[index].groupName,
-                                    index: index,
                                     hasSubItem: true,
                                     id: data[index].groupId!,
                                     type: LocaleKeys.account,
@@ -60,12 +57,17 @@ class AccountGroupListSelect extends StatelessWidget {
                                           ),
                                         ),
                                   )
-                                  : UngroupedAccountList(
-                                    accountModels:
-                                        IsarAddTransactionRepository()
-                                            .getAccountModels(
-                                              data[index].groupId,
-                                            ),
+                                  : FutureBuilder(
+                                    future: IsarAddTransactionRepository()
+                                        .getAccountModels(data[index].groupId),
+                                    builder: (context, snapshot) {
+                                      if (snapshot.hasData) {
+                                        return UngroupedAccountList(
+                                          accountModels: snapshot.data!,
+                                        );
+                                      }
+                                      return Container();
+                                    },
                                   );
                             },
 

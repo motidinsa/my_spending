@@ -27,6 +27,8 @@ class AddTransactionState extends _$AddTransactionState {
     );
   }
 
+  String? parentName;
+
   void updateIndex(int index) {
     state = state.copyWith.transactionModel(date: DateTime(2027));
   }
@@ -63,6 +65,7 @@ class AddTransactionState extends _$AddTransactionState {
 
   void resetSelectedId() {
     state = state.copyWith(selectedId: null);
+    parentName = null;
   }
 
   void onSingleModalItemPressed({
@@ -70,25 +73,28 @@ class AddTransactionState extends _$AddTransactionState {
     required String type,
     required String id,
     required bool hasSubItem,
-    String? parentName,
   }) {
     String redirectFrom = state.redirectFrom!;
-    if (redirectFrom == LocaleKeys.category) {
-      state = state.copyWith(
-        transactionModel: state.transactionModel.copyWith(categoryName: name),
-      );
-    } else if (redirectFrom == LocaleKeys.account) {
-      if (hasSubItem) {
-        state = state.copyWith(selectedId: id);
-      } else {
+    if (hasSubItem) {
+      state = state.copyWith(selectedId: id);
+      parentName = name;
+    } else {
+      if (redirectFrom == LocaleKeys.category) {
+        state = state.copyWith(
+          transactionModel: state.transactionModel.copyWith(
+            categoryName: parentName != null ? '$parentName / $name' : name,
+            categoryId: id,
+          ),
+        );
+      } else if (redirectFrom == LocaleKeys.account) {
         state = state.copyWith(
           transactionModel: state.transactionModel.copyWith(
             accountName: parentName != null ? '$parentName / $name' : name,
             accountId: id,
           ),
         );
-        navigatorKey.currentContext?.pop();
       }
+      navigatorKey.currentContext?.pop();
     }
   }
 

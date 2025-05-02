@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_spending/core/model/category_model/category_model.dart';
 import 'package:my_spending/core/model/subcategory_model/subcategory_model.dart';
 import 'package:my_spending/core/route/routes.dart';
-import 'package:my_spending/edit_category/model/edit_category_state_model.dart';
-import 'package:my_spending/edit_category/repository/isar_edit_category_repository.dart';
 import 'package:my_spending/edit_subcategory/model/edit_subcategory_state_model.dart';
 import 'package:my_spending/edit_subcategory/repository/isar_edit_subcategory_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
