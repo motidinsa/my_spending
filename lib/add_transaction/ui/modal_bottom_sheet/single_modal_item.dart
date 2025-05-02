@@ -47,6 +47,7 @@ class SingleModalItem extends StatelessWidget {
                   type: type,
                   hasSubItem: hasSubItem ?? false,
                   id: id,
+                  context: context,
                 );
           },
         );

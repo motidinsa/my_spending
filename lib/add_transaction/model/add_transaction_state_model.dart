@@ -12,6 +12,7 @@ abstract class AddTransactionStateModel with _$AddTransactionStateModel {
     required String transactionType,
     double? modalHeight,
     String? redirectFrom,
-    String? selectedId
+    String? selectedId,
+    bool? hasAmountFocus
   }) = _AddTransactionStateModel;
 }

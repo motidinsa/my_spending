@@ -1,5 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_spending/add_transaction/functions/add_transaction_functions.dart';
 import 'package:my_spending/add_transaction/model/add_transaction_state_model.dart';
+import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/transaction_type_modal_sheet.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
 import 'package:my_spending/core/model/transaction_model/transaction_model.dart';
 import 'package:my_spending/core/route/routes.dart';
@@ -73,6 +76,7 @@ class AddTransactionState extends _$AddTransactionState {
     required String type,
     required String id,
     required bool hasSubItem,
+    required BuildContext context,
   }) {
     String redirectFrom = state.redirectFrom!;
     if (hasSubItem) {
@@ -95,10 +99,54 @@ class AddTransactionState extends _$AddTransactionState {
         );
       }
       navigatorKey.currentContext?.pop();
+      if (state.transactionModel.accountId.isEmpty ||
+          state.transactionModel.categoryId.isEmpty ||
+          state.amount.isEmpty) {
+        onNextFocus(context);
+      }
     }
   }
 
   void onAmountChanged(String amount) {
     state = state.copyWith(amount: amount);
   }
+
+  void onNextFocus(BuildContext context) {
+    String redirectFrom = state.redirectFrom!;
+    if (state.transactionModel.categoryId.isEmpty ||
+        state.transactionModel.accountId.isEmpty)
+      {
+        if (redirectFrom == LocaleKeys.account) {
+          if (state.transactionModel.categoryId.isEmpty) {
+            ref
+                .read(addTransactionStateProvider.notifier)
+                .setSelectedType(LocaleKeys.category);
+            // redirectTo = LocaleKeys.category;
+          }
+        } else if (redirectFrom == LocaleKeys.category) {
+          if (state.transactionModel.accountId.isEmpty) {
+            ref
+                .read(addTransactionStateProvider.notifier)
+                .setSelectedType(LocaleKeys.account);
+            // redirectTo = LocaleKeys.account;
+          }
+        }
+        // if (redirectTo != null) {
+        showModalBottomSheet(
+          context: context,
+          backgroundColor: Colors.white,
+          builder: (BuildContext context) {
+            return TransactionTypeModalSheet(redirectFrom: state.redirectFrom!);
+          },
+        ).then((value) {
+          ref.read(addTransactionStateProvider.notifier).resetSelectedId();
+        });
+      }else if(state.amount.isEmpty){
+      requestAmountFocus();
+    }
+  }
+void requestAmountFocus(){
+  state = state.copyWith(hasAmountFocus: true);
+}
+  // }
 }

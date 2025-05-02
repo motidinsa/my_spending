@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_transaction/functions/add_transaction_functions.dart';
+import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
+import 'package:my_spending/core/constants/translation_keys.g.dart';
 
 class AddTransactionTextField extends StatefulWidget {
   final String title;
@@ -19,6 +21,7 @@ class AddTransactionTextField extends StatefulWidget {
 
 class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
   TextEditingController textEditingController = TextEditingController();
+  FocusNode focusNode = FocusNode();
 
   @override
   void initState() {
@@ -34,8 +37,17 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
           ref,
           widget.title,
         );
+        if (widget.title == LocaleKeys.amount &&
+            ref.watch(
+              addTransactionStateProvider.select(
+                (state) => state.hasAmountFocus == true,
+              ),
+            )) {
+          focusNode.requestFocus();
+        }
         return TextFormField(
           controller: textEditingController,
+          focusNode: focusNode,
           onTap:
               () => onAddTransactionTextFieldPressed(
                 context: context,
@@ -49,6 +61,10 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
                 title: widget.title,
               ),
           readOnly: isReadOnlyAddTransactionTextField(widget.title),
+          keyboardType:
+              widget.title == LocaleKeys.amount
+                  ? TextInputType.number
+                  : TextInputType.none,
           decoration: InputDecoration(
             labelText: getLabelText(widget.title),
             hintText: getAddTransactionHintText(widget.title),

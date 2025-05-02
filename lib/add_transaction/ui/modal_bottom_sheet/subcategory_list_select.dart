@@ -30,7 +30,7 @@ class SubcategoryListSelect extends StatelessWidget {
                       : Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(15),
                           // border: Border.all(color: Colors.green.shade200, width: 1),
                           boxShadow: [
                             BoxShadow(
@@ -42,7 +42,7 @@ class SubcategoryListSelect extends StatelessWidget {
                           ],
                         ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(15),
                           child: Material(
                             color: Colors.transparent,
                             child: ListView.builder(

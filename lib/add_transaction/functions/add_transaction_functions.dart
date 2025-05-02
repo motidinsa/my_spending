@@ -88,6 +88,11 @@ onAddTransactionTextFieldPressed({
     );
     if (pickedDate != null) {
       ref.read(addTransactionStateProvider.notifier).updateDate(pickedDate);
+      onAddTransactionNextItemFocus(
+        ref: ref,
+        context: context,
+        currentType: LocaleKeys.date,
+      );
     }
   } else if ([LocaleKeys.account, LocaleKeys.category].contains(title)) {
     ref.read(addTransactionStateProvider.notifier).setSelectedType(title);
@@ -138,4 +143,40 @@ String getAddTransactionHintText(String title) {
     return LocaleKeys.optional.tr();
   }
   return '';
+}
+
+void onAddTransactionNextItemFocus({
+  required String currentType,
+  required WidgetRef ref,
+  required BuildContext context,
+}) {
+  final addTransactionState = ref.read(addTransactionStateProvider);
+  if (currentType == LocaleKeys.date) {
+    if (addTransactionState.transactionModel.accountId.isEmpty ||
+        addTransactionState.transactionModel.categoryId.isEmpty) {
+      ref
+          .read(addTransactionStateProvider.notifier)
+          .setSelectedType(
+            addTransactionState.transactionModel.accountId.isEmpty
+                ? LocaleKeys.account
+                : LocaleKeys.category,
+          );
+      showModalBottomSheet(
+        context: context,
+        backgroundColor: Colors.white,
+        builder: (BuildContext context) {
+          return TransactionTypeModalSheet(
+            redirectFrom:
+                addTransactionState.transactionModel.accountId.isEmpty
+                    ? LocaleKeys.account
+                    : LocaleKeys.category,
+          );
+        },
+      ).then((value) {
+        ref.read(addTransactionStateProvider.notifier).resetSelectedId();
+      });
+    } else if (addTransactionState.amount.isEmpty) {
+      ref.read(addTransactionStateProvider.notifier).requestAmountFocus();
+    }
+  }
 }
