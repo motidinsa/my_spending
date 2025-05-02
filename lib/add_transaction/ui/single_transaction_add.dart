@@ -60,11 +60,11 @@ class SingleTransactionAdd extends StatelessWidget {
                             Row(
                               children: [
                                 Expanded(
-                                  child: AddTransactionTextField(title: LocaleKeys.tip),
+                                  child: AddTransactionTextField(title: LocaleKeys.tip,),
                                 ),
                                 SizedBox(width: 10),
                                 Expanded(
-                                  child: AddTransactionTextField(title: LocaleKeys.fee),
+                                  child: AddTransactionTextField(title: LocaleKeys.fee,),
                                 ),
                                 SizedBox(width: 10),
 

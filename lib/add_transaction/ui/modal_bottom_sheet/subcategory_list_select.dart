@@ -49,10 +49,18 @@ class SubcategoryListSelect extends StatelessWidget {
                               shrinkWrap: true,
                               itemBuilder: (context, index) {
                                 return SingleModalItem(
-                                  name: subcategoryModels[index].subcategoryName,
+                                  name:
+                                      subcategoryModels[index].subcategoryName,
                                   type: LocaleKeys.category,
                                   id: subcategoryModels[index].subcategoryId,
                                   isSelected: false,
+                                  categoryType:
+                                      ref
+                                          .watch(
+                                            addTransactionStateProvider
+                                                .notifier,
+                                          )
+                                          .categoryType,
                                 );
                               },
 

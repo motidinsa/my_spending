@@ -8,6 +8,7 @@ class SingleModalItem extends StatelessWidget {
   final String id;
   final bool? hasSubItem;
   final bool isSelected;
+  final String? categoryType;
 
   const SingleModalItem({
     super.key,
@@ -16,6 +17,7 @@ class SingleModalItem extends StatelessWidget {
     required this.type,
     required this.id,
     required this.isSelected,
+    this.categoryType,
   });
 
   @override
@@ -48,6 +50,7 @@ class SingleModalItem extends StatelessWidget {
                   hasSubItem: hasSubItem ?? false,
                   id: id,
                   context: context,
+                  selectedCategoryType: categoryType,
                 );
           },
         );

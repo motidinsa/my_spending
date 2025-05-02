@@ -29,7 +29,7 @@ class SingleAddTransactionContent extends StatelessWidget {
         if (title == LocaleKeys.amount) ...[
           Row(
             children: [
-              Expanded(child: AddTransactionTextField(title: title)),
+              Expanded(child: AddTransactionTextField(title: title,)),
               SizedBox(width: 10),
               Consumer(
                 builder: (context, ref, child) {

@@ -26,13 +26,13 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
   @override
   void initState() {
     super.initState();
-    // textEditingController.text = getTextFieldData(widget.title) ?? '';
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Consumer(
-      builder: (context, ref, child) {
+      builder: (context,ref,child) {
         textEditingController.text = getAddTransactionTextFieldData(
           ref,
           widget.title,
@@ -40,7 +40,7 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
         if (widget.title == LocaleKeys.amount &&
             ref.watch(
               addTransactionStateProvider.select(
-                (state) => state.hasAmountFocus == true,
+                    (state) => state.hasAmountFocus == true,
               ),
             )) {
           focusNode.requestFocus();
@@ -50,21 +50,21 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
           focusNode: focusNode,
           onTap:
               () => onAddTransactionTextFieldPressed(
-                context: context,
-                ref: ref,
-                title: widget.title,
-              ),
+            context: context,
+            ref: ref,
+            title: widget.title,
+          ),
           onChanged:
               (text) => onAddTransactionTextFieldChange(
-                ref: ref,
-                text: text,
-                title: widget.title,
-              ),
+            ref: ref,
+            text: text,
+            title: widget.title,
+          ),
           readOnly: isReadOnlyAddTransactionTextField(widget.title),
           keyboardType:
-              widget.title == LocaleKeys.amount
-                  ? TextInputType.number
-                  : TextInputType.none,
+          widget.title == LocaleKeys.amount
+              ? TextInputType.number
+              : TextInputType.none,
           decoration: InputDecoration(
             labelText: getLabelText(widget.title),
             hintText: getAddTransactionHintText(widget.title),
@@ -80,7 +80,7 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
             ),
           ),
         );
-      },
+      }
     );
   }
 }

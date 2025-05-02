@@ -64,7 +64,8 @@ getAddTransactionTextFieldData(WidgetRef ref, String title) {
         (state) => state.transactionModel.accountName,
       ),
     );
-  } else if (title == LocaleKeys.category) {
+  }
+  else if (title == LocaleKeys.category) {
     return ref.watch(
       addTransactionStateProvider.select(
         (state) => state.transactionModel.categoryName,

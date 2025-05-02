@@ -4,6 +4,7 @@ import 'package:my_spending/add_transaction/functions/add_transaction_functions.
 import 'package:my_spending/add_transaction/model/add_transaction_state_model.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/transaction_type_modal_sheet.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
+import 'package:my_spending/core/model/category_model/category_model.dart';
 import 'package:my_spending/core/model/transaction_model/transaction_model.dart';
 import 'package:my_spending/core/route/routes.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -31,6 +32,7 @@ class AddTransactionState extends _$AddTransactionState {
   }
 
   String? parentName;
+  String? categoryType;
 
   void updateIndex(int index) {
     state = state.copyWith.transactionModel(date: DateTime(2027));
@@ -77,6 +79,7 @@ class AddTransactionState extends _$AddTransactionState {
     required String id,
     required bool hasSubItem,
     required BuildContext context,
+    String? selectedCategoryType
   }) {
     String redirectFrom = state.redirectFrom!;
     if (hasSubItem) {
@@ -90,6 +93,7 @@ class AddTransactionState extends _$AddTransactionState {
             categoryId: id,
           ),
         );
+        categoryType =selectedCategoryType;
       } else if (redirectFrom == LocaleKeys.account) {
         state = state.copyWith(
           transactionModel: state.transactionModel.copyWith(
@@ -147,6 +151,8 @@ class AddTransactionState extends _$AddTransactionState {
   }
 void requestAmountFocus(){
   state = state.copyWith(hasAmountFocus: true);
+}void removeAmountFocus(){
+  state = state.copyWith(hasAmountFocus: false);
 }
   // }
 }

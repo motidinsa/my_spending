@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/single_transaction_add.dart';
 import 'package:my_spending/add_transaction/ui/transaction_type_select.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
@@ -12,7 +13,9 @@ class AddTransaction extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
-      onTap: ()=>unFocus(),
+      onTap: () {
+        unFocus();
+      },
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
