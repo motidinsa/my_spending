@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_spending/add_transaction/functions/add_transaction_functions.dart';
 import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 
 class SingleModalItem extends StatelessWidget {
@@ -42,16 +43,15 @@ class SingleModalItem extends StatelessWidget {
             size: 18,
           ),
           onTap: () {
-            ref
-                .read(addTransactionStateProvider.notifier)
-                .onSingleModalItemPressed(
-                  name: name,
-                  type: type,
-                  hasSubItem: hasSubItem ?? false,
-                  id: id,
-                  context: context,
-                  selectedCategoryType: categoryType,
-                );
+            onSingleModalItemPressed(
+              name: name,
+              type: type,
+              hasSubItem: hasSubItem ?? false,
+              id: id,
+              context: context,
+              selectedCategoryType: categoryType,
+              ref: ref,
+            );
           },
         );
       },

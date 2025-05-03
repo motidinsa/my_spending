@@ -17,7 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AddTransactionStateModel {
   TransactionModel get transactionModel => throw _privateConstructorUsedError;
-  String get amount => throw _privateConstructorUsedError;
   bool? get isAmountAddButtonPressed => throw _privateConstructorUsedError;
   String get transactionType => throw _privateConstructorUsedError;
   double? get modalHeight => throw _privateConstructorUsedError;
@@ -38,7 +37,6 @@ abstract class $AddTransactionStateModelCopyWith<$Res> {
   @useResult
   $Res call(
       {TransactionModel transactionModel,
-      String amount,
       bool? isAmountAddButtonPressed,
       String transactionType,
       double? modalHeight,
@@ -64,7 +62,6 @@ class _$AddTransactionStateModelCopyWithImpl<$Res,
   @override
   $Res call({
     Object? transactionModel = null,
-    Object? amount = null,
     Object? isAmountAddButtonPressed = freezed,
     Object? transactionType = null,
     Object? modalHeight = freezed,
@@ -77,10 +74,6 @@ class _$AddTransactionStateModelCopyWithImpl<$Res,
           ? _value.transactionModel
           : transactionModel // ignore: cast_nullable_to_non_nullable
               as TransactionModel,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as String,
       isAmountAddButtonPressed: freezed == isAmountAddButtonPressed
           ? _value.isAmountAddButtonPressed
           : isAmountAddButtonPressed // ignore: cast_nullable_to_non_nullable
@@ -128,7 +121,6 @@ abstract class _$$AddTransactionStateModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {TransactionModel transactionModel,
-      String amount,
       bool? isAmountAddButtonPressed,
       String transactionType,
       double? modalHeight,
@@ -154,7 +146,6 @@ class __$$AddTransactionStateModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? transactionModel = null,
-    Object? amount = null,
     Object? isAmountAddButtonPressed = freezed,
     Object? transactionType = null,
     Object? modalHeight = freezed,
@@ -167,10 +158,6 @@ class __$$AddTransactionStateModelImplCopyWithImpl<$Res>
           ? _value.transactionModel
           : transactionModel // ignore: cast_nullable_to_non_nullable
               as TransactionModel,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as String,
       isAmountAddButtonPressed: freezed == isAmountAddButtonPressed
           ? _value.isAmountAddButtonPressed
           : isAmountAddButtonPressed // ignore: cast_nullable_to_non_nullable
@@ -204,7 +191,6 @@ class __$$AddTransactionStateModelImplCopyWithImpl<$Res>
 class _$AddTransactionStateModelImpl implements _AddTransactionStateModel {
   const _$AddTransactionStateModelImpl(
       {required this.transactionModel,
-      required this.amount,
       this.isAmountAddButtonPressed,
       required this.transactionType,
       this.modalHeight,
@@ -214,8 +200,6 @@ class _$AddTransactionStateModelImpl implements _AddTransactionStateModel {
 
   @override
   final TransactionModel transactionModel;
-  @override
-  final String amount;
   @override
   final bool? isAmountAddButtonPressed;
   @override
@@ -231,7 +215,7 @@ class _$AddTransactionStateModelImpl implements _AddTransactionStateModel {
 
   @override
   String toString() {
-    return 'AddTransactionStateModel(transactionModel: $transactionModel, amount: $amount, isAmountAddButtonPressed: $isAmountAddButtonPressed, transactionType: $transactionType, modalHeight: $modalHeight, redirectFrom: $redirectFrom, selectedId: $selectedId, hasAmountFocus: $hasAmountFocus)';
+    return 'AddTransactionStateModel(transactionModel: $transactionModel, isAmountAddButtonPressed: $isAmountAddButtonPressed, transactionType: $transactionType, modalHeight: $modalHeight, redirectFrom: $redirectFrom, selectedId: $selectedId, hasAmountFocus: $hasAmountFocus)';
   }
 
   @override
@@ -241,7 +225,6 @@ class _$AddTransactionStateModelImpl implements _AddTransactionStateModel {
             other is _$AddTransactionStateModelImpl &&
             (identical(other.transactionModel, transactionModel) ||
                 other.transactionModel == transactionModel) &&
-            (identical(other.amount, amount) || other.amount == amount) &&
             (identical(
                     other.isAmountAddButtonPressed, isAmountAddButtonPressed) ||
                 other.isAmountAddButtonPressed == isAmountAddButtonPressed) &&
@@ -261,7 +244,6 @@ class _$AddTransactionStateModelImpl implements _AddTransactionStateModel {
   int get hashCode => Object.hash(
       runtimeType,
       transactionModel,
-      amount,
       isAmountAddButtonPressed,
       transactionType,
       modalHeight,
@@ -280,7 +262,6 @@ class _$AddTransactionStateModelImpl implements _AddTransactionStateModel {
 abstract class _AddTransactionStateModel implements AddTransactionStateModel {
   const factory _AddTransactionStateModel(
       {required final TransactionModel transactionModel,
-      required final String amount,
       final bool? isAmountAddButtonPressed,
       required final String transactionType,
       final double? modalHeight,
@@ -290,8 +271,6 @@ abstract class _AddTransactionStateModel implements AddTransactionStateModel {
 
   @override
   TransactionModel get transactionModel;
-  @override
-  String get amount;
   @override
   bool? get isAmountAddButtonPressed;
   @override

@@ -26,11 +26,13 @@ class AddTransactionState extends _$AddTransactionState {
         date: now,
         dateCreated: now,
       ),
-      amount: '',
+
       transactionType: LocaleKeys.expense,
     );
   }
 
+  String amount = '';
+  bool isInitDialogShown = false;
   String? parentName;
   String? categoryType;
 
@@ -68,84 +70,17 @@ class AddTransactionState extends _$AddTransactionState {
     state = state.copyWith(redirectFrom: source);
   }
 
+  void setSelectedId(String id) {
+    state = state.copyWith(selectedId: id);
+  }
+
   void resetSelectedId() {
     state = state.copyWith(selectedId: null);
     parentName = null;
   }
 
-  void onSingleModalItemPressed({
-    required String name,
-    required String type,
-    required String id,
-    required bool hasSubItem,
-    required BuildContext context,
-    String? selectedCategoryType,
-  }) {
-    String redirectFrom = state.redirectFrom!;
-    if (hasSubItem) {
-      state = state.copyWith(selectedId: id);
-      parentName = name;
-    } else {
-      if (redirectFrom == LocaleKeys.category) {
-        state = state.copyWith(
-          transactionModel: state.transactionModel.copyWith(
-            categoryName: parentName != null ? '$parentName / $name' : name,
-            categoryId: id,
-          ),
-        );
-        categoryType = selectedCategoryType;
-      } else if (redirectFrom == LocaleKeys.account) {
-        state = state.copyWith(
-          transactionModel: state.transactionModel.copyWith(
-            accountName: parentName != null ? '$parentName / $name' : name,
-            accountId: id,
-          ),
-        );
-      }
-      navigatorKey.currentContext?.pop();
-      if (state.transactionModel.accountId.isEmpty ||
-          state.transactionModel.categoryId.isEmpty ||
-          state.amount.isEmpty) {
-        onNextFocus(context);
-      }
-    }
-  }
-
-  void onAmountChanged(String amount) {
-    state = state.copyWith(amount: amount);
-  }
-
-  void onNextFocus(BuildContext context) {
-    String redirectFrom = state.redirectFrom!;
-    if (state.transactionModel.categoryId.isEmpty ||
-        state.transactionModel.accountId.isEmpty) {
-      if (redirectFrom == LocaleKeys.account) {
-        if (state.transactionModel.categoryId.isEmpty) {
-          ref
-              .read(addTransactionStateProvider.notifier)
-              .setSelectedType(LocaleKeys.category);
-        }
-      } else if (redirectFrom == LocaleKeys.category) {
-        if (state.transactionModel.accountId.isEmpty) {
-          ref
-              .read(addTransactionStateProvider.notifier)
-              .setSelectedType(LocaleKeys.account);
-          // redirectTo = LocaleKeys.account;
-        }
-      }
-      // if (redirectTo != null) {
-      showModalBottomSheet(
-        context: context,
-        backgroundColor: Colors.white,
-        builder: (BuildContext context) {
-          return TransactionTypeModalSheet(redirectFrom: state.redirectFrom!);
-        },
-      ).then((value) {
-        ref.read(addTransactionStateProvider.notifier).resetSelectedId();
-      });
-    } else if (state.amount.isEmpty) {
-      requestAmountFocus();
-    }
+  void onAmountChanged(String givenAmount) {
+    amount = givenAmount;
   }
 
   void requestAmountFocus() {
@@ -156,5 +91,68 @@ class AddTransactionState extends _$AddTransactionState {
     state = state.copyWith(hasAmountFocus: false);
   }
 
-  // }
+  void resetCategory() {
+    state = state.copyWith(
+      transactionModel: state.transactionModel.copyWith(
+        categoryName: '',
+        categoryId: '',
+      ),
+    );
+  }
+
+  void updateCategory({
+    required String name,
+    required String id,
+    String? selectedCategoryType,
+  }) {
+    state = state.copyWith(
+      transactionModel: state.transactionModel.copyWith(
+        categoryName: parentName != null ? '$parentName / $name' : name,
+        categoryId: id,
+      ),
+    );
+    categoryType = selectedCategoryType;
+  }
+  void updateAccount({
+    required String name,
+    required String id,
+  }) {
+    state = state.copyWith(
+      transactionModel: state.transactionModel.copyWith(
+        accountName: parentName != null ? '$parentName / $name' : name,
+        accountId: id,
+      ),
+    );
+  }
+  void onNextFocus(BuildContext context) {
+    // final addTransactionState = ref.read(addTransactionStateProvider);
+    // final addTransactionNotifier = ref.read(addTransactionStateProvider.notifier);
+
+    String redirectFrom = state.redirectFrom!;
+    if (state.transactionModel.categoryId.isEmpty ||
+        state.transactionModel.accountId.isEmpty) {
+      if (redirectFrom == LocaleKeys.account) {
+        if (state.transactionModel.categoryId.isEmpty) {
+          setSelectedType(LocaleKeys.category);
+        }
+      } else if (redirectFrom == LocaleKeys.category) {
+        if (state.transactionModel.accountId.isEmpty) {
+          setSelectedType(LocaleKeys.account);
+        }
+      }
+      showModalBottomSheet(
+        context: context,
+        backgroundColor: Colors.white,
+        builder: (BuildContext context) {
+          return TransactionTypeModalSheet(
+            redirectFrom: state.redirectFrom!,
+          );
+        },
+      ).then((value) {
+        resetSelectedId();
+      });
+    } else if (amount.isEmpty) {
+      requestAmountFocus();
+    }
+  }
 }

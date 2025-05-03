@@ -7,7 +7,6 @@ part 'add_transaction_state_model.freezed.dart';
 abstract class AddTransactionStateModel with _$AddTransactionStateModel {
   const factory AddTransactionStateModel({
     required TransactionModel transactionModel,
-    required String amount,
     bool? isAmountAddButtonPressed,
     required String transactionType,
     double? modalHeight,

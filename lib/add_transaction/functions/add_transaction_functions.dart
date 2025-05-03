@@ -1,9 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/transaction_type_modal_sheet.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
+import 'package:my_spending/core/route/routes.dart';
 
 getAddTransactionTextFieldIcon(String title) {
   if (title == LocaleKeys.date) {
@@ -70,6 +72,8 @@ getAddTransactionTextFieldData(WidgetRef ref, String title) {
         (state) => state.transactionModel.categoryName,
       ),
     );
+  }else if (title == LocaleKeys.amount) {
+    return ref.read(addTransactionStateProvider.notifier).amount;
   }
   return '';
 }
@@ -127,12 +131,23 @@ onTransactionTypeSelect({
   String? categoryType =
       ref.read(addTransactionStateProvider.notifier).categoryType;
   if (categoryType != null) {
-    if ((categoryType == LocaleKeys.expense && type == LocaleKeys.income)||(categoryType == LocaleKeys.income && type == LocaleKeys.expense)) {
+    if ((categoryType == LocaleKeys.expense && type == LocaleKeys.income) ||
+        (categoryType == LocaleKeys.income && type == LocaleKeys.expense)) {
+      ref.read(addTransactionStateProvider.notifier).resetCategory();
       showModalBottomSheet(
         context: context,
         backgroundColor: Colors.white,
         builder: (BuildContext context) {
-          return TransactionTypeModalSheet(redirectFrom: LocaleKeys.category);
+          return TransactionTypeModalSheet(
+            redirectFrom:
+                ref
+                        .read(addTransactionStateProvider)
+                        .transactionModel
+                        .accountId
+                        .isEmpty
+                    ? LocaleKeys.account
+                    : LocaleKeys.category,
+          );
         },
       ).then((value) {
         ref.read(addTransactionStateProvider.notifier).resetSelectedId();
@@ -195,8 +210,45 @@ void onAddTransactionNextItemFocus({
       ).then((value) {
         ref.read(addTransactionStateProvider.notifier).resetSelectedId();
       });
-    } else if (addTransactionState.amount.isEmpty) {
+    } else if (ref.read(addTransactionStateProvider.notifier).amount.isEmpty) {
       ref.read(addTransactionStateProvider.notifier).requestAmountFocus();
     }
   }
 }
+
+void onSingleModalItemPressed({
+  required String name,
+  required String type,
+  required String id,
+  required bool hasSubItem,
+  required BuildContext context,
+  String? selectedCategoryType,
+  required WidgetRef ref,
+}) {
+  final addTransactionState = ref.read(addTransactionStateProvider);
+  final addTransactionNotifier = ref.read(addTransactionStateProvider.notifier);
+  String redirectFrom = addTransactionState.redirectFrom!;
+  if (hasSubItem) {
+    addTransactionNotifier.setSelectedId(id);
+    addTransactionNotifier.parentName = name;
+    addTransactionNotifier.categoryType = selectedCategoryType;
+  } else {
+    if (redirectFrom == LocaleKeys.category) {
+      addTransactionNotifier.updateCategory(
+        name: name,
+        id: id,
+        selectedCategoryType: selectedCategoryType,
+      );
+    } else if (redirectFrom == LocaleKeys.account) {
+      addTransactionNotifier.updateAccount(name: name, id: id);
+    }
+    navigatorKey.currentContext?.pop();
+    if (addTransactionState.transactionModel.accountId.isEmpty ||
+        addTransactionState.transactionModel.categoryId.isEmpty ||
+        addTransactionNotifier.amount.isEmpty) {
+      addTransactionNotifier.onNextFocus(context);
+    }
+  }
+}
+
+

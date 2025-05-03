@@ -6,7 +6,7 @@ import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/add_transaction_text_field.dart';
 import 'package:my_spending/add_transaction/ui/single_add_transaction_content.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
-
+import 'package:my_spending/core/functions/core_functions.dart';
 
 class SingleTransactionAdd extends StatelessWidget {
   const SingleTransactionAdd({super.key});
@@ -60,11 +60,15 @@ class SingleTransactionAdd extends StatelessWidget {
                             Row(
                               children: [
                                 Expanded(
-                                  child: AddTransactionTextField(title: LocaleKeys.tip,),
+                                  child: AddTransactionTextField(
+                                    title: LocaleKeys.tip,
+                                  ),
                                 ),
                                 SizedBox(width: 10),
                                 Expanded(
-                                  child: AddTransactionTextField(title: LocaleKeys.fee,),
+                                  child: AddTransactionTextField(
+                                    title: LocaleKeys.fee,
+                                  ),
                                 ),
                                 SizedBox(width: 10),
 
@@ -79,7 +83,10 @@ class SingleTransactionAdd extends StatelessWidget {
                                           )
                                           .onRemoveAmountIconPressed();
                                     },
-                                    icon: Icon(Icons.cancel, color: Colors.red),
+                                    icon: Icon(
+                                      Icons.cancel,
+                                      color: Colors.red,
+                                    ),
                                   )
                                 else
                                   IconButton(
@@ -95,7 +102,9 @@ class SingleTransactionAdd extends StatelessWidget {
                     },
                   ),
                   SizedBox(height: 10),
-                  SingleAddTransactionContent(title: LocaleKeys.description),
+                  SingleAddTransactionContent(
+                    title: LocaleKeys.description,
+                  ),
                 ],
               ),
             ),
@@ -121,16 +130,21 @@ class SingleTransactionAdd extends StatelessWidget {
                       ), // Set the border radius here
                     ),
                   ),
-                  child: Text(context.tr(LocaleKeys.save), style: TextStyle(color: Colors.green)),
+                  child: Text(
+                    context.tr(LocaleKeys.save),
+                    style: TextStyle(color: Colors.green),
+                  ),
                 ),
               ),
               SizedBox(width: 10),
               Expanded(
                 child: Consumer(
-                  builder: (context,ref,child) {
+                  builder: (context, ref, child) {
                     return OutlinedButton(
                       onPressed: () {
-                        ref.read(addTransactionStateProvider.notifier).updateDate(DateTime.now());
+                        ref
+                            .read(addTransactionStateProvider.notifier)
+                            .updateDate(DateTime.now());
                         context.go('/add_transaction');
                       },
                       style: OutlinedButton.styleFrom(
@@ -143,9 +157,12 @@ class SingleTransactionAdd extends StatelessWidget {
                           ), // Set the border radius here
                         ),
                       ),
-                      child: Text(context.tr(LocaleKeys.more), style: TextStyle(color: Colors.green)),
+                      child: Text(
+                        context.tr(LocaleKeys.more),
+                        style: TextStyle(color: Colors.green),
+                      ),
                     );
-                  }
+                  },
                 ),
               ),
             ],
