@@ -22,6 +22,8 @@ getAddTransactionTextFieldIcon(String title) {
     return Icon(Icons.attach_money_rounded);
   } else if (title == LocaleKeys.description) {
     return Icon(Icons.edit, color: Colors.grey.shade700);
+  } else if (title == LocaleKeys.from || title == LocaleKeys.to) {
+    return Icon(Icons.account_balance_rounded, color: Colors.grey.shade700);
   }
 }
 
@@ -30,6 +32,8 @@ isReadOnlyAddTransactionTextField(String title) {
     LocaleKeys.date,
     LocaleKeys.account,
     LocaleKeys.category,
+    LocaleKeys.from,
+    LocaleKeys.to,
   ].contains(title);
 }
 
@@ -74,6 +78,16 @@ getAddTransactionTextFieldData(WidgetRef ref, String title) {
     );
   } else if (title == LocaleKeys.amount) {
     return ref.read(addTransactionStateProvider.notifier).amount;
+  } else if (title == LocaleKeys.from) {
+    return ref.watch(
+          addTransactionStateProvider.select((state) => state.fromAccount),
+        ) ??
+        '';
+  } else if (title == LocaleKeys.to) {
+    return ref.watch(
+          addTransactionStateProvider.select((state) => state.toAccount),
+        ) ??
+        '';
   }
   return '';
 }
@@ -82,23 +96,29 @@ onAddTransactionTextFieldPressed({
   required BuildContext context,
   required WidgetRef ref,
   required String title,
-}) async {
+}) {
   if (title == LocaleKeys.date) {
-    final DateTime? pickedDate = await showDatePicker(
+    showDatePicker(
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime(2100),
-    );
-    if (pickedDate != null) {
-      ref.read(addTransactionStateProvider.notifier).updateDate(pickedDate);
-      onAddTransactionNextItemFocus(
-        ref: ref,
-        context: context,
-        currentType: LocaleKeys.date,
-      );
-    }
-  } else if ([LocaleKeys.account, LocaleKeys.category].contains(title)) {
+    ).then((pickedDate) {
+      if (pickedDate != null) {
+        ref.read(addTransactionStateProvider.notifier).updateDate(pickedDate);
+        onAddTransactionNextItemFocus(
+          ref: ref,
+          context: context,
+          currentType: LocaleKeys.date,
+        );
+      }
+    });
+  } else if ([
+    LocaleKeys.account,
+    LocaleKeys.category,
+    LocaleKeys.from,
+    LocaleKeys.to,
+  ].contains(title)) {
     ref.read(addTransactionStateProvider.notifier).setSelectedType(title);
     showModalBottomSheet(
       context: context,
@@ -215,7 +235,11 @@ void onSingleModalItemPressed({
     addTransactionNotifier.parentName = name;
     addTransactionNotifier.categoryType = selectedCategoryType;
   } else {
-    if (redirectFrom == LocaleKeys.category) {
+    if (type == LocaleKeys.from) {
+      addTransactionNotifier.updateFromAccount(name: name, id: id);
+    } else if (type == LocaleKeys.to) {
+      addTransactionNotifier.updateToAccount(name: name, id: id);
+    } else if (redirectFrom == LocaleKeys.category) {
       addTransactionNotifier.updateCategory(
         name: name,
         id: id,

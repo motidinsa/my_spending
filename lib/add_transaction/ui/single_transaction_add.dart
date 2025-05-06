@@ -38,9 +38,32 @@ class SingleTransactionAdd extends StatelessWidget {
                 children: [
                   SingleAddTransactionContent(title: LocaleKeys.date),
                   SizedBox(height: 10),
-                  SingleAddTransactionContent(title: LocaleKeys.account),
+                  Consumer(
+                    builder: (context,ref,child) {
+                      final addTransactionState = ref.watch(
+                        addTransactionStateProvider.select((state)=>state.transactionType),
+                      );
+                      return SingleAddTransactionContent(
+                        title:
+                            addTransactionState ==
+                                    LocaleKeys.transfer
+                                ? LocaleKeys.from
+                                : LocaleKeys.account,
+                      );
+                    }
+                  ),
                   SizedBox(height: 10),
-                  SingleAddTransactionContent(title: LocaleKeys.category),
+                  Consumer(
+                    builder: (context,ref,child) {
+                      final addTransactionState = ref.watch(
+                        addTransactionStateProvider.select((state)=>state.transactionType),
+                      );
+                      return SingleAddTransactionContent(title:  addTransactionState ==
+                          LocaleKeys.transfer
+                          ? LocaleKeys.to
+                          : LocaleKeys.category);
+                    }
+                  ),
                   SizedBox(height: 10),
                   SingleAddTransactionContent(title: LocaleKeys.amount),
                   Consumer(

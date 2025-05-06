@@ -31,6 +31,9 @@ class AddTransactionState extends _$AddTransactionState {
   bool isInitDialogShown = false;
   String? parentName;
   String? categoryType;
+  String? fromAccountId;
+  String? toAccountId;
+  String? initSelectedAccount;
 
   void updateIndex(int index) {
     state = state.copyWith.transactionModel(date: DateTime(2027));
@@ -120,24 +123,62 @@ class AddTransactionState extends _$AddTransactionState {
     );
   }
 
+  void updateFromAccount({required String name, required String id}) {
+    state = state.copyWith(
+      fromAccount: parentName != null ? '$parentName / $name' : name,
+    );
+    fromAccountId = id;
+    resetSelectedId();
+  }
+
+  void updateToAccount({required String name, required String id}) {
+    state = state.copyWith(
+      toAccount: parentName != null ? '$parentName / $name' : name,
+    );
+    toAccountId = id;
+    resetSelectedId();
+  }
+
   void onNextFocus(BuildContext context) {
-    String redirectFrom = state.redirectFrom!;
-    if (state.transactionModel.categoryId.isEmpty ||
+    if (state.transactionType == LocaleKeys.transfer) {
+      if (fromAccountId == null || toAccountId == null) {
+        showModalBottomSheet(
+          context: context,
+          backgroundColor: Colors.white,
+          builder: (BuildContext context) {
+            return TransactionTypeModalSheet(
+              redirectFrom:
+                  fromAccountId == null ? LocaleKeys.from : LocaleKeys.to,
+            );
+          },
+        ).then((value) {
+          resetSelectedId();
+        });
+      } else if (amount.isEmpty) {
+        requestAmountFocus();
+      }
+    } else if (state.transactionModel.categoryId.isEmpty ||
         state.transactionModel.accountId.isEmpty) {
-      if (redirectFrom == LocaleKeys.account) {
-        if (state.transactionModel.categoryId.isEmpty) {
-          setSelectedType(LocaleKeys.category);
-        }
-      } else if (redirectFrom == LocaleKeys.category) {
+      // if (redirectFrom == LocaleKeys.category) {
         if (state.transactionModel.accountId.isEmpty) {
           setSelectedType(LocaleKeys.account);
         }
-      }
+      // }
+      // else if (redirectFrom == LocaleKeys.account) {
+        else if (state.transactionModel.categoryId.isEmpty) {
+          setSelectedType(LocaleKeys.category);
+        }
+      // }
       showModalBottomSheet(
         context: context,
         backgroundColor: Colors.white,
         builder: (BuildContext context) {
-          return TransactionTypeModalSheet(redirectFrom: state.redirectFrom!);
+          return TransactionTypeModalSheet(
+            redirectFrom:
+                state.transactionModel.accountId.isEmpty
+                    ? LocaleKeys.account
+                    : LocaleKeys.category,
+          );
         },
       ).then((value) {
         resetSelectedId();

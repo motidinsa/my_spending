@@ -39,6 +39,8 @@ abstract class  LocaleKeys {
   static const selectCategory = 'selectCategory';
   static const selectAccount = 'selectAccount';
   static const edit = 'edit';
+  static const from = 'from';
+  static const to = 'to';
   static const msg_named = 'msg_named';
   static const msg_mixed = 'msg_mixed';
   static const gender = 'gender';

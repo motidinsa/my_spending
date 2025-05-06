@@ -23,9 +23,9 @@ class TransactionTypeModalSheet extends StatelessWidget {
               children: [
                 Expanded(
                   child: Text(
-                    redirectFrom == LocaleKeys.account
-                        ? context.tr(LocaleKeys.selectAccount)
-                        : context.tr(LocaleKeys.selectCategory),
+                    redirectFrom == LocaleKeys.category
+                        ? context.tr(LocaleKeys.selectCategory)
+                        : context.tr(LocaleKeys.selectAccount),
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.green,
@@ -52,16 +52,16 @@ class TransactionTypeModalSheet extends StatelessWidget {
                 children: [
                   Expanded(
                     child:
-                        redirectFrom == LocaleKeys.account
-                            ? AccountGroupListSelect()
-                            : CategoryListSelect(),
+                        redirectFrom == LocaleKeys.category
+                            ? CategoryListSelect()
+                            : AccountGroupListSelect(type: redirectFrom),
                   ),
                   const SizedBox(width: 15),
                   Expanded(
                     child:
-                        redirectFrom == LocaleKeys.account
-                            ? SubAccountListSelect()
-                            : SubcategoryListSelect(),
+                        redirectFrom == LocaleKeys.category
+                            ? SubcategoryListSelect()
+                            : SubAccountListSelect(type: redirectFrom),
                   ),
                 ],
               ),

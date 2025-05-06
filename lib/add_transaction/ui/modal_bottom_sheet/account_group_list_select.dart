@@ -8,12 +8,17 @@ import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/ungrouped_acco
 import 'package:my_spending/core/constants/translation_keys.g.dart';
 
 class AccountGroupListSelect extends StatelessWidget {
-  const AccountGroupListSelect({super.key});
+  final String type;
+
+  const AccountGroupListSelect({super.key, required this.type});
 
   @override
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, ref, child) {
+        final addTransactionNotifier = ref.watch(
+          addTransactionStateProvider.notifier,
+        );
         return ref
             .watch(addTransactionAccountListStateProvider)
             .when(
@@ -48,7 +53,7 @@ class AccountGroupListSelect extends StatelessWidget {
                                     name: data[index].groupName,
                                     hasSubItem: true,
                                     id: data[index].groupId!,
-                                    type: LocaleKeys.account,
+                                    type: type,
                                     isSelected:
                                         data[index].groupId ==
                                         ref.watch(
@@ -62,7 +67,29 @@ class AccountGroupListSelect extends StatelessWidget {
                                         .getAccountModels(data[index].groupId),
                                     builder: (context, snapshot) {
                                       if (snapshot.hasData) {
+                                        if (type == LocaleKeys.to &&
+                                            addTransactionNotifier
+                                                    .fromAccountId !=
+                                                null) {
+                                          snapshot.data!.removeWhere(
+                                            (value) =>
+                                                value.accountId ==
+                                                addTransactionNotifier
+                                                    .fromAccountId,
+                                          );
+                                        } else if (type == LocaleKeys.from &&
+                                            addTransactionNotifier
+                                                    .toAccountId !=
+                                                null) {
+                                          snapshot.data!.removeWhere(
+                                            (value) =>
+                                                value.accountId ==
+                                                addTransactionNotifier
+                                                    .toAccountId,
+                                          );
+                                        }
                                         return UngroupedAccountList(
+                                          type: type,
                                           accountModels: snapshot.data!,
                                         );
                                       }

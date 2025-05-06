@@ -3,9 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_transaction/repository/isar_add_transaction_repository.dart';
 import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/ungrouped_account_list.dart';
+import 'package:my_spending/core/constants/translation_keys.g.dart';
 
 class SubAccountListSelect extends StatelessWidget {
-  const SubAccountListSelect({super.key});
+  final String type;
+  const SubAccountListSelect({super.key,required this.type});
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +15,9 @@ class SubAccountListSelect extends StatelessWidget {
       builder: (context, ref, child) {
         String? selectedId = ref.watch(
           addTransactionStateProvider.select((state) => state.selectedId),
+        );
+        final addTransactionNotifier = ref.watch(
+          addTransactionStateProvider.notifier,
         );
         IsarAddTransactionRepository isarAddTransactionRepository =
             IsarAddTransactionRepository();
@@ -22,6 +27,27 @@ class SubAccountListSelect extends StatelessWidget {
               future: isarAddTransactionRepository.getAccountModels(selectedId),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
+                  if (type == LocaleKeys.to &&
+                      addTransactionNotifier
+                          .fromAccountId !=
+                          null) {
+                    snapshot.data!.removeWhere(
+                          (value) =>
+                      value.accountId ==
+                          addTransactionNotifier
+                              .fromAccountId,
+                    );
+                  } else if (type == LocaleKeys.from &&
+                      addTransactionNotifier
+                          .toAccountId !=
+                          null) {
+                    snapshot.data!.removeWhere(
+                          (value) =>
+                      value.accountId ==
+                          addTransactionNotifier
+                              .toAccountId,
+                    );
+                  }
                   return snapshot.data!.isEmpty
                       ? Container()
                       : Container(
@@ -42,7 +68,7 @@ class SubAccountListSelect extends StatelessWidget {
                           borderRadius: BorderRadius.circular(15),
                           child: Material(
                             color: Colors.transparent,
-                            child: UngroupedAccountList(
+                            child: UngroupedAccountList(type: type,
                               accountModels: snapshot.data!,
                             ),
                           ),

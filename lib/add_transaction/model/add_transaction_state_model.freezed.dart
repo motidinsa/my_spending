@@ -23,6 +23,8 @@ mixin _$AddTransactionStateModel {
   String? get redirectFrom => throw _privateConstructorUsedError;
   String? get selectedId => throw _privateConstructorUsedError;
   bool? get hasAmountFocus => throw _privateConstructorUsedError;
+  String? get fromAccount => throw _privateConstructorUsedError;
+  String? get toAccount => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddTransactionStateModelCopyWith<AddTransactionStateModel> get copyWith =>
@@ -42,7 +44,9 @@ abstract class $AddTransactionStateModelCopyWith<$Res> {
       double? modalHeight,
       String? redirectFrom,
       String? selectedId,
-      bool? hasAmountFocus});
+      bool? hasAmountFocus,
+      String? fromAccount,
+      String? toAccount});
 
   $TransactionModelCopyWith<$Res> get transactionModel;
 }
@@ -68,6 +72,8 @@ class _$AddTransactionStateModelCopyWithImpl<$Res,
     Object? redirectFrom = freezed,
     Object? selectedId = freezed,
     Object? hasAmountFocus = freezed,
+    Object? fromAccount = freezed,
+    Object? toAccount = freezed,
   }) {
     return _then(_value.copyWith(
       transactionModel: null == transactionModel
@@ -98,6 +104,14 @@ class _$AddTransactionStateModelCopyWithImpl<$Res,
           ? _value.hasAmountFocus
           : hasAmountFocus // ignore: cast_nullable_to_non_nullable
               as bool?,
+      fromAccount: freezed == fromAccount
+          ? _value.fromAccount
+          : fromAccount // ignore: cast_nullable_to_non_nullable
+              as String?,
+      toAccount: freezed == toAccount
+          ? _value.toAccount
+          : toAccount // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -126,7 +140,9 @@ abstract class _$$AddTransactionStateModelImplCopyWith<$Res>
       double? modalHeight,
       String? redirectFrom,
       String? selectedId,
-      bool? hasAmountFocus});
+      bool? hasAmountFocus,
+      String? fromAccount,
+      String? toAccount});
 
   @override
   $TransactionModelCopyWith<$Res> get transactionModel;
@@ -152,6 +168,8 @@ class __$$AddTransactionStateModelImplCopyWithImpl<$Res>
     Object? redirectFrom = freezed,
     Object? selectedId = freezed,
     Object? hasAmountFocus = freezed,
+    Object? fromAccount = freezed,
+    Object? toAccount = freezed,
   }) {
     return _then(_$AddTransactionStateModelImpl(
       transactionModel: null == transactionModel
@@ -182,6 +200,14 @@ class __$$AddTransactionStateModelImplCopyWithImpl<$Res>
           ? _value.hasAmountFocus
           : hasAmountFocus // ignore: cast_nullable_to_non_nullable
               as bool?,
+      fromAccount: freezed == fromAccount
+          ? _value.fromAccount
+          : fromAccount // ignore: cast_nullable_to_non_nullable
+              as String?,
+      toAccount: freezed == toAccount
+          ? _value.toAccount
+          : toAccount // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -196,7 +222,9 @@ class _$AddTransactionStateModelImpl implements _AddTransactionStateModel {
       this.modalHeight,
       this.redirectFrom,
       this.selectedId,
-      this.hasAmountFocus});
+      this.hasAmountFocus,
+      this.fromAccount,
+      this.toAccount});
 
   @override
   final TransactionModel transactionModel;
@@ -212,10 +240,14 @@ class _$AddTransactionStateModelImpl implements _AddTransactionStateModel {
   final String? selectedId;
   @override
   final bool? hasAmountFocus;
+  @override
+  final String? fromAccount;
+  @override
+  final String? toAccount;
 
   @override
   String toString() {
-    return 'AddTransactionStateModel(transactionModel: $transactionModel, isAmountAddButtonPressed: $isAmountAddButtonPressed, transactionType: $transactionType, modalHeight: $modalHeight, redirectFrom: $redirectFrom, selectedId: $selectedId, hasAmountFocus: $hasAmountFocus)';
+    return 'AddTransactionStateModel(transactionModel: $transactionModel, isAmountAddButtonPressed: $isAmountAddButtonPressed, transactionType: $transactionType, modalHeight: $modalHeight, redirectFrom: $redirectFrom, selectedId: $selectedId, hasAmountFocus: $hasAmountFocus, fromAccount: $fromAccount, toAccount: $toAccount)';
   }
 
   @override
@@ -237,7 +269,11 @@ class _$AddTransactionStateModelImpl implements _AddTransactionStateModel {
             (identical(other.selectedId, selectedId) ||
                 other.selectedId == selectedId) &&
             (identical(other.hasAmountFocus, hasAmountFocus) ||
-                other.hasAmountFocus == hasAmountFocus));
+                other.hasAmountFocus == hasAmountFocus) &&
+            (identical(other.fromAccount, fromAccount) ||
+                other.fromAccount == fromAccount) &&
+            (identical(other.toAccount, toAccount) ||
+                other.toAccount == toAccount));
   }
 
   @override
@@ -249,7 +285,9 @@ class _$AddTransactionStateModelImpl implements _AddTransactionStateModel {
       modalHeight,
       redirectFrom,
       selectedId,
-      hasAmountFocus);
+      hasAmountFocus,
+      fromAccount,
+      toAccount);
 
   @JsonKey(ignore: true)
   @override
@@ -267,7 +305,9 @@ abstract class _AddTransactionStateModel implements AddTransactionStateModel {
       final double? modalHeight,
       final String? redirectFrom,
       final String? selectedId,
-      final bool? hasAmountFocus}) = _$AddTransactionStateModelImpl;
+      final bool? hasAmountFocus,
+      final String? fromAccount,
+      final String? toAccount}) = _$AddTransactionStateModelImpl;
 
   @override
   TransactionModel get transactionModel;
@@ -283,6 +323,10 @@ abstract class _AddTransactionStateModel implements AddTransactionStateModel {
   String? get selectedId;
   @override
   bool? get hasAmountFocus;
+  @override
+  String? get fromAccount;
+  @override
+  String? get toAccount;
   @override
   @JsonKey(ignore: true)
   _$$AddTransactionStateModelImplCopyWith<_$AddTransactionStateModelImpl>

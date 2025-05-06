@@ -34,9 +34,10 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, ref, child) {
+        final addTransactionNotifier = ref.read(addTransactionStateProvider.notifier);
         focusNode.addListener(() {
           if (!focusNode.hasFocus) {
-            ref.read(addTransactionStateProvider.notifier).removeAmountFocus();
+            addTransactionNotifier.removeAmountFocus();
           }
         });
 
@@ -49,10 +50,9 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
           focusNode.requestFocus();
         }
         if (widget.title == LocaleKeys.account &&
-            !ref.read(addTransactionStateProvider.notifier).isInitDialogShown) {
+            !addTransactionNotifier.isInitDialogShown) {
           executeAfterBuild(() {
-            ref
-                .read(addTransactionStateProvider.notifier)
+            addTransactionNotifier
                 .setSelectedType(LocaleKeys.account);
 
             showModalBottomSheet(
@@ -64,8 +64,8 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
                 );
               },
             ).then((value) {
-              ref.read(addTransactionStateProvider.notifier).resetSelectedId();
-              ref.read(addTransactionStateProvider.notifier).isInitDialogShown =
+              addTransactionNotifier.resetSelectedId();
+              addTransactionNotifier.isInitDialogShown =
                   true;
             });
           });

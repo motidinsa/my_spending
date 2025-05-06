@@ -42,6 +42,8 @@
   "selectCategory": "Select Category",
   "selectAccount": "Select Account",
   "edit": "Edit",
+  "from": "From",
+  "to": "To",
   "msg_named": "Easy localization is written in the {lang} language",
   "msg_mixed": "{} are written in the {lang} language",
   "gender": {

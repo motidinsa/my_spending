@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/single_modal_item.dart';
-import 'package:my_spending/core/constants/translation_keys.g.dart';
 import 'package:my_spending/core/model/account_model/account_model.dart';
 
 class UngroupedAccountList extends StatelessWidget {
   final List<AccountModel> accountModels;
-
-  const UngroupedAccountList({super.key, required this.accountModels});
+final String type;
+  const UngroupedAccountList({super.key, required this.accountModels,required this.type});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +14,7 @@ class UngroupedAccountList extends StatelessWidget {
       itemBuilder: (context, index) {
         return SingleModalItem(
           name: accountModels[index].accountName,
-          type: LocaleKeys.account,
+          type: type,
           id: accountModels[index].accountId,
           isSelected: false,
         );
