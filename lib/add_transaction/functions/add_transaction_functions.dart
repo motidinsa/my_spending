@@ -251,6 +251,8 @@ void onSingleModalItemPressed({
     navigatorKey.currentContext?.pop();
     if (addTransactionState.transactionModel.accountId.isEmpty ||
         addTransactionState.transactionModel.categoryId.isEmpty ||
+        addTransactionNotifier.fromAccountId == null ||
+        addTransactionNotifier.toAccountId == null ||
         addTransactionNotifier.amount.isEmpty) {
       addTransactionNotifier.onNextFocus(context);
     }
