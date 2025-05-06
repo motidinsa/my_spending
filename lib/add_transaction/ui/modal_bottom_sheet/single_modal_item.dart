@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_transaction/functions/add_transaction_functions.dart';
-import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 
 class SingleModalItem extends StatelessWidget {
   final String name;

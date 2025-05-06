@@ -72,7 +72,7 @@ getAddTransactionTextFieldData(WidgetRef ref, String title) {
         (state) => state.transactionModel.categoryName,
       ),
     );
-  }else if (title == LocaleKeys.amount) {
+  } else if (title == LocaleKeys.amount) {
     return ref.read(addTransactionStateProvider.notifier).amount;
   }
   return '';
@@ -127,34 +127,16 @@ onTransactionTypeSelect({
   required String type,
   required BuildContext context,
 }) {
-  ref.read(addTransactionStateProvider.notifier).updateTransactionState(type);
-  String? categoryType =
-      ref.read(addTransactionStateProvider.notifier).categoryType;
+  final addTransactionNotifier = ref.read(addTransactionStateProvider.notifier);
+  addTransactionNotifier.updateTransactionState(type);
+  String? categoryType = addTransactionNotifier.categoryType;
   if (categoryType != null) {
     if ((categoryType == LocaleKeys.expense && type == LocaleKeys.income) ||
         (categoryType == LocaleKeys.income && type == LocaleKeys.expense)) {
-      ref.read(addTransactionStateProvider.notifier).resetCategory();
-      showModalBottomSheet(
-        context: context,
-        backgroundColor: Colors.white,
-        builder: (BuildContext context) {
-          return TransactionTypeModalSheet(
-            redirectFrom:
-                ref
-                        .read(addTransactionStateProvider)
-                        .transactionModel
-                        .accountId
-                        .isEmpty
-                    ? LocaleKeys.account
-                    : LocaleKeys.category,
-          );
-        },
-      ).then((value) {
-        ref.read(addTransactionStateProvider.notifier).resetSelectedId();
-      });
-      // ref.read(addTransactionStateProvider.notifier).onNextFocus(context);
+      addTransactionNotifier.resetCategory();
     }
   }
+  addTransactionNotifier.onNextFocus(context);
 }
 
 getTransactionTypeBackgroundColor({
@@ -250,5 +232,3 @@ void onSingleModalItemPressed({
     }
   }
 }
-
-

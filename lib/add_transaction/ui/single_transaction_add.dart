@@ -6,7 +6,6 @@ import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/add_transaction_text_field.dart';
 import 'package:my_spending/add_transaction/ui/single_add_transaction_content.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
-import 'package:my_spending/core/functions/core_functions.dart';
 
 class SingleTransactionAdd extends StatelessWidget {
   const SingleTransactionAdd({super.key});

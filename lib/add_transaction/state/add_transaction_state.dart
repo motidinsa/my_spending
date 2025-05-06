@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:my_spending/add_transaction/functions/add_transaction_functions.dart';
 import 'package:my_spending/add_transaction/model/add_transaction_state_model.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/transaction_type_modal_sheet.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
-import 'package:my_spending/core/model/category_model/category_model.dart';
 import 'package:my_spending/core/model/transaction_model/transaction_model.dart';
-import 'package:my_spending/core/route/routes.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'add_transaction_state.g.dart';
@@ -98,6 +94,7 @@ class AddTransactionState extends _$AddTransactionState {
         categoryId: '',
       ),
     );
+    categoryType = null;
   }
 
   void updateCategory({
@@ -113,10 +110,8 @@ class AddTransactionState extends _$AddTransactionState {
     );
     categoryType = selectedCategoryType;
   }
-  void updateAccount({
-    required String name,
-    required String id,
-  }) {
+
+  void updateAccount({required String name, required String id}) {
     state = state.copyWith(
       transactionModel: state.transactionModel.copyWith(
         accountName: parentName != null ? '$parentName / $name' : name,
@@ -124,10 +119,8 @@ class AddTransactionState extends _$AddTransactionState {
       ),
     );
   }
-  void onNextFocus(BuildContext context) {
-    // final addTransactionState = ref.read(addTransactionStateProvider);
-    // final addTransactionNotifier = ref.read(addTransactionStateProvider.notifier);
 
+  void onNextFocus(BuildContext context) {
     String redirectFrom = state.redirectFrom!;
     if (state.transactionModel.categoryId.isEmpty ||
         state.transactionModel.accountId.isEmpty) {
@@ -144,9 +137,7 @@ class AddTransactionState extends _$AddTransactionState {
         context: context,
         backgroundColor: Colors.white,
         builder: (BuildContext context) {
-          return TransactionTypeModalSheet(
-            redirectFrom: state.redirectFrom!,
-          );
+          return TransactionTypeModalSheet(redirectFrom: state.redirectFrom!);
         },
       ).then((value) {
         resetSelectedId();
