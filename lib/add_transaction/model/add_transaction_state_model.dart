@@ -15,5 +15,7 @@ abstract class AddTransactionStateModel with _$AddTransactionStateModel {
     bool? hasAmountFocus,
     String? fromAccount,
     String? toAccount,
+    bool? isSaveButtonPressed,
+    bool? isLoading,
   }) = _AddTransactionStateModel;
 }

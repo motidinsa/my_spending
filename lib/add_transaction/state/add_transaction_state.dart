@@ -22,11 +22,10 @@ class AddTransactionState extends _$AddTransactionState {
         date: now,
         dateCreated: now,
       ),
-
       transactionType: LocaleKeys.expense,
     );
   }
-
+  final formKey = GlobalKey<FormState>();
   String amount = '';
   bool isInitDialogShown = false;
   String? parentName;
@@ -140,6 +139,7 @@ class AddTransactionState extends _$AddTransactionState {
   }
 
   void onNextFocus(BuildContext context) {
+
     if (state.transactionType == LocaleKeys.transfer) {
       if (fromAccountId == null || toAccountId == null) {
         showModalBottomSheet(
@@ -186,5 +186,8 @@ class AddTransactionState extends _$AddTransactionState {
     } else if (amount.isEmpty) {
       requestAmountFocus();
     }
+  }
+  void updateSaveButtonPressedStatus() {
+    state = state.copyWith(isSaveButtonPressed: true);
   }
 }

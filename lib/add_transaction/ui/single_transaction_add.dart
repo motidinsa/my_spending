@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
+import 'package:my_spending/add_transaction/functions/add_transaction_functions.dart';
 import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/add_transaction_text_field.dart';
 import 'package:my_spending/add_transaction/ui/single_add_transaction_content.dart';
@@ -32,102 +32,97 @@ class SingleTransactionAdd extends StatelessWidget {
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SingleAddTransactionContent(title: LocaleKeys.date),
-                  SizedBox(height: 10),
-                  Consumer(
-                    builder: (context,ref,child) {
-                      final addTransactionState = ref.watch(
-                        addTransactionStateProvider.select((state)=>state.transactionType),
-                      );
-                      return SingleAddTransactionContent(
-                        title:
-                            addTransactionState ==
-                                    LocaleKeys.transfer
-                                ? LocaleKeys.from
-                                : LocaleKeys.account,
-                      );
-                    }
-                  ),
-                  SizedBox(height: 10),
-                  Consumer(
-                    builder: (context,ref,child) {
-                      final addTransactionState = ref.watch(
-                        addTransactionStateProvider.select((state)=>state.transactionType),
-                      );
-                      return SingleAddTransactionContent(title:  addTransactionState ==
-                          LocaleKeys.transfer
-                          ? LocaleKeys.to
-                          : LocaleKeys.category);
-                    }
-                  ),
-                  SizedBox(height: 10),
-                  SingleAddTransactionContent(title: LocaleKeys.amount),
-                  Consumer(
-                    builder: (context, ref, child) {
-                      bool? isAmountAddButtonPressed =
-                          ref.watch(
-                            addTransactionStateProvider.select(
+              child: Consumer(
+                builder: (context, ref, child) {
+                  final addTransactionTransactionType = ref.watch(
+                    addTransactionStateProvider.select(
+                          (state) => state.transactionType,
+                    ),
+                  );
+                  bool? isAmountAddButtonPressed =
+                      ref.watch(
+                        addTransactionStateProvider.select(
                               (state) => state.isAmountAddButtonPressed,
-                            ),
-                          ) ==
+                        ),
+                      ) ==
                           true;
-                      if (isAmountAddButtonPressed) {
-                        return Column(
+                  return Form(
+                    key: ref.read(addTransactionStateProvider.notifier).formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SingleAddTransactionContent(title: LocaleKeys.date),
+                        SizedBox(height: 10),
+                        SingleAddTransactionContent(
+                          title:
+                          addTransactionTransactionType == LocaleKeys.transfer
+                              ? LocaleKeys.from
+                              : LocaleKeys.account,
+                        ),
+                        SizedBox(height: 10),
+                        SingleAddTransactionContent(
+                          title:
+                          addTransactionTransactionType == LocaleKeys.transfer
+                              ? LocaleKeys.to
+                              : LocaleKeys.category,
+                        ),
+                        SizedBox(height: 10),
+                        SingleAddTransactionContent(title: LocaleKeys.amount),
+                      if (isAmountAddButtonPressed)
+                     Column(
+                      children: [
+                        SizedBox(height: 15),
+                        Row(
                           children: [
-                            SizedBox(height: 15),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: AddTransactionTextField(
-                                    title: LocaleKeys.tip,
-                                  ),
-                                ),
-                                SizedBox(width: 10),
-                                Expanded(
-                                  child: AddTransactionTextField(
-                                    title: LocaleKeys.fee,
-                                  ),
-                                ),
-                                SizedBox(width: 10),
-
-                                // Container(),
-                                if (isAmountAddButtonPressed)
-                                  IconButton(
-                                    onPressed: () {
-                                      ref
-                                          .read(
-                                            addTransactionStateProvider
-                                                .notifier,
-                                          )
-                                          .onRemoveAmountIconPressed();
-                                    },
-                                    icon: Icon(
-                                      Icons.cancel,
-                                      color: Colors.red,
-                                    ),
-                                  )
-                                else
-                                  IconButton(
-                                    onPressed: null,
-                                    icon: Container(),
-                                  ),
-                              ],
+                            Expanded(
+                              child: AddTransactionTextField(
+                                title: LocaleKeys.tip,
+                              ),
                             ),
+                            SizedBox(width: 10),
+                            Expanded(
+                              child: AddTransactionTextField(
+                                title: LocaleKeys.fee,
+                              ),
+                            ),
+                            SizedBox(width: 10),
+
+                            // Container(),
+                            if (isAmountAddButtonPressed)
+                              IconButton(
+                                onPressed: () {
+                                  ref
+                                      .read(
+                                    addTransactionStateProvider
+                                        .notifier,
+                                  )
+                                      .onRemoveAmountIconPressed();
+                                },
+                                icon: Icon(
+                                  Icons.cancel,
+                                  color: Colors.red,
+                                ),
+                              )
+                            else
+                              IconButton(
+                                onPressed: null,
+                                icon: Container(),
+                              ),
                           ],
-                        );
-                      }
-                      return Container();
-                    },
-                  ),
-                  SizedBox(height: 10),
-                  SingleAddTransactionContent(
-                    title: LocaleKeys.description,
-                  ),
-                ],
+                        ),
+                      ],
+                    )
+
+                                      else Container(),
+                        SizedBox(height: 10),
+                        SingleAddTransactionContent(
+                          title: LocaleKeys.description,
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
             ),
           ),
@@ -136,58 +131,57 @@ class SingleTransactionAdd extends StatelessWidget {
         SizedBox(height: 5),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-          child: Row(
-            children: [
-              Expanded(
-                flex: 2,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 15),
-                    backgroundColor: Colors.white,
-                    side: BorderSide(color: Colors.green, width: .5),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                        12,
-                      ), // Set the border radius here
-                    ),
-                  ),
-                  child: Text(
-                    context.tr(LocaleKeys.save),
-                    style: TextStyle(color: Colors.green),
-                  ),
-                ),
-              ),
-              SizedBox(width: 10),
-              Expanded(
-                child: Consumer(
-                  builder: (context, ref, child) {
-                    return OutlinedButton(
-                      onPressed: () {
-                        ref
-                            .read(addTransactionStateProvider.notifier)
-                            .updateDate(DateTime.now());
-                        context.go('/add_transaction');
-                      },
+          child: Consumer(
+            builder: (context,ref,child) {
+              return Row(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: OutlinedButton(
+                      onPressed: () =>onAddTransactionSaveButtonPressed(ref,context),
                       style: OutlinedButton.styleFrom(
                         padding: EdgeInsets.symmetric(vertical: 15),
-                        backgroundColor: Colors.white,
+                        backgroundColor: Colors.green.shade300,
                         side: BorderSide(color: Colors.green, width: .5),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(
-                            10,
+                            12,
                           ), // Set the border radius here
                         ),
                       ),
                       child: Text(
-                        context.tr(LocaleKeys.more),
-                        style: TextStyle(color: Colors.green),
+                        context.tr(LocaleKeys.save),
+                        style: TextStyle(color: Colors.white),
                       ),
-                    );
-                  },
-                ),
-              ),
-            ],
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Consumer(
+                      builder: (context, ref, child) {
+                        return ElevatedButton(
+                          onPressed: () {},
+                          style: OutlinedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(vertical: 15),
+                            backgroundColor: Colors.green.shade300,
+                            side: BorderSide(color: Colors.green, width: .5),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                10,
+                              ), // Set the border radius here
+                            ),
+                          ),
+                          child: Text(
+                            context.tr(LocaleKeys.more),
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              );
+            }
           ),
         ),
       ],

@@ -1,12 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/account_group_list_select.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/category_list_select.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/subaccount_list_select.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/subcategory_list_select.dart';
-import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/widget_size.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
 
 class TransactionTypeModalSheet extends StatelessWidget {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_transaction/functions/add_transaction_functions.dart';
+import 'package:my_spending/add_transaction/functions/add_transaction_validations.dart';
 import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/transaction_type_modal_sheet.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
@@ -34,7 +35,9 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, ref, child) {
-        final addTransactionNotifier = ref.read(addTransactionStateProvider.notifier);
+        final addTransactionNotifier = ref.read(
+          addTransactionStateProvider.notifier,
+        );
         focusNode.addListener(() {
           if (!focusNode.hasFocus) {
             addTransactionNotifier.removeAmountFocus();
@@ -49,31 +52,31 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
             )) {
           focusNode.requestFocus();
         }
-        // if (widget.title == LocaleKeys.account &&
-        //     !addTransactionNotifier.isInitDialogShown) {
-        //   executeAfterBuild(() {
-        //     addTransactionNotifier
-        //         .setSelectedType(LocaleKeys.account);
-        //
-        //     showModalBottomSheet(
-        //       context: context,
-        //       backgroundColor: Colors.white,
-        //       builder: (BuildContext context) {
-        //         return TransactionTypeModalSheet(
-        //           redirectFrom: LocaleKeys.account,
-        //         );
-        //       },
-        //     ).then((value) {
-        //       addTransactionNotifier.resetSelectedId();
-        //       addTransactionNotifier.isInitDialogShown =
-        //           true;
-        //     });
-        //   });
-        // }
-        textEditingController.text = getAddTransactionTextFieldData(
-          ref,
-          widget.title,
-        );
+        if (widget.title == LocaleKeys.account &&
+            !addTransactionNotifier.isInitDialogShown) {
+          executeAfterBuild(() {
+            addTransactionNotifier.setSelectedType(LocaleKeys.account);
+
+            showModalBottomSheet(
+              context: context,
+              backgroundColor: Colors.white,
+              builder: (BuildContext context) {
+                return TransactionTypeModalSheet(
+                  redirectFrom: LocaleKeys.account,
+                );
+              },
+            ).then((value) {
+              addTransactionNotifier.resetSelectedId();
+              addTransactionNotifier.isInitDialogShown = true;
+            });
+          });
+        }
+        executeAfterBuild(() {
+          textEditingController.text = getAddTransactionTextFieldData(
+            ref,
+            widget.title,
+          );
+        });
         return TextFormField(
           controller: textEditingController,
           focusNode: focusNode,
@@ -107,7 +110,20 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
               borderSide: BorderSide(color: Colors.green),
               borderRadius: BorderRadius.circular(10),
             ),
+            errorBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.red, width: .6),
+              borderRadius: BorderRadius.circular(10),
+            ),  focusedErrorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.red),
+            borderRadius: BorderRadius.circular(10),
           ),
+          ),
+          validator:
+              (data) => validateAddTransactionTextField(
+                data: data,
+                title: widget.title,
+                ref: ref,
+              ),
         );
       },
     );

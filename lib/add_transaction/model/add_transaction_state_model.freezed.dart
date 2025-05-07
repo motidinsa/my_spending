@@ -25,6 +25,8 @@ mixin _$AddTransactionStateModel {
   bool? get hasAmountFocus => throw _privateConstructorUsedError;
   String? get fromAccount => throw _privateConstructorUsedError;
   String? get toAccount => throw _privateConstructorUsedError;
+  bool? get isSaveButtonPressed => throw _privateConstructorUsedError;
+  bool? get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddTransactionStateModelCopyWith<AddTransactionStateModel> get copyWith =>
@@ -46,7 +48,9 @@ abstract class $AddTransactionStateModelCopyWith<$Res> {
       String? selectedId,
       bool? hasAmountFocus,
       String? fromAccount,
-      String? toAccount});
+      String? toAccount,
+      bool? isSaveButtonPressed,
+      bool? isLoading});
 
   $TransactionModelCopyWith<$Res> get transactionModel;
 }
@@ -74,6 +78,8 @@ class _$AddTransactionStateModelCopyWithImpl<$Res,
     Object? hasAmountFocus = freezed,
     Object? fromAccount = freezed,
     Object? toAccount = freezed,
+    Object? isSaveButtonPressed = freezed,
+    Object? isLoading = freezed,
   }) {
     return _then(_value.copyWith(
       transactionModel: null == transactionModel
@@ -112,6 +118,14 @@ class _$AddTransactionStateModelCopyWithImpl<$Res,
           ? _value.toAccount
           : toAccount // ignore: cast_nullable_to_non_nullable
               as String?,
+      isSaveButtonPressed: freezed == isSaveButtonPressed
+          ? _value.isSaveButtonPressed
+          : isSaveButtonPressed // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isLoading: freezed == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 
@@ -142,7 +156,9 @@ abstract class _$$AddTransactionStateModelImplCopyWith<$Res>
       String? selectedId,
       bool? hasAmountFocus,
       String? fromAccount,
-      String? toAccount});
+      String? toAccount,
+      bool? isSaveButtonPressed,
+      bool? isLoading});
 
   @override
   $TransactionModelCopyWith<$Res> get transactionModel;
@@ -170,6 +186,8 @@ class __$$AddTransactionStateModelImplCopyWithImpl<$Res>
     Object? hasAmountFocus = freezed,
     Object? fromAccount = freezed,
     Object? toAccount = freezed,
+    Object? isSaveButtonPressed = freezed,
+    Object? isLoading = freezed,
   }) {
     return _then(_$AddTransactionStateModelImpl(
       transactionModel: null == transactionModel
@@ -208,6 +226,14 @@ class __$$AddTransactionStateModelImplCopyWithImpl<$Res>
           ? _value.toAccount
           : toAccount // ignore: cast_nullable_to_non_nullable
               as String?,
+      isSaveButtonPressed: freezed == isSaveButtonPressed
+          ? _value.isSaveButtonPressed
+          : isSaveButtonPressed // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isLoading: freezed == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -224,7 +250,9 @@ class _$AddTransactionStateModelImpl implements _AddTransactionStateModel {
       this.selectedId,
       this.hasAmountFocus,
       this.fromAccount,
-      this.toAccount});
+      this.toAccount,
+      this.isSaveButtonPressed,
+      this.isLoading});
 
   @override
   final TransactionModel transactionModel;
@@ -244,10 +272,14 @@ class _$AddTransactionStateModelImpl implements _AddTransactionStateModel {
   final String? fromAccount;
   @override
   final String? toAccount;
+  @override
+  final bool? isSaveButtonPressed;
+  @override
+  final bool? isLoading;
 
   @override
   String toString() {
-    return 'AddTransactionStateModel(transactionModel: $transactionModel, isAmountAddButtonPressed: $isAmountAddButtonPressed, transactionType: $transactionType, modalHeight: $modalHeight, redirectFrom: $redirectFrom, selectedId: $selectedId, hasAmountFocus: $hasAmountFocus, fromAccount: $fromAccount, toAccount: $toAccount)';
+    return 'AddTransactionStateModel(transactionModel: $transactionModel, isAmountAddButtonPressed: $isAmountAddButtonPressed, transactionType: $transactionType, modalHeight: $modalHeight, redirectFrom: $redirectFrom, selectedId: $selectedId, hasAmountFocus: $hasAmountFocus, fromAccount: $fromAccount, toAccount: $toAccount, isSaveButtonPressed: $isSaveButtonPressed, isLoading: $isLoading)';
   }
 
   @override
@@ -273,7 +305,11 @@ class _$AddTransactionStateModelImpl implements _AddTransactionStateModel {
             (identical(other.fromAccount, fromAccount) ||
                 other.fromAccount == fromAccount) &&
             (identical(other.toAccount, toAccount) ||
-                other.toAccount == toAccount));
+                other.toAccount == toAccount) &&
+            (identical(other.isSaveButtonPressed, isSaveButtonPressed) ||
+                other.isSaveButtonPressed == isSaveButtonPressed) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
   }
 
   @override
@@ -287,7 +323,9 @@ class _$AddTransactionStateModelImpl implements _AddTransactionStateModel {
       selectedId,
       hasAmountFocus,
       fromAccount,
-      toAccount);
+      toAccount,
+      isSaveButtonPressed,
+      isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -307,7 +345,9 @@ abstract class _AddTransactionStateModel implements AddTransactionStateModel {
       final String? selectedId,
       final bool? hasAmountFocus,
       final String? fromAccount,
-      final String? toAccount}) = _$AddTransactionStateModelImpl;
+      final String? toAccount,
+      final bool? isSaveButtonPressed,
+      final bool? isLoading}) = _$AddTransactionStateModelImpl;
 
   @override
   TransactionModel get transactionModel;
@@ -327,6 +367,10 @@ abstract class _AddTransactionStateModel implements AddTransactionStateModel {
   String? get fromAccount;
   @override
   String? get toAccount;
+  @override
+  bool? get isSaveButtonPressed;
+  @override
+  bool? get isLoading;
   @override
   @JsonKey(ignore: true)
   _$$AddTransactionStateModelImplCopyWith<_$AddTransactionStateModelImpl>

@@ -261,3 +261,12 @@ void onSingleModalItemPressed({
     }
   }
 }
+void onAddTransactionSaveButtonPressed(WidgetRef ref,BuildContext context){
+  final addTransactionNotifier = ref.read(addTransactionStateProvider.notifier);
+  addTransactionNotifier.updateSaveButtonPressedStatus();
+  if(addTransactionNotifier.formKey.currentState!.validate()){
+
+  }else{
+    addTransactionNotifier.onNextFocus(context);
+  }
+}
