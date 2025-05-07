@@ -19,6 +19,7 @@ class AccountGroupListSelect extends StatelessWidget {
         final addTransactionNotifier = ref.watch(
           addTransactionStateProvider.notifier,
         );
+
         return ref
             .watch(addTransactionAccountListStateProvider)
             .when(
@@ -41,66 +42,61 @@ class AccountGroupListSelect extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                     child: Material(
                       color: Colors.transparent,
-                      child: ListView(
+                      child: ListView.builder(
                         shrinkWrap: true,
-                        children: [
-                          ListView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemBuilder: (context, index) {
-                              return data[index].groupId != null
-                                  ? SingleModalItem(
-                                    name: data[index].groupName,
-                                    hasSubItem: true,
-                                    id: data[index].groupId!,
-                                    type: type,
-                                    isSelected:
-                                        data[index].groupId ==
-                                        ref.watch(
-                                          addTransactionStateProvider.select(
-                                            (state) => state.selectedId,
-                                          ),
-                                        ),
-                                  )
-                                  : FutureBuilder(
-                                    future: IsarAddTransactionRepository()
-                                        .getAccountModels(data[index].groupId),
-                                    builder: (context, snapshot) {
-                                      if (snapshot.hasData) {
-                                        if (type == LocaleKeys.to &&
+                        // physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          return data[index].groupId != null
+                              ? SingleModalItem(
+                                name: data[index].groupName,
+                                hasSubItem: true,
+                                id: data[index].groupId!,
+                                type: type,
+                                isSelected:
+                                    data[index].groupId ==
+                                    ref.watch(
+                                      addTransactionStateProvider.select(
+                                        (state) => state.selectedId,
+                                      ),
+                                    ),
+                              )
+                              : FutureBuilder(
+                                future: IsarAddTransactionRepository()
+                                    .getAccountModels(data[index].groupId),
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasData) {
+                                    if (type == LocaleKeys.to &&
+                                        addTransactionNotifier
+                                                .fromAccountId !=
+                                            null) {
+                                      snapshot.data!.removeWhere(
+                                        (value) =>
+                                            value.accountId ==
                                             addTransactionNotifier
-                                                    .fromAccountId !=
-                                                null) {
-                                          snapshot.data!.removeWhere(
-                                            (value) =>
-                                                value.accountId ==
-                                                addTransactionNotifier
-                                                    .fromAccountId,
-                                          );
-                                        } else if (type == LocaleKeys.from &&
+                                                .fromAccountId,
+                                      );
+                                    } else if (type == LocaleKeys.from &&
+                                        addTransactionNotifier
+                                                .toAccountId !=
+                                            null) {
+                                      snapshot.data!.removeWhere(
+                                        (value) =>
+                                            value.accountId ==
                                             addTransactionNotifier
-                                                    .toAccountId !=
-                                                null) {
-                                          snapshot.data!.removeWhere(
-                                            (value) =>
-                                                value.accountId ==
-                                                addTransactionNotifier
-                                                    .toAccountId,
-                                          );
-                                        }
-                                        return UngroupedAccountList(
-                                          type: type,
-                                          accountModels: snapshot.data!,
-                                        );
-                                      }
-                                      return Container();
-                                    },
-                                  );
-                            },
+                                                .toAccountId,
+                                      );
+                                    }
+                                    return UngroupedAccountList(
+                                      type: type,
+                                      accountModels: snapshot.data!,
+                                    );
+                                  }
+                                  return Container();
+                                },
+                              );
+                        },
 
-                            itemCount: data.length,
-                          ),
-                        ],
+                        itemCount: data.length,
                       ),
                     ),
                   ),

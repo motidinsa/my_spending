@@ -60,7 +60,7 @@ class AddTransactionState extends _$AddTransactionState {
   }
 
   void updateSubcategoryHeight(double givenHeight, double totalHeight) {
-    if (givenHeight > totalHeight / 2) {
+    if (givenHeight > totalHeight / 2 ) {
       state = state.copyWith(modalHeight: totalHeight / 2);
     }
   }

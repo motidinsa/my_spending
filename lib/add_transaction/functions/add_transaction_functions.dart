@@ -128,6 +128,7 @@ onAddTransactionTextFieldPressed({
       },
     ).then((value) {
       ref.read(addTransactionStateProvider.notifier).resetSelectedId();
+
     });
   }
 }
@@ -233,7 +234,9 @@ void onSingleModalItemPressed({
   if (hasSubItem) {
     addTransactionNotifier.setSelectedId(id);
     addTransactionNotifier.parentName = name;
-    addTransactionNotifier.categoryType = selectedCategoryType;
+    if (type != LocaleKeys.from && type != LocaleKeys.to) {
+      addTransactionNotifier.categoryType = selectedCategoryType;
+    }
   } else {
     if (type == LocaleKeys.from) {
       addTransactionNotifier.updateFromAccount(name: name, id: id);

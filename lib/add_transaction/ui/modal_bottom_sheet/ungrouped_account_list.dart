@@ -4,8 +4,13 @@ import 'package:my_spending/core/model/account_model/account_model.dart';
 
 class UngroupedAccountList extends StatelessWidget {
   final List<AccountModel> accountModels;
-final String type;
-  const UngroupedAccountList({super.key, required this.accountModels,required this.type});
+  final String type;
+
+  const UngroupedAccountList({
+    super.key,
+    required this.accountModels,
+    required this.type,
+  });
 
   @override
   Widget build(BuildContext context) {

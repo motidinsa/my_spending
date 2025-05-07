@@ -49,27 +49,27 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
             )) {
           focusNode.requestFocus();
         }
-        if (widget.title == LocaleKeys.account &&
-            !addTransactionNotifier.isInitDialogShown) {
-          executeAfterBuild(() {
-            addTransactionNotifier
-                .setSelectedType(LocaleKeys.account);
-
-            showModalBottomSheet(
-              context: context,
-              backgroundColor: Colors.white,
-              builder: (BuildContext context) {
-                return TransactionTypeModalSheet(
-                  redirectFrom: LocaleKeys.account,
-                );
-              },
-            ).then((value) {
-              addTransactionNotifier.resetSelectedId();
-              addTransactionNotifier.isInitDialogShown =
-                  true;
-            });
-          });
-        }
+        // if (widget.title == LocaleKeys.account &&
+        //     !addTransactionNotifier.isInitDialogShown) {
+        //   executeAfterBuild(() {
+        //     addTransactionNotifier
+        //         .setSelectedType(LocaleKeys.account);
+        //
+        //     showModalBottomSheet(
+        //       context: context,
+        //       backgroundColor: Colors.white,
+        //       builder: (BuildContext context) {
+        //         return TransactionTypeModalSheet(
+        //           redirectFrom: LocaleKeys.account,
+        //         );
+        //       },
+        //     ).then((value) {
+        //       addTransactionNotifier.resetSelectedId();
+        //       addTransactionNotifier.isInitDialogShown =
+        //           true;
+        //     });
+        //   });
+        // }
         textEditingController.text = getAddTransactionTextFieldData(
           ref,
           widget.title,
