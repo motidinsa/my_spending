@@ -6,6 +6,7 @@ import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 import 'package:my_spending/add_transaction/ui/add_transaction_text_field.dart';
 import 'package:my_spending/add_transaction/ui/single_add_transaction_content.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
+import 'package:my_spending/core/functions/core_functions.dart';
 
 class SingleTransactionAdd extends StatelessWidget {
   const SingleTransactionAdd({super.key});
@@ -36,16 +37,27 @@ class SingleTransactionAdd extends StatelessWidget {
                 builder: (context, ref, child) {
                   final addTransactionTransactionType = ref.watch(
                     addTransactionStateProvider.select(
-                          (state) => state.transactionType,
+                      (state) => state.transactionType,
                     ),
                   );
                   bool? isAmountAddButtonPressed =
                       ref.watch(
                         addTransactionStateProvider.select(
-                              (state) => state.isAmountAddButtonPressed,
+                          (state) => state.isAmountAddButtonPressed,
                         ),
                       ) ==
-                          true;
+                      true;
+                  final addTransactionNotifier = ref.read(
+                    addTransactionStateProvider.notifier,
+                  );
+                  if (ref
+                          .read(addTransactionStateProvider)
+                          .isSaveButtonPressed ==
+                      true) {
+                    executeAfterBuild(() {
+                      addTransactionNotifier.formKey.currentState!.validate();
+                    });
+                  }
                   return Form(
                     key: ref.read(addTransactionStateProvider.notifier).formKey,
                     child: Column(
@@ -56,65 +68,67 @@ class SingleTransactionAdd extends StatelessWidget {
                         SizedBox(height: 10),
                         SingleAddTransactionContent(
                           title:
-                          addTransactionTransactionType == LocaleKeys.transfer
-                              ? LocaleKeys.from
-                              : LocaleKeys.account,
+                              addTransactionTransactionType ==
+                                      LocaleKeys.transfer
+                                  ? LocaleKeys.from
+                                  : LocaleKeys.account,
                         ),
                         SizedBox(height: 10),
                         SingleAddTransactionContent(
                           title:
-                          addTransactionTransactionType == LocaleKeys.transfer
-                              ? LocaleKeys.to
-                              : LocaleKeys.category,
+                              addTransactionTransactionType ==
+                                      LocaleKeys.transfer
+                                  ? LocaleKeys.to
+                                  : LocaleKeys.category,
                         ),
                         SizedBox(height: 10),
                         SingleAddTransactionContent(title: LocaleKeys.amount),
-                      if (isAmountAddButtonPressed)
-                     Column(
-                      children: [
-                        SizedBox(height: 15),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: AddTransactionTextField(
-                                title: LocaleKeys.tip,
-                              ),
-                            ),
-                            SizedBox(width: 10),
-                            Expanded(
-                              child: AddTransactionTextField(
-                                title: LocaleKeys.fee,
-                              ),
-                            ),
-                            SizedBox(width: 10),
+                        if (isAmountAddButtonPressed)
+                          Column(
+                            children: [
+                              SizedBox(height: 15),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: AddTransactionTextField(
+                                      title: LocaleKeys.tip,
+                                    ),
+                                  ),
+                                  SizedBox(width: 10),
+                                  Expanded(
+                                    child: AddTransactionTextField(
+                                      title: LocaleKeys.fee,
+                                    ),
+                                  ),
+                                  SizedBox(width: 10),
 
-                            // Container(),
-                            if (isAmountAddButtonPressed)
-                              IconButton(
-                                onPressed: () {
-                                  ref
-                                      .read(
-                                    addTransactionStateProvider
-                                        .notifier,
-                                  )
-                                      .onRemoveAmountIconPressed();
-                                },
-                                icon: Icon(
-                                  Icons.cancel,
-                                  color: Colors.red,
-                                ),
-                              )
-                            else
-                              IconButton(
-                                onPressed: null,
-                                icon: Container(),
+                                  // Container(),
+                                  if (isAmountAddButtonPressed)
+                                    IconButton(
+                                      onPressed: () {
+                                        ref
+                                            .read(
+                                              addTransactionStateProvider
+                                                  .notifier,
+                                            )
+                                            .onRemoveAmountIconPressed();
+                                      },
+                                      icon: Icon(
+                                        Icons.cancel,
+                                        color: Colors.red,
+                                      ),
+                                    )
+                                  else
+                                    IconButton(
+                                      onPressed: null,
+                                      icon: Container(),
+                                    ),
+                                ],
                               ),
-                          ],
-                        ),
-                      ],
-                    )
-
-                                      else Container(),
+                            ],
+                          )
+                        else
+                          Container(),
                         SizedBox(height: 10),
                         SingleAddTransactionContent(
                           title: LocaleKeys.description,
@@ -132,13 +146,14 @@ class SingleTransactionAdd extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
           child: Consumer(
-            builder: (context,ref,child) {
+            builder: (context, ref, child) {
               return Row(
                 children: [
                   Expanded(
                     flex: 2,
                     child: OutlinedButton(
-                      onPressed: () =>onAddTransactionSaveButtonPressed(ref,context),
+                      onPressed:
+                          () => onAddTransactionSaveButtonPressed(ref, context),
                       style: OutlinedButton.styleFrom(
                         padding: EdgeInsets.symmetric(vertical: 15),
                         backgroundColor: Colors.green.shade300,
@@ -181,7 +196,7 @@ class SingleTransactionAdd extends StatelessWidget {
                   ),
                 ],
               );
-            }
+            },
           ),
         ),
       ],

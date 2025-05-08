@@ -52,9 +52,14 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
             )) {
           focusNode.requestFocus();
         }
-        if (widget.title == LocaleKeys.account &&
-            !addTransactionNotifier.isInitDialogShown) {
-          executeAfterBuild(() {
+
+        executeAfterBuild(() {
+          textEditingController.text = getAddTransactionTextFieldData(
+            ref,
+            widget.title,
+          );
+          if (widget.title == LocaleKeys.account &&
+              !addTransactionNotifier.isInitDialogShown) {
             addTransactionNotifier.setSelectedType(LocaleKeys.account);
 
             showModalBottomSheet(
@@ -69,13 +74,7 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
               addTransactionNotifier.resetSelectedId();
               addTransactionNotifier.isInitDialogShown = true;
             });
-          });
-        }
-        executeAfterBuild(() {
-          textEditingController.text = getAddTransactionTextFieldData(
-            ref,
-            widget.title,
-          );
+          }
         });
         return TextFormField(
           controller: textEditingController,
@@ -98,6 +97,7 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
                   ? TextInputType.number
                   : TextInputType.none,
           decoration: InputDecoration(
+            errorMaxLines: 2,
             labelText: getLabelText(widget.title),
             hintText: getAddTransactionHintText(widget.title),
             contentPadding: EdgeInsets.fromLTRB(15, 20, 12, 12),
@@ -113,10 +113,11 @@ class _AddTransactionTextFieldState extends State<AddTransactionTextField> {
             errorBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.red, width: .6),
               borderRadius: BorderRadius.circular(10),
-            ),  focusedErrorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.red),
-            borderRadius: BorderRadius.circular(10),
-          ),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.red),
+              borderRadius: BorderRadius.circular(10),
+            ),
           ),
           validator:
               (data) => validateAddTransactionTextField(

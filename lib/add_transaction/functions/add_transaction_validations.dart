@@ -8,21 +8,28 @@ validateAddTransactionTextField({
   required WidgetRef ref,
 }) {
   final addTransactionState = ref.read(addTransactionStateProvider);
-
-  if ([
+  final addTransactionNotifier = ref.read(addTransactionStateProvider.notifier);
+  final numberRegex = RegExp(r'^\d+(\.\d+)?$');
+  if (title == LocaleKeys.amount && addTransactionNotifier.amount.isEmpty) {
+    if (!numberRegex.hasMatch(addTransactionNotifier.amount)) {
+      return 'Please enter a valid amount';
+    }
+  } else if (title == LocaleKeys.tip && addTransactionNotifier.tip.isNotEmpty ||
+      title == LocaleKeys.fee && addTransactionNotifier.fee.isNotEmpty) {
+    return 'Please enter a valid amount';
+  } else if ([
     LocaleKeys.expense,
     LocaleKeys.income,
   ].contains(addTransactionState.transactionType)) {
     if (title == LocaleKeys.account &&
         addTransactionState.transactionModel.accountName.isEmpty) {
       return 'Select account';
-    } else if(title == LocaleKeys.category &&
-        addTransactionState.transactionModel.categoryName.isEmpty){
+    } else if (title == LocaleKeys.category &&
+        addTransactionState.transactionModel.categoryName.isEmpty) {
       return 'Select category';
     }
-  }else if(addTransactionState.transactionType == LocaleKeys.transfer){
-    if (title == LocaleKeys.from &&
-        addTransactionState.fromAccount == null) {
+  } else if (addTransactionState.transactionType == LocaleKeys.transfer) {
+    if (title == LocaleKeys.from && addTransactionState.fromAccount == null) {
       return 'Select from account';
     } else if (title == LocaleKeys.to &&
         addTransactionState.toAccount == null) {

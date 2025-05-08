@@ -57,6 +57,7 @@ setData(WidgetRef ref, String title) {
 }
 
 getAddTransactionTextFieldData(WidgetRef ref, String title) {
+  final addTransactionNotifier = ref.read(addTransactionStateProvider.notifier);
   if (title == LocaleKeys.date) {
     return ref.watch(
       addTransactionStateProvider.select(
@@ -77,7 +78,11 @@ getAddTransactionTextFieldData(WidgetRef ref, String title) {
       ),
     );
   } else if (title == LocaleKeys.amount) {
-    return ref.read(addTransactionStateProvider.notifier).amount;
+    return addTransactionNotifier.amount;
+  } else if (title == LocaleKeys.tip) {
+    return addTransactionNotifier.tip;
+  } else if (title == LocaleKeys.fee) {
+    return addTransactionNotifier.fee;
   } else if (title == LocaleKeys.from) {
     return ref.watch(
           addTransactionStateProvider.select((state) => state.fromAccount),
@@ -128,7 +133,6 @@ onAddTransactionTextFieldPressed({
       },
     ).then((value) {
       ref.read(addTransactionStateProvider.notifier).resetSelectedId();
-
     });
   }
 }
@@ -138,8 +142,13 @@ onAddTransactionTextFieldChange({
   required String title,
   required String text,
 }) {
+  final addTransactionNotifier = ref.read(addTransactionStateProvider.notifier);
   if (title == LocaleKeys.amount) {
-    ref.read(addTransactionStateProvider.notifier).onAmountChanged(text);
+    addTransactionNotifier.onAmountChanged(text);
+  } else if (title == LocaleKeys.tip) {
+    addTransactionNotifier.onTipChanged(text);
+  } else if (title == LocaleKeys.fee) {
+    addTransactionNotifier.onFeeChanged(text);
   }
 }
 
@@ -150,6 +159,7 @@ onTransactionTypeSelect({
 }) {
   final addTransactionNotifier = ref.read(addTransactionStateProvider.notifier);
   addTransactionNotifier.updateTransactionState(type);
+
   String? categoryType = addTransactionNotifier.categoryType;
   if (categoryType != null) {
     if ((categoryType == LocaleKeys.expense && type == LocaleKeys.income) ||
@@ -261,12 +271,12 @@ void onSingleModalItemPressed({
     }
   }
 }
-void onAddTransactionSaveButtonPressed(WidgetRef ref,BuildContext context){
+
+void onAddTransactionSaveButtonPressed(WidgetRef ref, BuildContext context) {
   final addTransactionNotifier = ref.read(addTransactionStateProvider.notifier);
   addTransactionNotifier.updateSaveButtonPressedStatus();
-  if(addTransactionNotifier.formKey.currentState!.validate()){
-
-  }else{
+  if (addTransactionNotifier.formKey.currentState!.validate()) {
+  } else {
     addTransactionNotifier.onNextFocus(context);
   }
 }

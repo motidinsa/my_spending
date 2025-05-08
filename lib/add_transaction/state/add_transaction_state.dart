@@ -25,8 +25,11 @@ class AddTransactionState extends _$AddTransactionState {
       transactionType: LocaleKeys.expense,
     );
   }
+
   final formKey = GlobalKey<FormState>();
   String amount = '';
+  String tip = '';
+  String fee = '';
   bool isInitDialogShown = false;
   String? parentName;
   String? categoryType;
@@ -48,6 +51,7 @@ class AddTransactionState extends _$AddTransactionState {
 
   void onRemoveAmountIconPressed() {
     state = state.copyWith(isAmountAddButtonPressed: null);
+    resetAdditionalAmountValues();
   }
 
   void updateTransactionState(String type) {
@@ -59,7 +63,7 @@ class AddTransactionState extends _$AddTransactionState {
   }
 
   void updateSubcategoryHeight(double givenHeight, double totalHeight) {
-    if (givenHeight > totalHeight / 2 ) {
+    if (givenHeight > totalHeight / 2) {
       state = state.copyWith(modalHeight: totalHeight / 2);
     }
   }
@@ -79,6 +83,14 @@ class AddTransactionState extends _$AddTransactionState {
 
   void onAmountChanged(String givenAmount) {
     amount = givenAmount;
+  }
+
+  void onTipChanged(String givenAmount) {
+    tip = givenAmount;
+  }
+
+  void onFeeChanged(String givenAmount) {
+    fee = givenAmount;
   }
 
   void requestAmountFocus() {
@@ -139,7 +151,6 @@ class AddTransactionState extends _$AddTransactionState {
   }
 
   void onNextFocus(BuildContext context) {
-
     if (state.transactionType == LocaleKeys.transfer) {
       if (fromAccountId == null || toAccountId == null) {
         showModalBottomSheet(
@@ -160,14 +171,14 @@ class AddTransactionState extends _$AddTransactionState {
     } else if (state.transactionModel.categoryId.isEmpty ||
         state.transactionModel.accountId.isEmpty) {
       // if (redirectFrom == LocaleKeys.category) {
-        if (state.transactionModel.accountId.isEmpty) {
-          setSelectedType(LocaleKeys.account);
-        }
+      if (state.transactionModel.accountId.isEmpty) {
+        setSelectedType(LocaleKeys.account);
+      }
       // }
       // else if (redirectFrom == LocaleKeys.account) {
-        else if (state.transactionModel.categoryId.isEmpty) {
-          setSelectedType(LocaleKeys.category);
-        }
+      else if (state.transactionModel.categoryId.isEmpty) {
+        setSelectedType(LocaleKeys.category);
+      }
       // }
       showModalBottomSheet(
         context: context,
@@ -187,7 +198,12 @@ class AddTransactionState extends _$AddTransactionState {
       requestAmountFocus();
     }
   }
+
   void updateSaveButtonPressedStatus() {
     state = state.copyWith(isSaveButtonPressed: true);
+  }
+  void resetAdditionalAmountValues(){
+    tip='';
+    fee='';
   }
 }
