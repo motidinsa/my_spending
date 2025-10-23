@@ -33,13 +33,14 @@ class AddSubcategoryState extends _$AddSubcategoryState {
       IsarAddSubcategoryRepository isarAddSubcategoryRepository =
           IsarAddSubcategoryRepository();
       DateTime now = DateTime.now();
+      final subcategoryModel = SubcategoryModel()
+        ..subcategoryName = subcategoryName
+        ..subcategoryId = generateDatabaseId(now)
+        ..dateCreated = now
+        ..categoryId = categoryId;
+      
       await isarAddSubcategoryRepository.addSubcategory(
-        subcategoryModel: SubcategoryModel(
-          subcategoryName: subcategoryName,
-          subcategoryId: generateDatabaseId(now),
-          dateCreated: now,
-          categoryId: categoryId,
-        ),
+        subcategoryModel: subcategoryModel,
       );
       navigatorKey.currentContext?.pop();
       // ref.read(categoriesStateProvider.notifier).updateCategories();

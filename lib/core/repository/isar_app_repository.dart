@@ -1,4 +1,4 @@
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
 import 'package:my_spending/add_account_group/model/account_group_model.dart';
 import 'package:my_spending/core/model/app_model/app_model.dart';
 import 'package:my_spending/core/repository/app_repository.dart';
@@ -13,12 +13,14 @@ class IsarAppRepository implements AppRepository {
     await isar.writeTxn(() async {
       if (appModel == null ||
           appModel.isDefaultAccountGroupInitialized != true) {
-        await isar.accountGroupModels.put(
-          AccountGroupModel(groupName: '', dateCreated: DateTime.now()),
-        );
-        await isar.appModels.put(
-          AppModel(isDefaultAccountGroupInitialized: true),
-        );
+        final accountGroup = AccountGroupModel()
+          ..groupName = ''
+          ..dateCreated = DateTime.now();
+        await isar.accountGroupModels.put(accountGroup);
+        
+        final appModel = AppModel()
+          ..isDefaultAccountGroupInitialized = true;
+        await isar.appModels.put(appModel);
       }
     });
   }

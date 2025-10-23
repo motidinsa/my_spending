@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,370 +9,311 @@ part of 'add_transaction_state_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$AddTransactionStateModel {
-  TransactionModel get transactionModel => throw _privateConstructorUsedError;
-  bool? get isAmountAddButtonPressed => throw _privateConstructorUsedError;
-  String get transactionType => throw _privateConstructorUsedError;
-  double? get modalHeight => throw _privateConstructorUsedError;
-  String? get redirectFrom => throw _privateConstructorUsedError;
-  String? get selectedId => throw _privateConstructorUsedError;
-  bool? get hasAmountFocus => throw _privateConstructorUsedError;
-  String? get fromAccount => throw _privateConstructorUsedError;
-  String? get toAccount => throw _privateConstructorUsedError;
-  bool? get isSaveButtonPressed => throw _privateConstructorUsedError;
-  bool? get isLoading => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
-  $AddTransactionStateModelCopyWith<AddTransactionStateModel> get copyWith =>
-      throw _privateConstructorUsedError;
+ TransactionModel get transactionModel; bool? get isAmountAddButtonPressed; String get transactionType; double? get modalHeight; String? get redirectFrom; String? get selectedId; bool? get hasAmountFocus; String? get fromAccount; String? get toAccount; bool? get isSaveButtonPressed; bool? get isLoading;
+/// Create a copy of AddTransactionStateModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$AddTransactionStateModelCopyWith<AddTransactionStateModel> get copyWith => _$AddTransactionStateModelCopyWithImpl<AddTransactionStateModel>(this as AddTransactionStateModel, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AddTransactionStateModel&&(identical(other.transactionModel, transactionModel) || other.transactionModel == transactionModel)&&(identical(other.isAmountAddButtonPressed, isAmountAddButtonPressed) || other.isAmountAddButtonPressed == isAmountAddButtonPressed)&&(identical(other.transactionType, transactionType) || other.transactionType == transactionType)&&(identical(other.modalHeight, modalHeight) || other.modalHeight == modalHeight)&&(identical(other.redirectFrom, redirectFrom) || other.redirectFrom == redirectFrom)&&(identical(other.selectedId, selectedId) || other.selectedId == selectedId)&&(identical(other.hasAmountFocus, hasAmountFocus) || other.hasAmountFocus == hasAmountFocus)&&(identical(other.fromAccount, fromAccount) || other.fromAccount == fromAccount)&&(identical(other.toAccount, toAccount) || other.toAccount == toAccount)&&(identical(other.isSaveButtonPressed, isSaveButtonPressed) || other.isSaveButtonPressed == isSaveButtonPressed)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,transactionModel,isAmountAddButtonPressed,transactionType,modalHeight,redirectFrom,selectedId,hasAmountFocus,fromAccount,toAccount,isSaveButtonPressed,isLoading);
+
+@override
+String toString() {
+  return 'AddTransactionStateModel(transactionModel: $transactionModel, isAmountAddButtonPressed: $isAmountAddButtonPressed, transactionType: $transactionType, modalHeight: $modalHeight, redirectFrom: $redirectFrom, selectedId: $selectedId, hasAmountFocus: $hasAmountFocus, fromAccount: $fromAccount, toAccount: $toAccount, isSaveButtonPressed: $isSaveButtonPressed, isLoading: $isLoading)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $AddTransactionStateModelCopyWith<$Res> {
-  factory $AddTransactionStateModelCopyWith(AddTransactionStateModel value,
-          $Res Function(AddTransactionStateModel) then) =
-      _$AddTransactionStateModelCopyWithImpl<$Res, AddTransactionStateModel>;
-  @useResult
-  $Res call(
-      {TransactionModel transactionModel,
-      bool? isAmountAddButtonPressed,
-      String transactionType,
-      double? modalHeight,
-      String? redirectFrom,
-      String? selectedId,
-      bool? hasAmountFocus,
-      String? fromAccount,
-      String? toAccount,
-      bool? isSaveButtonPressed,
-      bool? isLoading});
+abstract mixin class $AddTransactionStateModelCopyWith<$Res>  {
+  factory $AddTransactionStateModelCopyWith(AddTransactionStateModel value, $Res Function(AddTransactionStateModel) _then) = _$AddTransactionStateModelCopyWithImpl;
+@useResult
+$Res call({
+ TransactionModel transactionModel, bool? isAmountAddButtonPressed, String transactionType, double? modalHeight, String? redirectFrom, String? selectedId, bool? hasAmountFocus, String? fromAccount, String? toAccount, bool? isSaveButtonPressed, bool? isLoading
+});
 
-  $TransactionModelCopyWith<$Res> get transactionModel;
+
+$TransactionModelCopyWith<$Res> get transactionModel;
+
 }
-
 /// @nodoc
-class _$AddTransactionStateModelCopyWithImpl<$Res,
-        $Val extends AddTransactionStateModel>
+class _$AddTransactionStateModelCopyWithImpl<$Res>
     implements $AddTransactionStateModelCopyWith<$Res> {
-  _$AddTransactionStateModelCopyWithImpl(this._value, this._then);
+  _$AddTransactionStateModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final AddTransactionStateModel _self;
+  final $Res Function(AddTransactionStateModel) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? transactionModel = null,
-    Object? isAmountAddButtonPressed = freezed,
-    Object? transactionType = null,
-    Object? modalHeight = freezed,
-    Object? redirectFrom = freezed,
-    Object? selectedId = freezed,
-    Object? hasAmountFocus = freezed,
-    Object? fromAccount = freezed,
-    Object? toAccount = freezed,
-    Object? isSaveButtonPressed = freezed,
-    Object? isLoading = freezed,
-  }) {
-    return _then(_value.copyWith(
-      transactionModel: null == transactionModel
-          ? _value.transactionModel
-          : transactionModel // ignore: cast_nullable_to_non_nullable
-              as TransactionModel,
-      isAmountAddButtonPressed: freezed == isAmountAddButtonPressed
-          ? _value.isAmountAddButtonPressed
-          : isAmountAddButtonPressed // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      transactionType: null == transactionType
-          ? _value.transactionType
-          : transactionType // ignore: cast_nullable_to_non_nullable
-              as String,
-      modalHeight: freezed == modalHeight
-          ? _value.modalHeight
-          : modalHeight // ignore: cast_nullable_to_non_nullable
-              as double?,
-      redirectFrom: freezed == redirectFrom
-          ? _value.redirectFrom
-          : redirectFrom // ignore: cast_nullable_to_non_nullable
-              as String?,
-      selectedId: freezed == selectedId
-          ? _value.selectedId
-          : selectedId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hasAmountFocus: freezed == hasAmountFocus
-          ? _value.hasAmountFocus
-          : hasAmountFocus // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      fromAccount: freezed == fromAccount
-          ? _value.fromAccount
-          : fromAccount // ignore: cast_nullable_to_non_nullable
-              as String?,
-      toAccount: freezed == toAccount
-          ? _value.toAccount
-          : toAccount // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isSaveButtonPressed: freezed == isSaveButtonPressed
-          ? _value.isSaveButtonPressed
-          : isSaveButtonPressed // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      isLoading: freezed == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $TransactionModelCopyWith<$Res> get transactionModel {
-    return $TransactionModelCopyWith<$Res>(_value.transactionModel, (value) {
-      return _then(_value.copyWith(transactionModel: value) as $Val);
-    });
-  }
+/// Create a copy of AddTransactionStateModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? transactionModel = null,Object? isAmountAddButtonPressed = freezed,Object? transactionType = null,Object? modalHeight = freezed,Object? redirectFrom = freezed,Object? selectedId = freezed,Object? hasAmountFocus = freezed,Object? fromAccount = freezed,Object? toAccount = freezed,Object? isSaveButtonPressed = freezed,Object? isLoading = freezed,}) {
+  return _then(_self.copyWith(
+transactionModel: null == transactionModel ? _self.transactionModel : transactionModel // ignore: cast_nullable_to_non_nullable
+as TransactionModel,isAmountAddButtonPressed: freezed == isAmountAddButtonPressed ? _self.isAmountAddButtonPressed : isAmountAddButtonPressed // ignore: cast_nullable_to_non_nullable
+as bool?,transactionType: null == transactionType ? _self.transactionType : transactionType // ignore: cast_nullable_to_non_nullable
+as String,modalHeight: freezed == modalHeight ? _self.modalHeight : modalHeight // ignore: cast_nullable_to_non_nullable
+as double?,redirectFrom: freezed == redirectFrom ? _self.redirectFrom : redirectFrom // ignore: cast_nullable_to_non_nullable
+as String?,selectedId: freezed == selectedId ? _self.selectedId : selectedId // ignore: cast_nullable_to_non_nullable
+as String?,hasAmountFocus: freezed == hasAmountFocus ? _self.hasAmountFocus : hasAmountFocus // ignore: cast_nullable_to_non_nullable
+as bool?,fromAccount: freezed == fromAccount ? _self.fromAccount : fromAccount // ignore: cast_nullable_to_non_nullable
+as String?,toAccount: freezed == toAccount ? _self.toAccount : toAccount // ignore: cast_nullable_to_non_nullable
+as String?,isSaveButtonPressed: freezed == isSaveButtonPressed ? _self.isSaveButtonPressed : isSaveButtonPressed // ignore: cast_nullable_to_non_nullable
+as bool?,isLoading: freezed == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+as bool?,
+  ));
+}
+/// Create a copy of AddTransactionStateModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$TransactionModelCopyWith<$Res> get transactionModel {
+  
+  return $TransactionModelCopyWith<$Res>(_self.transactionModel, (value) {
+    return _then(_self.copyWith(transactionModel: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$AddTransactionStateModelImplCopyWith<$Res>
-    implements $AddTransactionStateModelCopyWith<$Res> {
-  factory _$$AddTransactionStateModelImplCopyWith(
-          _$AddTransactionStateModelImpl value,
-          $Res Function(_$AddTransactionStateModelImpl) then) =
-      __$$AddTransactionStateModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {TransactionModel transactionModel,
-      bool? isAmountAddButtonPressed,
-      String transactionType,
-      double? modalHeight,
-      String? redirectFrom,
-      String? selectedId,
-      bool? hasAmountFocus,
-      String? fromAccount,
-      String? toAccount,
-      bool? isSaveButtonPressed,
-      bool? isLoading});
 
-  @override
-  $TransactionModelCopyWith<$Res> get transactionModel;
+/// Adds pattern-matching-related methods to [AddTransactionStateModel].
+extension AddTransactionStateModelPatterns on AddTransactionStateModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _AddTransactionStateModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _AddTransactionStateModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _AddTransactionStateModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _AddTransactionStateModel():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _AddTransactionStateModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _AddTransactionStateModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TransactionModel transactionModel,  bool? isAmountAddButtonPressed,  String transactionType,  double? modalHeight,  String? redirectFrom,  String? selectedId,  bool? hasAmountFocus,  String? fromAccount,  String? toAccount,  bool? isSaveButtonPressed,  bool? isLoading)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _AddTransactionStateModel() when $default != null:
+return $default(_that.transactionModel,_that.isAmountAddButtonPressed,_that.transactionType,_that.modalHeight,_that.redirectFrom,_that.selectedId,_that.hasAmountFocus,_that.fromAccount,_that.toAccount,_that.isSaveButtonPressed,_that.isLoading);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TransactionModel transactionModel,  bool? isAmountAddButtonPressed,  String transactionType,  double? modalHeight,  String? redirectFrom,  String? selectedId,  bool? hasAmountFocus,  String? fromAccount,  String? toAccount,  bool? isSaveButtonPressed,  bool? isLoading)  $default,) {final _that = this;
+switch (_that) {
+case _AddTransactionStateModel():
+return $default(_that.transactionModel,_that.isAmountAddButtonPressed,_that.transactionType,_that.modalHeight,_that.redirectFrom,_that.selectedId,_that.hasAmountFocus,_that.fromAccount,_that.toAccount,_that.isSaveButtonPressed,_that.isLoading);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TransactionModel transactionModel,  bool? isAmountAddButtonPressed,  String transactionType,  double? modalHeight,  String? redirectFrom,  String? selectedId,  bool? hasAmountFocus,  String? fromAccount,  String? toAccount,  bool? isSaveButtonPressed,  bool? isLoading)?  $default,) {final _that = this;
+switch (_that) {
+case _AddTransactionStateModel() when $default != null:
+return $default(_that.transactionModel,_that.isAmountAddButtonPressed,_that.transactionType,_that.modalHeight,_that.redirectFrom,_that.selectedId,_that.hasAmountFocus,_that.fromAccount,_that.toAccount,_that.isSaveButtonPressed,_that.isLoading);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$AddTransactionStateModelImplCopyWithImpl<$Res>
-    extends _$AddTransactionStateModelCopyWithImpl<$Res,
-        _$AddTransactionStateModelImpl>
-    implements _$$AddTransactionStateModelImplCopyWith<$Res> {
-  __$$AddTransactionStateModelImplCopyWithImpl(
-      _$AddTransactionStateModelImpl _value,
-      $Res Function(_$AddTransactionStateModelImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? transactionModel = null,
-    Object? isAmountAddButtonPressed = freezed,
-    Object? transactionType = null,
-    Object? modalHeight = freezed,
-    Object? redirectFrom = freezed,
-    Object? selectedId = freezed,
-    Object? hasAmountFocus = freezed,
-    Object? fromAccount = freezed,
-    Object? toAccount = freezed,
-    Object? isSaveButtonPressed = freezed,
-    Object? isLoading = freezed,
-  }) {
-    return _then(_$AddTransactionStateModelImpl(
-      transactionModel: null == transactionModel
-          ? _value.transactionModel
-          : transactionModel // ignore: cast_nullable_to_non_nullable
-              as TransactionModel,
-      isAmountAddButtonPressed: freezed == isAmountAddButtonPressed
-          ? _value.isAmountAddButtonPressed
-          : isAmountAddButtonPressed // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      transactionType: null == transactionType
-          ? _value.transactionType
-          : transactionType // ignore: cast_nullable_to_non_nullable
-              as String,
-      modalHeight: freezed == modalHeight
-          ? _value.modalHeight
-          : modalHeight // ignore: cast_nullable_to_non_nullable
-              as double?,
-      redirectFrom: freezed == redirectFrom
-          ? _value.redirectFrom
-          : redirectFrom // ignore: cast_nullable_to_non_nullable
-              as String?,
-      selectedId: freezed == selectedId
-          ? _value.selectedId
-          : selectedId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hasAmountFocus: freezed == hasAmountFocus
-          ? _value.hasAmountFocus
-          : hasAmountFocus // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      fromAccount: freezed == fromAccount
-          ? _value.fromAccount
-          : fromAccount // ignore: cast_nullable_to_non_nullable
-              as String?,
-      toAccount: freezed == toAccount
-          ? _value.toAccount
-          : toAccount // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isSaveButtonPressed: freezed == isSaveButtonPressed
-          ? _value.isSaveButtonPressed
-          : isSaveButtonPressed // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      isLoading: freezed == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$AddTransactionStateModelImpl implements _AddTransactionStateModel {
-  const _$AddTransactionStateModelImpl(
-      {required this.transactionModel,
-      this.isAmountAddButtonPressed,
-      required this.transactionType,
-      this.modalHeight,
-      this.redirectFrom,
-      this.selectedId,
-      this.hasAmountFocus,
-      this.fromAccount,
-      this.toAccount,
-      this.isSaveButtonPressed,
-      this.isLoading});
 
-  @override
-  final TransactionModel transactionModel;
-  @override
-  final bool? isAmountAddButtonPressed;
-  @override
-  final String transactionType;
-  @override
-  final double? modalHeight;
-  @override
-  final String? redirectFrom;
-  @override
-  final String? selectedId;
-  @override
-  final bool? hasAmountFocus;
-  @override
-  final String? fromAccount;
-  @override
-  final String? toAccount;
-  @override
-  final bool? isSaveButtonPressed;
-  @override
-  final bool? isLoading;
+class _AddTransactionStateModel implements AddTransactionStateModel {
+  const _AddTransactionStateModel({required this.transactionModel, this.isAmountAddButtonPressed, required this.transactionType, this.modalHeight, this.redirectFrom, this.selectedId, this.hasAmountFocus, this.fromAccount, this.toAccount, this.isSaveButtonPressed, this.isLoading});
+  
 
-  @override
-  String toString() {
-    return 'AddTransactionStateModel(transactionModel: $transactionModel, isAmountAddButtonPressed: $isAmountAddButtonPressed, transactionType: $transactionType, modalHeight: $modalHeight, redirectFrom: $redirectFrom, selectedId: $selectedId, hasAmountFocus: $hasAmountFocus, fromAccount: $fromAccount, toAccount: $toAccount, isSaveButtonPressed: $isSaveButtonPressed, isLoading: $isLoading)';
-  }
+@override final  TransactionModel transactionModel;
+@override final  bool? isAmountAddButtonPressed;
+@override final  String transactionType;
+@override final  double? modalHeight;
+@override final  String? redirectFrom;
+@override final  String? selectedId;
+@override final  bool? hasAmountFocus;
+@override final  String? fromAccount;
+@override final  String? toAccount;
+@override final  bool? isSaveButtonPressed;
+@override final  bool? isLoading;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AddTransactionStateModelImpl &&
-            (identical(other.transactionModel, transactionModel) ||
-                other.transactionModel == transactionModel) &&
-            (identical(
-                    other.isAmountAddButtonPressed, isAmountAddButtonPressed) ||
-                other.isAmountAddButtonPressed == isAmountAddButtonPressed) &&
-            (identical(other.transactionType, transactionType) ||
-                other.transactionType == transactionType) &&
-            (identical(other.modalHeight, modalHeight) ||
-                other.modalHeight == modalHeight) &&
-            (identical(other.redirectFrom, redirectFrom) ||
-                other.redirectFrom == redirectFrom) &&
-            (identical(other.selectedId, selectedId) ||
-                other.selectedId == selectedId) &&
-            (identical(other.hasAmountFocus, hasAmountFocus) ||
-                other.hasAmountFocus == hasAmountFocus) &&
-            (identical(other.fromAccount, fromAccount) ||
-                other.fromAccount == fromAccount) &&
-            (identical(other.toAccount, toAccount) ||
-                other.toAccount == toAccount) &&
-            (identical(other.isSaveButtonPressed, isSaveButtonPressed) ||
-                other.isSaveButtonPressed == isSaveButtonPressed) &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading));
-  }
+/// Create a copy of AddTransactionStateModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$AddTransactionStateModelCopyWith<_AddTransactionStateModel> get copyWith => __$AddTransactionStateModelCopyWithImpl<_AddTransactionStateModel>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      transactionModel,
-      isAmountAddButtonPressed,
-      transactionType,
-      modalHeight,
-      redirectFrom,
-      selectedId,
-      hasAmountFocus,
-      fromAccount,
-      toAccount,
-      isSaveButtonPressed,
-      isLoading);
 
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AddTransactionStateModelImplCopyWith<_$AddTransactionStateModelImpl>
-      get copyWith => __$$AddTransactionStateModelImplCopyWithImpl<
-          _$AddTransactionStateModelImpl>(this, _$identity);
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AddTransactionStateModel&&(identical(other.transactionModel, transactionModel) || other.transactionModel == transactionModel)&&(identical(other.isAmountAddButtonPressed, isAmountAddButtonPressed) || other.isAmountAddButtonPressed == isAmountAddButtonPressed)&&(identical(other.transactionType, transactionType) || other.transactionType == transactionType)&&(identical(other.modalHeight, modalHeight) || other.modalHeight == modalHeight)&&(identical(other.redirectFrom, redirectFrom) || other.redirectFrom == redirectFrom)&&(identical(other.selectedId, selectedId) || other.selectedId == selectedId)&&(identical(other.hasAmountFocus, hasAmountFocus) || other.hasAmountFocus == hasAmountFocus)&&(identical(other.fromAccount, fromAccount) || other.fromAccount == fromAccount)&&(identical(other.toAccount, toAccount) || other.toAccount == toAccount)&&(identical(other.isSaveButtonPressed, isSaveButtonPressed) || other.isSaveButtonPressed == isSaveButtonPressed)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading));
 }
 
-abstract class _AddTransactionStateModel implements AddTransactionStateModel {
-  const factory _AddTransactionStateModel(
-      {required final TransactionModel transactionModel,
-      final bool? isAmountAddButtonPressed,
-      required final String transactionType,
-      final double? modalHeight,
-      final String? redirectFrom,
-      final String? selectedId,
-      final bool? hasAmountFocus,
-      final String? fromAccount,
-      final String? toAccount,
-      final bool? isSaveButtonPressed,
-      final bool? isLoading}) = _$AddTransactionStateModelImpl;
 
-  @override
-  TransactionModel get transactionModel;
-  @override
-  bool? get isAmountAddButtonPressed;
-  @override
-  String get transactionType;
-  @override
-  double? get modalHeight;
-  @override
-  String? get redirectFrom;
-  @override
-  String? get selectedId;
-  @override
-  bool? get hasAmountFocus;
-  @override
-  String? get fromAccount;
-  @override
-  String? get toAccount;
-  @override
-  bool? get isSaveButtonPressed;
-  @override
-  bool? get isLoading;
-  @override
-  @JsonKey(ignore: true)
-  _$$AddTransactionStateModelImplCopyWith<_$AddTransactionStateModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+int get hashCode => Object.hash(runtimeType,transactionModel,isAmountAddButtonPressed,transactionType,modalHeight,redirectFrom,selectedId,hasAmountFocus,fromAccount,toAccount,isSaveButtonPressed,isLoading);
+
+@override
+String toString() {
+  return 'AddTransactionStateModel(transactionModel: $transactionModel, isAmountAddButtonPressed: $isAmountAddButtonPressed, transactionType: $transactionType, modalHeight: $modalHeight, redirectFrom: $redirectFrom, selectedId: $selectedId, hasAmountFocus: $hasAmountFocus, fromAccount: $fromAccount, toAccount: $toAccount, isSaveButtonPressed: $isSaveButtonPressed, isLoading: $isLoading)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$AddTransactionStateModelCopyWith<$Res> implements $AddTransactionStateModelCopyWith<$Res> {
+  factory _$AddTransactionStateModelCopyWith(_AddTransactionStateModel value, $Res Function(_AddTransactionStateModel) _then) = __$AddTransactionStateModelCopyWithImpl;
+@override @useResult
+$Res call({
+ TransactionModel transactionModel, bool? isAmountAddButtonPressed, String transactionType, double? modalHeight, String? redirectFrom, String? selectedId, bool? hasAmountFocus, String? fromAccount, String? toAccount, bool? isSaveButtonPressed, bool? isLoading
+});
+
+
+@override $TransactionModelCopyWith<$Res> get transactionModel;
+
+}
+/// @nodoc
+class __$AddTransactionStateModelCopyWithImpl<$Res>
+    implements _$AddTransactionStateModelCopyWith<$Res> {
+  __$AddTransactionStateModelCopyWithImpl(this._self, this._then);
+
+  final _AddTransactionStateModel _self;
+  final $Res Function(_AddTransactionStateModel) _then;
+
+/// Create a copy of AddTransactionStateModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? transactionModel = null,Object? isAmountAddButtonPressed = freezed,Object? transactionType = null,Object? modalHeight = freezed,Object? redirectFrom = freezed,Object? selectedId = freezed,Object? hasAmountFocus = freezed,Object? fromAccount = freezed,Object? toAccount = freezed,Object? isSaveButtonPressed = freezed,Object? isLoading = freezed,}) {
+  return _then(_AddTransactionStateModel(
+transactionModel: null == transactionModel ? _self.transactionModel : transactionModel // ignore: cast_nullable_to_non_nullable
+as TransactionModel,isAmountAddButtonPressed: freezed == isAmountAddButtonPressed ? _self.isAmountAddButtonPressed : isAmountAddButtonPressed // ignore: cast_nullable_to_non_nullable
+as bool?,transactionType: null == transactionType ? _self.transactionType : transactionType // ignore: cast_nullable_to_non_nullable
+as String,modalHeight: freezed == modalHeight ? _self.modalHeight : modalHeight // ignore: cast_nullable_to_non_nullable
+as double?,redirectFrom: freezed == redirectFrom ? _self.redirectFrom : redirectFrom // ignore: cast_nullable_to_non_nullable
+as String?,selectedId: freezed == selectedId ? _self.selectedId : selectedId // ignore: cast_nullable_to_non_nullable
+as String?,hasAmountFocus: freezed == hasAmountFocus ? _self.hasAmountFocus : hasAmountFocus // ignore: cast_nullable_to_non_nullable
+as bool?,fromAccount: freezed == fromAccount ? _self.fromAccount : fromAccount // ignore: cast_nullable_to_non_nullable
+as String?,toAccount: freezed == toAccount ? _self.toAccount : toAccount // ignore: cast_nullable_to_non_nullable
+as String?,isSaveButtonPressed: freezed == isSaveButtonPressed ? _self.isSaveButtonPressed : isSaveButtonPressed // ignore: cast_nullable_to_non_nullable
+as bool?,isLoading: freezed == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+as bool?,
+  ));
+}
+
+/// Create a copy of AddTransactionStateModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$TransactionModelCopyWith<$Res> get transactionModel {
+  
+  return $TransactionModelCopyWith<$Res>(_self.transactionModel, (value) {
+    return _then(_self.copyWith(transactionModel: value));
+  });
+}
+}
+
+// dart format on

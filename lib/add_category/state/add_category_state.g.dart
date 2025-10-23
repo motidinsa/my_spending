@@ -6,21 +6,58 @@ part of 'add_category_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$addCategoryStateHash() => r'abcd80c312a06d980995d6ecc02671255c539dbd';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [AddCategoryState].
 @ProviderFor(AddCategoryState)
-final addCategoryStateProvider = AutoDisposeNotifierProvider<AddCategoryState,
-    AddCategoryStateModel>.internal(
-  AddCategoryState.new,
-  name: r'addCategoryStateProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$addCategoryStateHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const addCategoryStateProvider = AddCategoryStateProvider._();
 
-typedef _$AddCategoryState = AutoDisposeNotifier<AddCategoryStateModel>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+final class AddCategoryStateProvider
+    extends $NotifierProvider<AddCategoryState, AddCategoryStateModel> {
+  const AddCategoryStateProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'addCategoryStateProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$addCategoryStateHash();
+
+  @$internal
+  @override
+  AddCategoryState create() => AddCategoryState();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(AddCategoryStateModel value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<AddCategoryStateModel>(value),
+    );
+  }
+}
+
+String _$addCategoryStateHash() => r'56cdd7bf5eae078be0e9533e406349291202fa82';
+
+abstract class _$AddCategoryState extends $Notifier<AddCategoryStateModel> {
+  AddCategoryStateModel build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<AddCategoryStateModel, AddCategoryStateModel>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AddCategoryStateModel, AddCategoryStateModel>,
+              AddCategoryStateModel,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

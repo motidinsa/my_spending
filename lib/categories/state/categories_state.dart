@@ -30,9 +30,11 @@ class CategoriesState extends _$CategoriesState {
             categoryList[i].categoryId,
           )!;
       if (categoryType == LocaleKeys.expense) {
-        categoryModels.add(categoryModel.copyWith(expenseSortIndex: i));
+        categoryModel.expenseSortIndex = i;
+        categoryModels.add(categoryModel);
       } else {
-        categoryModels.add(categoryModel.copyWith(incomeSortIndex: i));
+        categoryModel.incomeSortIndex = i;
+        categoryModels.add(categoryModel);
       }
     }
     await isarCategoriesRepository.updateCategoryModelSortIndex(categoryModels);

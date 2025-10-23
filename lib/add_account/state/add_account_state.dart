@@ -59,15 +59,16 @@ class AddAccountState extends _$AddAccountState {
       IsarAddAccountRepository isarAddAccountRepository =
           IsarAddAccountRepository();
       DateTime now = DateTime.now();
+      final accountModel = AccountModel()
+        ..groupId = groupId
+        ..accountId = generateDatabaseId(now)
+        ..dateCreated = now
+        ..accountName = accountName
+        ..amountAvailable = double.parse(amount)
+        ..description = description;
+      
       await isarAddAccountRepository.addAccount(
-        accountModel: AccountModel(
-          groupId: groupId,
-          accountId: generateDatabaseId(now),
-          dateCreated: now,
-          accountName: accountName,
-          amountAvailable: double.parse(amount),
-          description: description,
-        ),
+        accountModel: accountModel,
       );
       navigatorKey.currentContext?.pop();
       ref.read(accountsStateProvider.notifier).updateAccountLists();

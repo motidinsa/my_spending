@@ -1,4 +1,4 @@
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
 import 'package:my_spending/add_account_group/model/account_group_model.dart';
 import 'package:my_spending/add_transaction/repository/add_transaction_repository.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';

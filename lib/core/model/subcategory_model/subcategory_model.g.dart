@@ -46,8 +46,9 @@ const SubcategoryModelSchema = CollectionSchema(
       id: 5,
       name: r'subcategoryName',
       type: IsarType.string,
-    )
+    ),
   },
+
   estimateSize: _subcategoryModelEstimateSize,
   serialize: _subcategoryModelSerialize,
   deserialize: _subcategoryModelDeserialize,
@@ -56,10 +57,11 @@ const SubcategoryModelSchema = CollectionSchema(
   indexes: {},
   links: {},
   embeddedSchemas: {},
+
   getId: _subcategoryModelGetId,
   getLinks: _subcategoryModelGetLinks,
   attach: _subcategoryModelAttach,
-  version: '3.1.8',
+  version: '3.3.0-dev.3',
 );
 
 int _subcategoryModelEstimateSize(
@@ -94,15 +96,14 @@ SubcategoryModel _subcategoryModelDeserialize(
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  final object = SubcategoryModel(
-    categoryId: reader.readString(offsets[0]),
-    dateCreated: reader.readDateTime(offsets[1]),
-    dateModified: reader.readDateTimeOrNull(offsets[2]),
-    id: id,
-    sortIndex: reader.readLongOrNull(offsets[3]),
-    subcategoryId: reader.readString(offsets[4]),
-    subcategoryName: reader.readString(offsets[5]),
-  );
+  final object = SubcategoryModel();
+  object.categoryId = reader.readString(offsets[0]);
+  object.dateCreated = reader.readDateTime(offsets[1]);
+  object.dateModified = reader.readDateTimeOrNull(offsets[2]);
+  object.id = id;
+  object.sortIndex = reader.readLongOrNull(offsets[3]);
+  object.subcategoryId = reader.readString(offsets[4]);
+  object.subcategoryName = reader.readString(offsets[5]);
   return object;
 }
 
@@ -139,7 +140,12 @@ List<IsarLinkBase<dynamic>> _subcategoryModelGetLinks(SubcategoryModel object) {
 }
 
 void _subcategoryModelAttach(
-    IsarCollection<dynamic> col, Id id, SubcategoryModel object) {}
+  IsarCollection<dynamic> col,
+  Id id,
+  SubcategoryModel object,
+) {
+  object.id = id;
+}
 
 extension SubcategoryModelQueryWhereSort
     on QueryBuilder<SubcategoryModel, SubcategoryModel, QWhere> {
@@ -153,17 +159,15 @@ extension SubcategoryModelQueryWhereSort
 extension SubcategoryModelQueryWhere
     on QueryBuilder<SubcategoryModel, SubcategoryModel, QWhereClause> {
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterWhereClause> idEqualTo(
-      Id id) {
+    Id id,
+  ) {
     return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IdWhereClause.between(
-        lower: id,
-        upper: id,
-      ));
+      return query.addWhereClause(IdWhereClause.between(lower: id, upper: id));
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterWhereClause>
-      idNotEqualTo(Id id) {
+  idNotEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -186,7 +190,7 @@ extension SubcategoryModelQueryWhere
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterWhereClause>
-      idGreaterThan(Id id, {bool include = false}) {
+  idGreaterThan(Id id, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.greaterThan(lower: id, includeLower: include),
@@ -195,7 +199,7 @@ extension SubcategoryModelQueryWhere
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterWhereClause>
-      idLessThan(Id id, {bool include = false}) {
+  idLessThan(Id id, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.lessThan(upper: id, includeUpper: include),
@@ -210,12 +214,14 @@ extension SubcategoryModelQueryWhere
     bool includeUpper = true,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IdWhereClause.between(
-        lower: lowerId,
-        includeLower: includeLower,
-        upper: upperId,
-        includeUpper: includeUpper,
-      ));
+      return query.addWhereClause(
+        IdWhereClause.between(
+          lower: lowerId,
+          includeLower: includeLower,
+          upper: upperId,
+          includeUpper: includeUpper,
+        ),
+      );
     });
   }
 }
@@ -223,53 +229,56 @@ extension SubcategoryModelQueryWhere
 extension SubcategoryModelQueryFilter
     on QueryBuilder<SubcategoryModel, SubcategoryModel, QFilterCondition> {
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      categoryIdEqualTo(
-    String value, {
-    bool caseSensitive = true,
-  }) {
+  categoryIdEqualTo(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'categoryId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.equalTo(
+          property: r'categoryId',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      categoryIdGreaterThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'categoryId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      categoryIdLessThan(
+  categoryIdGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'categoryId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.greaterThan(
+          include: include,
+          property: r'categoryId',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      categoryIdBetween(
+  categoryIdLessThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        FilterCondition.lessThan(
+          include: include,
+          property: r'categoryId',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
+  categoryIdBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -277,395 +286,396 @@ extension SubcategoryModelQueryFilter
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'categoryId',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.between(
+          property: r'categoryId',
+          lower: lower,
+          includeLower: includeLower,
+          upper: upper,
+          includeUpper: includeUpper,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      categoryIdStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
+  categoryIdStartsWith(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.startsWith(
-        property: r'categoryId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.startsWith(
+          property: r'categoryId',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      categoryIdEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
+  categoryIdEndsWith(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.endsWith(
-        property: r'categoryId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.endsWith(
+          property: r'categoryId',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      categoryIdContains(String value, {bool caseSensitive = true}) {
+  categoryIdContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.contains(
-        property: r'categoryId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.contains(
+          property: r'categoryId',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      categoryIdMatches(String pattern, {bool caseSensitive = true}) {
+  categoryIdMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.matches(
-        property: r'categoryId',
-        wildcard: pattern,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.matches(
+          property: r'categoryId',
+          wildcard: pattern,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      categoryIdIsEmpty() {
+  categoryIdIsEmpty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'categoryId',
-        value: '',
-      ));
+      return query.addFilterCondition(
+        FilterCondition.equalTo(property: r'categoryId', value: ''),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      categoryIdIsNotEmpty() {
+  categoryIdIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        property: r'categoryId',
-        value: '',
-      ));
+      return query.addFilterCondition(
+        FilterCondition.greaterThan(property: r'categoryId', value: ''),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      dateCreatedEqualTo(DateTime value) {
+  dateCreatedEqualTo(DateTime value) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'dateCreated',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.equalTo(property: r'dateCreated', value: value),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      dateCreatedGreaterThan(
-    DateTime value, {
-    bool include = false,
-  }) {
+  dateCreatedGreaterThan(DateTime value, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'dateCreated',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.greaterThan(
+          include: include,
+          property: r'dateCreated',
+          value: value,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      dateCreatedLessThan(
-    DateTime value, {
-    bool include = false,
-  }) {
+  dateCreatedLessThan(DateTime value, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'dateCreated',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.lessThan(
+          include: include,
+          property: r'dateCreated',
+          value: value,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      dateCreatedBetween(
+  dateCreatedBetween(
     DateTime lower,
     DateTime upper, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'dateCreated',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.between(
+          property: r'dateCreated',
+          lower: lower,
+          includeLower: includeLower,
+          upper: upper,
+          includeUpper: includeUpper,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      dateModifiedIsNull() {
+  dateModifiedIsNull() {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNull(
-        property: r'dateModified',
-      ));
+      return query.addFilterCondition(
+        const FilterCondition.isNull(property: r'dateModified'),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      dateModifiedIsNotNull() {
+  dateModifiedIsNotNull() {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNotNull(
-        property: r'dateModified',
-      ));
+      return query.addFilterCondition(
+        const FilterCondition.isNotNull(property: r'dateModified'),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      dateModifiedEqualTo(DateTime? value) {
+  dateModifiedEqualTo(DateTime? value) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'dateModified',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.equalTo(property: r'dateModified', value: value),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      dateModifiedGreaterThan(
-    DateTime? value, {
-    bool include = false,
-  }) {
+  dateModifiedGreaterThan(DateTime? value, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'dateModified',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.greaterThan(
+          include: include,
+          property: r'dateModified',
+          value: value,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      dateModifiedLessThan(
-    DateTime? value, {
-    bool include = false,
-  }) {
+  dateModifiedLessThan(DateTime? value, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'dateModified',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.lessThan(
+          include: include,
+          property: r'dateModified',
+          value: value,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      dateModifiedBetween(
+  dateModifiedBetween(
     DateTime? lower,
     DateTime? upper, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'dateModified',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.between(
+          property: r'dateModified',
+          lower: lower,
+          includeLower: includeLower,
+          upper: upper,
+          includeUpper: includeUpper,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      idEqualTo(Id value) {
+  idEqualTo(Id value) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'id',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.equalTo(property: r'id', value: value),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      idGreaterThan(
-    Id value, {
-    bool include = false,
-  }) {
+  idGreaterThan(Id value, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'id',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.greaterThan(
+          include: include,
+          property: r'id',
+          value: value,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      idLessThan(
-    Id value, {
-    bool include = false,
-  }) {
+  idLessThan(Id value, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'id',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.lessThan(
+          include: include,
+          property: r'id',
+          value: value,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      idBetween(
+  idBetween(
     Id lower,
     Id upper, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'id',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.between(
+          property: r'id',
+          lower: lower,
+          includeLower: includeLower,
+          upper: upper,
+          includeUpper: includeUpper,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      sortIndexIsNull() {
+  sortIndexIsNull() {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNull(
-        property: r'sortIndex',
-      ));
+      return query.addFilterCondition(
+        const FilterCondition.isNull(property: r'sortIndex'),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      sortIndexIsNotNull() {
+  sortIndexIsNotNull() {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNotNull(
-        property: r'sortIndex',
-      ));
+      return query.addFilterCondition(
+        const FilterCondition.isNotNull(property: r'sortIndex'),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      sortIndexEqualTo(int? value) {
+  sortIndexEqualTo(int? value) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'sortIndex',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.equalTo(property: r'sortIndex', value: value),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      sortIndexGreaterThan(
-    int? value, {
-    bool include = false,
-  }) {
+  sortIndexGreaterThan(int? value, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'sortIndex',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.greaterThan(
+          include: include,
+          property: r'sortIndex',
+          value: value,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      sortIndexLessThan(
-    int? value, {
-    bool include = false,
-  }) {
+  sortIndexLessThan(int? value, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'sortIndex',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.lessThan(
+          include: include,
+          property: r'sortIndex',
+          value: value,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      sortIndexBetween(
+  sortIndexBetween(
     int? lower,
     int? upper, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'sortIndex',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.between(
+          property: r'sortIndex',
+          lower: lower,
+          includeLower: includeLower,
+          upper: upper,
+          includeUpper: includeUpper,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      subcategoryIdEqualTo(
-    String value, {
-    bool caseSensitive = true,
-  }) {
+  subcategoryIdEqualTo(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'subcategoryId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.equalTo(
+          property: r'subcategoryId',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      subcategoryIdGreaterThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'subcategoryId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      subcategoryIdLessThan(
+  subcategoryIdGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'subcategoryId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.greaterThan(
+          include: include,
+          property: r'subcategoryId',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      subcategoryIdBetween(
+  subcategoryIdLessThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        FilterCondition.lessThan(
+          include: include,
+          property: r'subcategoryId',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
+  subcategoryIdBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -673,135 +683,140 @@ extension SubcategoryModelQueryFilter
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'subcategoryId',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.between(
+          property: r'subcategoryId',
+          lower: lower,
+          includeLower: includeLower,
+          upper: upper,
+          includeUpper: includeUpper,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      subcategoryIdStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
+  subcategoryIdStartsWith(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.startsWith(
-        property: r'subcategoryId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.startsWith(
+          property: r'subcategoryId',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      subcategoryIdEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
+  subcategoryIdEndsWith(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.endsWith(
-        property: r'subcategoryId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.endsWith(
+          property: r'subcategoryId',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      subcategoryIdContains(String value, {bool caseSensitive = true}) {
+  subcategoryIdContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.contains(
-        property: r'subcategoryId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.contains(
+          property: r'subcategoryId',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      subcategoryIdMatches(String pattern, {bool caseSensitive = true}) {
+  subcategoryIdMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.matches(
-        property: r'subcategoryId',
-        wildcard: pattern,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.matches(
+          property: r'subcategoryId',
+          wildcard: pattern,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      subcategoryIdIsEmpty() {
+  subcategoryIdIsEmpty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'subcategoryId',
-        value: '',
-      ));
+      return query.addFilterCondition(
+        FilterCondition.equalTo(property: r'subcategoryId', value: ''),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      subcategoryIdIsNotEmpty() {
+  subcategoryIdIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        property: r'subcategoryId',
-        value: '',
-      ));
+      return query.addFilterCondition(
+        FilterCondition.greaterThan(property: r'subcategoryId', value: ''),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      subcategoryNameEqualTo(
-    String value, {
-    bool caseSensitive = true,
-  }) {
+  subcategoryNameEqualTo(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'subcategoryName',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.equalTo(
+          property: r'subcategoryName',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      subcategoryNameGreaterThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'subcategoryName',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      subcategoryNameLessThan(
+  subcategoryNameGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'subcategoryName',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.greaterThan(
+          include: include,
+          property: r'subcategoryName',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      subcategoryNameBetween(
+  subcategoryNameLessThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        FilterCondition.lessThan(
+          include: include,
+          property: r'subcategoryName',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
+  subcategoryNameBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -809,84 +824,86 @@ extension SubcategoryModelQueryFilter
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'subcategoryName',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.between(
+          property: r'subcategoryName',
+          lower: lower,
+          includeLower: includeLower,
+          upper: upper,
+          includeUpper: includeUpper,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      subcategoryNameStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
+  subcategoryNameStartsWith(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.startsWith(
-        property: r'subcategoryName',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.startsWith(
+          property: r'subcategoryName',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      subcategoryNameEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
+  subcategoryNameEndsWith(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.endsWith(
-        property: r'subcategoryName',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.endsWith(
+          property: r'subcategoryName',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      subcategoryNameContains(String value, {bool caseSensitive = true}) {
+  subcategoryNameContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.contains(
-        property: r'subcategoryName',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.contains(
+          property: r'subcategoryName',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      subcategoryNameMatches(String pattern, {bool caseSensitive = true}) {
+  subcategoryNameMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.matches(
-        property: r'subcategoryName',
-        wildcard: pattern,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.matches(
+          property: r'subcategoryName',
+          wildcard: pattern,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      subcategoryNameIsEmpty() {
+  subcategoryNameIsEmpty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'subcategoryName',
-        value: '',
-      ));
+      return query.addFilterCondition(
+        FilterCondition.equalTo(property: r'subcategoryName', value: ''),
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterFilterCondition>
-      subcategoryNameIsNotEmpty() {
+  subcategoryNameIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        property: r'subcategoryName',
-        value: '',
-      ));
+      return query.addFilterCondition(
+        FilterCondition.greaterThan(property: r'subcategoryName', value: ''),
+      );
     });
   }
 }
@@ -900,84 +917,84 @@ extension SubcategoryModelQueryLinks
 extension SubcategoryModelQuerySortBy
     on QueryBuilder<SubcategoryModel, SubcategoryModel, QSortBy> {
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      sortByCategoryId() {
+  sortByCategoryId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'categoryId', Sort.asc);
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      sortByCategoryIdDesc() {
+  sortByCategoryIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'categoryId', Sort.desc);
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      sortByDateCreated() {
+  sortByDateCreated() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dateCreated', Sort.asc);
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      sortByDateCreatedDesc() {
+  sortByDateCreatedDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dateCreated', Sort.desc);
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      sortByDateModified() {
+  sortByDateModified() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dateModified', Sort.asc);
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      sortByDateModifiedDesc() {
+  sortByDateModifiedDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dateModified', Sort.desc);
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      sortBySortIndex() {
+  sortBySortIndex() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sortIndex', Sort.asc);
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      sortBySortIndexDesc() {
+  sortBySortIndexDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sortIndex', Sort.desc);
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      sortBySubcategoryId() {
+  sortBySubcategoryId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'subcategoryId', Sort.asc);
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      sortBySubcategoryIdDesc() {
+  sortBySubcategoryIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'subcategoryId', Sort.desc);
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      sortBySubcategoryName() {
+  sortBySubcategoryName() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'subcategoryName', Sort.asc);
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      sortBySubcategoryNameDesc() {
+  sortBySubcategoryNameDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'subcategoryName', Sort.desc);
     });
@@ -987,42 +1004,42 @@ extension SubcategoryModelQuerySortBy
 extension SubcategoryModelQuerySortThenBy
     on QueryBuilder<SubcategoryModel, SubcategoryModel, QSortThenBy> {
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      thenByCategoryId() {
+  thenByCategoryId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'categoryId', Sort.asc);
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      thenByCategoryIdDesc() {
+  thenByCategoryIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'categoryId', Sort.desc);
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      thenByDateCreated() {
+  thenByDateCreated() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dateCreated', Sort.asc);
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      thenByDateCreatedDesc() {
+  thenByDateCreatedDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dateCreated', Sort.desc);
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      thenByDateModified() {
+  thenByDateModified() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dateModified', Sort.asc);
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      thenByDateModifiedDesc() {
+  thenByDateModifiedDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dateModified', Sort.desc);
     });
@@ -1035,49 +1052,49 @@ extension SubcategoryModelQuerySortThenBy
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      thenByIdDesc() {
+  thenByIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.desc);
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      thenBySortIndex() {
+  thenBySortIndex() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sortIndex', Sort.asc);
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      thenBySortIndexDesc() {
+  thenBySortIndexDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sortIndex', Sort.desc);
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      thenBySubcategoryId() {
+  thenBySubcategoryId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'subcategoryId', Sort.asc);
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      thenBySubcategoryIdDesc() {
+  thenBySubcategoryIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'subcategoryId', Sort.desc);
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      thenBySubcategoryName() {
+  thenBySubcategoryName() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'subcategoryName', Sort.asc);
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QAfterSortBy>
-      thenBySubcategoryNameDesc() {
+  thenBySubcategoryNameDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'subcategoryName', Sort.desc);
     });
@@ -1087,46 +1104,50 @@ extension SubcategoryModelQuerySortThenBy
 extension SubcategoryModelQueryWhereDistinct
     on QueryBuilder<SubcategoryModel, SubcategoryModel, QDistinct> {
   QueryBuilder<SubcategoryModel, SubcategoryModel, QDistinct>
-      distinctByCategoryId({bool caseSensitive = true}) {
+  distinctByCategoryId({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'categoryId', caseSensitive: caseSensitive);
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QDistinct>
-      distinctByDateCreated() {
+  distinctByDateCreated() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'dateCreated');
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QDistinct>
-      distinctByDateModified() {
+  distinctByDateModified() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'dateModified');
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QDistinct>
-      distinctBySortIndex() {
+  distinctBySortIndex() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'sortIndex');
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QDistinct>
-      distinctBySubcategoryId({bool caseSensitive = true}) {
+  distinctBySubcategoryId({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'subcategoryId',
-          caseSensitive: caseSensitive);
+      return query.addDistinctBy(
+        r'subcategoryId',
+        caseSensitive: caseSensitive,
+      );
     });
   }
 
   QueryBuilder<SubcategoryModel, SubcategoryModel, QDistinct>
-      distinctBySubcategoryName({bool caseSensitive = true}) {
+  distinctBySubcategoryName({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'subcategoryName',
-          caseSensitive: caseSensitive);
+      return query.addDistinctBy(
+        r'subcategoryName',
+        caseSensitive: caseSensitive,
+      );
     });
   }
 }
@@ -1140,21 +1161,21 @@ extension SubcategoryModelQueryProperty
   }
 
   QueryBuilder<SubcategoryModel, String, QQueryOperations>
-      categoryIdProperty() {
+  categoryIdProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'categoryId');
     });
   }
 
   QueryBuilder<SubcategoryModel, DateTime, QQueryOperations>
-      dateCreatedProperty() {
+  dateCreatedProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'dateCreated');
     });
   }
 
   QueryBuilder<SubcategoryModel, DateTime?, QQueryOperations>
-      dateModifiedProperty() {
+  dateModifiedProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'dateModified');
     });
@@ -1167,14 +1188,14 @@ extension SubcategoryModelQueryProperty
   }
 
   QueryBuilder<SubcategoryModel, String, QQueryOperations>
-      subcategoryIdProperty() {
+  subcategoryIdProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'subcategoryId');
     });
   }
 
   QueryBuilder<SubcategoryModel, String, QQueryOperations>
-      subcategoryNameProperty() {
+  subcategoryNameProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'subcategoryName');
     });

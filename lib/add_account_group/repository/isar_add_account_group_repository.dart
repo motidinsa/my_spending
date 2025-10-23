@@ -1,4 +1,4 @@
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
 import 'package:my_spending/add_account_group/model/account_group_model.dart';
 import 'package:my_spending/add_account_group/repository/add_account_group_repository.dart';
 import 'package:my_spending/core/dependency_injection/dependency_injections.dart';

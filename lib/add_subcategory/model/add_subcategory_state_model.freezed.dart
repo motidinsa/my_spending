@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,176 +9,269 @@ part of 'add_subcategory_state_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$AddSubcategoryStateModel {
-  bool? get isSaveButtonPressed => throw _privateConstructorUsedError;
-  bool? get isLoading => throw _privateConstructorUsedError;
-  bool? get hasSubcategoryNameFocus => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
-  $AddSubcategoryStateModelCopyWith<AddSubcategoryStateModel> get copyWith =>
-      throw _privateConstructorUsedError;
+ bool? get isSaveButtonPressed; bool? get isLoading; bool? get hasSubcategoryNameFocus;
+/// Create a copy of AddSubcategoryStateModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$AddSubcategoryStateModelCopyWith<AddSubcategoryStateModel> get copyWith => _$AddSubcategoryStateModelCopyWithImpl<AddSubcategoryStateModel>(this as AddSubcategoryStateModel, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AddSubcategoryStateModel&&(identical(other.isSaveButtonPressed, isSaveButtonPressed) || other.isSaveButtonPressed == isSaveButtonPressed)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.hasSubcategoryNameFocus, hasSubcategoryNameFocus) || other.hasSubcategoryNameFocus == hasSubcategoryNameFocus));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,isSaveButtonPressed,isLoading,hasSubcategoryNameFocus);
+
+@override
+String toString() {
+  return 'AddSubcategoryStateModel(isSaveButtonPressed: $isSaveButtonPressed, isLoading: $isLoading, hasSubcategoryNameFocus: $hasSubcategoryNameFocus)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $AddSubcategoryStateModelCopyWith<$Res> {
-  factory $AddSubcategoryStateModelCopyWith(AddSubcategoryStateModel value,
-          $Res Function(AddSubcategoryStateModel) then) =
-      _$AddSubcategoryStateModelCopyWithImpl<$Res, AddSubcategoryStateModel>;
-  @useResult
-  $Res call(
-      {bool? isSaveButtonPressed,
-      bool? isLoading,
-      bool? hasSubcategoryNameFocus});
-}
+abstract mixin class $AddSubcategoryStateModelCopyWith<$Res>  {
+  factory $AddSubcategoryStateModelCopyWith(AddSubcategoryStateModel value, $Res Function(AddSubcategoryStateModel) _then) = _$AddSubcategoryStateModelCopyWithImpl;
+@useResult
+$Res call({
+ bool? isSaveButtonPressed, bool? isLoading, bool? hasSubcategoryNameFocus
+});
 
+
+
+
+}
 /// @nodoc
-class _$AddSubcategoryStateModelCopyWithImpl<$Res,
-        $Val extends AddSubcategoryStateModel>
+class _$AddSubcategoryStateModelCopyWithImpl<$Res>
     implements $AddSubcategoryStateModelCopyWith<$Res> {
-  _$AddSubcategoryStateModelCopyWithImpl(this._value, this._then);
+  _$AddSubcategoryStateModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final AddSubcategoryStateModel _self;
+  final $Res Function(AddSubcategoryStateModel) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isSaveButtonPressed = freezed,
-    Object? isLoading = freezed,
-    Object? hasSubcategoryNameFocus = freezed,
-  }) {
-    return _then(_value.copyWith(
-      isSaveButtonPressed: freezed == isSaveButtonPressed
-          ? _value.isSaveButtonPressed
-          : isSaveButtonPressed // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      isLoading: freezed == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      hasSubcategoryNameFocus: freezed == hasSubcategoryNameFocus
-          ? _value.hasSubcategoryNameFocus
-          : hasSubcategoryNameFocus // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ) as $Val);
-  }
+/// Create a copy of AddSubcategoryStateModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? isSaveButtonPressed = freezed,Object? isLoading = freezed,Object? hasSubcategoryNameFocus = freezed,}) {
+  return _then(_self.copyWith(
+isSaveButtonPressed: freezed == isSaveButtonPressed ? _self.isSaveButtonPressed : isSaveButtonPressed // ignore: cast_nullable_to_non_nullable
+as bool?,isLoading: freezed == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+as bool?,hasSubcategoryNameFocus: freezed == hasSubcategoryNameFocus ? _self.hasSubcategoryNameFocus : hasSubcategoryNameFocus // ignore: cast_nullable_to_non_nullable
+as bool?,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [AddSubcategoryStateModel].
+extension AddSubcategoryStateModelPatterns on AddSubcategoryStateModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _AddSubcategoryStateModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _AddSubcategoryStateModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _AddSubcategoryStateModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _AddSubcategoryStateModel():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _AddSubcategoryStateModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _AddSubcategoryStateModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool? isSaveButtonPressed,  bool? isLoading,  bool? hasSubcategoryNameFocus)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _AddSubcategoryStateModel() when $default != null:
+return $default(_that.isSaveButtonPressed,_that.isLoading,_that.hasSubcategoryNameFocus);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool? isSaveButtonPressed,  bool? isLoading,  bool? hasSubcategoryNameFocus)  $default,) {final _that = this;
+switch (_that) {
+case _AddSubcategoryStateModel():
+return $default(_that.isSaveButtonPressed,_that.isLoading,_that.hasSubcategoryNameFocus);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool? isSaveButtonPressed,  bool? isLoading,  bool? hasSubcategoryNameFocus)?  $default,) {final _that = this;
+switch (_that) {
+case _AddSubcategoryStateModel() when $default != null:
+return $default(_that.isSaveButtonPressed,_that.isLoading,_that.hasSubcategoryNameFocus);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$AddSubcategoryStateModelImplCopyWith<$Res>
-    implements $AddSubcategoryStateModelCopyWith<$Res> {
-  factory _$$AddSubcategoryStateModelImplCopyWith(
-          _$AddSubcategoryStateModelImpl value,
-          $Res Function(_$AddSubcategoryStateModelImpl) then) =
-      __$$AddSubcategoryStateModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {bool? isSaveButtonPressed,
-      bool? isLoading,
-      bool? hasSubcategoryNameFocus});
+
+
+class _AddSubcategoryStateModel implements AddSubcategoryStateModel {
+  const _AddSubcategoryStateModel({this.isSaveButtonPressed, this.isLoading, this.hasSubcategoryNameFocus});
+  
+
+@override final  bool? isSaveButtonPressed;
+@override final  bool? isLoading;
+@override final  bool? hasSubcategoryNameFocus;
+
+/// Create a copy of AddSubcategoryStateModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$AddSubcategoryStateModelCopyWith<_AddSubcategoryStateModel> get copyWith => __$AddSubcategoryStateModelCopyWithImpl<_AddSubcategoryStateModel>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AddSubcategoryStateModel&&(identical(other.isSaveButtonPressed, isSaveButtonPressed) || other.isSaveButtonPressed == isSaveButtonPressed)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.hasSubcategoryNameFocus, hasSubcategoryNameFocus) || other.hasSubcategoryNameFocus == hasSubcategoryNameFocus));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,isSaveButtonPressed,isLoading,hasSubcategoryNameFocus);
+
+@override
+String toString() {
+  return 'AddSubcategoryStateModel(isSaveButtonPressed: $isSaveButtonPressed, isLoading: $isLoading, hasSubcategoryNameFocus: $hasSubcategoryNameFocus)';
+}
+
+
 }
 
 /// @nodoc
-class __$$AddSubcategoryStateModelImplCopyWithImpl<$Res>
-    extends _$AddSubcategoryStateModelCopyWithImpl<$Res,
-        _$AddSubcategoryStateModelImpl>
-    implements _$$AddSubcategoryStateModelImplCopyWith<$Res> {
-  __$$AddSubcategoryStateModelImplCopyWithImpl(
-      _$AddSubcategoryStateModelImpl _value,
-      $Res Function(_$AddSubcategoryStateModelImpl) _then)
-      : super(_value, _then);
+abstract mixin class _$AddSubcategoryStateModelCopyWith<$Res> implements $AddSubcategoryStateModelCopyWith<$Res> {
+  factory _$AddSubcategoryStateModelCopyWith(_AddSubcategoryStateModel value, $Res Function(_AddSubcategoryStateModel) _then) = __$AddSubcategoryStateModelCopyWithImpl;
+@override @useResult
+$Res call({
+ bool? isSaveButtonPressed, bool? isLoading, bool? hasSubcategoryNameFocus
+});
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isSaveButtonPressed = freezed,
-    Object? isLoading = freezed,
-    Object? hasSubcategoryNameFocus = freezed,
-  }) {
-    return _then(_$AddSubcategoryStateModelImpl(
-      isSaveButtonPressed: freezed == isSaveButtonPressed
-          ? _value.isSaveButtonPressed
-          : isSaveButtonPressed // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      isLoading: freezed == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      hasSubcategoryNameFocus: freezed == hasSubcategoryNameFocus
-          ? _value.hasSubcategoryNameFocus
-          : hasSubcategoryNameFocus // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ));
-  }
+
+
+
 }
-
 /// @nodoc
+class __$AddSubcategoryStateModelCopyWithImpl<$Res>
+    implements _$AddSubcategoryStateModelCopyWith<$Res> {
+  __$AddSubcategoryStateModelCopyWithImpl(this._self, this._then);
 
-class _$AddSubcategoryStateModelImpl implements _AddSubcategoryStateModel {
-  const _$AddSubcategoryStateModelImpl(
-      {this.isSaveButtonPressed, this.isLoading, this.hasSubcategoryNameFocus});
+  final _AddSubcategoryStateModel _self;
+  final $Res Function(_AddSubcategoryStateModel) _then;
 
-  @override
-  final bool? isSaveButtonPressed;
-  @override
-  final bool? isLoading;
-  @override
-  final bool? hasSubcategoryNameFocus;
-
-  @override
-  String toString() {
-    return 'AddSubcategoryStateModel(isSaveButtonPressed: $isSaveButtonPressed, isLoading: $isLoading, hasSubcategoryNameFocus: $hasSubcategoryNameFocus)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AddSubcategoryStateModelImpl &&
-            (identical(other.isSaveButtonPressed, isSaveButtonPressed) ||
-                other.isSaveButtonPressed == isSaveButtonPressed) &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
-            (identical(
-                    other.hasSubcategoryNameFocus, hasSubcategoryNameFocus) ||
-                other.hasSubcategoryNameFocus == hasSubcategoryNameFocus));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, isSaveButtonPressed, isLoading, hasSubcategoryNameFocus);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AddSubcategoryStateModelImplCopyWith<_$AddSubcategoryStateModelImpl>
-      get copyWith => __$$AddSubcategoryStateModelImplCopyWithImpl<
-          _$AddSubcategoryStateModelImpl>(this, _$identity);
+/// Create a copy of AddSubcategoryStateModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? isSaveButtonPressed = freezed,Object? isLoading = freezed,Object? hasSubcategoryNameFocus = freezed,}) {
+  return _then(_AddSubcategoryStateModel(
+isSaveButtonPressed: freezed == isSaveButtonPressed ? _self.isSaveButtonPressed : isSaveButtonPressed // ignore: cast_nullable_to_non_nullable
+as bool?,isLoading: freezed == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+as bool?,hasSubcategoryNameFocus: freezed == hasSubcategoryNameFocus ? _self.hasSubcategoryNameFocus : hasSubcategoryNameFocus // ignore: cast_nullable_to_non_nullable
+as bool?,
+  ));
 }
 
-abstract class _AddSubcategoryStateModel implements AddSubcategoryStateModel {
-  const factory _AddSubcategoryStateModel(
-      {final bool? isSaveButtonPressed,
-      final bool? isLoading,
-      final bool? hasSubcategoryNameFocus}) = _$AddSubcategoryStateModelImpl;
 
-  @override
-  bool? get isSaveButtonPressed;
-  @override
-  bool? get isLoading;
-  @override
-  bool? get hasSubcategoryNameFocus;
-  @override
-  @JsonKey(ignore: true)
-  _$$AddSubcategoryStateModelImplCopyWith<_$AddSubcategoryStateModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
+
+// dart format on

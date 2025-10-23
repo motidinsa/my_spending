@@ -6,21 +6,59 @@ part of 'accounts_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$accountsStateHash() => r'd0b9fc8cec4ffe111616b2cc818ce87423907308';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [AccountsState].
 @ProviderFor(AccountsState)
-final accountsStateProvider = AutoDisposeAsyncNotifierProvider<AccountsState,
-    List<List<AccountModel>>>.internal(
-  AccountsState.new,
-  name: r'accountsStateProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$accountsStateHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const accountsStateProvider = AccountsStateProvider._();
 
-typedef _$AccountsState = AutoDisposeAsyncNotifier<List<List<AccountModel>>>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+final class AccountsStateProvider
+    extends $AsyncNotifierProvider<AccountsState, List<List<AccountModel>>> {
+  const AccountsStateProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'accountsStateProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$accountsStateHash();
+
+  @$internal
+  @override
+  AccountsState create() => AccountsState();
+}
+
+String _$accountsStateHash() => r'f1dc8ac0934d3aebf82b5a36da7a8bf4ef7ede43';
+
+abstract class _$AccountsState
+    extends $AsyncNotifier<List<List<AccountModel>>> {
+  FutureOr<List<List<AccountModel>>> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref =
+        this.ref
+            as $Ref<
+              AsyncValue<List<List<AccountModel>>>,
+              List<List<AccountModel>>
+            >;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<List<List<AccountModel>>>,
+                List<List<AccountModel>>
+              >,
+              AsyncValue<List<List<AccountModel>>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

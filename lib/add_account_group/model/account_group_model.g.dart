@@ -27,11 +27,7 @@ const AccountGroupModelSchema = CollectionSchema(
       name: r'dateModified',
       type: IsarType.dateTime,
     ),
-    r'groupId': PropertySchema(
-      id: 2,
-      name: r'groupId',
-      type: IsarType.string,
-    ),
+    r'groupId': PropertySchema(id: 2, name: r'groupId', type: IsarType.string),
     r'groupName': PropertySchema(
       id: 3,
       name: r'groupName',
@@ -41,8 +37,9 @@ const AccountGroupModelSchema = CollectionSchema(
       id: 4,
       name: r'sortIndex',
       type: IsarType.long,
-    )
+    ),
   },
+
   estimateSize: _accountGroupModelEstimateSize,
   serialize: _accountGroupModelSerialize,
   deserialize: _accountGroupModelDeserialize,
@@ -51,10 +48,11 @@ const AccountGroupModelSchema = CollectionSchema(
   indexes: {},
   links: {},
   embeddedSchemas: {},
+
   getId: _accountGroupModelGetId,
   getLinks: _accountGroupModelGetLinks,
   attach: _accountGroupModelAttach,
-  version: '3.1.8',
+  version: '3.3.0-dev.3',
 );
 
 int _accountGroupModelEstimateSize(
@@ -92,14 +90,13 @@ AccountGroupModel _accountGroupModelDeserialize(
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  final object = AccountGroupModel(
-    dateCreated: reader.readDateTime(offsets[0]),
-    dateModified: reader.readDateTimeOrNull(offsets[1]),
-    groupId: reader.readStringOrNull(offsets[2]),
-    groupName: reader.readString(offsets[3]),
-    id: id,
-    sortIndex: reader.readLongOrNull(offsets[4]),
-  );
+  final object = AccountGroupModel();
+  object.dateCreated = reader.readDateTime(offsets[0]);
+  object.dateModified = reader.readDateTimeOrNull(offsets[1]);
+  object.groupId = reader.readStringOrNull(offsets[2]);
+  object.groupName = reader.readString(offsets[3]);
+  object.id = id;
+  object.sortIndex = reader.readLongOrNull(offsets[4]);
   return object;
 }
 
@@ -130,12 +127,18 @@ Id _accountGroupModelGetId(AccountGroupModel object) {
 }
 
 List<IsarLinkBase<dynamic>> _accountGroupModelGetLinks(
-    AccountGroupModel object) {
+  AccountGroupModel object,
+) {
   return [];
 }
 
 void _accountGroupModelAttach(
-    IsarCollection<dynamic> col, Id id, AccountGroupModel object) {}
+  IsarCollection<dynamic> col,
+  Id id,
+  AccountGroupModel object,
+) {
+  object.id = id;
+}
 
 extension AccountGroupModelQueryWhereSort
     on QueryBuilder<AccountGroupModel, AccountGroupModel, QWhere> {
@@ -149,17 +152,14 @@ extension AccountGroupModelQueryWhereSort
 extension AccountGroupModelQueryWhere
     on QueryBuilder<AccountGroupModel, AccountGroupModel, QWhereClause> {
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterWhereClause>
-      idEqualTo(Id id) {
+  idEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IdWhereClause.between(
-        lower: id,
-        upper: id,
-      ));
+      return query.addWhereClause(IdWhereClause.between(lower: id, upper: id));
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterWhereClause>
-      idNotEqualTo(Id id) {
+  idNotEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -182,7 +182,7 @@ extension AccountGroupModelQueryWhere
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterWhereClause>
-      idGreaterThan(Id id, {bool include = false}) {
+  idGreaterThan(Id id, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.greaterThan(lower: id, includeLower: include),
@@ -191,7 +191,7 @@ extension AccountGroupModelQueryWhere
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterWhereClause>
-      idLessThan(Id id, {bool include = false}) {
+  idLessThan(Id id, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.lessThan(upper: id, includeUpper: include),
@@ -200,19 +200,21 @@ extension AccountGroupModelQueryWhere
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterWhereClause>
-      idBetween(
+  idBetween(
     Id lowerId,
     Id upperId, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IdWhereClause.between(
-        lower: lowerId,
-        includeLower: includeLower,
-        upper: upperId,
-        includeUpper: includeUpper,
-      ));
+      return query.addWhereClause(
+        IdWhereClause.between(
+          lower: lowerId,
+          includeLower: includeLower,
+          upper: upperId,
+          includeUpper: includeUpper,
+        ),
+      );
     });
   }
 }
@@ -220,201 +222,202 @@ extension AccountGroupModelQueryWhere
 extension AccountGroupModelQueryFilter
     on QueryBuilder<AccountGroupModel, AccountGroupModel, QFilterCondition> {
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      dateCreatedEqualTo(DateTime value) {
+  dateCreatedEqualTo(DateTime value) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'dateCreated',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.equalTo(property: r'dateCreated', value: value),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      dateCreatedGreaterThan(
-    DateTime value, {
-    bool include = false,
-  }) {
+  dateCreatedGreaterThan(DateTime value, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'dateCreated',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.greaterThan(
+          include: include,
+          property: r'dateCreated',
+          value: value,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      dateCreatedLessThan(
-    DateTime value, {
-    bool include = false,
-  }) {
+  dateCreatedLessThan(DateTime value, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'dateCreated',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.lessThan(
+          include: include,
+          property: r'dateCreated',
+          value: value,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      dateCreatedBetween(
+  dateCreatedBetween(
     DateTime lower,
     DateTime upper, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'dateCreated',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.between(
+          property: r'dateCreated',
+          lower: lower,
+          includeLower: includeLower,
+          upper: upper,
+          includeUpper: includeUpper,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      dateModifiedIsNull() {
+  dateModifiedIsNull() {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNull(
-        property: r'dateModified',
-      ));
+      return query.addFilterCondition(
+        const FilterCondition.isNull(property: r'dateModified'),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      dateModifiedIsNotNull() {
+  dateModifiedIsNotNull() {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNotNull(
-        property: r'dateModified',
-      ));
+      return query.addFilterCondition(
+        const FilterCondition.isNotNull(property: r'dateModified'),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      dateModifiedEqualTo(DateTime? value) {
+  dateModifiedEqualTo(DateTime? value) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'dateModified',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.equalTo(property: r'dateModified', value: value),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      dateModifiedGreaterThan(
-    DateTime? value, {
-    bool include = false,
-  }) {
+  dateModifiedGreaterThan(DateTime? value, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'dateModified',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.greaterThan(
+          include: include,
+          property: r'dateModified',
+          value: value,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      dateModifiedLessThan(
-    DateTime? value, {
-    bool include = false,
-  }) {
+  dateModifiedLessThan(DateTime? value, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'dateModified',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.lessThan(
+          include: include,
+          property: r'dateModified',
+          value: value,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      dateModifiedBetween(
+  dateModifiedBetween(
     DateTime? lower,
     DateTime? upper, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'dateModified',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.between(
+          property: r'dateModified',
+          lower: lower,
+          includeLower: includeLower,
+          upper: upper,
+          includeUpper: includeUpper,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      groupIdIsNull() {
+  groupIdIsNull() {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNull(
-        property: r'groupId',
-      ));
+      return query.addFilterCondition(
+        const FilterCondition.isNull(property: r'groupId'),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      groupIdIsNotNull() {
+  groupIdIsNotNull() {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNotNull(
-        property: r'groupId',
-      ));
+      return query.addFilterCondition(
+        const FilterCondition.isNotNull(property: r'groupId'),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      groupIdEqualTo(
-    String? value, {
-    bool caseSensitive = true,
-  }) {
+  groupIdEqualTo(String? value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'groupId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.equalTo(
+          property: r'groupId',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      groupIdGreaterThan(
-    String? value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'groupId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      groupIdLessThan(
+  groupIdGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'groupId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.greaterThan(
+          include: include,
+          property: r'groupId',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      groupIdBetween(
+  groupIdLessThan(
+    String? value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        FilterCondition.lessThan(
+          include: include,
+          property: r'groupId',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
+  groupIdBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -422,135 +425,140 @@ extension AccountGroupModelQueryFilter
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'groupId',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.between(
+          property: r'groupId',
+          lower: lower,
+          includeLower: includeLower,
+          upper: upper,
+          includeUpper: includeUpper,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      groupIdStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
+  groupIdStartsWith(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.startsWith(
-        property: r'groupId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.startsWith(
+          property: r'groupId',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      groupIdEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
+  groupIdEndsWith(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.endsWith(
-        property: r'groupId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.endsWith(
+          property: r'groupId',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      groupIdContains(String value, {bool caseSensitive = true}) {
+  groupIdContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.contains(
-        property: r'groupId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.contains(
+          property: r'groupId',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      groupIdMatches(String pattern, {bool caseSensitive = true}) {
+  groupIdMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.matches(
-        property: r'groupId',
-        wildcard: pattern,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.matches(
+          property: r'groupId',
+          wildcard: pattern,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      groupIdIsEmpty() {
+  groupIdIsEmpty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'groupId',
-        value: '',
-      ));
+      return query.addFilterCondition(
+        FilterCondition.equalTo(property: r'groupId', value: ''),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      groupIdIsNotEmpty() {
+  groupIdIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        property: r'groupId',
-        value: '',
-      ));
+      return query.addFilterCondition(
+        FilterCondition.greaterThan(property: r'groupId', value: ''),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      groupNameEqualTo(
-    String value, {
-    bool caseSensitive = true,
-  }) {
+  groupNameEqualTo(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'groupName',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.equalTo(
+          property: r'groupName',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      groupNameGreaterThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'groupName',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      groupNameLessThan(
+  groupNameGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'groupName',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.greaterThan(
+          include: include,
+          property: r'groupName',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      groupNameBetween(
+  groupNameLessThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        FilterCondition.lessThan(
+          include: include,
+          property: r'groupName',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
+    });
+  }
+
+  QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
+  groupNameBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -558,214 +566,214 @@ extension AccountGroupModelQueryFilter
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'groupName',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.between(
+          property: r'groupName',
+          lower: lower,
+          includeLower: includeLower,
+          upper: upper,
+          includeUpper: includeUpper,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      groupNameStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
+  groupNameStartsWith(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.startsWith(
-        property: r'groupName',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.startsWith(
+          property: r'groupName',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      groupNameEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
+  groupNameEndsWith(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.endsWith(
-        property: r'groupName',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.endsWith(
+          property: r'groupName',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      groupNameContains(String value, {bool caseSensitive = true}) {
+  groupNameContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.contains(
-        property: r'groupName',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.contains(
+          property: r'groupName',
+          value: value,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      groupNameMatches(String pattern, {bool caseSensitive = true}) {
+  groupNameMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.matches(
-        property: r'groupName',
-        wildcard: pattern,
-        caseSensitive: caseSensitive,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.matches(
+          property: r'groupName',
+          wildcard: pattern,
+          caseSensitive: caseSensitive,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      groupNameIsEmpty() {
+  groupNameIsEmpty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'groupName',
-        value: '',
-      ));
+      return query.addFilterCondition(
+        FilterCondition.equalTo(property: r'groupName', value: ''),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      groupNameIsNotEmpty() {
+  groupNameIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        property: r'groupName',
-        value: '',
-      ));
+      return query.addFilterCondition(
+        FilterCondition.greaterThan(property: r'groupName', value: ''),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      idEqualTo(Id value) {
+  idEqualTo(Id value) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'id',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.equalTo(property: r'id', value: value),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      idGreaterThan(
-    Id value, {
-    bool include = false,
-  }) {
+  idGreaterThan(Id value, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'id',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.greaterThan(
+          include: include,
+          property: r'id',
+          value: value,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      idLessThan(
-    Id value, {
-    bool include = false,
-  }) {
+  idLessThan(Id value, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'id',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.lessThan(
+          include: include,
+          property: r'id',
+          value: value,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      idBetween(
+  idBetween(
     Id lower,
     Id upper, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'id',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.between(
+          property: r'id',
+          lower: lower,
+          includeLower: includeLower,
+          upper: upper,
+          includeUpper: includeUpper,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      sortIndexIsNull() {
+  sortIndexIsNull() {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNull(
-        property: r'sortIndex',
-      ));
+      return query.addFilterCondition(
+        const FilterCondition.isNull(property: r'sortIndex'),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      sortIndexIsNotNull() {
+  sortIndexIsNotNull() {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNotNull(
-        property: r'sortIndex',
-      ));
+      return query.addFilterCondition(
+        const FilterCondition.isNotNull(property: r'sortIndex'),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      sortIndexEqualTo(int? value) {
+  sortIndexEqualTo(int? value) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'sortIndex',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.equalTo(property: r'sortIndex', value: value),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      sortIndexGreaterThan(
-    int? value, {
-    bool include = false,
-  }) {
+  sortIndexGreaterThan(int? value, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'sortIndex',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.greaterThan(
+          include: include,
+          property: r'sortIndex',
+          value: value,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      sortIndexLessThan(
-    int? value, {
-    bool include = false,
-  }) {
+  sortIndexLessThan(int? value, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'sortIndex',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.lessThan(
+          include: include,
+          property: r'sortIndex',
+          value: value,
+        ),
+      );
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterFilterCondition>
-      sortIndexBetween(
+  sortIndexBetween(
     int? lower,
     int? upper, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'sortIndex',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.between(
+          property: r'sortIndex',
+          lower: lower,
+          includeLower: includeLower,
+          upper: upper,
+          includeUpper: includeUpper,
+        ),
+      );
     });
   }
 }
@@ -779,70 +787,70 @@ extension AccountGroupModelQueryLinks
 extension AccountGroupModelQuerySortBy
     on QueryBuilder<AccountGroupModel, AccountGroupModel, QSortBy> {
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
-      sortByDateCreated() {
+  sortByDateCreated() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dateCreated', Sort.asc);
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
-      sortByDateCreatedDesc() {
+  sortByDateCreatedDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dateCreated', Sort.desc);
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
-      sortByDateModified() {
+  sortByDateModified() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dateModified', Sort.asc);
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
-      sortByDateModifiedDesc() {
+  sortByDateModifiedDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dateModified', Sort.desc);
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
-      sortByGroupId() {
+  sortByGroupId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'groupId', Sort.asc);
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
-      sortByGroupIdDesc() {
+  sortByGroupIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'groupId', Sort.desc);
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
-      sortByGroupName() {
+  sortByGroupName() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'groupName', Sort.asc);
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
-      sortByGroupNameDesc() {
+  sortByGroupNameDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'groupName', Sort.desc);
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
-      sortBySortIndex() {
+  sortBySortIndex() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sortIndex', Sort.asc);
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
-      sortBySortIndexDesc() {
+  sortBySortIndexDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sortIndex', Sort.desc);
     });
@@ -852,56 +860,56 @@ extension AccountGroupModelQuerySortBy
 extension AccountGroupModelQuerySortThenBy
     on QueryBuilder<AccountGroupModel, AccountGroupModel, QSortThenBy> {
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
-      thenByDateCreated() {
+  thenByDateCreated() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dateCreated', Sort.asc);
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
-      thenByDateCreatedDesc() {
+  thenByDateCreatedDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dateCreated', Sort.desc);
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
-      thenByDateModified() {
+  thenByDateModified() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dateModified', Sort.asc);
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
-      thenByDateModifiedDesc() {
+  thenByDateModifiedDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dateModified', Sort.desc);
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
-      thenByGroupId() {
+  thenByGroupId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'groupId', Sort.asc);
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
-      thenByGroupIdDesc() {
+  thenByGroupIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'groupId', Sort.desc);
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
-      thenByGroupName() {
+  thenByGroupName() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'groupName', Sort.asc);
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
-      thenByGroupNameDesc() {
+  thenByGroupNameDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'groupName', Sort.desc);
     });
@@ -914,21 +922,21 @@ extension AccountGroupModelQuerySortThenBy
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
-      thenByIdDesc() {
+  thenByIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.desc);
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
-      thenBySortIndex() {
+  thenBySortIndex() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sortIndex', Sort.asc);
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QAfterSortBy>
-      thenBySortIndexDesc() {
+  thenBySortIndexDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sortIndex', Sort.desc);
     });
@@ -938,35 +946,35 @@ extension AccountGroupModelQuerySortThenBy
 extension AccountGroupModelQueryWhereDistinct
     on QueryBuilder<AccountGroupModel, AccountGroupModel, QDistinct> {
   QueryBuilder<AccountGroupModel, AccountGroupModel, QDistinct>
-      distinctByDateCreated() {
+  distinctByDateCreated() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'dateCreated');
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QDistinct>
-      distinctByDateModified() {
+  distinctByDateModified() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'dateModified');
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QDistinct>
-      distinctByGroupId({bool caseSensitive = true}) {
+  distinctByGroupId({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'groupId', caseSensitive: caseSensitive);
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QDistinct>
-      distinctByGroupName({bool caseSensitive = true}) {
+  distinctByGroupName({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'groupName', caseSensitive: caseSensitive);
     });
   }
 
   QueryBuilder<AccountGroupModel, AccountGroupModel, QDistinct>
-      distinctBySortIndex() {
+  distinctBySortIndex() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'sortIndex');
     });
@@ -982,14 +990,14 @@ extension AccountGroupModelQueryProperty
   }
 
   QueryBuilder<AccountGroupModel, DateTime, QQueryOperations>
-      dateCreatedProperty() {
+  dateCreatedProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'dateCreated');
     });
   }
 
   QueryBuilder<AccountGroupModel, DateTime?, QQueryOperations>
-      dateModifiedProperty() {
+  dateModifiedProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'dateModified');
     });
@@ -1002,7 +1010,7 @@ extension AccountGroupModelQueryProperty
   }
 
   QueryBuilder<AccountGroupModel, String, QQueryOperations>
-      groupNameProperty() {
+  groupNameProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'groupName');
     });

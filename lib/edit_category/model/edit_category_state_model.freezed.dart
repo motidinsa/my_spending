@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,171 +9,269 @@ part of 'edit_category_state_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$EditCategoryStateModel {
-  bool? get isSaveButtonPressed => throw _privateConstructorUsedError;
-  bool? get isLoading => throw _privateConstructorUsedError;
-  bool? get hasCategoryNameFocus => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
-  $EditCategoryStateModelCopyWith<EditCategoryStateModel> get copyWith =>
-      throw _privateConstructorUsedError;
+ bool? get isSaveButtonPressed; bool? get isLoading; bool? get hasCategoryNameFocus;
+/// Create a copy of EditCategoryStateModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$EditCategoryStateModelCopyWith<EditCategoryStateModel> get copyWith => _$EditCategoryStateModelCopyWithImpl<EditCategoryStateModel>(this as EditCategoryStateModel, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is EditCategoryStateModel&&(identical(other.isSaveButtonPressed, isSaveButtonPressed) || other.isSaveButtonPressed == isSaveButtonPressed)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.hasCategoryNameFocus, hasCategoryNameFocus) || other.hasCategoryNameFocus == hasCategoryNameFocus));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,isSaveButtonPressed,isLoading,hasCategoryNameFocus);
+
+@override
+String toString() {
+  return 'EditCategoryStateModel(isSaveButtonPressed: $isSaveButtonPressed, isLoading: $isLoading, hasCategoryNameFocus: $hasCategoryNameFocus)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $EditCategoryStateModelCopyWith<$Res> {
-  factory $EditCategoryStateModelCopyWith(EditCategoryStateModel value,
-          $Res Function(EditCategoryStateModel) then) =
-      _$EditCategoryStateModelCopyWithImpl<$Res, EditCategoryStateModel>;
-  @useResult
-  $Res call(
-      {bool? isSaveButtonPressed, bool? isLoading, bool? hasCategoryNameFocus});
-}
+abstract mixin class $EditCategoryStateModelCopyWith<$Res>  {
+  factory $EditCategoryStateModelCopyWith(EditCategoryStateModel value, $Res Function(EditCategoryStateModel) _then) = _$EditCategoryStateModelCopyWithImpl;
+@useResult
+$Res call({
+ bool? isSaveButtonPressed, bool? isLoading, bool? hasCategoryNameFocus
+});
 
+
+
+
+}
 /// @nodoc
-class _$EditCategoryStateModelCopyWithImpl<$Res,
-        $Val extends EditCategoryStateModel>
+class _$EditCategoryStateModelCopyWithImpl<$Res>
     implements $EditCategoryStateModelCopyWith<$Res> {
-  _$EditCategoryStateModelCopyWithImpl(this._value, this._then);
+  _$EditCategoryStateModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final EditCategoryStateModel _self;
+  final $Res Function(EditCategoryStateModel) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isSaveButtonPressed = freezed,
-    Object? isLoading = freezed,
-    Object? hasCategoryNameFocus = freezed,
-  }) {
-    return _then(_value.copyWith(
-      isSaveButtonPressed: freezed == isSaveButtonPressed
-          ? _value.isSaveButtonPressed
-          : isSaveButtonPressed // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      isLoading: freezed == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      hasCategoryNameFocus: freezed == hasCategoryNameFocus
-          ? _value.hasCategoryNameFocus
-          : hasCategoryNameFocus // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ) as $Val);
-  }
+/// Create a copy of EditCategoryStateModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? isSaveButtonPressed = freezed,Object? isLoading = freezed,Object? hasCategoryNameFocus = freezed,}) {
+  return _then(_self.copyWith(
+isSaveButtonPressed: freezed == isSaveButtonPressed ? _self.isSaveButtonPressed : isSaveButtonPressed // ignore: cast_nullable_to_non_nullable
+as bool?,isLoading: freezed == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+as bool?,hasCategoryNameFocus: freezed == hasCategoryNameFocus ? _self.hasCategoryNameFocus : hasCategoryNameFocus // ignore: cast_nullable_to_non_nullable
+as bool?,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [EditCategoryStateModel].
+extension EditCategoryStateModelPatterns on EditCategoryStateModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _EditCategoryStateModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _EditCategoryStateModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _EditCategoryStateModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _EditCategoryStateModel():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _EditCategoryStateModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _EditCategoryStateModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool? isSaveButtonPressed,  bool? isLoading,  bool? hasCategoryNameFocus)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _EditCategoryStateModel() when $default != null:
+return $default(_that.isSaveButtonPressed,_that.isLoading,_that.hasCategoryNameFocus);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool? isSaveButtonPressed,  bool? isLoading,  bool? hasCategoryNameFocus)  $default,) {final _that = this;
+switch (_that) {
+case _EditCategoryStateModel():
+return $default(_that.isSaveButtonPressed,_that.isLoading,_that.hasCategoryNameFocus);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool? isSaveButtonPressed,  bool? isLoading,  bool? hasCategoryNameFocus)?  $default,) {final _that = this;
+switch (_that) {
+case _EditCategoryStateModel() when $default != null:
+return $default(_that.isSaveButtonPressed,_that.isLoading,_that.hasCategoryNameFocus);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$EditCategoryStateModelImplCopyWith<$Res>
-    implements $EditCategoryStateModelCopyWith<$Res> {
-  factory _$$EditCategoryStateModelImplCopyWith(
-          _$EditCategoryStateModelImpl value,
-          $Res Function(_$EditCategoryStateModelImpl) then) =
-      __$$EditCategoryStateModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {bool? isSaveButtonPressed, bool? isLoading, bool? hasCategoryNameFocus});
+
+
+class _EditCategoryStateModel implements EditCategoryStateModel {
+  const _EditCategoryStateModel({this.isSaveButtonPressed, this.isLoading, this.hasCategoryNameFocus});
+  
+
+@override final  bool? isSaveButtonPressed;
+@override final  bool? isLoading;
+@override final  bool? hasCategoryNameFocus;
+
+/// Create a copy of EditCategoryStateModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$EditCategoryStateModelCopyWith<_EditCategoryStateModel> get copyWith => __$EditCategoryStateModelCopyWithImpl<_EditCategoryStateModel>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EditCategoryStateModel&&(identical(other.isSaveButtonPressed, isSaveButtonPressed) || other.isSaveButtonPressed == isSaveButtonPressed)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.hasCategoryNameFocus, hasCategoryNameFocus) || other.hasCategoryNameFocus == hasCategoryNameFocus));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,isSaveButtonPressed,isLoading,hasCategoryNameFocus);
+
+@override
+String toString() {
+  return 'EditCategoryStateModel(isSaveButtonPressed: $isSaveButtonPressed, isLoading: $isLoading, hasCategoryNameFocus: $hasCategoryNameFocus)';
+}
+
+
 }
 
 /// @nodoc
-class __$$EditCategoryStateModelImplCopyWithImpl<$Res>
-    extends _$EditCategoryStateModelCopyWithImpl<$Res,
-        _$EditCategoryStateModelImpl>
-    implements _$$EditCategoryStateModelImplCopyWith<$Res> {
-  __$$EditCategoryStateModelImplCopyWithImpl(
-      _$EditCategoryStateModelImpl _value,
-      $Res Function(_$EditCategoryStateModelImpl) _then)
-      : super(_value, _then);
+abstract mixin class _$EditCategoryStateModelCopyWith<$Res> implements $EditCategoryStateModelCopyWith<$Res> {
+  factory _$EditCategoryStateModelCopyWith(_EditCategoryStateModel value, $Res Function(_EditCategoryStateModel) _then) = __$EditCategoryStateModelCopyWithImpl;
+@override @useResult
+$Res call({
+ bool? isSaveButtonPressed, bool? isLoading, bool? hasCategoryNameFocus
+});
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isSaveButtonPressed = freezed,
-    Object? isLoading = freezed,
-    Object? hasCategoryNameFocus = freezed,
-  }) {
-    return _then(_$EditCategoryStateModelImpl(
-      isSaveButtonPressed: freezed == isSaveButtonPressed
-          ? _value.isSaveButtonPressed
-          : isSaveButtonPressed // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      isLoading: freezed == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      hasCategoryNameFocus: freezed == hasCategoryNameFocus
-          ? _value.hasCategoryNameFocus
-          : hasCategoryNameFocus // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ));
-  }
+
+
+
 }
-
 /// @nodoc
+class __$EditCategoryStateModelCopyWithImpl<$Res>
+    implements _$EditCategoryStateModelCopyWith<$Res> {
+  __$EditCategoryStateModelCopyWithImpl(this._self, this._then);
 
-class _$EditCategoryStateModelImpl implements _EditCategoryStateModel {
-  const _$EditCategoryStateModelImpl(
-      {this.isSaveButtonPressed, this.isLoading, this.hasCategoryNameFocus});
+  final _EditCategoryStateModel _self;
+  final $Res Function(_EditCategoryStateModel) _then;
 
-  @override
-  final bool? isSaveButtonPressed;
-  @override
-  final bool? isLoading;
-  @override
-  final bool? hasCategoryNameFocus;
-
-  @override
-  String toString() {
-    return 'EditCategoryStateModel(isSaveButtonPressed: $isSaveButtonPressed, isLoading: $isLoading, hasCategoryNameFocus: $hasCategoryNameFocus)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$EditCategoryStateModelImpl &&
-            (identical(other.isSaveButtonPressed, isSaveButtonPressed) ||
-                other.isSaveButtonPressed == isSaveButtonPressed) &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
-            (identical(other.hasCategoryNameFocus, hasCategoryNameFocus) ||
-                other.hasCategoryNameFocus == hasCategoryNameFocus));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, isSaveButtonPressed, isLoading, hasCategoryNameFocus);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$EditCategoryStateModelImplCopyWith<_$EditCategoryStateModelImpl>
-      get copyWith => __$$EditCategoryStateModelImplCopyWithImpl<
-          _$EditCategoryStateModelImpl>(this, _$identity);
+/// Create a copy of EditCategoryStateModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? isSaveButtonPressed = freezed,Object? isLoading = freezed,Object? hasCategoryNameFocus = freezed,}) {
+  return _then(_EditCategoryStateModel(
+isSaveButtonPressed: freezed == isSaveButtonPressed ? _self.isSaveButtonPressed : isSaveButtonPressed // ignore: cast_nullable_to_non_nullable
+as bool?,isLoading: freezed == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+as bool?,hasCategoryNameFocus: freezed == hasCategoryNameFocus ? _self.hasCategoryNameFocus : hasCategoryNameFocus // ignore: cast_nullable_to_non_nullable
+as bool?,
+  ));
 }
 
-abstract class _EditCategoryStateModel implements EditCategoryStateModel {
-  const factory _EditCategoryStateModel(
-      {final bool? isSaveButtonPressed,
-      final bool? isLoading,
-      final bool? hasCategoryNameFocus}) = _$EditCategoryStateModelImpl;
 
-  @override
-  bool? get isSaveButtonPressed;
-  @override
-  bool? get isLoading;
-  @override
-  bool? get hasCategoryNameFocus;
-  @override
-  @JsonKey(ignore: true)
-  _$$EditCategoryStateModelImplCopyWith<_$EditCategoryStateModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
+
+// dart format on

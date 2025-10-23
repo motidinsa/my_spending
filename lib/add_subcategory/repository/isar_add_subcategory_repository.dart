@@ -1,4 +1,4 @@
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
 import 'package:my_spending/add_subcategory/repository/add_subcategory_repository.dart';
 import 'package:my_spending/core/dependency_injection/dependency_injections.dart';
 import 'package:my_spending/core/model/subcategory_model/subcategory_model.dart';

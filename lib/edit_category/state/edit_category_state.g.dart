@@ -6,21 +6,59 @@ part of 'edit_category_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$editCategoryStateHash() => r'ebb448a28283e9414e03bff77942d605d284f30d';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [EditCategoryState].
 @ProviderFor(EditCategoryState)
-final editCategoryStateProvider = AutoDisposeNotifierProvider<EditCategoryState,
-    EditCategoryStateModel>.internal(
-  EditCategoryState.new,
-  name: r'editCategoryStateProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$editCategoryStateHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const editCategoryStateProvider = EditCategoryStateProvider._();
 
-typedef _$EditCategoryState = AutoDisposeNotifier<EditCategoryStateModel>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+final class EditCategoryStateProvider
+    extends $NotifierProvider<EditCategoryState, EditCategoryStateModel> {
+  const EditCategoryStateProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'editCategoryStateProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$editCategoryStateHash();
+
+  @$internal
+  @override
+  EditCategoryState create() => EditCategoryState();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(EditCategoryStateModel value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<EditCategoryStateModel>(value),
+    );
+  }
+}
+
+String _$editCategoryStateHash() => r'500a1420487483df0ab310f7fa41b9478a2e6e10';
+
+abstract class _$EditCategoryState extends $Notifier<EditCategoryStateModel> {
+  EditCategoryStateModel build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref =
+        this.ref as $Ref<EditCategoryStateModel, EditCategoryStateModel>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<EditCategoryStateModel, EditCategoryStateModel>,
+              EditCategoryStateModel,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

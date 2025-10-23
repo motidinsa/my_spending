@@ -39,13 +39,11 @@ class EditCategoryState extends _$EditCategoryState {
           IsarEditCategoryRepository();
       DateTime now = DateTime.now();
 
-      await isarEditCategoryRepository.editCategory(
-        categoryModel.copyWith(
-          categoryName: categoryName,
-          categoryType: type!,
-          dateModified: now,
-        ),
-      );
+      categoryModel.categoryName = categoryName;
+      categoryModel.categoryType = type!;
+      categoryModel.dateModified = now;
+      
+      await isarEditCategoryRepository.editCategory(categoryModel);
       navigatorKey.currentContext?.pop();
       // ref.read(categoriesStateProvider.notifier).updateCategories();
     } on Exception catch (e) {

@@ -23,7 +23,8 @@ class SubcategoriesState extends _$SubcategoriesState {
     subcategoryList.insert(newIndex, item);
     List<SubcategoryModel> subcategoryModels = [];
     for (int i = 0; i < subcategoryList.length; i++) {
-      subcategoryModels.add(subcategoryList[i].copyWith(sortIndex: i));
+      subcategoryList[i].sortIndex = i;
+      subcategoryModels.add(subcategoryList[i]);
     }
     await isarSubcategoriesRepository.updateSubcategoryModelSortIndex(
       subcategoryModels,

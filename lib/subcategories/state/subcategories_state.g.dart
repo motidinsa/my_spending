@@ -6,173 +6,103 @@ part of 'subcategories_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$subcategoriesStateHash() =>
-    r'4fe53b841c2a6f5b5c9f2c8ed1c10946a3f6ba89';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$SubcategoriesState
-    extends BuildlessAutoDisposeStreamNotifier<List<SubcategoryModel>> {
-  late final String categoryId;
-
-  Stream<List<SubcategoryModel>> build(
-    String categoryId,
-  );
-}
-
-/// See also [SubcategoriesState].
 @ProviderFor(SubcategoriesState)
-const subcategoriesStateProvider = SubcategoriesStateFamily();
+const subcategoriesStateProvider = SubcategoriesStateFamily._();
 
-/// See also [SubcategoriesState].
-class SubcategoriesStateFamily
-    extends Family<AsyncValue<List<SubcategoryModel>>> {
-  /// See also [SubcategoriesState].
-  const SubcategoriesStateFamily();
+final class SubcategoriesStateProvider
+    extends
+        $StreamNotifierProvider<SubcategoriesState, List<SubcategoryModel>> {
+  const SubcategoriesStateProvider._({
+    required SubcategoriesStateFamily super.from,
+    required String super.argument,
+  }) : super(
+         retry: null,
+         name: r'subcategoriesStateProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [SubcategoriesState].
-  SubcategoriesStateProvider call(
-    String categoryId,
-  ) {
-    return SubcategoriesStateProvider(
-      categoryId,
-    );
+  @override
+  String debugGetCreateSourceHash() => _$subcategoriesStateHash();
+
+  @override
+  String toString() {
+    return r'subcategoriesStateProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  SubcategoriesStateProvider getProviderOverride(
-    covariant SubcategoriesStateProvider provider,
-  ) {
-    return call(
-      provider.categoryId,
-    );
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'subcategoriesStateProvider';
-}
-
-/// See also [SubcategoriesState].
-class SubcategoriesStateProvider extends AutoDisposeStreamNotifierProviderImpl<
-    SubcategoriesState, List<SubcategoryModel>> {
-  /// See also [SubcategoriesState].
-  SubcategoriesStateProvider(
-    String categoryId,
-  ) : this._internal(
-          () => SubcategoriesState()..categoryId = categoryId,
-          from: subcategoriesStateProvider,
-          name: r'subcategoriesStateProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$subcategoriesStateHash,
-          dependencies: SubcategoriesStateFamily._dependencies,
-          allTransitiveDependencies:
-              SubcategoriesStateFamily._allTransitiveDependencies,
-          categoryId: categoryId,
-        );
-
-  SubcategoriesStateProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.categoryId,
-  }) : super.internal();
-
-  final String categoryId;
-
-  @override
-  Stream<List<SubcategoryModel>> runNotifierBuild(
-    covariant SubcategoriesState notifier,
-  ) {
-    return notifier.build(
-      categoryId,
-    );
-  }
-
-  @override
-  Override overrideWith(SubcategoriesState Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: SubcategoriesStateProvider._internal(
-        () => create()..categoryId = categoryId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        categoryId: categoryId,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeStreamNotifierProviderElement<SubcategoriesState,
-      List<SubcategoryModel>> createElement() {
-    return _SubcategoriesStateProviderElement(this);
-  }
+  SubcategoriesState create() => SubcategoriesState();
 
   @override
   bool operator ==(Object other) {
-    return other is SubcategoriesStateProvider &&
-        other.categoryId == categoryId;
+    return other is SubcategoriesStateProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, categoryId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-mixin SubcategoriesStateRef
-    on AutoDisposeStreamNotifierProviderRef<List<SubcategoryModel>> {
-  /// The parameter `categoryId` of this provider.
-  String get categoryId;
-}
+String _$subcategoriesStateHash() =>
+    r'687322aa9862ce5c9ad91f4da719ea8045e9598f';
 
-class _SubcategoriesStateProviderElement
-    extends AutoDisposeStreamNotifierProviderElement<SubcategoriesState,
-        List<SubcategoryModel>> with SubcategoriesStateRef {
-  _SubcategoriesStateProviderElement(super.provider);
+final class SubcategoriesStateFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          SubcategoriesState,
+          AsyncValue<List<SubcategoryModel>>,
+          List<SubcategoryModel>,
+          Stream<List<SubcategoryModel>>,
+          String
+        > {
+  const SubcategoriesStateFamily._()
+    : super(
+        retry: null,
+        name: r'subcategoriesStateProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  SubcategoriesStateProvider call(String categoryId) =>
+      SubcategoriesStateProvider._(argument: categoryId, from: this);
 
   @override
-  String get categoryId => (origin as SubcategoriesStateProvider).categoryId;
+  String toString() => r'subcategoriesStateProvider';
 }
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+
+abstract class _$SubcategoriesState
+    extends $StreamNotifier<List<SubcategoryModel>> {
+  late final _$args = ref.$arg as String;
+  String get categoryId => _$args;
+
+  Stream<List<SubcategoryModel>> build(String categoryId);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref =
+        this.ref
+            as $Ref<AsyncValue<List<SubcategoryModel>>, List<SubcategoryModel>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<List<SubcategoryModel>>,
+                List<SubcategoryModel>
+              >,
+              AsyncValue<List<SubcategoryModel>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

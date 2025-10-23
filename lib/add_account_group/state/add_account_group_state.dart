@@ -32,12 +32,13 @@ class AddAccountGroupState extends _$AddAccountGroupState {
       IsarAddAccountGroupRepository isarAddAccountGroupRepository =
           IsarAddAccountGroupRepository();
       DateTime now = DateTime.now();
+      final accountGroupModel = AccountGroupModel()
+        ..groupName = state.groupName
+        ..groupId = generateDatabaseId(now)
+        ..dateCreated = now;
+      
       await isarAddAccountGroupRepository.addAccountGroup(
-        accountGroupModel: AccountGroupModel(
-          groupName: state.groupName,
-          groupId: generateDatabaseId(now),
-          dateCreated: now,
-        ),
+        accountGroupModel: accountGroupModel,
       );
       navigatorKey.currentContext?.pop();
     } on Exception catch (e) {

@@ -46,13 +46,11 @@ class EditSubcategoryState extends _$EditSubcategoryState {
         IsarEditSubcategoryRepository();
         DateTime now = DateTime.now();
 
-        await isarEditSubcategoryRepository.editSubcategory(
-          subcategoryModel.copyWith(
-            subcategoryName: subcategoryName,
-            categoryId: newCategoryId ?? subcategoryModel.categoryId,
-            dateModified: now,
-          ),
-        );
+        subcategoryModel.subcategoryName = subcategoryName;
+        subcategoryModel.categoryId = newCategoryId ?? subcategoryModel.categoryId;
+        subcategoryModel.dateModified = now;
+        
+        await isarEditSubcategoryRepository.editSubcategory(subcategoryModel);
         navigatorKey.currentContext?.pop();
         // ref.read(categoriesStateProvider.notifier).updateCategories();
       } on Exception catch (e) {

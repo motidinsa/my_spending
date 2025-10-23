@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
 import 'package:my_spending/add_account_group/model/account_group_model.dart';
 import 'package:my_spending/core/model/account_model/account_model.dart';
 import 'package:my_spending/core/model/app_model/app_model.dart';

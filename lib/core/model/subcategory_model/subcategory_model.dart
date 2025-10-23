@@ -1,25 +1,15 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:isar/isar.dart';
-
-part 'subcategory_model.freezed.dart';
+import 'package:isar_community/isar.dart';
 
 part 'subcategory_model.g.dart';
 
-@freezed
-@Collection(ignore: {'copyWith'})
-class SubcategoryModel with _$SubcategoryModel {
-  const factory SubcategoryModel({
-    @Default(Isar.autoIncrement) Id id,
-    required String subcategoryName,
-    required String subcategoryId,
-    required String categoryId,
-    required DateTime dateCreated,
-    DateTime? dateModified,
-    int? sortIndex,
-  }) = _SubcategoryModel;
-
-  const SubcategoryModel._();
-
-  @override
-  Id get id => Isar.autoIncrement;
+@collection
+class SubcategoryModel {
+  Id id = Isar.autoIncrement;
+  
+  late String subcategoryName;
+  late String subcategoryId;
+  late String categoryId;
+  late DateTime dateCreated;
+  DateTime? dateModified;
+  int? sortIndex;
 }

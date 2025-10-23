@@ -1,3 +1,4 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_transaction/repository/isar_add_transaction_repository.dart';
 import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
@@ -14,9 +15,8 @@ class AddTransactionCategoryListState
 
   @override
   Future<List<CategoryModel>> build() async {
-    final selectedCategoryType = ref.watch(
-      addTransactionStateProvider.select((state) => state.transactionType),
-    );
+    final addTransactionState = ref.watch(addTransactionStateProvider);
+    final selectedCategoryType = addTransactionState.transactionType;
     return selectedCategoryType == LocaleKeys.expense
         ? isarAddTransactionRepository.getExpenseCategories()
         : isarAddTransactionRepository.getIncomeCategories();

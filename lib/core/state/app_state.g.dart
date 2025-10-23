@@ -6,20 +6,50 @@ part of 'app_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(AppState)
+const appStateProvider = AppStateProvider._();
+
+final class AppStateProvider
+    extends $AsyncNotifierProvider<AppState, AppStateModel> {
+  const AppStateProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'appStateProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$appStateHash();
+
+  @$internal
+  @override
+  AppState create() => AppState();
+}
+
 String _$appStateHash() => r'bd87ca267f425cd50acc6e382cec11c692fe8e59';
 
-/// See also [AppState].
-@ProviderFor(AppState)
-final appStateProvider =
-    AutoDisposeAsyncNotifierProvider<AppState, AppStateModel>.internal(
-  AppState.new,
-  name: r'appStateProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$appStateHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-typedef _$AppState = AutoDisposeAsyncNotifier<AppStateModel>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+abstract class _$AppState extends $AsyncNotifier<AppStateModel> {
+  FutureOr<AppStateModel> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<AsyncValue<AppStateModel>, AppStateModel>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<AppStateModel>, AppStateModel>,
+              AsyncValue<AppStateModel>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

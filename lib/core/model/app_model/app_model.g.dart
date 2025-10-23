@@ -21,8 +21,9 @@ const AppModelSchema = CollectionSchema(
       id: 0,
       name: r'isDefaultAccountGroupInitialized',
       type: IsarType.bool,
-    )
+    ),
   },
+
   estimateSize: _appModelEstimateSize,
   serialize: _appModelSerialize,
   deserialize: _appModelDeserialize,
@@ -31,10 +32,11 @@ const AppModelSchema = CollectionSchema(
   indexes: {},
   links: {},
   embeddedSchemas: {},
+
   getId: _appModelGetId,
   getLinks: _appModelGetLinks,
   attach: _appModelAttach,
-  version: '3.1.8',
+  version: '3.3.0-dev.3',
 );
 
 int _appModelEstimateSize(
@@ -61,10 +63,9 @@ AppModel _appModelDeserialize(
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  final object = AppModel(
-    id: id,
-    isDefaultAccountGroupInitialized: reader.readBoolOrNull(offsets[0]),
-  );
+  final object = AppModel();
+  object.id = id;
+  object.isDefaultAccountGroupInitialized = reader.readBoolOrNull(offsets[0]);
   return object;
 }
 
@@ -90,7 +91,9 @@ List<IsarLinkBase<dynamic>> _appModelGetLinks(AppModel object) {
   return [];
 }
 
-void _appModelAttach(IsarCollection<dynamic> col, Id id, AppModel object) {}
+void _appModelAttach(IsarCollection<dynamic> col, Id id, AppModel object) {
+  object.id = id;
+}
 
 extension AppModelQueryWhereSort on QueryBuilder<AppModel, AppModel, QWhere> {
   QueryBuilder<AppModel, AppModel, QAfterWhere> anyId() {
@@ -103,10 +106,7 @@ extension AppModelQueryWhereSort on QueryBuilder<AppModel, AppModel, QWhere> {
 extension AppModelQueryWhere on QueryBuilder<AppModel, AppModel, QWhereClause> {
   QueryBuilder<AppModel, AppModel, QAfterWhereClause> idEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IdWhereClause.between(
-        lower: id,
-        upper: id,
-      ));
+      return query.addWhereClause(IdWhereClause.between(lower: id, upper: id));
     });
   }
 
@@ -132,8 +132,10 @@ extension AppModelQueryWhere on QueryBuilder<AppModel, AppModel, QWhereClause> {
     });
   }
 
-  QueryBuilder<AppModel, AppModel, QAfterWhereClause> idGreaterThan(Id id,
-      {bool include = false}) {
+  QueryBuilder<AppModel, AppModel, QAfterWhereClause> idGreaterThan(
+    Id id, {
+    bool include = false,
+  }) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.greaterThan(lower: id, includeLower: include),
@@ -141,8 +143,10 @@ extension AppModelQueryWhere on QueryBuilder<AppModel, AppModel, QWhereClause> {
     });
   }
 
-  QueryBuilder<AppModel, AppModel, QAfterWhereClause> idLessThan(Id id,
-      {bool include = false}) {
+  QueryBuilder<AppModel, AppModel, QAfterWhereClause> idLessThan(
+    Id id, {
+    bool include = false,
+  }) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.lessThan(upper: id, includeUpper: include),
@@ -157,12 +161,14 @@ extension AppModelQueryWhere on QueryBuilder<AppModel, AppModel, QWhereClause> {
     bool includeUpper = true,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IdWhereClause.between(
-        lower: lowerId,
-        includeLower: includeLower,
-        upper: upperId,
-        includeUpper: includeUpper,
-      ));
+      return query.addWhereClause(
+        IdWhereClause.between(
+          lower: lowerId,
+          includeLower: includeLower,
+          upper: upperId,
+          includeUpper: includeUpper,
+        ),
+      );
     });
   }
 }
@@ -171,10 +177,9 @@ extension AppModelQueryFilter
     on QueryBuilder<AppModel, AppModel, QFilterCondition> {
   QueryBuilder<AppModel, AppModel, QAfterFilterCondition> idEqualTo(Id value) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'id',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.equalTo(property: r'id', value: value),
+      );
     });
   }
 
@@ -183,11 +188,13 @@ extension AppModelQueryFilter
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'id',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.greaterThan(
+          include: include,
+          property: r'id',
+          value: value,
+        ),
+      );
     });
   }
 
@@ -196,11 +203,13 @@ extension AppModelQueryFilter
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'id',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.lessThan(
+          include: include,
+          property: r'id',
+          value: value,
+        ),
+      );
     });
   }
 
@@ -211,41 +220,49 @@ extension AppModelQueryFilter
     bool includeUpper = true,
   }) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'id',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.between(
+          property: r'id',
+          lower: lower,
+          includeLower: includeLower,
+          upper: upper,
+          includeUpper: includeUpper,
+        ),
+      );
     });
   }
 
   QueryBuilder<AppModel, AppModel, QAfterFilterCondition>
-      isDefaultAccountGroupInitializedIsNull() {
+  isDefaultAccountGroupInitializedIsNull() {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNull(
-        property: r'isDefaultAccountGroupInitialized',
-      ));
+      return query.addFilterCondition(
+        const FilterCondition.isNull(
+          property: r'isDefaultAccountGroupInitialized',
+        ),
+      );
     });
   }
 
   QueryBuilder<AppModel, AppModel, QAfterFilterCondition>
-      isDefaultAccountGroupInitializedIsNotNull() {
+  isDefaultAccountGroupInitializedIsNotNull() {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNotNull(
-        property: r'isDefaultAccountGroupInitialized',
-      ));
+      return query.addFilterCondition(
+        const FilterCondition.isNotNull(
+          property: r'isDefaultAccountGroupInitialized',
+        ),
+      );
     });
   }
 
   QueryBuilder<AppModel, AppModel, QAfterFilterCondition>
-      isDefaultAccountGroupInitializedEqualTo(bool? value) {
+  isDefaultAccountGroupInitializedEqualTo(bool? value) {
     return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'isDefaultAccountGroupInitialized',
-        value: value,
-      ));
+      return query.addFilterCondition(
+        FilterCondition.equalTo(
+          property: r'isDefaultAccountGroupInitialized',
+          value: value,
+        ),
+      );
     });
   }
 }
@@ -258,14 +275,14 @@ extension AppModelQueryLinks
 
 extension AppModelQuerySortBy on QueryBuilder<AppModel, AppModel, QSortBy> {
   QueryBuilder<AppModel, AppModel, QAfterSortBy>
-      sortByIsDefaultAccountGroupInitialized() {
+  sortByIsDefaultAccountGroupInitialized() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isDefaultAccountGroupInitialized', Sort.asc);
     });
   }
 
   QueryBuilder<AppModel, AppModel, QAfterSortBy>
-      sortByIsDefaultAccountGroupInitializedDesc() {
+  sortByIsDefaultAccountGroupInitializedDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isDefaultAccountGroupInitialized', Sort.desc);
     });
@@ -287,14 +304,14 @@ extension AppModelQuerySortThenBy
   }
 
   QueryBuilder<AppModel, AppModel, QAfterSortBy>
-      thenByIsDefaultAccountGroupInitialized() {
+  thenByIsDefaultAccountGroupInitialized() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isDefaultAccountGroupInitialized', Sort.asc);
     });
   }
 
   QueryBuilder<AppModel, AppModel, QAfterSortBy>
-      thenByIsDefaultAccountGroupInitializedDesc() {
+  thenByIsDefaultAccountGroupInitializedDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isDefaultAccountGroupInitialized', Sort.desc);
     });
@@ -304,7 +321,7 @@ extension AppModelQuerySortThenBy
 extension AppModelQueryWhereDistinct
     on QueryBuilder<AppModel, AppModel, QDistinct> {
   QueryBuilder<AppModel, AppModel, QDistinct>
-      distinctByIsDefaultAccountGroupInitialized() {
+  distinctByIsDefaultAccountGroupInitialized() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'isDefaultAccountGroupInitialized');
     });
@@ -320,7 +337,7 @@ extension AppModelQueryProperty
   }
 
   QueryBuilder<AppModel, bool?, QQueryOperations>
-      isDefaultAccountGroupInitializedProperty() {
+  isDefaultAccountGroupInitializedProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'isDefaultAccountGroupInitialized');
     });

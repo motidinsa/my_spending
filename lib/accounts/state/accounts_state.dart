@@ -29,7 +29,8 @@ class AccountsState extends _$AccountsState {
             isarAccountsRepository.getAccountGroupModel(
               state.value![i].first.groupId,
             )!;
-        accountGroupModels.add(accountGroupModel.copyWith(sortIndex: i));
+        accountGroupModel.sortIndex = i;
+        accountGroupModels.add(accountGroupModel);
       }
       isarAccountsRepository.updateAccountGroupSortIndex(accountGroupModels);
     }

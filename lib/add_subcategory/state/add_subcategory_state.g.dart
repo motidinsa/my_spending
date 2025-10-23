@@ -6,22 +6,61 @@ part of 'add_subcategory_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$addSubcategoryStateHash() =>
-    r'6a7417047af45ee3f0251a304d5892dcb6fe30b3';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [AddSubcategoryState].
 @ProviderFor(AddSubcategoryState)
-final addSubcategoryStateProvider = AutoDisposeNotifierProvider<
-    AddSubcategoryState, AddSubcategoryStateModel>.internal(
-  AddSubcategoryState.new,
-  name: r'addSubcategoryStateProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$addSubcategoryStateHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const addSubcategoryStateProvider = AddSubcategoryStateProvider._();
 
-typedef _$AddSubcategoryState = AutoDisposeNotifier<AddSubcategoryStateModel>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+final class AddSubcategoryStateProvider
+    extends $NotifierProvider<AddSubcategoryState, AddSubcategoryStateModel> {
+  const AddSubcategoryStateProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'addSubcategoryStateProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$addSubcategoryStateHash();
+
+  @$internal
+  @override
+  AddSubcategoryState create() => AddSubcategoryState();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(AddSubcategoryStateModel value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<AddSubcategoryStateModel>(value),
+    );
+  }
+}
+
+String _$addSubcategoryStateHash() =>
+    r'ff04b9a1d454b01a1910b6406b2155298935b260';
+
+abstract class _$AddSubcategoryState
+    extends $Notifier<AddSubcategoryStateModel> {
+  AddSubcategoryStateModel build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref =
+        this.ref as $Ref<AddSubcategoryStateModel, AddSubcategoryStateModel>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AddSubcategoryStateModel, AddSubcategoryStateModel>,
+              AddSubcategoryStateModel,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

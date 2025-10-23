@@ -6,22 +6,61 @@ part of 'add_transaction_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$addTransactionStateHash() =>
-    r'557b5b15fefd0e74ec3fb793815c48ca82f83220';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [AddTransactionState].
 @ProviderFor(AddTransactionState)
-final addTransactionStateProvider = AutoDisposeNotifierProvider<
-    AddTransactionState, AddTransactionStateModel>.internal(
-  AddTransactionState.new,
-  name: r'addTransactionStateProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$addTransactionStateHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const addTransactionStateProvider = AddTransactionStateProvider._();
 
-typedef _$AddTransactionState = AutoDisposeNotifier<AddTransactionStateModel>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+final class AddTransactionStateProvider
+    extends $NotifierProvider<AddTransactionState, AddTransactionStateModel> {
+  const AddTransactionStateProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'addTransactionStateProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$addTransactionStateHash();
+
+  @$internal
+  @override
+  AddTransactionState create() => AddTransactionState();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(AddTransactionStateModel value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<AddTransactionStateModel>(value),
+    );
+  }
+}
+
+String _$addTransactionStateHash() =>
+    r'051474463897110fbf5dca3f63fe208ae4b509cc';
+
+abstract class _$AddTransactionState
+    extends $Notifier<AddTransactionStateModel> {
+  AddTransactionStateModel build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref =
+        this.ref as $Ref<AddTransactionStateModel, AddTransactionStateModel>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AddTransactionStateModel, AddTransactionStateModel>,
+              AddTransactionStateModel,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

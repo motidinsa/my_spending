@@ -39,14 +39,15 @@ class AddCategoryState extends _$AddCategoryState {
       IsarAddCategoryRepository isarAddCategoryRepository =
           IsarAddCategoryRepository();
       DateTime now = DateTime.now();
+      final categoryModel = CategoryModel()
+        ..categoryName = categoryName
+        ..categoryId = generateDatabaseId(now)
+        ..categoryType = type!
+        ..dateCreated = now
+        ..subcategoryCount = 0;
+      
       await isarAddCategoryRepository.addCategory(
-        categoryModel: CategoryModel(
-          categoryName: categoryName,
-          categoryId: generateDatabaseId(now),
-          categoryType: type!,
-          dateCreated: now,
-          subcategoryCount: 0
-        ),
+        categoryModel: categoryModel,
       );
       navigatorKey.currentContext?.pop();
     } on Exception catch (e) {
