@@ -6,7 +6,7 @@ import 'package:my_spending/add_account/ui/account_group_list.dart';
 import 'package:my_spending/add_account_group/model/account_group_model.dart';
 import 'package:my_spending/core/route/routes.dart';
 
-getAddAccountTextFieldIcon(String title) {
+Icon? getAddAccountTextFieldIcon(String title) {
   if (title == 'Account group') {
     return Icon(Icons.arrow_drop_down_rounded);
   } else if (title == 'Account') {
@@ -22,19 +22,21 @@ getAddAccountTextFieldIcon(String title) {
   } else if (title == 'Description') {
     return Icon(Icons.edit, color: Colors.grey.shade700);
   }
+  return null;
 }
 
-isReadOnlyAddAccountTextField(String title) {
+bool isReadOnlyAddAccountTextField(String title) {
   return title == 'Account group';
 }
 
-getAddTransactionTextFieldKeyBoardType(String title) {
+TextInputType? getAddTransactionTextFieldKeyBoardType(String title) {
   if (title == 'Amount') {
     return TextInputType.number;
   }
+  return null;
 }
 
-onAddAccountTextFieldPressed({
+Future<void> onAddAccountTextFieldPressed({
   required BuildContext context,
   required WidgetRef ref,
   required String title,
@@ -53,7 +55,7 @@ onAddAccountTextFieldPressed({
   }
 }
 
-onAddAccountTextFieldChange({
+void onAddAccountTextFieldChange({
   required WidgetRef ref,
   required String title,
   required String text,
@@ -67,13 +69,14 @@ onAddAccountTextFieldChange({
   }
 }
 
-getAddAccountHintText(String title) {
+String? getAddAccountHintText(String title) {
   if (['Account group', 'Description'].contains(title)) {
     return 'Optional';
   }
+  return null;
 }
 
-getAddAccountTextFieldData(WidgetRef ref, String title) {
+String getAddAccountTextFieldData(WidgetRef ref, String title) {
   if (title == 'Account group') {
     return ref.watch(addAccountStateProvider).groupName ?? '';
   } else if (title == 'Name') {
@@ -86,7 +89,7 @@ getAddAccountTextFieldData(WidgetRef ref, String title) {
   return '';
 }
 
-onSingleAccountGroupSelected(WidgetRef ref, AccountGroupModel accountGroupModel) {
+void onSingleAccountGroupSelected(WidgetRef ref, AccountGroupModel accountGroupModel) {
   ref.read(addAccountStateProvider.notifier).setAccountGroupName(accountGroupModel);
   navigatorKey.currentContext?.pop();
   if (ref.read(addAccountStateProvider.notifier).accountName.isEmpty) {
@@ -108,7 +111,7 @@ bool hasAddAccountTextFieldFocus(WidgetRef ref, String title) {
   return false;
 }
 
-onAddAccountSavePressed(WidgetRef ref) {
+void onAddAccountSavePressed(WidgetRef ref) {
   ref.read(addAccountStateProvider.notifier).updateSaveButtonPressedStatus();
   if (ref
           .read(addAccountStateProvider.notifier)

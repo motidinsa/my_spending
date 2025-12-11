@@ -1,4 +1,3 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_transaction/repository/isar_add_transaction_repository.dart';
 import 'package:my_spending/add_transaction/state/add_transaction_state.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';

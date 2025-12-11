@@ -36,7 +36,7 @@ const AppModelSchema = CollectionSchema(
   getId: _appModelGetId,
   getLinks: _appModelGetLinks,
   attach: _appModelAttach,
-  version: '3.3.0-dev.3',
+  version: '3.3.0',
 );
 
 int _appModelEstimateSize(

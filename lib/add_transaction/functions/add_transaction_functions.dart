@@ -7,7 +7,7 @@ import 'package:my_spending/add_transaction/ui/modal_bottom_sheet/transaction_ty
 import 'package:my_spending/core/constants/translation_keys.g.dart';
 import 'package:my_spending/core/route/routes.dart';
 
-getAddTransactionTextFieldIcon(String title) {
+Icon? getAddTransactionTextFieldIcon(String title) {
   if (title == LocaleKeys.date) {
     return Icon(Icons.date_range);
   } else if (title == LocaleKeys.account) {
@@ -25,9 +25,10 @@ getAddTransactionTextFieldIcon(String title) {
   } else if (title == LocaleKeys.from || title == LocaleKeys.to) {
     return Icon(Icons.account_balance_rounded, color: Colors.grey.shade700);
   }
+  return null;
 }
 
-isReadOnlyAddTransactionTextField(String title) {
+bool isReadOnlyAddTransactionTextField(String title) {
   return [
     LocaleKeys.date,
     LocaleKeys.account,
@@ -37,26 +38,28 @@ isReadOnlyAddTransactionTextField(String title) {
   ].contains(title);
 }
 
-getLabelText(String title) {
+String? getLabelText(String title) {
   if ([LocaleKeys.tip, LocaleKeys.fee].contains(title)) {
     return title.tr();
   }
+  return null;
 }
 
-getTextFieldData(String title) {
+String? getTextFieldData(String title) {
   if (title == LocaleKeys.date) {
     return DateFormat('E, dd/MM/yyyy').format(DateTime.now());
   }
+  return null;
 }
 
-setData(WidgetRef ref, String title) {
+void setData(WidgetRef ref, String title) {
   if (title == LocaleKeys.category) {
     // ref.watch(addTransactionStateProvider.select((state) => DateTime(2021)));
     ref.read(addTransactionStateProvider.notifier).updateIndex(0);
   }
 }
 
-getAddTransactionTextFieldData(WidgetRef ref, String title) {
+String getAddTransactionTextFieldData(WidgetRef ref, String title) {
   final addTransactionNotifier = ref.read(addTransactionStateProvider.notifier);
   if (title == LocaleKeys.date) {
     return ref.watch(
@@ -97,7 +100,7 @@ getAddTransactionTextFieldData(WidgetRef ref, String title) {
   return '';
 }
 
-onAddTransactionTextFieldPressed({
+void onAddTransactionTextFieldPressed({
   required BuildContext context,
   required WidgetRef ref,
   required String title,
@@ -137,7 +140,7 @@ onAddTransactionTextFieldPressed({
   }
 }
 
-onAddTransactionTextFieldChange({
+void onAddTransactionTextFieldChange({
   required WidgetRef ref,
   required String title,
   required String text,
@@ -152,7 +155,7 @@ onAddTransactionTextFieldChange({
   }
 }
 
-onTransactionTypeSelect({
+void onTransactionTypeSelect({
   required WidgetRef ref,
   required String type,
   required BuildContext context,
@@ -170,7 +173,7 @@ onTransactionTypeSelect({
   addTransactionNotifier.onNextFocus(context);
 }
 
-getTransactionTypeBackgroundColor({
+Color getTransactionTypeBackgroundColor({
   required String initialType,
   required String selectedType,
 }) {

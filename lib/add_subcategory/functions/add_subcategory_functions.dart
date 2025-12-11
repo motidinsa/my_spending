@@ -17,7 +17,7 @@ bool hasAddSubcategoryTextFieldFocus(WidgetRef ref, String title) {
   return false;
 }
 
-onAddSubcategorySavePressed(WidgetRef ref,String categoryId) {
+void onAddSubcategorySavePressed(WidgetRef ref,String categoryId) {
   ref
       .read(addSubcategoryStateProvider.notifier)
       .updateSaveButtonPressedStatus();

@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_account_group/state/add_account_group_state.dart';
 
-onAddAccountGroupSavePressed(WidgetRef ref) {
+void onAddAccountGroupSavePressed(WidgetRef ref) {
   ref
       .read(addAccountGroupStateProvider.notifier)
       .updateSaveButtonPressedStatus();

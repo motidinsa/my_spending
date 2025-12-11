@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/core/model/category_model/category_model.dart';
 import 'package:my_spending/edit_category/state/edit_category_state.dart';
 
-onEditCategorySavePressed(WidgetRef ref,CategoryModel categoryModel) {
+void onEditCategorySavePressed(WidgetRef ref,CategoryModel categoryModel) {
   ref.read(editCategoryStateProvider.notifier).updateSaveButtonPressedStatus();
   if (ref
           .read(editCategoryStateProvider.notifier)

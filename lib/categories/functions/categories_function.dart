@@ -3,7 +3,7 @@ import 'package:my_spending/categories/repository/isar_categories_repository.dar
 import 'package:my_spending/core/constants/translation_keys.g.dart';
 import 'package:my_spending/core/model/category_model/category_model.dart';
 
-getCategoryTypeBackgroundColor({
+Color getCategoryTypeBackgroundColor({
   required String initialType,
   required String selectedType,
 }) {
@@ -65,7 +65,7 @@ List<CategoryModel> getCategoriesByType(
     });
 }
 
-getSubcategoryCount(String categoryId) {
+int getSubcategoryCount(String categoryId) {
   IsarCategoriesRepository isarCategoriesRepository =
       IsarCategoriesRepository();
   return isarCategoriesRepository.getSubcategoryCount(categoryId);

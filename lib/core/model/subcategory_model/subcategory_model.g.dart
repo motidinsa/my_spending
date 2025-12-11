@@ -61,7 +61,7 @@ const SubcategoryModelSchema = CollectionSchema(
   getId: _subcategoryModelGetId,
   getLinks: _subcategoryModelGetLinks,
   attach: _subcategoryModelAttach,
-  version: '3.3.0-dev.3',
+  version: '3.3.0',
 );
 
 int _subcategoryModelEstimateSize(

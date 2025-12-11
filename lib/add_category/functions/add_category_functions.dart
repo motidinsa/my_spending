@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_spending/add_category/state/add_category_state.dart';
 
-onAddCategorySavePressed(WidgetRef ref) {
+void onAddCategorySavePressed(WidgetRef ref) {
   ref.read(addCategoryStateProvider.notifier).updateSaveButtonPressedStatus();
   if (ref
           .read(addCategoryStateProvider.notifier)

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_spending/core/constants/translation_keys.g.dart';
 import 'package:my_spending/core/model/subcategory_model/subcategory_model.dart';
 
-getCategoryTypeBackgroundColor({
+Color getCategoryTypeBackgroundColor({
   required String initialType,
   required String selectedType,
 }) {
